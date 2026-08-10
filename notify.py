@@ -81,8 +81,11 @@ def send_email(subject, html_body, text_body):
     msg["To"] = to
     msg.set_content(text_body)
     msg.add_alternative(html_body, subtype="html")
+    # `or 587`, not a getenv default: an unset GitHub secret arrives as an empty
+    # string, and int("") would raise into the catch below — silently no email.
+    port = int(os.getenv("SMTP_PORT") or 587)
     try:
-        with smtplib.SMTP(host, int(os.getenv("SMTP_PORT", 587)), timeout=30) as s:
+        with smtplib.SMTP(host, port, timeout=30) as s:
             s.starttls()
             s.login(user, os.getenv("SMTP_PASS", ""))
             s.send_message(msg)

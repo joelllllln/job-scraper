@@ -222,6 +222,60 @@ def main():
         check_true(f"{name} writes through store.save_new",
                    hasattr(mod.store, "save_new"))
 
+    print("\nnotify — delivery")
+    import smtplib
+    import notify
+
+    saved_env = {k: os.environ.get(k) for k in
+                 ("SMTP_HOST", "SMTP_PORT", "SMTP_USER", "SMTP_PASS", "DIGEST_TO",
+                  "TELEGRAM_TOKEN", "TELEGRAM_CHAT_ID")}
+    saved_smtp = smtplib.SMTP
+    for k in saved_env:
+        os.environ.pop(k, None)
+    try:
+        check("no delivery configured sends nothing", notify.send_email("s", "<p>h</p>", "t"), False)
+        check("telegram unconfigured is a no-op", notify.send_telegram("t"), False)
+
+        sent = {}
+
+        class FakeSMTP:
+            def __init__(self, host, port, timeout=None):
+                sent.update(host=host, port=port)
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *a):
+                return False
+
+            def starttls(self):
+                sent["tls"] = True
+
+            def login(self, u, p):
+                sent["user"] = u
+
+            def send_message(self, m):
+                sent["msg"] = m
+
+        smtplib.SMTP = FakeSMTP
+        # an unset GitHub secret arrives as "", not as absent — int("") used to raise
+        # in here and get swallowed, so the digest silently never sent
+        os.environ.update(SMTP_HOST="smtp.gmail.com", SMTP_PORT="", SMTP_USER="me@gmail.com",
+                          SMTP_PASS="app-pw", DIGEST_TO="you@gmail.com")
+        ok = notify.send_email("3 new roles", "<p>report</p>", "report")
+        check("empty SMTP_PORT falls back to 587", (ok, sent.get("port")), (True, 587))
+        check("starttls before login", sent.get("tls"), True)
+        check("digest addressed to DIGEST_TO", sent["msg"]["To"], "you@gmail.com")
+        check("sent as text plus html",
+              [p.get_content_type() for p in sent["msg"].walk()],
+              ["multipart/alternative", "text/plain", "text/html"])
+    finally:
+        smtplib.SMTP = saved_smtp
+        for k, v in saved_env.items():
+            os.environ.pop(k, None)
+            if v is not None:
+                os.environ[k] = v
+
     print("\nconfig — filter sanity")
     inc = re.compile("|".join(yaml.safe_load(open("config.yaml"))["include"]), re.I)
     exc = re.compile("|".join(yaml.safe_load(open("config.yaml"))["exclude"]), re.I)
