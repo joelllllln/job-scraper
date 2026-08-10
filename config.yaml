@@ -71,6 +71,64 @@ include:
   - "conduct (risk )?analyst"
   - "regulatory (affairs|change|policy) analyst"
 
+  # --- physical operations and scheduling ---
+  # The classic way into a commodity desk without desk experience. Every pattern
+  # is scoped to the trade: a bare "scheduler" or "operator" is buses and forklifts.
+  - "(gas|power|oil|cargo|fuel|energy|crude|lng) (scheduler|scheduling|operator)"
+  - "(trading|trade|commodit\\w*|energy|cargo|vessel|freight|shipping|physical) operations"
+  - "trade (capture|lifecycle|execution|control)"
+  - "deal (capture|desk)"
+  - "nominations? (analyst|specialist)"
+  - "demurrage"
+  - "post.?fixture"
+  - "operations analyst.{0,20}(trading|commodit|energy|freight|shipping)"
+
+  # --- risk beside the desk ---
+  # "credit risk" stays excluded below; market and commodity risk are a different
+  # job that sits next to the traders and hires juniors constantly.
+  - "(market|commodity|commodities|trading|price|liquidity) risk"
+  - "risk analyst"
+  - "model validation"
+  - "\\bxva\\b"
+
+  # --- product control and valuations ---
+  - "product control"
+  - "p(and|&)l (analyst|control)"
+  - "valuations? (analyst|control)"
+
+  # --- economics, ESG and climate ---
+  - "econom(ist|ics analyst)"
+  - "economic analyst"
+  - "esg (analyst|analytics|data|research)"
+  - "sustainability (analyst|reporting|data)"
+  - "climate (risk )?analyst"
+
+  # --- energy commercial and route to market ---
+  - "commercial analyst"
+  - "\\bppa\\b"
+  - "route.to.market"
+  - "corporate development analyst"
+  - "strategy analyst"
+
+  # --- insurance front office ---
+  # 54 insurance firms in the registry were producing nothing at all.
+  - "underwrit(er|ing) (analyst|assistant|technician|graduate)"
+  - "catastrophe model"
+  - "exposure management"
+  - "actuarial analyst"
+
+  # --- banking front office ---
+  - "investment banking"
+  - "m(and|&)a analyst"
+  - "leveraged finance"
+  - "(debt|equity) capital markets"
+  - "corporate finance analyst"
+
+  # --- shipping desk ---
+  - "(sale and purchase|s(and|&)p) broker"
+  - "(dry cargo|tanker|container|gas) broker"
+  - "shipbroking"
+
   # --- investment side ---
   # 387 fund firms in the registry were producing almost nothing, because none
   # of their analyst titles matched any pattern above.

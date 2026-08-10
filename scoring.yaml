@@ -79,6 +79,20 @@ title_tiers:
       - "investment (research|associate)"
       - "infrastructure (investment )?analyst"
       - "(fund|credit|equity|fixed income) analyst"
+      # physical ops and scheduling — the way onto a desk without desk experience
+      - "(gas|power|oil|cargo|fuel|energy|crude|lng) (scheduler|scheduling|operator)"
+      - "(trading|trade|commodit\\w*|energy|cargo|vessel|freight|shipping) operations"
+      - "trade (capture|lifecycle|execution)"
+      - "demurrage|post.?fixture|nominations? analyst"
+      # risk beside the desk
+      - "(market|commodity|commodities|trading|price) risk"
+      - "model validation|\\bxva\\b"
+      # energy commercial, economics, shipping desk
+      - "commercial analyst"
+      - "\\bppa\\b|route.to.market"
+      - "econom(ist|ics analyst)"
+      - "(sale and purchase|s(and|&)p) broker|shipbroking"
+      - "(dry cargo|tanker|container|gas) broker"
   adjacent: # worth a look, not the target
     points: 10
     patterns:
@@ -90,6 +104,16 @@ title_tiers:
       - "python developer"
       - "market intelligence"
       - "price report|market report"
+      - "product control|p(and|&)l analyst|valuations? analyst"
+      - "esg (analyst|analytics|data|research)"
+      - "sustainability (analyst|reporting|data)"
+      - "climate (risk )?analyst"
+      - "underwrit(er|ing) (analyst|assistant|technician|graduate)"
+      - "catastrophe model|exposure management|actuarial analyst"
+      - "investment banking|m(and|&)a analyst|leveraged finance"
+      - "(debt|equity) capital markets|corporate finance analyst"
+      - "risk analyst"
+      - "corporate development analyst|strategy analyst"
 
 # --- 2. Seniority. Years are read out of the description by verify.py. ---
 seniority:

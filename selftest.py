@@ -539,7 +539,14 @@ def main():
                   "Market Surveillance Analyst", "Trade Surveillance Analyst",
                   "Market Abuse Analyst", "Renewables Analyst",
                   "Power Market Modeller", "Asset Optimisation Analyst",
-                  "Flexibility Analyst", "Regulatory Analyst"):
+                  "Flexibility Analyst", "Regulatory Analyst",
+                  "Gas Scheduler", "Cargo Operator", "Trade Operations Analyst",
+                  "Market Risk Analyst", "Commodity Risk Analyst", "Product Control Analyst",
+                  "Energy Economist", "ESG Analyst", "Climate Risk Analyst",
+                  "Commercial Analyst", "PPA Analyst", "Catastrophe Modelling Analyst",
+                  "Underwriting Assistant", "Investment Banking Analyst",
+                  "Sale and Purchase Broker", "Investment Analyst",
+                  "Transaction Reporting Analyst", "Demurrage Analyst"):
         tier = [l for l, _ in score.score_job(job(title=title), cfg, cats, set())[1]
                 if l.startswith("title:")]
         check_true(f"scored on its title: {title[:34]}", bool(tier), "no tier matched")
@@ -580,7 +587,16 @@ def main():
              "Trainee Estate Agent", "Trainee Accountant", "Graduate Nurse",
              "Internship - Fashion PR", "Yacht Chartering Assistant",
              "Structuring Engineer - Buildings", "Origination Manager - Mortgages",
-             "Warehouse Operative", "Care Assistant", "Delivery Driver", "Receptionist"]
+             "Warehouse Operative", "Care Assistant", "Delivery Driver", "Receptionist",
+             # neighbours of the ops / risk / economics / insurance vocabulary
+             "Bus Scheduler", "Production Scheduler", "Forklift Operator", "Crane Operator",
+             "Warehouse Operations Assistant", "Retail Operations Assistant",
+             "Fire Risk Assessor", "Risk and Compliance Officer", "Credit Risk Analyst",
+             "Economics Teacher", "Sustainability Officer - Council", "Climate Campaigner",
+             "ESG Marketing Executive", "Commercial Manager - Construction",
+             "Commercial Director", "Underwriting Manager", "Actuarial Director",
+             "Corporate Finance Manager", "Insurance Broker - Motor", "Mortgage Broker",
+             "Broker Support Administrator", "Recruitment Consultant"]
     signal = ["Junior Market Analyst", "Trainee Commodity Broker",
               "Entry Level Trading Analyst", "Battery Storage Optimisation Analyst",
               "Electricity Market Analyst", "Trade Surveillance Analyst",
@@ -588,7 +604,18 @@ def main():
               "Commodity Analyst", "Power Trading Analyst", "LNG Analyst",
               "Quantitative Researcher", "Structuring Analyst",
               "Origination Analyst - Power", "Dry Cargo Chartering Trainee",
-              "Assistant Trader", "Commodities Trading Internship"]
+              "Assistant Trader", "Commodities Trading Internship",
+              # the functions added after measuring 9/62 coverage
+              "Gas Scheduler", "Power Scheduler", "Cargo Operator",
+              "Trade Operations Analyst", "Deal Capture Analyst", "Demurrage Analyst",
+              "Market Risk Analyst", "Commodity Risk Analyst", "Model Validation Analyst",
+              "Product Control Analyst", "Valuations Analyst", "Energy Economist",
+              "ESG Analyst", "Sustainability Analyst", "Climate Risk Analyst",
+              "Commercial Analyst", "PPA Analyst", "Corporate Development Analyst",
+              "Catastrophe Modelling Analyst", "Exposure Management Analyst",
+              "Underwriting Assistant", "Investment Banking Analyst", "M&A Analyst",
+              "Leveraged Finance Analyst", "Sale and Purchase Broker", "Dry Cargo Broker",
+              "Shipbroking Trainee", "Transaction Reporting Analyst", "Investment Analyst"]
     caught = [t for t in noise if keep({"title": t, "location": "London"})]
     missed = [t for t in signal if not keep({"title": t, "location": "London"})]
     check(f"none of {len(noise)} unrelated titles collected", caught, [])
