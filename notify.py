@@ -161,9 +161,10 @@ def main():
     subject = f"{shown if shown is not None else n_new} roles — {date}"
 
     lines = [subject, ""]
-    # generous cap: this is the plain-text half of the email, and on a --resend-all
-    # run it carries the whole open list. 40 lines used to cut it off mid-shortlist.
-    lines += [l for l in text_body.splitlines() if l.strip()][:200]
+    # generous cap: the plain-text half of the email carries the whole open
+    # list on a --resend-all run, and each role is now ~7 lines with its
+    # description and requirements rather than 4.
+    lines += [l for l in text_body.splitlines() if l.strip()][:400]
     lines += ["", f"open: {open_total} · applied: {applied}"]
     if warnings:
         lines += ["", "sources to check:"] + [f"  {w}" for w in warnings]

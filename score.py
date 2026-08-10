@@ -97,6 +97,75 @@ def load_categories(path="firms.csv"):
     return cats
 
 
+# Where a job description starts saying something useful, and where it starts
+# listing what it wants. Descriptions arrive as whole stripped pages when there
+# was no JSON-LD, so the opening is often navigation rather than the job.
+LEAD_IN = re.compile(
+    r"(about (the|this) (role|job|position|opportunity)|the role|job (description|purpose)|"
+    r"role (overview|summary|purpose)|overview|the opportunity|your role|"
+    r"what you.{0,3}ll (do|be doing)|purpose of the role)\b[:\s-]*", re.I)
+# Single words like "essential" and "requirements" only count as a heading when
+# punctuated as one — otherwise "datasets is essential" is read as the start of
+# the requirements section and the excerpt begins mid-sentence.
+WANTS = re.compile(
+    r"(?:(?:requirements?|qualifications?|essential(?: requirements?| skills| criteria)?)"
+    r"\s*[:\-–—]"
+    r"|what (?:we|you).{0,4}re looking for|what you.{0,3}ll need|about you"
+    r"|skills (?:and|&) experience|your profile|candidate profile|key skills"
+    r"|who we are looking for|you will have)\s*[:\-–—]*\s*", re.I)
+# Where the useful part of a posting stops and the boilerplate starts.
+STOP = re.compile(
+    r"\b(benefits|what we offer|the package|salary|remuneration|how to apply|"
+    r"equal opportunit|diversity (and|&) inclusion|we are an equal|about us|"
+    r"our values|next steps|application process|privacy)\b", re.I)
+SENTENCE_END = re.compile(r"(?<=[.!?])\s")
+
+
+def _until_boilerplate(text):
+    m = STOP.search(text or "")
+    return text[:m.start()] if m and m.start() > 60 else text
+
+
+def _trim(text, limit):
+    """Cut at a sentence end near the limit so an excerpt doesn't end mid-word."""
+    text = re.sub(r"\s+", " ", text or "").strip()
+    if len(text) <= limit:
+        return text
+    cut = text[:limit]
+    parts = SENTENCE_END.split(cut)
+    if len(parts) > 1 and len(" ".join(parts[:-1])) > limit * 0.5:
+        return " ".join(parts[:-1]).strip()
+    return cut.rsplit(" ", 1)[0].rstrip(" ,;:") + "…"
+
+
+def summarise(desc, limit=260):
+    """A couple of sentences saying what the job is."""
+    if not desc:
+        return ""
+    m = LEAD_IN.search(desc[:4000])
+    body = _until_boilerplate(desc[m.end():] if m else desc)
+    # and stop where the requirements start — that half is reported separately,
+    # so repeating it here just costs the reader the description
+    w = WANTS.search(body)
+    if w and w.start() > 60:
+        body = body[:w.start()]
+    return _trim(body, limit)
+
+
+def requirements(desc, limit=260):
+    """What the posting says it wants, taken from its own requirements section."""
+    if not desc:
+        return ""
+    m = WANTS.search(desc)
+    if m:
+        return _trim(_until_boilerplate(desc[m.end():]), limit)
+    # no heading — fall back to the sentences that actually state a requirement
+    asks = [s for s in SENTENCE_END.split(re.sub(r"\s+", " ", desc))
+            if re.search(r"experience|degree|proficien|knowledge of|familiar with|"
+                         r"you (will|should) have|ability to|numerate|qualification", s, re.I)]
+    return _trim(" ".join(asks[:3]), limit) if asks else ""
+
+
 def find_ghosts(rows):
     """Same role, posted again and again over months. Usually never filled."""
     groups = defaultdict(list)
@@ -218,6 +287,11 @@ padding:13px 15px;margin-bottom:8px;position:relative;overflow:hidden}
 .t{font-weight:600;font-size:15.5px;letter-spacing:-.01em}
 .sc{font:600 17px/1 ui-monospace,"SF Mono",Menlo,monospace;color:var(--sig);flex:0 0 auto}
 .meta{font:12px/1.55 ui-monospace,"SF Mono",Menlo,monospace;color:var(--dim);margin-top:3px}
+.meta b{color:var(--ink);font-weight:600}
+.desc{margin-top:7px;font-size:13.5px;line-height:1.5;color:var(--ink)}
+.reqs{margin-top:5px;font-size:13px;line-height:1.5;color:var(--dim)}
+.reqs span{font:600 10.5px/1 ui-monospace,Menlo,monospace;text-transform:uppercase;
+letter-spacing:.08em;color:var(--warn);margin-right:5px}
 .tags{margin-top:7px;display:flex;flex-wrap:wrap;gap:4px}
 .tag{font:11px/1 ui-monospace,Menlo,monospace;padding:3.5px 6px;border:1px solid var(--rule);
 color:var(--dim);border-radius:2px}
@@ -241,7 +315,9 @@ def render_html(shortlist, rest, stats):
         return f"""<div class="job{' top' if top else ''}">
 <div class="bar" style="width:{width}%"></div>
 <div class="row1"><div class="t">{html.escape(j['title'])}</div><div class="sc">{j['score']}</div></div>
-<div class="meta">{html.escape(j['company'])} · {html.escape(j['location'] or 'location n/a')} · {html.escape(j['source'])}{' · ' + str(j['years_required']) + 'y required' if j['years_required'] else ''}</div>
+<div class="meta"><b>{html.escape(j['company'])}</b> · {html.escape(j['location'] or 'location n/a')} · {html.escape(j['source'])}{' · ' + str(j['years_required']) + 'y required' if j['years_required'] else ''}</div>
+{f'<div class="desc">{html.escape(j["summary"])}</div>' if j.get("summary") else ''}
+{f'<div class="reqs"><span>Wants</span> {html.escape(j["requirements"])}</div>' if j.get("requirements") else ''}
 <div class="tags">{''.join(pos + neg)}</div>
 <a class="apply" href="{html.escape(j['url'])}">Open posting</a></div>"""
 
@@ -273,7 +349,14 @@ def render_md(shortlist, rest, stats):
            f"{len(shortlist)} shortlisted", "",
            "## Shortlist", ""]
     for j in shortlist:
-        out.append(f"**{j['score']} — {j['title']}** · {j['company']} · {j['location'] or 'n/a'}")
+        out.append(f"**{j['score']} — {j['title']}**")
+        loc = j["location"] or "location n/a"
+        yrs = f" · {j['years_required']}y required" if j["years_required"] else ""
+        out.append(f"  {j['company']} · {loc}{yrs}")
+        if j.get("summary"):
+            out.append(f"  {j['summary']}")
+        if j.get("requirements"):
+            out.append(f"  WANTS: {j['requirements']}")
         out.append(f"  {' '.join(f'{l}{n:+d}' for l, n in j['why'])}")
         out.append(f"  {j['url']}")
         out.append("")
@@ -364,6 +447,10 @@ def main():
     for r in pool:
         r["posted"] = r.get("ld_posted") or r.get("posted")
         r["score"], r["why"] = score_job(r, cfg, cats, ghosts)
+        # verify.py already stored the description; it just never reached the
+        # digest, which meant deciding whether to apply required opening the link
+        r["summary"] = summarise(r.get("description"))
+        r["requirements"] = requirements(r.get("description"))
 
     scored = sorted(pool, key=lambda r: -r["score"])
     if not args.include_unverified:

@@ -409,6 +409,34 @@ def main():
         check(f"{yrs} years required -> dropped: {want_dropped}",
               yrs is not None and yrs > cap, want_dropped)
 
+    print("\ndigest content — the description and requirements reach the email")
+    jd = ("Home About Careers  About the role  We are looking for a Junior Gas Scheduler to join "
+          "our London gas desk. You will manage daily nominations across UK pipelines. "
+          "What you'll need  A numerate degree, 1-2 years of experience in energy, strong SQL. "
+          "Benefits  Pension, bonus. We are an equal opportunities employer.")
+    s, w = score.summarise(jd), score.requirements(jd)
+    check_true("summary starts at the role, not the site navigation",
+               s.startswith("We are looking for"), s[:50])
+    check_true("summary stops before the requirements", "numerate degree" not in s, s[-50:])
+    check_true("requirements are pulled out separately", "numerate degree" in w, w[:60])
+    check_true("boilerplate is left out of both",
+               "Pension" not in s and "Pension" not in w and "equal opport" not in w)
+    # "essential" mid-sentence is not a heading — it used to start the excerpt there
+    plain = ("Kpler is hiring an oil market analyst. The candidate will have a degree in a "
+             "quantitative subject and proficiency in Python. Large datasets is essential.")
+    check_true("a mid-sentence 'essential' does not fake a requirements heading",
+               score.requirements(plain).startswith("The candidate"),
+               score.requirements(plain)[:40])
+    check("no description is not a crash", (score.summarise(None), score.requirements("")), ("", ""))
+
+    rendered = score.render_md(
+        [{"score": 91, "title": "Junior Gas Scheduler", "company": "Vitol", "location": "London",
+          "url": "https://x/1", "years_required": 1, "why": [("title:junior", 45)],
+          "summary": s, "requirements": w}], [],
+        {"date": "1 Jan", "scraped": 1, "verified": 1, "dead": 0, "ghosts": 0, "filtered": 0})
+    for must in ("Vitol", "London", "1y required", "We are looking for", "WANTS:"):
+        check_true(f"plain-text email carries: {must}", must in rendered)
+
     print("\nreport — hostile input cannot inject")
     nasty = score.render_html(
         [{"title": 'Analyst" onmouseover="alert(1)', "company": "<script>x</script>",
