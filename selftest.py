@@ -170,6 +170,37 @@ def main():
               check_firms.check_one(None, firm)["verdict"], "mismatch")
         check("a firm with no domain is not a failure",
               check_firms.check_one(None, {"name": "X", "domain": ""})["verdict"], "ok")
+
+        # An over-eager check is worse than none: the first version blanked 661
+        # of 2303 domains, most of them correct. Each case below was a real
+        # false positive that removed a real firm from every future run.
+        for code in (403, 503, 429):
+            _hc.get = lambda u, c=code, **k: Resp("https://abnamro.com/", c, "")
+            r = check_firms.check_one(None, {"name": "ABN AMRO", "domain": "abnamro.com"})
+            check(f"http {code} is a bot wall, not a dead domain", r["verdict"], "blocked")
+
+        _hc.get = lambda u, **k: Resp("https://validate.perfdrive.com/", 200,
+                                      "<title>Access Denied</title>" + "x " * 30)
+        check("a bot challenge page is not an acquisition",
+              check_firms.check_one(None, {"name": "Acerinox", "domain": "acerinox.com"})["verdict"],
+              "blocked")
+
+        _hc.get = lambda u, **k: Resp("https://bank-abc.com:443/", 200,
+                                      "<title>Bank ABC</title>" + "banking " * 30)
+        check("same host on an explicit port is not a move",
+              check_firms.check_one(None, {"name": "Arab Banking Corporation",
+                                           "domain": "bank-abc.com"})["verdict"], "ok")
+
+        _hc.get = lambda u, **k: Resp("https://cez.cz/", 200,
+                                      "<title>Skupina ČEZ</title>" + "energie " * 30)
+        check("a site naming itself with diacritics still matches",
+              check_firms.check_one(None, {"name": "CEZ Group", "domain": "cez.cz"})["verdict"], "ok")
+
+        _hc.get = lambda u, **k: Resp("https://bimco.org/", 200,
+                                      "<title>BIMCO</title>" + "shipping " * 30)
+        check("the domain's own label counts as identity",
+              check_firms.check_one(None, {"name": "Baltic and International Maritime Council",
+                                           "domain": "bimco.org"})["verdict"], "ok")
     finally:
         _hc.get = saved_get
 

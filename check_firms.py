@@ -7,23 +7,28 @@ fail loudly: sniff.py cheerfully reads whoever does own the domain, finds their
 applicant tracking system, and files their vacancies under your firm's name. You
 end up applying to the wrong company.
 
-So each domain is fetched and the page is checked against the firm's name. A
-domain that cannot be reached, or that clearly belongs to somebody else, is
-reported — and with --fix it is blanked, which is the safe state: sniff.py skips
-firms with no domain, and links.py gives you a name search instead.
+So each domain is fetched and the page is checked against the firm's name. Only
+a page that plainly belongs to somebody else is blanked, and that restraint is
+the whole design: an over-eager check is worse than none. The first version
+treated a bot wall and a redirect as failures and blanked 661 of 2303 domains,
+most of them correct — Mercuria, Hartree, Engelhart, Louis Dreyfus among them.
+Blanking a correct domain removes the firm from every future run silently.
 
     python check_firms.py              # report only
-    python check_firms.py --fix        # also blank the domains that failed
+    python check_firms.py --fix        # blank only the clear mismatches
     python check_firms.py --only-new   # skip firms already recorded as ok
 
 Writes firm_check.csv: name, domain, verdict, detail, final_url.
 
-Verdicts:
-    ok          the page names the firm
-    thin        reachable, but nothing on the page confirms it — left alone
-    moved       redirects to a different company's domain (acquired, renamed)
-    mismatch    the page is plainly somebody else
-    unreachable no response after retries
+Verdicts, and what --fix does with each:
+    ok          the page names the firm                        kept
+    thin        reachable, page says little                    kept
+    blocked     403/503 or a bot challenge — a datacentre IP
+                being turned away, not a wrong domain          kept
+    moved       redirects somewhere that doesn't name it —
+                often a real acquisition, worth a human look   kept, reported
+    unreachable no response at all                             kept, reported
+    mismatch    the page is plainly a different company        BLANKED
 """
 
 import argparse
@@ -31,12 +36,19 @@ import csv
 import os
 import re
 import sys
+import unicodedata
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import http_client
 import store
 
 WORKERS = 24
+
+# Statuses that mean "not to a datacentre IP", not "no such site".
+BOT_BLOCK_STATUS = {401, 403, 405, 406, 409, 429, 503}
+INTERSTITIAL = re.compile(r"perfdrive|datadome|cloudflare|incapsula|imperva|akamai|"
+                          r"just a moment|checking your browser|are you a robot|"
+                          r"access denied|attention required", re.I)
 FIELDS = ["name", "domain", "verdict", "detail", "final_url"]
 
 # Words that carry no identity — the same set the dedupe key ignores, plus the
@@ -48,13 +60,29 @@ EXTRA_NOISE = {"capital", "asset", "management", "investment", "investments",
                "corp", "co", "and", "the", "of"}
 
 
-def name_tokens(name):
-    """The parts of a firm's name distinctive enough to identify it on a page."""
-    words = re.findall(r"[a-z0-9]+", (name or "").lower())
+def deaccent(s):
+    """cez.cz says "skupina ČEZ", botas.gov.tr says "BOTAŞ". Without folding the
+    diacritics away, every non-English site fails to match its own name."""
+    return "".join(c for c in unicodedata.normalize("NFKD", s or "")
+                   if not unicodedata.combining(c))
+
+
+def name_tokens(name, domain=""):
+    """The parts of a firm's name distinctive enough to identify it on a page.
+
+    The domain's own label counts as one: bimco.org belongs to the Baltic and
+    International Maritime Council, whose site quite reasonably just says
+    "BIMCO", and no word of the registered name appears anywhere on it.
+    """
+    label = (domain or "").split(".")[0].replace("-", "")
+    words = re.findall(r"[a-z0-9]+", deaccent(name).lower())
     toks = [t for t in words if t not in store.NOISE and t not in EXTRA_NOISE and len(t) > 2]
     # Short, all-noise names still need something to match on — BP, ICE, SSE,
     # MOL. Falling through to an empty list would fail every one of them.
-    return toks or [t for t in words if len(t) > 2] or words
+    toks = toks or [t for t in words if len(t) > 2] or words
+    if label and len(label) > 2 and label not in toks:
+        toks.append(label)
+    return toks
 
 
 def page_identity(html):
@@ -82,19 +110,41 @@ def check_one(session, firm):
         return out
 
     r = http_client.get(f"https://{domain}", sess=session, retries=1)
-    if r is None or r.status_code >= 400:
+    if r is None:
         out["verdict"] = "unreachable"
-        out["detail"] = f"http {getattr(r, 'status_code', 'no response')}"
+        out["detail"] = "no response"
+        return out
+    # A datacentre IP asking for a corporate homepage gets turned away constantly.
+    # 403 and 503 mean "not to you", not "no such company" — abnamro.com and
+    # accessbankplc.com are plainly correct, and treating these as failures once
+    # blanked 557 domains, most of them right.
+    if r.status_code in BOT_BLOCK_STATUS:
+        out["verdict"] = "blocked"
+        out["detail"] = f"http {r.status_code} — bot protection, domain probably fine"
+        return out
+    if r.status_code >= 400:
+        out["verdict"] = "unreachable"
+        out["detail"] = f"http {r.status_code}"
         return out
 
     out["final_url"] = r.url
     html = http_client.text_of(r, 400_000)
-    ident = page_identity(html)
-    toks = name_tokens(name)
-    hit = [t for t in toks if t in ident]
+    ident = deaccent(page_identity(html))
+    # bank-abc.com writes itself "Bank ABC", redwheel.com "Red Wheel". Comparing
+    # with the punctuation and spaces squeezed out catches the whole family.
+    squashed = re.sub(r"[^a-z0-9]", "", ident)
+    toks = name_tokens(name, domain)
+    hit = [t for t in toks if t in ident or (len(t) > 3 and t in squashed)]
 
-    final_host = http_client.host_of(r.url).replace("www.", "")
-    same_site = final_host.endswith(domain) or domain.endswith(final_host)
+    final_host = http_client.host_of(r.url).replace("www.", "").split(":")[0]
+    bare = domain.replace("www.", "").split(":")[0]
+    same_site = final_host.endswith(bare) or bare.endswith(final_host)
+    if not hit and not same_site and INTERSTITIAL.search(final_host + " " + ident):
+        # DataDome, Cloudflare and friends serve a challenge page from their own
+        # host. That is the bot wall again, not evidence the firm moved.
+        out["verdict"] = "blocked"
+        out["detail"] = f"bot challenge at {final_host}"
+        return out
 
     if hit:
         out["verdict"] = "ok"
@@ -172,11 +222,12 @@ def main():
         counts[r["verdict"]] = counts.get(r["verdict"], 0) + 1
     print("\n" + "  ".join(f"{v} {k}" for k, v in sorted(counts.items(), key=lambda x: -x[1])))
 
-    bad = {n for n, r in results.items() if r["verdict"] in ("unreachable", "mismatch", "moved")}
+    bad = {n for n, r in results.items() if r["verdict"] == "mismatch"}
     if not bad:
         print("every domain checks out")
         return
-    print(f"\n{len(bad)} firms have a domain that did not check out")
+    print(f"\n{len(bad)} firms have a domain that belongs to somebody else")
+    print("blocked / unreachable / moved are reported but NOT blanked: a bot wall\n    or a redirect is not evidence the domain is wrong, and blanking a correct\n    one silently removes the firm from every future run.")
     if not args.fix:
         print("run again with --fix to blank them (sniff.py then skips those firms)")
         return
