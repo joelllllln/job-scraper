@@ -34,6 +34,29 @@ include:
   - "price report"
   - "market report"
 
+  # --- flexibility, storage and renewables ---
+  # The fastest-hiring corner of UK power advertises in its own vocabulary and
+  # almost never uses the word "commodities".
+  - "storage analyst"
+  - "flexibility analyst"
+  - "optimi(s|z)ation analyst"
+  - "asset optimi(s|z)"
+  - "battery"
+  - "electricity"
+  - "renewables? analyst"
+  - "market modell?(er|ing)"
+  - "energy modell?(er|ing)"
+  - "portfolio analyst"
+  - "dispatch analyst"
+
+  # --- regulatory / surveillance ---
+  # Where a REMIT and market-abuse background is the qualification itself.
+  - "surveillance"
+  - "market abuse"
+  - "regulatory analyst"
+  - "regulation analyst"
+  - "\\bremit\\b"
+
   # --- desk / front office ---
   - "trading analyst"
   - "trade analyst"

@@ -56,6 +56,8 @@ seniority:
 
 # --- 3. Firm type. Where you realistically convert fastest scores highest. ---
 firm_categories:
+  regulator: 11         # Ofgem, FCA, National Grid — where your REMIT and market
+                        # surveillance background is the qualification, not a bonus
   data_vendor: 12
   flex_optimiser: 12
   power_gas: 10
@@ -115,6 +117,10 @@ source_weights:
   personio: 7
   breezy: 7
   bamboohr: 7
+  rippling: 7
+  pinpoint: 7
+  comeet: 7
+  jobvite: 7
   bullhorn: 2
   reed: 0
   adzuna: 0

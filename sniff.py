@@ -46,6 +46,11 @@ SCRAPABLE = {
     "personio":        [r"([a-z0-9-]+)\.jobs\.personio\.(?:com|de)"],
     "breezy":          [r"([a-z0-9-]+)\.breezy\.hr"],
     "bamboohr":        [r"([a-z0-9-]+)\.bamboohr\.com"],
+    "rippling":        [r"ats\.rippling\.com/([a-z0-9-]+)",
+                        r"rippling\.com/platform/api/ats/v1/board/([a-z0-9-]+)"],
+    "pinpoint":        [r"([a-z0-9-]+)\.pinpointhq\.com"],
+    "comeet":          [r"comeet\.co/jobs/([a-z0-9-]+)",
+                        r"comeet\.co/careers-api/2\.0/company/([A-Za-z0-9.]+)"],
 }
 
 # Workday needs three parts, handled separately
@@ -72,7 +77,7 @@ MANUAL = {
     "eploy": r"[a-z0-9-]+\.eploy\.net",
     "oleeo": r"[a-z0-9-]+\.oleeo\.com",
     "tribepad": r"[a-z0-9-]+\.tribepad\.com",
-    "pinpoint": r"[a-z0-9-]+\.pinpointhq\.com",
+    # pinpoint moved to SCRAPABLE — it publishes postings.json
     "applied": r"app\.beapplied\.com",
     "jobvite": r"jobs\.jobvite\.com",
     "brassring": r"[a-z0-9-]+\.brassring\.com",

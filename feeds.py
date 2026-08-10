@@ -46,6 +46,13 @@ REED_QUERIES = [
     "power trading analyst", "gas analyst", "quantitative analyst", "quantitative researcher",
     "data scientist trading", "energy analyst", "junior trader", "carbon analyst",
     "LNG analyst", "freight analyst", "research analyst commodities",
+    # the language the same work goes by elsewhere in the market
+    "energy trading analyst", "battery storage analyst", "flexibility analyst",
+    "renewable energy analyst", "electricity market analyst", "power market modeller",
+    "energy market modelling", "trading operations analyst", "commodity risk analyst",
+    "market surveillance analyst", "REMIT analyst", "energy regulation analyst",
+    "graduate energy analyst", "graduate analyst trading", "price reporter",
+    "fundamental analyst gas", "short term power trader", "algorithmic trading analyst",
 ]
 
 BULLHORN_FIELDS = "id,title,address,employmentType,dateLastPublished,publishedCategory"

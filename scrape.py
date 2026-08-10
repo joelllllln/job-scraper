@@ -42,7 +42,20 @@ ATS_ENDPOINT = {
     "personio": "https://{t}.jobs.personio.com/xml",
     "breezy": "https://{t}.breezy.hr/json",
     "bamboohr": "https://{t}.bamboohr.com/careers/list",
+    "rippling": "https://api.rippling.com/platform/api/ats/v1/board/{t}/jobs",
+    "pinpoint": "https://{t}.pinpointhq.com/postings.json",
+    "comeet": "https://www.comeet.co/careers-api/2.0/company/{t}/positions",
+    "jobvite": "https://jobs.jobvite.com/api/v1/jobs?companyId={t}",
 }
+
+# The newer boards all return "a list of job dicts", but disagree about what the
+# list is called and what the keys are. One tolerant reader beats five brittle ones.
+GENERIC_ATS = ("rippling", "pinpoint", "comeet", "jobvite")
+LIST_KEYS = ("data", "jobs", "positions", "results", "items", "postings")
+TITLE_KEYS = ("title", "name", "position_name", "jobTitle")
+URL_KEYS = ("url", "absolute_url", "apply_url", "careers_url", "hostedUrl", "applyUrl", "link")
+LOC_KEYS = ("location", "city", "workplace_city", "locationName", "office")
+DATE_KEYS = ("published_at", "created_at", "posted_at", "publishedAt", "date", "updated_at")
 
 
 # ---------- storage ----------
@@ -57,6 +70,15 @@ def job_id(company, title, location=""):
 
 
 # ---------- normalisers, one per ATS ----------
+
+def first_of(d, keys):
+    """First non-empty value among several possible spellings of the same field."""
+    for k in keys:
+        v = d.get(k)
+        if v:
+            return v
+    return ""
+
 
 def norm(ats, company, payload):
     out = []
@@ -102,6 +124,18 @@ def norm(ats, company, payload):
     elif ats == "recruitee":
         for j in payload.get("offers", []):
             add(j.get("title"), j.get("location"), j.get("careers_url"), j.get("published_at", ""))
+    elif ats in GENERIC_ATS:
+        items = payload if isinstance(payload, list) else next(
+            (payload[k] for k in LIST_KEYS
+             if isinstance(payload, dict) and isinstance(payload.get(k), list)), [])
+        for j in items:
+            if not isinstance(j, dict):
+                continue
+            loc = first_of(j, LOC_KEYS)
+            if isinstance(loc, dict):
+                loc = loc.get("name") or loc.get("city") or ""
+            add(first_of(j, TITLE_KEYS), str(loc or ""), first_of(j, URL_KEYS),
+                str(first_of(j, DATE_KEYS) or ""))
     return out
 
 
@@ -190,7 +224,10 @@ def from_adzuna(cfg):
         return []
     jobs = []
     queries = ["commodity analyst", "trading analyst", "market analyst", "quantitative analyst",
-               "energy analyst", "data scientist trading", "junior trader", "power gas analyst"]
+               "energy analyst", "data scientist trading", "junior trader", "power gas analyst",
+               "battery storage analyst", "electricity market analyst", "renewable energy analyst",
+               "carbon markets analyst", "energy trading graduate", "market surveillance analyst",
+               "price reporter commodities", "freight shipping analyst"]
     for q in queries:
         for page in (1, 2):
             url = f"https://api.adzuna.com/v1/api/jobs/gb/search/{page}"

@@ -1,6 +1,6 @@
 # Trading / market analyst job scraper
 
-312 firms, London-focused. Front office and market-facing roles only.
+387 firms, London-focused. Front office and market-facing roles only.
 
 ## Run order
 
@@ -37,11 +37,11 @@ All of them write to the same `jobs.db` and share dedupe.
 | `discover.py` | finds each firm's real ATS endpoint → `endpoints.csv` + `no_ats.csv` |
 | `scrape.py` | pulls every GET-based board (`sniffed.csv` + `endpoints.csv`) and Adzuna → `jobs.db`, `latest.csv` |
 | `links.py` | builds `links.md` — LinkedIn/Indeed/Glassdoor/X-ray URLs per firm |
-| `links.md` | already generated, 312 firms |
+| `links.md` | already generated, 387 firms |
 
 ## Why discovery instead of hardcoded URLs
 
-I don't have a reliable way to know which ATS each of 312 firms uses, and
+I don't have a reliable way to know which ATS each of 387 firms uses, and
 hardcoding tokens I can't verify would give you a list that silently returns
 zero jobs. `discover.py` finds them empirically and tells you which firms have
 no public endpoint at all — those go in `no_ats.csv` and you cover them via
@@ -123,7 +123,7 @@ and pulls the ATS link out of the HTML. Higher hit rate, and it's the only way t
 get Workday, whose boards are keyed by tenant + datacenter + site and cannot be
 guessed from a company name.
 
-It tries 13 common careers paths per domain and fingerprints 10 scrapable ATS
+It tries 13 common careers paths per domain and fingerprints 13 scrapable ATS
 plus 12 closed ones (iCIMS, Taleo, SuccessFactors, Avature, Eploy, Oleeo,
 Tribepad, Pinpoint, Applied, Jobvite, BrassRing, Phenom). Closed ones land in
 `manual.csv` — cover those through `boards.py` and `links.md`.

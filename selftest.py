@@ -95,6 +95,32 @@ def main():
           scrape.ATS_ENDPOINT["lever"].format(t="kpler"),
           "https://api.lever.co/v0/postings/kpler?mode=json")
 
+    print("\nnew boards — one tolerant reader, several shapes")
+    import discover, json as _json
+    shapes = {
+        "rippling": [{"name": "Market Analyst", "url": "https://x/1", "workplace_city": "London"}],
+        "pinpoint": {"data": [{"title": "Battery Storage Analyst", "url": "https://x/2",
+                               "location": {"name": "London"}}]},
+        "comeet": {"positions": [{"name": "Flexibility Analyst", "url": "https://x/3",
+                                  "location": "London"}]},
+        "jobvite": {"jobs": [{"title": "Power Market Modeller", "applyUrl": "https://x/4",
+                              "city": "London"}]},
+    }
+    for ats, payload in shapes.items():
+        got = scrape.norm(ats, "TestCo", payload)
+        check(f"{ats}: job read out", (len(got), got[0]["location"] if got else None),
+              (1, "London"))
+        check(f"{ats}: discovery confirms a hit", discover.count_jobs(ats, _json.dumps(payload)), 1)
+    check("junk rows are not invented", scrape.norm("pinpoint", "X", {"data": ["junk", 42, {}]}), [])
+    weights = yaml.safe_load(open("scoring.yaml"))["source_weights"]
+    for src in ("rippling", "pinpoint", "comeet", "jobvite"):
+        # a new source missing from either table is worse than not having it:
+        # the direct apply link silently loses to Indeed
+        check_true(f"{src} outranks an aggregator",
+                   store.SOURCE_RANK[src] > store.SOURCE_RANK["indeed"])
+        check_true(f"{src} is paid its provenance points",
+                   weights.get(src, 0) > weights.get("indeed", 0))
+
     print("\nverify — parsers")
     check("years: range takes the floor", verify.years_required("3-5 years experience"), 3)
     check("years: plus form", verify.years_required("5+ years of experience"), 5)
@@ -328,7 +354,16 @@ def main():
                         ("Data Scientist, Trading", True), ("Head of Trading", False),
                         ("Credit Risk Analyst", False), ("Trade Support Analyst", False),
                         ("Clearing Operations", False), ("Marketing Manager", False),
-                        ("Short-Term Power Analyst", True), ("Quantitative Researcher", True)]:
+                        ("Short-Term Power Analyst", True), ("Quantitative Researcher", True),
+                        # the widened vocabulary — these are the roles the old
+                        # include list silently walked past
+                        ("Battery Storage Analyst", True), ("Flexibility Analyst", True),
+                        ("Electricity Market Analyst", True), ("Market Surveillance Analyst", True),
+                        ("Power Market Modeller", True), ("Renewables Analyst", True),
+                        ("Asset Optimisation Analyst", True), ("REMIT Compliance Analyst", True),
+                        # and the widened exclusions still bite on the same words
+                        ("Senior Battery Storage Analyst", False),
+                        ("Head of Flexibility", False), ("Electricity Trader II", False)]:
         check(f"filter: {title}", bool(inc.search(title)) and not exc.search(title), want)
 
     print()

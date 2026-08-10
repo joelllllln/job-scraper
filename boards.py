@@ -48,6 +48,20 @@ QUERIES = [
     "power trading analyst",
     "energy market analyst",
     "systematic trading analyst",
+    # battery storage and flexibility — the fastest-hiring corner of UK power,
+    # and it advertises under its own vocabulary rather than "commodities"
+    "battery storage analyst",
+    "energy flexibility analyst",
+    "electricity market analyst",
+    "power market modelling",
+    "renewable energy analyst",
+    "energy trading graduate scheme",
+    # the regulatory side, where the REMIT background is the qualification
+    "market surveillance analyst",
+    "energy regulation analyst",
+    "trade surveillance analyst",
+    "commodity risk analyst",
+    "price reporter commodities",
 ]
 
 SITES_DEFAULT = ["linkedin", "indeed", "google", "glassdoor"]
