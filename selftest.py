@@ -99,6 +99,13 @@ def main():
     check("years: range takes the floor", verify.years_required("3-5 years experience"), 3)
     check("years: plus form", verify.years_required("5+ years of experience"), 5)
     check("years: absent", verify.years_required("no numbers here"), None)
+    check("years: firm's own boast ignored",
+          verify.years_required("We have over 30 years of experience in commodities"), None)
+    check("years: 'our ideal candidate has' is still a requirement",
+          verify.years_required("Our ideal candidate has 5 years of experience"), 5)
+    check("years: boast does not mask a real requirement",
+          verify.years_required("Our team has 40 years of experience. You will bring "
+                                "2 years of experience in python."), 2)
     check("title match identical", verify.title_similarity("Market Analyst", "Market Analyst"), 1.0)
     check_true("title match rejects listings page",
                verify.title_similarity("Market Analyst", "Search results — 412 jobs found") < 0.34)
@@ -201,6 +208,44 @@ def main():
     for suffix in ("", "-wal", "-shm"):
         if os.path.exists(tmp2 + suffix):
             os.unlink(tmp2 + suffix)
+
+    print("\nseniority — the hard filters")
+    excl = score.load_excludes()
+    for title, want in [("Senior Market Analyst", True), ("Snr Quant Researcher", True),
+                        ("Sr. Data Scientist", True), ("Head of Trading", True),
+                        ("Chief Data Officer", True), ("Staff Engineer", True),
+                        ("Data Scientist II", True), ("Team Lead, Analytics", True),
+                        ("Market Analyst", False), ("Junior Trader", False),
+                        ("Graduate Trader", False), ("Quantitative Researcher", False)]:
+        check(f"excluded at scoring: {title}", bool(excl.search(title)), want)
+
+    cap = cfg["seniority"]["exclude_over_years"]
+    check("hard cap is 2 years", cap, 2)
+
+    # a parser fix must reach rows verified before it landed, or the hard filter
+    # keeps acting on numbers the old parser produced
+    tmp3 = tempfile.mktemp(suffix=".db")
+    c3 = verify.store.connect(tmp3)
+    c3.execute("""CREATE TABLE verify (id TEXT PRIMARY KEY, checked_at TEXT, status INTEGER,
+        live INTEGER, final_url TEXT, title_match REAL, reason TEXT, employer TEXT, posted TEXT,
+        valid_through TEXT, years_required INTEGER, anonymous INTEGER, agency INTEGER,
+        desc_len INTEGER, description TEXT)""")
+    c3.execute("INSERT INTO verify (id, years_required, agency, description) VALUES (?,?,?,?)",
+               ("j1", 30, 0, "We have over 30 years of experience. You will bring 2 years "
+                             "of experience in python."))
+    c3.commit()
+    seen, changed = verify.reparse(c3)
+    check("reparse revisits stored descriptions", (seen, changed), (1, 1))
+    check("stale 30y corrected to the real 2y",
+          c3.execute("SELECT years_required FROM verify WHERE id='j1'").fetchone()[0], 2)
+    c3.close()
+    for suffix in ("", "-wal", "-shm"):
+        if os.path.exists(tmp3 + suffix):
+            os.unlink(tmp3 + suffix)
+    # the drop must beat the rubric: an 8-year role at a top-category firm still goes
+    for yrs, want_dropped in [(None, False), (1, False), (2, False), (3, True), (8, True)]:
+        check(f"{yrs} years required -> dropped: {want_dropped}",
+              yrs is not None and yrs > cap, want_dropped)
 
     print("\nreport — hostile input cannot inject")
     nasty = score.render_html(

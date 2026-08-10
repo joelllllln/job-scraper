@@ -45,9 +45,14 @@ title_tiers:
 seniority:
   junior_markers: 12      # junior / graduate / trainee / entry / associate
   no_marker: 5            # title says nothing either way — usually fine
-  years_cap: 4            # more than this many years required and it's not for you
+  years_cap: 2            # more than this many years required and it's not for you
   over_cap_penalty: -25
   per_year_over: -4       # additional, per year above the cap
+  exclude_over_years: 2   # hard drop, not a penalty: a role demanding more than
+                          # this never reaches the digest at all. Only applies
+                          # where verify.py actually read a number out of the
+                          # description — unread roles fall back to the penalty
+                          # above. Raise it to see more, blank it to disable.
 
 # --- 3. Firm type. Where you realistically convert fastest scores highest. ---
 firm_categories:

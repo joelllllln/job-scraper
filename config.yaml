@@ -72,13 +72,22 @@ include:
 
 exclude:
   - "senior"
+  - "\\bsnr\\b"
+  - "\\bsr\\.?\\b"
   - "head of"
+  - "\\bhead\\b"
   - "director"
   - "vp\\b"
   - "vice president"
   - "principal"
+  - "\\bchief\\b"
+  - "\\bstaff\\b"
+  - "\\bexpert\\b"
   - "lead\\b"
+  - "team lead"
   - "manager"
+  # level suffixes — "Data Scientist II" is a step above where you're aiming
+  - "\\b(ii|iii|iv)\\b"
   - "sales"
   - "account executive"
   - "business development"

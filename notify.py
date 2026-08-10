@@ -23,6 +23,7 @@ Telegram (easier on mobile):
     python notify.py
 """
 
+import csv
 import os
 import smtplib
 import sqlite3
@@ -66,6 +67,20 @@ def summary(con):
         "SELECT COUNT(*) FROM jobs WHERE COALESCE(status,'new')='new'").fetchone()[0]
     applied = con.execute("SELECT COUNT(*) FROM jobs WHERE status='applied'").fetchone()[0]
     return n_new, open_total, applied
+
+
+def digest_count(path="scored.csv"):
+    """How many roles are actually in this digest.
+
+    Not the same as the week's new rows: the seniority and years-of-experience
+    filters drop roles after collection, so counting the database would put a
+    number in the subject line that the body then contradicts.
+    """
+    try:
+        with open(path, newline="") as fh:
+            return max(0, sum(1 for _ in csv.reader(fh)) - 1)   # minus the header
+    except OSError:
+        return None
 
 
 def send_email(subject, html_body, text_body):
@@ -126,7 +141,8 @@ def main():
         return
 
     date = datetime.now(timezone.utc).strftime("%d %b")
-    subject = f"{n_new} new roles — {date}"
+    shown = digest_count()
+    subject = f"{shown if shown is not None else n_new} roles — {date}"
 
     lines = [subject, ""]
     # generous cap: this is the plain-text half of the email, and on a --resend-all

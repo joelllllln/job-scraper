@@ -117,6 +117,11 @@ else
   log "### resend: reporting the database as it stands — no collection, no verification"
 fi
 
+# --- keep derived fields in step with the current parsers ------------------------
+# Offline and quick. Rows verified under an older parser keep its answers
+# otherwise, and years_required now decides whether a role is shown at all.
+run "reparse" $PYTHON verify.py --reparse
+
 # --- ranking --------------------------------------------------------------------
 # Only stamp the run if most stages worked. Recording a mostly-failed run would
 # silently swallow a week of new jobs from the next digest.

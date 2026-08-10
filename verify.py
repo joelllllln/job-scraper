@@ -61,6 +61,12 @@ AGENCY_MARKERS = re.compile(
     r"our client|on behalf of our client|we are recruiting for|acting as an employment agency|"
     r"employment business", re.I)
 
+# Deliberately narrow: "our team has 30 years" is a boast, but "our ideal
+# candidate has 5 years" is a requirement, and only the first should be ignored.
+FIRM_BOAST = re.compile(
+    r"\b(we|our (team|firm|company|group|business|people)|the (firm|company|group))\b"
+    r"\s+(have|has|bring\w*|boast\w*|with|combined)\b[^.]{0,30}$", re.I)
+
 YEARS = re.compile(
     r"(\d{1,2})\s*(?:\+|plus)?\s*(?:-|to|–)?\s*(\d{1,2})?\s*(?:\+)?\s*years?[^.]{0,40}"
     r"(?:experience|exp\b|track record)", re.I)
@@ -114,8 +120,13 @@ def strip_html(s):
 
 
 def years_required(text):
+    text = text or ""
     best = None
-    for m in YEARS.finditer(text or ""):
+    for m in YEARS.finditer(text):
+        # "we have 30 years of experience" is the firm's own blurb, not a demand
+        # on you. It matters more now the number can drop a role outright.
+        if FIRM_BOAST.search(text[max(0, m.start() - 60):m.start()]):
+            continue
         # "3-5 years" means a floor of 3, not 5. "5+ years" means 5.
         val = int(m.group(1))
         if val <= 25 and (best is None or val < best):
@@ -218,13 +229,42 @@ def flush(con, rows):
         con.rollback()
 
 
+def reparse(con):
+    """Recompute the derived fields from descriptions already stored. No network.
+
+    The parsers improve; the descriptions don't change. Without this, a fix to
+    years_required only ever applies to jobs verified after it landed, and every
+    row already in the table keeps whatever the old parser decided. That mattered
+    little when the number was a scoring penalty. It matters now it can drop a
+    role from the digest outright.
+    """
+    rows = con.execute("SELECT id, description, years_required, agency FROM verify "
+                       "WHERE COALESCE(description,'') != ''").fetchall()
+    changed = 0
+    for jid, desc, old_years, old_agency in rows:
+        years = years_required(desc)
+        agency = 1 if AGENCY_MARKERS.search(desc) else 0
+        if (years, agency) != (old_years, old_agency):
+            con.execute("UPDATE verify SET years_required=?, agency=? WHERE id=?",
+                        (years, agency, jid))
+            changed += 1
+    con.commit()
+    return len(rows), changed
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--recheck", action="store_true")
+    ap.add_argument("--reparse", action="store_true",
+                    help="re-run the parsers over stored descriptions, no network")
     ap.add_argument("--limit", type=int, default=0)
     args = ap.parse_args()
 
     con = db()
+    if args.reparse:
+        seen, changed = reparse(con)
+        print(f"reparsed {seen} stored descriptions, {changed} row(s) changed")
+        return
     q = "SELECT id, company, title, url, source FROM jobs"
     if not args.recheck:
         q += " WHERE id NOT IN (SELECT id FROM verify)"

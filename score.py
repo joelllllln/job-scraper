@@ -70,6 +70,23 @@ def days_since(s):
         return None
 
 
+def load_excludes(path="config.yaml"):
+    """The title exclusions from config.yaml, compiled for use at scoring time.
+
+    config.yaml normally filters at collection. Rows already in the database were
+    stored under whatever the rules were on the day they were found, so tightening
+    the list would otherwise only change future scraping while the old rows kept
+    turning up in every digest. Re-applying the same patterns here makes a rule
+    change retroactive over everything already collected.
+    """
+    try:
+        cfg = yaml.safe_load(open(path)) or {}
+    except (FileNotFoundError, yaml.YAMLError):
+        return None
+    pats = cfg.get("exclude") or []
+    return re.compile("|".join(pats), re.I) if pats else None
+
+
 def load_categories(path="firms.csv"):
     cats = {}
     try:
@@ -238,7 +255,7 @@ def render_html(shortlist, rest, stats):
 <div><b>{stats['scraped']}</b><span>scraped</span></div>
 <div><b>{stats['verified']}</b><span>verified live</span></div>
 <div><b>{stats['dead']}</b><span>failed check</span></div>
-<div><b>{stats['ghosts']}</b><span>ghost posts</span></div>
+<div><b>{stats.get('filtered', 0)}</b><span>too senior</span></div>
 <div><b>{len(shortlist)}</b><span>shortlist</span></div>
 </div>
 <h2>Shortlist</h2>{body}
@@ -249,7 +266,8 @@ def render_html(shortlist, rest, stats):
 def render_md(shortlist, rest, stats):
     out = [f"# Job run — {stats['date']}", "",
            f"{stats['scraped']} scraped · {stats['verified']} verified live · "
-           f"{stats['dead']} failed · {stats['ghosts']} ghost posts · {len(shortlist)} shortlisted", "",
+           f"{stats['dead']} failed · {stats.get('filtered', 0)} too senior · "
+           f"{len(shortlist)} shortlisted", "",
            "## Shortlist", ""]
     for j in shortlist:
         out.append(f"**{j['score']} — {j['title']}** · {j['company']} · {j['location'] or 'n/a'}")
@@ -312,6 +330,34 @@ def main():
         pool = [r for r in rows if (r["first_seen"] or "") > since]
         print(f"new since {since[:16]}: {len(pool)} of {len(rows)}")
     pool = [r for r in pool if (r.get("status") or "new") == "new"]
+
+    # Two hard filters, applied before scoring so nothing over the bar can rank
+    # its way back in on the strength of the firm or the freshness.
+    excl = load_excludes()
+    max_years = cfg["seniority"].get("exclude_over_years")
+    cut_title, cut_years, kept = [], [], []
+    for r in pool:
+        if excl and excl.search(r["title"] or ""):
+            cut_title.append(r)
+            continue
+        yrs = r["years_required"]
+        if max_years is not None and yrs is not None and yrs > max_years:
+            cut_years.append(r)
+            continue
+        kept.append(r)
+    pool = kept
+
+    # Named, not just counted — a hard filter that drops things silently is how
+    # you lose a role you wanted and never find out.
+    for label, rows in (("title", cut_title), (f">{max_years}y experience", cut_years)):
+        if rows:
+            print(f"filtered out {len(rows)} on {label}:")
+            for r in sorted(rows, key=lambda x: x["company"] or "")[:12]:
+                extra = f" ({r['years_required']}y)" if r["years_required"] else ""
+                print(f"    {(r['company'] or '')[:26]:<28} {(r['title'] or '')[:48]}{extra}")
+            if len(rows) > 12:
+                print(f"    ... and {len(rows) - 12} more")
+
     for r in pool:
         r["posted"] = r.get("ld_posted") or r.get("posted")
         r["score"], r["why"] = score_job(r, cfg, cats, ghosts)
@@ -334,6 +380,7 @@ def main():
         "verified": sum(1 for r in pool if r["live"]),
         "dead": sum(1 for r in pool if r["checked_at"] and not r["live"]),
         "ghosts": len(ghosts),
+        "filtered": len(cut_title) + len(cut_years),
     }
 
     open("report.html", "w").write(render_html(shortlist, rest, stats))
@@ -348,7 +395,8 @@ def main():
                         "; ".join(f"{l}{n:+d}" for l, n in r["why"])])
 
     print(f"{stats['scraped']} scraped · {stats['verified']} live · {stats['dead']} failed "
-          f"· {stats['ghosts']} ghosts · {len(shortlist)} shortlisted\n")
+          f"· {stats['filtered']} too senior · {stats['ghosts']} ghosts "
+          f"· {len(shortlist)} shortlisted\n")
     for r in shortlist:
         print(f"  {r['score']:>4}  {r['company'][:26]:<28} {r['title'][:50]}")
     if args.record:
