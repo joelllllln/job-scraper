@@ -1,0 +1,178 @@
+#!/usr/bin/env python3
+"""
+sniff.py — fingerprint each firm's ATS by reading its actual careers page.
+
+This replaces token-guessing. discover.py guesses what a company's slug might be;
+sniff.py goes to the company's own careers page and reads the ATS link straight
+out of the HTML. Much higher hit rate, and it's the only way to get Workday —
+Workday boards are keyed by tenant + datacenter + site, which cannot be guessed
+from a company name.
+
+    python sniff.py                 # all firms in firms.csv
+    python sniff.py no_ats.csv      # only the ones discover.py missed
+
+Writes:
+    sniffed.csv   name, ats, token, tenant, dc, site, board_url, found_on
+    manual.csv    firms on an ATS with no public API (iCIMS, Taleo, SAP, Avature...)
+    unknown.csv   nothing detected — needs a human look
+"""
+
+import csv
+import re
+import sys
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+import http_client
+
+TIMEOUT = 15
+WORKERS = 10
+UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                    "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"}
+
+PATHS = ["", "/careers", "/careers/", "/jobs", "/about/careers", "/company/careers",
+         "/en/careers", "/careers/vacancies", "/careers/opportunities", "/join-us",
+         "/work-with-us", "/about-us/careers", "/careers/jobs"]
+
+# ATS with a public API we can scrape
+SCRAPABLE = {
+    "greenhouse":      [r"(?:boards|job-boards)\.greenhouse\.io/(?:embed/job_board\?for=)?([a-z0-9_-]+)",
+                        r"greenhouse\.io/embed/job_board\?for=([a-z0-9_-]+)"],
+    "lever":           [r"jobs\.lever\.co/([a-z0-9-]+)"],
+    "ashby":           [r"jobs\.ashbyhq\.com/([a-z0-9-]+)"],
+    "smartrecruiters": [r"(?:careers|jobs)\.smartrecruiters\.com/([A-Za-z0-9-]+)"],
+    "workable":        [r"apply\.workable\.com/([a-z0-9-]+)"],
+    "recruitee":       [r"([a-z0-9-]+)\.recruitee\.com"],
+    "teamtailor":      [r"([a-z0-9-]+)\.teamtailor\.com"],
+    "personio":        [r"([a-z0-9-]+)\.jobs\.personio\.(?:com|de)"],
+    "breezy":          [r"([a-z0-9-]+)\.breezy\.hr"],
+    "bamboohr":        [r"([a-z0-9-]+)\.bamboohr\.com"],
+}
+
+# Workday needs three parts, handled separately
+WORKDAY = re.compile(
+    r"https?://([a-z0-9-]+)\.(wd\d+)\.myworkdayjobs\.com/(?:([a-z]{2}-[A-Z]{2})/)?([A-Za-z0-9_-]+)")
+
+# Recruiter ATS — Bullhorn leaks its cluster + corp token straight into the
+# career-portal HTML, which is exactly what the public REST API needs.
+BULLHORN = re.compile(r"public-rest(\d*)\.bullhornstaffing\.com/rest-services/([A-Za-z0-9]+)")
+RECRUITER = {
+    "jobadder": r"([a-z0-9-]+)\.jobadder\.com",
+    "vincere":  r"([a-z0-9-]+)\.vincere\.io",
+    "idibu":    r"[a-z0-9-]+\.idibu\.com",
+    "loxo":     r"[a-z0-9-]+\.loxo\.co",
+    "jobvite":  r"jobs\.jobvite\.com",
+}
+
+# ATS with no usable public API — flag for manual handling
+MANUAL = {
+    "icims": r"[a-z0-9-]+\.icims\.com",
+    "taleo": r"[a-z0-9-]+\.taleo\.net",
+    "successfactors": r"(?:career\d*\.successfactors|jobs\.sap\.com)",
+    "avature": r"[a-z0-9-]+\.avature\.net",
+    "eploy": r"[a-z0-9-]+\.eploy\.net",
+    "oleeo": r"[a-z0-9-]+\.oleeo\.com",
+    "tribepad": r"[a-z0-9-]+\.tribepad\.com",
+    "pinpoint": r"[a-z0-9-]+\.pinpointhq\.com",
+    "applied": r"app\.beapplied\.com",
+    "jobvite": r"jobs\.jobvite\.com",
+    "brassring": r"[a-z0-9-]+\.brassring\.com",
+    "phenom": r"[a-z0-9-]+\.phenompeople\.com",
+}
+
+
+def sniff_one(session, firm):
+    name, domain = firm["name"], firm["domain"]
+    for path in PATHS:
+        url = f"https://{domain}{path}"
+        r = http_client.get(url, sess=session)
+        if r is None or r.status_code >= 400:
+            continue
+        html = http_client.text_of(r)
+        blob = html + " " + r.url
+
+        m = BULLHORN.search(blob)
+        if m:
+            cls, token = m.group(1) or "", m.group(2)
+            return {"name": name, "ats": "bullhorn", "token": token, "tenant": cls,
+                    "dc": "", "site": "", "locale": "",
+                    "board_url": f"https://public-rest{cls}.bullhornstaffing.com/rest-services/{token}/search/JobOrder",
+                    "found_on": r.url}
+
+        for ats, pat in RECRUITER.items():
+            m = re.search(pat, blob, re.I)
+            if m:
+                tok = m.group(1) if m.groups() else ""
+                return {"name": name, "ats": ats, "token": tok, "tenant": "", "dc": "",
+                        "site": "", "locale": "", "board_url": r.url, "found_on": r.url,
+                        "_manual": True}
+
+        m = WORKDAY.search(blob)
+        if m:
+            tenant, dc, locale, site = m.group(1), m.group(2), m.group(3) or "", m.group(4)
+            if site.lower() in ("wday", "en-us"):
+                continue
+            return {"name": name, "ats": "workday", "token": f"{tenant}/{site}",
+                    "tenant": tenant, "dc": dc, "site": site, "locale": locale,
+                    "board_url": f"https://{tenant}.{dc}.myworkdayjobs.com/wday/cxs/{tenant}/{site}/jobs",
+                    "found_on": r.url}
+
+        for ats, patterns in SCRAPABLE.items():
+            for pat in patterns:
+                m = re.search(pat, blob, re.I)
+                if m:
+                    tok = m.group(1)
+                    if tok.lower() in ("www", "jobs", "careers", "api", "apply", "boards"):
+                        continue
+                    return {"name": name, "ats": ats, "token": tok, "tenant": "", "dc": "",
+                            "site": "", "locale": "", "board_url": "", "found_on": r.url}
+
+        for ats, pat in MANUAL.items():
+            if re.search(pat, blob, re.I):
+                return {"name": name, "ats": ats, "token": "", "tenant": "", "dc": "",
+                        "site": "", "locale": "", "board_url": r.url, "found_on": r.url,
+                        "_manual": True}
+    return None
+
+
+def main():
+    src = sys.argv[1] if len(sys.argv) > 1 else "firms.csv"
+    firms = list(csv.DictReader(open(src)))
+    session = http_client.session()
+    hits, manual, unknown = [], [], []
+
+    with ThreadPoolExecutor(max_workers=WORKERS) as pool:
+        futs = {pool.submit(sniff_one, session, f): f for f in firms}
+        for i, fut in enumerate(as_completed(futs), 1):
+            firm = futs[fut]
+            try:
+                res = fut.result()
+            except Exception:
+                res = None
+            if res and res.pop("_manual", False):
+                manual.append(res)
+                print(f"[{i}/{len(firms)}] MAN  {res['name']:<34} {res['ats']}")
+            elif res:
+                hits.append(res)
+                extra = f" ({res['tenant']}/{res['site']})" if res["ats"] == "workday" else ""
+                print(f"[{i}/{len(firms)}] HIT  {res['name']:<34} {res['ats']}/{res['token']}{extra}")
+            else:
+                unknown.append(firm)
+                print(f"[{i}/{len(firms)}] ---  {firm['name']}")
+
+    cols = ["name", "ats", "token", "tenant", "dc", "site", "locale", "board_url", "found_on"]
+    for path, rows, fields in [("sniffed.csv", hits, cols),
+                               ("manual.csv", manual, cols),
+                               ("unknown.csv", unknown, ["name", "category", "domain"])]:
+        with open(path, "w", newline="") as fh:
+            w = csv.DictWriter(fh, fieldnames=fields, extrasaction="ignore")
+            w.writeheader()
+            w.writerows(rows)
+
+    wd = sum(1 for h in hits if h["ats"] == "workday")
+    print(f"\n{len(hits)} scrapable ({wd} Workday) -> sniffed.csv")
+    print(f"{len(manual)} on closed ATS -> manual.csv (use links.md / boards.py)")
+    print(f"{len(unknown)} undetected -> unknown.csv")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,145 @@
+# Scoring rubric. Every number here is a tunable. Raise what matters to you,
+# drop what doesn't. score.py reads this at runtime — no code changes needed.
+
+# --- 1. Title strength. First tier that matches wins. ---
+title_tiers:
+  core: # exactly what you're going after
+    points: 30
+    patterns:
+      - "commodit(y|ies) analyst"
+      - "market analyst"
+      - "trading analyst"
+      - "fundamental(s)? analyst"
+      - "supply (and|&) demand analyst"
+      - "quantitative (analyst|research)"
+      - "data scientist.*(trading|commodit|energy|market)"
+      - "(power|gas|lng|crude|carbon|freight).{0,12}analyst"
+      - "short.?term analyst"
+  strong: # same floor, one step off the target
+    points: 20
+    patterns:
+      - "research analyst"
+      - "energy analyst"
+      - "desk analyst"
+      - "junior trader"
+      - "graduate trader"
+      - "trainee trader"
+      - "strats|systematic|alpha research|signals"
+      - "quantitative developer"
+      - "pricing analyst"
+      - "structur(er|ing) analyst"
+      - "origination analyst"
+  adjacent: # worth a look, not the target
+    points: 10
+    patterns:
+      - "data scientist"
+      - "data analyst"
+      - "analytics engineer"
+      - "machine learning"
+      - "market data"
+      - "python developer"
+      - "market intelligence"
+      - "price report|market report"
+
+# --- 2. Seniority. Years are read out of the description by verify.py. ---
+seniority:
+  junior_markers: 12      # junior / graduate / trainee / entry / associate
+  no_marker: 5            # title says nothing either way — usually fine
+  years_cap: 4            # more than this many years required and it's not for you
+  over_cap_penalty: -25
+  per_year_over: -4       # additional, per year above the cap
+
+# --- 3. Firm type. Where you realistically convert fastest scores highest. ---
+firm_categories:
+  data_vendor: 12
+  flex_optimiser: 12
+  power_gas: 10
+  trading_house: 10
+  crypto: 9
+  prop_mm: 8
+  softs: 8
+  major: 7
+  refining: 7
+  lng: 7
+  fund: 7
+  broker: 6
+  exchange: 6
+  metals: 6
+  carbon: 6
+  bunkers: 5
+  shipbroker: 5
+  bank: 5
+  consultancy: 4
+  recruiter: 3
+  unknown: 2
+
+# --- 4. Description signals. Each fires once. ---
+description_signals:
+  python_sql:
+    points: 8
+    patterns: ["python", "\\bsql\\b", "pandas", "numpy"]
+  ml_stats:
+    points: 6
+    patterns: ["machine learning", "statistic", "forecasting model", "time series"]
+  domain:
+    points: 8
+    patterns: ["commodit", "energy market", "power market", "crude", "lng", "refinery",
+               "freight", "carbon", "gas market", "electricity"]
+  regulatory_edge:   # your actual differentiator — regulator + data
+    points: 10
+    patterns: ["remit", "emir", "mifid", "market abuse", "surveillance", "regulator",
+               "compliance framework", "fca"]
+  trading_exposure:
+    points: 6
+    patterns: ["trading desk", "front office", "traders", "p&l", "position", "hedg"]
+  no_experience_needed:
+    points: 8
+    patterns: ["no prior experience", "graduate", "entry level", "we will train",
+               "early career", "0-2 years", "1-2 years"]
+
+# --- 5. Provenance. Applying direct beats going through an agency. ---
+source_weights:
+  greenhouse: 8
+  lever: 8
+  ashby: 8
+  workday: 8
+  smartrecruiters: 7
+  workable: 7
+  recruitee: 7
+  teamtailor: 7
+  personio: 7
+  breezy: 7
+  bamboohr: 7
+  bullhorn: 2
+  reed: 0
+  adzuna: 0
+  linkedin: 2
+  indeed: 0
+  glassdoor: 0
+  google: 1
+  efinancialcareers: 2
+
+# --- 6. Freshness, in days since posted ---
+freshness:
+  - [7, 8]
+  - [21, 4]
+  - [45, 0]
+  - [90, -6]
+  - [9999, -12]
+
+# --- 7. Verification. This is the part that stops you wasting applications. ---
+verification:
+  live: 15
+  unverified: -10
+  dead: -1000            # effectively removes it
+  title_mismatch: -20    # URL resolved to something that isn't this job
+  anonymous_employer: -8 # "a leading commodity trading house"
+  expired_validthrough: -30
+  ghost_repost: -15      # same role posted repeatedly over months
+  long_open: -6          # live for 60+ days with no close date
+
+# --- 8. Report ---
+report:
+  top_n: 25
+  min_score: 25
+  shortlist_threshold: 60

@@ -1,0 +1,98 @@
+# Job filter config. Matching is case-insensitive regex against the job title.
+# A job is kept if it matches ANY include pattern and NO exclude pattern.
+
+locations:
+  # Keep jobs whose location matches any of these, or has no location field.
+  - london
+  - united kingdom
+  - uk
+  - remote
+  - hybrid
+
+include:
+  # --- market / fundamental analyst ---
+  - "market analyst"
+  - "commodit(y|ies) analyst"
+  - "fundamental(s)? analyst"
+  - "supply (and|&) demand analyst"
+  - "balances analyst"
+  - "short.?term analyst"
+  - "load forecast"
+  - "weather analyst"
+  - "carbon (markets? )?analyst"
+  - "power analyst"
+  - "gas analyst"
+  - "lng analyst"
+  - "crude analyst"
+  - "refin(ed|ery) (products )?analyst"
+  - "freight analyst"
+  - "shipping analyst"
+  - "energy analyst"
+  - "research analyst"
+  - "market research"
+  - "market intelligence"
+  - "price report"
+  - "market report"
+
+  # --- desk / front office ---
+  - "trading analyst"
+  - "trade analyst"
+  - "desk analyst"
+  - "junior trader"
+  - "graduate trader"
+  - "trainee trader"
+  - "assistant trader"
+  - "trader"
+  - "trading (graduate|intern|programme|program|rotation)"
+  - "front office"
+  - "structur(er|ing) analyst"
+  - "origination analyst"
+  - "pricing analyst"
+  - "execution analyst"
+
+  # --- quant ---
+  - "quant(itative)? analyst"
+  - "quant(itative)? research"
+  - "quant(itative)? strateg"
+  - "quant(itative)? develop"
+  - "systematic (trading|research)"
+  - "signals research"
+  - "alpha research"
+  - "strats"
+
+  # --- data ---
+  - "data scientist"
+  - "data analyst"
+  - "analytics engineer"
+  - "machine learning (engineer|scientist)"
+  - "data engineer"
+  - "market data"
+  - "python developer"
+  - "trading systems"
+
+exclude:
+  - "senior"
+  - "head of"
+  - "director"
+  - "vp\\b"
+  - "vice president"
+  - "principal"
+  - "lead\\b"
+  - "manager"
+  - "sales"
+  - "account executive"
+  - "business development"
+  - "recruit"
+  - "hr\\b"
+  - "marketing"
+  - "customer"
+  - "support engineer"
+  - "helpdesk"
+  - "internal audit"
+  - "compliance officer"
+  - "credit risk"
+  - "trade support"
+  - "settlement"
+  - "back office"
+  - "middle office"
+  - "clearing"

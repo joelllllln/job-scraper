@@ -1,0 +1,97 @@
+name: weekly job run
+
+on:
+  schedule:
+    # Since March 2026 you can pin a timezone instead of doing UTC arithmetic.
+    - cron: "0 7 * * 0"
+      timezone: "Europe/London"
+  workflow_dispatch:        # lets you trigger it by hand from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      # --- state, encrypted --------------------------------------------------
+      # This repo is public, so jobs.db can't be committed in the clear — it
+      # holds your search history, which firms you're tracking, and what you've
+      # applied to. It lives here as an AES-256 blob instead, decrypted at the
+      # start of each run and re-encrypted at the end. Set DB_PASSPHRASE in
+      # repo secrets. Lose it and you lose the history, nothing else.
+      - name: Decrypt database
+        env:
+          DB_PASSPHRASE: ${{ secrets.DB_PASSPHRASE }}
+        run: |
+          if [ -f jobs.db.gpg ] && [ -n "$DB_PASSPHRASE" ]; then
+            gpg --batch --yes --quiet --passphrase "$DB_PASSPHRASE" \
+                -o jobs.db -d jobs.db.gpg
+            echo "restored $(du -h jobs.db | cut -f1) database"
+          else
+            echo "starting fresh (no jobs.db.gpg yet)"
+          fi
+
+      - name: Run pipeline
+        env:
+          REED_API_KEY: ${{ secrets.REED_API_KEY }}
+          ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
+          ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          DIGEST_TO: ${{ secrets.DIGEST_TO }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          # LinkedIn blocks datacentre IPs and GitHub's runners are the most
+          # blocked of the lot. Run boards.py at home for LinkedIn coverage.
+          sed -i 's/boards.py --hours 192/boards.py --hours 192 --no-linkedin/' weekly.sh
+          chmod +x weekly.sh
+          ./weekly.sh
+
+      - name: Encrypt and commit state
+        if: always()
+        env:
+          DB_PASSPHRASE: ${{ secrets.DB_PASSPHRASE }}
+        run: |
+          if [ -f jobs.db ] && [ -n "$DB_PASSPHRASE" ]; then
+            gpg --batch --yes --quiet --passphrase "$DB_PASSPHRASE" \
+                -c --cipher-algo AES256 -o jobs.db.gpg jobs.db
+          fi
+          git config user.name  "job-run"
+          git config user.email "actions@users.noreply.github.com"
+          # GitHub disables scheduled workflows after 60 days with no NEW COMMITS.
+          # Only commits count — not runs, not issues, not tags. Without this
+          # heartbeat the schedule could switch off silently, with no error
+          # anywhere, if a few runs in a row happened to change nothing.
+          mkdir -p .github && date -u +%FT%TZ > .github/last-run
+          git add -f .github/last-run jobs.db.gpg 2>/dev/null || true
+          git commit -m "weekly run $(date -u +%F)" || echo "nothing to commit"
+          git push || true
+
+      # Reports are NOT committed — they'd expose what you're applying to.
+      # 90-day artifact, visible only to you.
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: report-${{ github.run_number }}
+          path: |
+            report.html
+            report.md
+            scored.csv
+            logs/
+          retention-days: 90
+
+      - name: Warn on failure
+        if: failure()
+        run: echo "::warning::Weekly run reported failures — check the log artifact."

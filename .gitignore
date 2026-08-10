@@ -1,0 +1,24 @@
+# Never commit these to a public repo
+cv.txt
+jobs.db
+jobs.db-wal
+jobs.db-shm
+backups/
+logs/
+report.html
+report.md
+scored.csv
+latest.csv
+endpoints.csv
+sniffed.csv
+no_ats.csv
+unknown.csv
+manual.csv
+companies_house.csv
+
+# State is committed encrypted instead — see .github/workflows/weekly.yml
+!jobs.db.gpg
+
+.env
+__pycache__/
+*.pyc
