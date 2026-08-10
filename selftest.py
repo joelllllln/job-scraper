@@ -283,6 +283,9 @@ def main():
     check_true("8 years of experience is penalised", senior < good - 30, f"{senior} vs {good}")
     check_true("unverified ranks below verified", unverified < good, f"{unverified} vs {good}")
     check_true("dead job is removed from contention", dead < 0, f"got {dead}")
+    # --everything drops the minimum score to 0 rather than going negative,
+    # which only keeps dead links out because the dead penalty is heavy
+    check_true("a dead link still fails a zero minimum score", dead < 0, f"got {dead}")
     check_true("anonymous employer penalised", anon < good, f"{anon} vs {good}")
     check_true("ghost repost penalised", ghost < good, f"{ghost} vs {good}")
     check_true("direct beats aggregator", good > viaboard, f"{good} vs {viaboard}")

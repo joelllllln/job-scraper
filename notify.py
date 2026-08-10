@@ -162,9 +162,9 @@ def main():
 
     lines = [subject, ""]
     # generous cap: the plain-text half of the email carries the whole open
-    # list on a --resend-all run, and each role is now ~7 lines with its
-    # description and requirements rather than 4.
-    lines += [l for l in text_body.splitlines() if l.strip()][:400]
+    # list on a --resend-all or --report-all run, and each role is now ~7
+    # lines with its description and requirements rather than 4.
+    lines += [l for l in text_body.splitlines() if l.strip()][:1500]
     lines += ["", f"open: {open_total} · applied: {applied}"]
     if warnings:
         lines += ["", "sources to check:"] + [f"  {w}" for w in warnings]

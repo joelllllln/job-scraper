@@ -376,7 +376,14 @@ def main():
                     help="only jobs first seen since the last recorded run")
     ap.add_argument("--record", action="store_true",
                     help="stamp this run so the next --new-only starts from here")
+    ap.add_argument("--everything", action="store_true",
+                    help="report every open role, not a top-N digest: no new-only "
+                         "filter, no minimum score, no cap, and include roles "
+                         "verification hasn't reached yet")
     args = ap.parse_args()
+    if args.everything:
+        args.new_only = False
+        args.include_unverified = True
 
     cfg = yaml.safe_load(open("scoring.yaml"))
     cats = load_categories()
@@ -458,7 +465,13 @@ def main():
 
     rep = cfg["report"]
     top_n = args.top or rep["top_n"]
-    keep = [r for r in scored if r["score"] >= rep["min_score"]]
+    min_score = rep["min_score"]
+    if args.everything:
+        top_n = args.top or 100000
+        # 0, not negative: a dead job scores -1000, so this still keeps them out
+        # without needing a separate rule
+        min_score = 0
+    keep = [r for r in scored if r["score"] >= min_score]
     shortlist = [r for r in keep if r["score"] >= rep["shortlist_threshold"]][:top_n]
     # identity, not equality — two rows can compare equal and dict compare is slow
     on_shortlist = {id(r) for r in shortlist}

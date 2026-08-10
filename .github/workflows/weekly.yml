@@ -15,6 +15,10 @@ on:
         description: "Add every London finance/energy company from Companies House (needs CH_API_KEY)"
         type: boolean
         default: false
+      report_everything:
+        description: "Collect as usual, then email EVERY open role — no new-only filter, no minimum score, no cap"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -54,6 +58,7 @@ jobs:
         env:
           RESEND_ALL: ${{ inputs.resend_all }}
           EXPAND_FIRMS: ${{ inputs.expand_firms }}
+          REPORT_EVERYTHING: ${{ inputs.report_everything }}
           CH_API_KEY: ${{ secrets.CH_API_KEY }}
           REED_API_KEY: ${{ secrets.REED_API_KEY }}
           JOOBLE_API_KEY: ${{ secrets.JOOBLE_API_KEY }}
@@ -77,6 +82,7 @@ jobs:
           ARGS=""
           if [ "$RESEND_ALL" = "true" ]; then ARGS="$ARGS --resend-all"; fi
           if [ "$EXPAND_FIRMS" = "true" ]; then ARGS="$ARGS --expand-firms"; fi
+          if [ "$REPORT_EVERYTHING" = "true" ]; then ARGS="$ARGS --report-all"; fi
           ./weekly.sh $ARGS
 
       - name: Encrypt and commit state

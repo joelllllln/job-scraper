@@ -26,13 +26,15 @@ STAGE_TIMEOUT=${STAGE_TIMEOUT:-2400}      # 40 min ceiling per stage
 FULL=""
 RESEND=""
 EXPAND=""
+REPORTALL=""
 for arg in "$@"; do
   case "$arg" in
     --full)         FULL=1 ;;
     --resend-all)   RESEND=1 ;;
     --expand-firms) EXPAND=1 ;;
+    --report-all)   REPORTALL=1 ;;
     *) echo "unknown option: $arg" >&2
-       echo "usage: weekly.sh [--full] [--resend-all] [--expand-firms]" >&2
+       echo "usage: weekly.sh [--full] [--resend-all] [--expand-firms] [--report-all]" >&2
        exit 2 ;;
   esac
 done
@@ -153,10 +155,12 @@ run "reparse" $PYTHON verify.py --reparse
 # --- ranking --------------------------------------------------------------------
 # Only stamp the run if most stages worked. Recording a mostly-failed run would
 # silently swallow a week of new jobs from the next digest.
-if [ -n "$RESEND" ]; then
+if [ -n "$RESEND" ] || [ -n "$REPORTALL" ]; then
   # every open role, not just the new ones — and deliberately not recorded, so a
-  # resend can't move the clock and hide next week's genuinely new jobs
-  run "score" $PYTHON score.py
+  # full report can't move the clock and hide next week's genuinely new jobs.
+  # --report-all differs from --resend-all only in that it collects first.
+  log "### reporting every open role: no new-only filter, no minimum score, no cap"
+  run "score" $PYTHON score.py --everything
 elif [ ${#FAILED[@]} -lt 5 ]; then
   run "score" $PYTHON score.py --new-only --record
 else
