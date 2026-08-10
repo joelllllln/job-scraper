@@ -146,6 +146,24 @@ def check_firms():
     dupes = len(rows) - len({(r["name"] or "").lower() for r in rows})
     if dupes:
         warn(f"firms.csv: {dupes} duplicate firm names")
+
+    # Two firms on one domain means one careers board scraped twice and filed
+    # under two company names — the digest shows the same role twice, because
+    # the dedupe key includes the company.
+    seen = {}
+    shared = []
+    for r in rows:
+        d = (r["domain"] or "").strip().lower()
+        if not d:
+            continue
+        if d in seen:
+            shared.append(f"{seen[d]} / {r['name']} ({d})")
+        else:
+            seen[d] = r["name"]
+    if shared:
+        err(f"firms.csv: {len(shared)} domains claimed by two firms — the same board "
+            f"would be scraped twice: {'; '.join(shared[:3])}"
+            + (" ..." if len(shared) > 3 else ""))
     if blank:
         warn(f"firms.csv: {blank} firms have no domain — sniff.py will skip them")
     print(f"  firms.csv: {len(rows)} firms, {len(rows) - blank} with domains")

@@ -75,7 +75,9 @@ firm_categories:
   carbon: 6
   bunkers: 5
   shipbroker: 5
+  shipping: 5           # owners and operators, not brokers
   bank: 5
+  insurance: 4          # marine and energy underwriting is the relevant corner
   consultancy: 4
   recruiter: 3
   unknown: 2
