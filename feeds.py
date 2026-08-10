@@ -57,6 +57,79 @@ REED_QUERIES = [
 
 BULLHORN_FIELDS = "id,title,address,employmentType,dateLastPublished,publishedCategory"
 
+# Jooble and Careerjet are both official APIs with free keys and real UK
+# coverage. They matter because they answer from a datacentre: scraping Indeed
+# and Glassdoor through JobSpy is wired up but blocked from GitHub's runners, so
+# in practice the aggregator side of this pipeline has been contributing nothing.
+JOOBLE_API = "https://jooble.org/api/{key}"
+CAREERJET_API = "https://public.api.careerjet.net/search"
+
+AGG_QUERIES = [
+    "commodity analyst", "trading analyst", "energy analyst", "power trading",
+    "gas analyst", "quantitative analyst", "market analyst energy",
+    "battery storage analyst", "electricity market analyst", "junior trader",
+    "carbon analyst", "LNG analyst", "freight analyst", "trade surveillance",
+]
+
+
+def from_jooble():
+    key = os.getenv("JOOBLE_API_KEY")
+    if not key:
+        print("JOOBLE_API_KEY not set — free key at jooble.org/api/about", file=sys.stderr)
+        return []
+    jobs = []
+    for q in AGG_QUERIES:
+        r = http_client.post_json(JOOBLE_API.format(key=key),
+                                  {"keywords": q, "location": "London", "page": "1"})
+        data = http_client.json_of(r)
+        if data is None:
+            if r is not None and r.status_code in (401, 403):
+                print("  ! jooble: rejected — check JOOBLE_API_KEY", file=sys.stderr)
+            break
+        for j in data.get("jobs", []):
+            jobs.append({
+                "company": (j.get("company") or "").strip(),
+                "title": (j.get("title") or "").strip(),
+                "location": (j.get("location") or "").strip(),
+                "url": j.get("link") or "",
+                "source": "jooble",
+                "posted": (j.get("updated") or "")[:19],
+                "salary_text": j.get("salary") or "",
+            })
+        time.sleep(0.4)
+    print(f"  jooble: {len(jobs)} raw")
+    return jobs
+
+
+def from_careerjet():
+    key = os.getenv("CAREERJET_AFFID")
+    if not key:
+        print("CAREERJET_AFFID not set — free key at careerjet.com/partners/api",
+              file=sys.stderr)
+        return []
+    jobs = []
+    for q in AGG_QUERIES:
+        r = http_client.get(CAREERJET_API, params={
+            "locale_code": "en_GB", "keywords": q, "location": "London",
+            "affid": key, "pagesize": 99, "sort": "date",
+            "user_ip": "1.1.1.1", "user_agent": http_client.UA})
+        data = http_client.json_of(r)
+        if data is None or data.get("type") != "JOBS":
+            break
+        for j in data.get("jobs", []):
+            jobs.append({
+                "company": (j.get("company") or "").strip(),
+                "title": (j.get("title") or "").strip(),
+                "location": (j.get("locations") or "").strip(),
+                "url": j.get("url") or "",
+                "source": "careerjet",
+                "posted": (j.get("date") or "")[:19],
+                "salary_text": j.get("salary") or "",
+            })
+        time.sleep(0.4)
+    print(f"  careerjet: {len(jobs)} raw")
+    return jobs
+
 
 def from_reed():
     key = os.getenv("REED_API_KEY")
@@ -150,9 +223,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--reed", action="store_true")
     ap.add_argument("--bullhorn", action="store_true")
+    ap.add_argument("--jooble", action="store_true")
+    ap.add_argument("--careerjet", action="store_true")
     ap.add_argument("--all", action="store_true")
     args = ap.parse_args()
-    if not (args.reed or args.bullhorn or args.all):
+    if not (args.reed or args.bullhorn or args.jooble or args.careerjet or args.all):
         args.all = True
 
     cfg = yaml.safe_load(open("config.yaml"))
@@ -161,6 +236,10 @@ def main():
         jobs += from_reed()
     if args.bullhorn or args.all:
         jobs += from_bullhorn()
+    if args.jooble or args.all:
+        jobs += from_jooble()
+    if args.careerjet or args.all:
+        jobs += from_careerjet()
     save(jobs, cfg)
 
 

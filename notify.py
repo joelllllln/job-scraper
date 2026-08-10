@@ -34,6 +34,13 @@ from email.message import EmailMessage
 DB = "jobs.db"
 
 
+# Sources the pipeline calls on every run regardless of which firms are in the
+# registry. An ATS being absent just means no firm uses it; one of these being
+# absent means it is broken, blocked, or missing its key.
+ALWAYS_CALLED = ("reed", "adzuna", "indeed", "glassdoor", "google", "linkedin",
+                 "jooble", "careerjet", "efinancialcareers", "bullhorn")
+
+
 def health(con):
     """Per-source counts this week vs the trailing four weeks."""
     now = datetime.now(timezone.utc)
@@ -45,8 +52,17 @@ def health(con):
     prior = dict(con.execute(
         "SELECT source, COUNT(*) FROM jobs WHERE first_seen > ? AND first_seen <= ? GROUP BY source",
         (month, week)))
+    ever = {r[0] for r in con.execute("SELECT DISTINCT source FROM jobs")}
 
     warnings = []
+    # A source that has never returned anything never appears in `prior`, so the
+    # trailing-average check below could not see it: six sources were silently
+    # contributing nothing while the digest looked perfectly healthy.
+    for src in ALWAYS_CALLED:
+        if src not in ever:
+            warnings.append(f"{src}: has never returned a single job — not just quiet, "
+                            f"never working. Missing API key, or blocked.")
+
     for src, before in prior.items():
         avg = before / 4.0
         now_n = recent.get(src, 0)

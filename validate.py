@@ -178,6 +178,8 @@ def check_env():
     optional = {
         "REED_API_KEY": "feeds.py --reed will be skipped",
         "ADZUNA_APP_ID": "Adzuna results will be skipped",
+        "JOOBLE_API_KEY": "Jooble results will be skipped",
+        "CAREERJET_AFFID": "Careerjet results will be skipped",
         "CH_API_KEY": "companies_house.py will not run",
     }
     for k, effect in optional.items():

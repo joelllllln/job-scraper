@@ -37,7 +37,8 @@ SOURCE_RANK = {
     "personio": 9, "breezy": 9, "bamboohr": 9,
     "rippling": 9, "pinpoint": 9, "comeet": 9, "jobvite": 9,
     "efinancialcareers": 4, "bullhorn": 4, "linkedin": 3,
-    "reed": 2, "adzuna": 2, "google": 2, "indeed": 1, "glassdoor": 1,
+    "reed": 2, "adzuna": 2, "google": 2, "jooble": 2, "careerjet": 2,
+    "indeed": 1, "glassdoor": 1,
 }
 
 NOISE = {"the", "a", "an", "of", "and", "for", "to", "in", "at", "on", "with",

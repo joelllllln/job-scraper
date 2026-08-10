@@ -442,6 +442,27 @@ def main():
         check("empty SMTP_PORT falls back to 587", (ok, sent.get("port")), (True, 587))
         check("starttls before login", sent.get("tls"), True)
         check("digest addressed to DIGEST_TO", sent["msg"]["To"], "you@gmail.com")
+
+        # A source that has never returned anything never appears in the
+        # trailing-average comparison, so it used to be invisible: six sources
+        # were contributing nothing while the digest looked perfectly healthy.
+        tmp4 = tempfile.mktemp(suffix=".db")
+        c4 = store.connect(tmp4)
+        store.save_new(c4, [{"company": "Kpler", "title": "Gas Analyst",
+                             "url": "https://a", "source": "greenhouse"}])
+        _, warns = notify.health(c4)
+        silent = {w.split(":")[0] for w in warns if "never returned" in w}
+        check("every never-working source is named",
+              silent, set(notify.ALWAYS_CALLED))
+        store.save_new(c4, [{"company": "X", "title": "Power Analyst",
+                             "url": "https://b", "source": "reed"}])
+        _, warns2 = notify.health(c4)
+        check_true("and stops being named once it works",
+                   not any(w.startswith("reed:") for w in warns2))
+        c4.close()
+        for suffix in ("", "-wal", "-shm"):
+            if os.path.exists(tmp4 + suffix):
+                os.unlink(tmp4 + suffix)
         check("sent as text plus html",
               [p.get_content_type() for p in sent["msg"].walk()],
               ["multipart/alternative", "text/plain", "text/html"])
