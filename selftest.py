@@ -114,6 +114,26 @@ def main():
         check(f"shell company rejected: {nm[:30]}", bool(ch.JUNK.search(nm)), want)
     check_true("companies house covers finance and energy", len(ch.SIC) >= 25)
 
+    print("\nadd_firms — the two quiet ways to corrupt the registry")
+    import add_firms
+    have = [{"name": "Vitol", "category": "trading_house", "domain": "vitol.com"}]
+    ok, bad = add_firms.add([
+        {"name": "Vitol", "category": "trading_house", "domain": "vitol.co"},
+        {"name": "Vitol Trading Two", "category": "trading_house", "domain": "vitol.com"},
+        {"name": "", "category": "fund", "domain": "x.com"},
+        {"name": "Kpler", "category": "data_vendor", "domain": "kpler.com"},
+        {"name": "Kpler Two", "category": "data_vendor", "domain": "kpler.com"},
+        {"name": "No Website Firm", "category": "fund", "domain": ""},
+        {"name": "Also No Website", "category": "fund", "domain": ""},
+    ], have)
+    check("only the genuinely new are accepted",
+          [r["name"] for r in ok], ["Kpler", "No Website Firm", "Also No Website"])
+    check("and the reasons are given",
+          [why for _, why in bad],
+          ["duplicate name", "domain already claimed", "no name", "domain already claimed"])
+    check_true("blank domains never collide with each other",
+               sum(1 for r in ok if not r["domain"]) == 2)
+
     print("\ncheck_firms — a domain must prove it belongs to the firm")
     import check_firms
     import http_client as _hc
