@@ -3,6 +3,23 @@
 
 # --- 1. Title strength. First tier that matches wins. ---
 title_tiers:
+  entry: # explicit early-career. First tier listed, so it wins over the others —
+         # a "Graduate Commodity Analyst" scores as entry, not as core.
+    points: 45
+    patterns:
+      - "\\bgrad(uate)?\\b"      # anywhere in the title — "Graduate Commodity
+                                 # Analyst" must not fall through to the core tier
+      - "analyst (programme|program|scheme)"
+      - "\\b(intern|internship|placement|apprentice\\w*)\\b"
+      - "trainee"
+      - "entry.?level"
+      - "\\bjunior\\b"
+      - "early care"
+      - "(summer|spring|winter|campus) (analyst|intern|programme|program)"
+      - "off.?cycle"
+      - "school leaver"
+      - "new grad"
+      - "rotation(al)?"
   core: # exactly what you're going after
     points: 30
     patterns:
@@ -43,11 +60,15 @@ title_tiers:
 
 # --- 2. Seniority. Years are read out of the description by verify.py. ---
 seniority:
-  junior_markers: 12      # junior / graduate / trainee / entry / associate
-  no_marker: 5            # title says nothing either way — usually fine
+  junior_markers: 35      # junior / graduate / trainee / entry / intern / campus.
+                          # Deliberately the largest single number in the rubric:
+                          # a role that says it wants someone starting out beats
+                          # a better-titled one that doesn't.
+  no_marker: 3            # title says nothing either way — fine, but no longer
+                          # nearly as good as one that says "graduate"
   years_cap: 2            # more than this many years required and it's not for you
-  over_cap_penalty: -25
-  per_year_over: -4       # additional, per year above the cap
+  over_cap_penalty: -40
+  per_year_over: -8       # additional, per year above the cap
   exclude_over_years: 2   # hard drop, not a penalty: a role demanding more than
                           # this never reaches the digest at all. Only applies
                           # where verify.py actually read a number out of the
@@ -101,10 +122,15 @@ description_signals:
   trading_exposure:
     points: 6
     patterns: ["trading desk", "front office", "traders", "p&l", "position", "hedg"]
-  no_experience_needed:
-    points: 8
-    patterns: ["no prior experience", "graduate", "entry level", "we will train",
-               "early career", "0-2 years", "1-2 years"]
+  no_experience_needed:   # the description saying so, rather than the title
+    points: 25
+    patterns: ["no prior experience", "no experience (is )?(necessary|required)",
+               "graduate", "entry level", "we will train", "full training",
+               "training (programme|program) provided", "early care",
+               "0-2 years", "1-2 years", "0-1 year", "up to 2 years",
+               "recent graduate", "final year", "penultimate year",
+               "school leaver", "apprentice", "placement", "internship",
+               "no previous", "all backgrounds", "career chang"]
 
 # --- 5. Provenance. Applying direct beats going through an agency. ---
 source_weights:

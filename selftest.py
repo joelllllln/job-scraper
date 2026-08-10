@@ -257,6 +257,22 @@ def main():
     check_true("direct beats aggregator", good > viaboard, f"{good} vs {viaboard}")
     check_true("regulatory background rewarded", edge > good, f"{edge} vs {good}")
 
+    # early career is weighted above everything else in the rubric
+    grad = score.score_job(job(title="Graduate Commodity Analyst"), cfg, cats, set())[0]
+    intern = score.score_job(job(title="Summer Analyst Programme"), cfg, cats, set())[0]
+    trains = score.score_job(job(title="Market Analyst",
+                                 description="full training provided, no prior experience"),
+                             cfg, cats, set())[0]
+    check_true("a graduate role beats the same role without the word",
+               grad > good + 30, f"{grad} vs {good}")
+    check_true("an internship outranks a plain good role", intern > good, f"{intern} vs {good}")
+    check_true("'no prior experience' in the description is worth real points",
+               trains > good + 15, f"{trains} vs {good}")
+    check("entry tier wins over core when both match",
+          [l for l, _ in score.score_job(job(title="Graduate Commodity Analyst"),
+                                         cfg, cats, set())[1] if l.startswith("title:")],
+          ["title:entry"])
+
     print("\nscore — ghost detection over history")
     rows = [{"id": f"g{i}", "company": "Ghost Co", "title": "Market Analyst",
              "first_seen": (now - timedelta(days=d)).isoformat()}
@@ -441,7 +457,15 @@ def main():
                         ("Asset Optimisation Analyst", True), ("REMIT Compliance Analyst", True),
                         # and the widened exclusions still bite on the same words
                         ("Senior Battery Storage Analyst", False),
-                        ("Head of Flexibility", False), ("Electricity Trader II", False)]:
+                        ("Head of Flexibility", False), ("Electricity Trader II", False),
+                        # early career, collected on the programme alone
+                        ("Graduate Scheme, Commodities", True), ("Trading Internship", True),
+                        ("Summer Analyst Programme", True), ("Commercial Placement Year", True),
+                        ("Apprentice Trader", True), ("Off-Cycle Analyst", True),
+                        ("School Leaver Programme", True),
+                        # a blanket "sales" exclusion used to throw this one out
+                        ("Sales and Trading Graduate Programme", True),
+                        ("Sales Executive", False), ("Account Manager", False)]:
         check(f"filter: {title}", bool(inc.search(title)) and not exc.search(title), want)
 
     print()

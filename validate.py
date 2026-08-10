@@ -64,7 +64,12 @@ def check_config():
         exc = re.compile("|".join(cfg["exclude"]), re.I)
         # a filter that rejects the obvious keepers is broken even if it compiles
         must_keep = ["Commodity Analyst", "Junior Trader", "Market Analyst",
-                     "Quantitative Researcher", "Data Scientist, Trading"]
+                     "Quantitative Researcher", "Data Scientist, Trading",
+                     # early career is the whole point — if the filter stops
+                     # collecting these, the digest quietly loses its best roles
+                     "Graduate Scheme, Commodities", "Summer Analyst Programme",
+                     "Trading Internship", "Sales and Trading Graduate Programme",
+                     "Commercial Placement Year", "Trainee Broker"]
         must_drop = ["Head of Trading", "Credit Risk Analyst", "Trade Support Analyst",
                      "Marketing Manager"]
         for t in must_keep:

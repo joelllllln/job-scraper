@@ -57,6 +57,23 @@ include:
   - "regulation analyst"
   - "\\bremit\\b"
 
+  # --- early career, whatever the discipline ---
+  # The point of the whole exercise. These are collected on the strength of the
+  # programme alone, because a graduate scheme rarely names the desk in its title.
+  - "graduate (scheme|programme|program|analyst|trader|developer|engineer)"
+  - "analyst (programme|program|scheme)"
+  - "\\b(internship|intern)\\b"
+  - "placement"
+  - "apprentice"
+  - "trainee"
+  - "entry.?level"
+  - "early care"
+  - "school leaver"
+  - "off.?cycle"
+  - "(summer|spring|winter|campus) (analyst|intern|programme|program)"
+  - "new grad"
+  - "rotational (programme|program|scheme)"
+
   # --- desk / front office ---
   - "trading analyst"
   - "trade analyst"
@@ -68,10 +85,17 @@ include:
   - "trader"
   - "trading (graduate|intern|programme|program|rotation)"
   - "front office"
-  - "structur(er|ing) analyst"
-  - "origination analyst"
+  - "structur(er|ing)"
+  - "origination"
   - "pricing analyst"
-  - "execution analyst"
+  - "execution (analyst|trader)"
+  - "sales (and|&) trading"
+  - "market mak"
+  - "trading floor"
+  - "commodity sales"
+  - "physical trading"
+  - "cargo (analyst|operations)"
+  - "chartering"
 
   # --- quant ---
   - "quant(itative)? analyst"
@@ -111,7 +135,10 @@ exclude:
   - "manager"
   # level suffixes — "Data Scientist II" is a step above where you're aiming
   - "\\b(ii|iii|iv)\\b"
-  - "sales"
+  # not a blanket "sales" — that also threw out "Sales and Trading Graduate
+  # Programme", which is one of the front-office routes actually open to you
+  - "sales (executive|manager|rep|representative|consultant|assistant|advisor|adviser)"
+  - "account manager"
   - "account executive"
   - "business development"
   - "recruit"

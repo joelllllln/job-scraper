@@ -1,6 +1,6 @@
 # Firm link index
 
-Generated from `firms.csv` — 2081 firms.
+Generated from `firms.csv` — 2233 firms.
 
 ## Global searches
 
@@ -2313,6 +2313,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Aalvarezandmarsal.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Alvarez+and+Marsal%22+London+analyst)
 
+### Ankura
+- Careers (try): [careers](https://ankura.com/careers) · [jobs](https://ankura.com/jobs) · [about/careers](https://ankura.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/ankura/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Ankura&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Ankura&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Ankura)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aankura.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Ankura%22+London+analyst)
+
 ### Arup
 - Careers (try): [careers](https://arup.com/careers) · [jobs](https://arup.com/jobs) · [about/careers](https://arup.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/arup/jobs/)
@@ -2367,6 +2376,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Abaringa.com.au+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Baringa+Australia%22+London+analyst)
 
+### Berkeley Research Group
+- Careers (try): [careers](https://thinkbrg.com/careers) · [jobs](https://thinkbrg.com/jobs) · [about/careers](https://thinkbrg.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/berkeley-research-group/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Berkeley+Research+Group&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Berkeley+Research+Group&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Berkeley+Research+Group)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Athinkbrg.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Berkeley+Research+Group%22+London+analyst)
+
 ### Boston Consulting Group
 - Careers (try): [careers](https://bcg.com/careers) · [jobs](https://bcg.com/jobs) · [about/careers](https://bcg.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/boston-consulting-group/jobs/)
@@ -2385,6 +2403,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Abruegel.org+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Bruegel%22+London+analyst)
 
+### Brunswick Group
+- Careers (try): [careers](https://brunswickgroup.com/careers) · [jobs](https://brunswickgroup.com/jobs) · [about/careers](https://brunswickgroup.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/brunswick-group/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Brunswick+Group&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Brunswick+Group&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Brunswick+Group)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Abrunswickgroup.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Brunswick+Group%22+London+analyst)
+
 ### COWI
 - Careers (try): [careers](https://cowi.com/careers) · [jobs](https://cowi.com/jobs) · [about/careers](https://cowi.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/cowi/jobs/)
@@ -2393,6 +2420,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=COWI)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Acowi.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22COWI%22+London+analyst)
+
+### Camarco
+- Careers (try): [careers](https://camarco.co.uk/careers) · [jobs](https://camarco.co.uk/jobs) · [about/careers](https://camarco.co.uk/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/camarco/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Camarco&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Camarco&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Camarco)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Acamarco.co.uk+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Camarco%22+London+analyst)
 
 ### Cambridge Econometrics
 - Careers (try): [careers](https://camecon.com/careers) · [jobs](https://camecon.com/jobs) · [about/careers](https://camecon.com/about/careers)
@@ -2438,6 +2474,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Compass+Lexecon)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Acompasslexecon.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Compass+Lexecon%22+London+analyst)
+
+### Control Risks
+- Careers (try): [careers](https://controlrisks.com/careers) · [jobs](https://controlrisks.com/jobs) · [about/careers](https://controlrisks.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/control-risks/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Control+Risks&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Control+Risks&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Control+Risks)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Acontrolrisks.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Control+Risks%22+London+analyst)
 
 ### Cornwall Insight Australia
 - Careers (try): [careers](https://cornwall-insight.com.au/careers) · [jobs](https://cornwall-insight.com.au/jobs) · [about/careers](https://cornwall-insight.com.au/about/careers)
@@ -2592,6 +2637,24 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Afichtner.de+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Fichtner%22+London+analyst)
 
+### Finsbury Glover Hering
+- Careers (try): [careers](https://fgsglobal.com/careers) · [jobs](https://fgsglobal.com/jobs) · [about/careers](https://fgsglobal.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/finsbury-glover-hering/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Finsbury+Glover+Hering&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Finsbury+Glover+Hering&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Finsbury+Glover+Hering)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Afgsglobal.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Finsbury+Glover+Hering%22+London+analyst)
+
+### Forensic Risk Alliance
+- Careers (try): [careers](https://forensicrisk.com/careers) · [jobs](https://forensicrisk.com/jobs) · [about/careers](https://forensicrisk.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/forensic-risk-alliance/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Forensic+Risk+Alliance&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Forensic+Risk+Alliance&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Forensic+Risk+Alliance)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aforensicrisk.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Forensic+Risk+Alliance%22+London+analyst)
+
 ### Frontier Economics
 - Careers (try): [careers](https://frontier-economics.com/careers) · [jobs](https://frontier-economics.com/jobs) · [about/careers](https://frontier-economics.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/frontier-economics/jobs/)
@@ -2682,6 +2745,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Akearney.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Kearney%22+London+analyst)
 
+### Kroll
+- Careers (try): [careers](https://kroll.com/careers) · [jobs](https://kroll.com/jobs) · [about/careers](https://kroll.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/kroll/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Kroll&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Kroll&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Kroll)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Akroll.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Kroll%22+London+analyst)
+
 ### LEK Consulting
 - Careers (try): [careers](https://lek.com/careers) · [jobs](https://lek.com/jobs) · [about/careers](https://lek.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/lek-consulting/jobs/)
@@ -2699,6 +2771,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=McKinsey+and+Company)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Amckinsey.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22McKinsey+and+Company%22+London+analyst)
+
+### Montfort Communications
+- Careers (try): [careers](https://montfort.london/careers) · [jobs](https://montfort.london/jobs) · [about/careers](https://montfort.london/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/montfort-communications/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Montfort+Communications&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Montfort+Communications&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Montfort+Communications)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Amontfort.london+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Montfort+Communications%22+London+analyst)
 
 ### Mott MacDonald
 - Careers (try): [careers](https://mottmac.com/careers) · [jobs](https://mottmac.com/jobs) · [about/careers](https://mottmac.com/about/careers)
@@ -2753,6 +2834,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Petrofac)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Apetrofac.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Petrofac%22+London+analyst)
+
+### Powerscourt
+- Careers (try): [careers](https://powerscourt-group.com/careers) · [jobs](https://powerscourt-group.com/jobs) · [about/careers](https://powerscourt-group.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/powerscourt/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Powerscourt&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Powerscourt&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Powerscourt)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Apowerscourt-group.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Powerscourt%22+London+analyst)
 
 ### PwC
 - Careers (try): [careers](https://pwc.com/careers) · [jobs](https://pwc.com/jobs) · [about/careers](https://pwc.com/about/careers)
@@ -2826,6 +2916,24 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Arolandberger.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Roland+Berger%22+London+analyst)
 
+### S-RM
+- Careers (try): [careers](https://s-rminform.com/careers) · [jobs](https://s-rminform.com/jobs) · [about/careers](https://s-rminform.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/s-rm/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=S-RM&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=S-RM&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=S-RM)
+- [Google X-ray careers](https://www.google.com/search?q=site%3As-rminform.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22S-RM%22+London+analyst)
+
+### Secretariat International
+- Careers (try): [careers](https://secretariat-intl.com/careers) · [jobs](https://secretariat-intl.com/jobs) · [about/careers](https://secretariat-intl.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/secretariat-international/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Secretariat+International&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Secretariat+International&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Secretariat+International)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Asecretariat-intl.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Secretariat+International%22+London+analyst)
+
 ### Sia Partners
 - Careers (try): [careers](https://sia-partners.com/careers) · [jobs](https://sia-partners.com/jobs) · [about/careers](https://sia-partners.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/sia-partners/jobs/)
@@ -2853,6 +2961,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Asystemiq.earth+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Systemiq%22+London+analyst)
 
+### Teneo
+- Careers (try): [careers](https://teneo.com/careers) · [jobs](https://teneo.com/jobs) · [about/careers](https://teneo.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/teneo/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Teneo&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Teneo&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Teneo)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Ateneo.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Teneo%22+London+analyst)
+
 ### Timera Energy Advisory
 - Careers (try): [careers](https://timera-energy.co.uk/careers) · [jobs](https://timera-energy.co.uk/jobs) · [about/careers](https://timera-energy.co.uk/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/timera-energy-advisory/jobs/)
@@ -2870,6 +2987,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Tractebel)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Atractebel-engie.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Tractebel%22+London+analyst)
+
+### Tulchan Communications
+- Careers (try): [careers](https://tulchangroup.com/careers) · [jobs](https://tulchangroup.com/jobs) · [about/careers](https://tulchangroup.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/tulchan-communications/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Tulchan+Communications&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Tulchan+Communications&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Tulchan+Communications)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Atulchangroup.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Tulchan+Communications%22+London+analyst)
 
 ### Vivid Economics
 - Careers (try): [careers](https://vivideconomics.com/careers) · [jobs](https://vivideconomics.com/jobs) · [about/careers](https://vivideconomics.com/about/careers)
@@ -3532,6 +3658,33 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Aalbourne.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Albourne+Partners%22+London+analyst)
 
+### AlphaSense
+- Careers (try): [careers](https://alpha-sense.com/careers) · [jobs](https://alpha-sense.com/jobs) · [about/careers](https://alpha-sense.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/alphasense/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=AlphaSense&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=AlphaSense&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=AlphaSense)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aalpha-sense.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22AlphaSense%22+London+analyst)
+
+### AlphaSights
+- Careers (try): [careers](https://alphasights.com/careers) · [jobs](https://alphasights.com/jobs) · [about/careers](https://alphasights.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/alphasights/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=AlphaSights&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=AlphaSights&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=AlphaSights)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aalphasights.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22AlphaSights%22+London+analyst)
+
+### Ancoa
+- Careers (try): [careers](https://ancoa.com/careers) · [jobs](https://ancoa.com/jobs) · [about/careers](https://ancoa.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/ancoa/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Ancoa&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Ancoa&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Ancoa)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aancoa.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Ancoa%22+London+analyst)
+
 ### Aon Investments
 - Careers (try): [careers](https://aon.com/investments/careers) · [jobs](https://aon.com/investments/jobs) · [about/careers](https://aon.com/investments/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/aon-investments/jobs/)
@@ -3558,6 +3711,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Artelys)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Aartelys.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Artelys%22+London+analyst)
+
+### Ascent RegTech
+- Careers (try): [careers](https://ascentregtech.com/careers) · [jobs](https://ascentregtech.com/jobs) · [about/careers](https://ascentregtech.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/ascent-regtech/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Ascent+RegTech&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Ascent+RegTech&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Ascent+RegTech)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aascentregtech.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Ascent+RegTech%22+London+analyst)
 
 ### Aurora Energy Research
 - Careers (try): [careers](https://auroraer.com/careers) · [jobs](https://auroraer.com/jobs) · [about/careers](https://auroraer.com/about/careers)
@@ -3586,6 +3748,33 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Abarnett-waddingham.co.uk+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Barnett+Waddingham%22+London+analyst)
 
+### BattleFin
+- Careers (try): [careers](https://battlefin.com/careers) · [jobs](https://battlefin.com/jobs) · [about/careers](https://battlefin.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/battlefin/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=BattleFin&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=BattleFin&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=BattleFin)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Abattlefin.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22BattleFin%22+London+analyst)
+
+### Beacon Platform
+- Careers (try): [careers](https://beacon.io/careers) · [jobs](https://beacon.io/jobs) · [about/careers](https://beacon.io/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/beacon-platform/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Beacon+Platform&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Beacon+Platform&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Beacon+Platform)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Abeacon.io+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Beacon+Platform%22+London+analyst)
+
+### Behavox
+- Careers (try): [careers](https://behavox.com/careers) · [jobs](https://behavox.com/jobs) · [about/careers](https://behavox.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/behavox/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Behavox&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Behavox&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Behavox)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Abehavox.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Behavox%22+London+analyst)
+
 ### Benchmark Mineral Intelligence
 - Careers (try): [careers](https://benchmarkminerals.com/careers) · [jobs](https://benchmarkminerals.com/jobs) · [about/careers](https://benchmarkminerals.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/benchmark-mineral-intelligence/jobs/)
@@ -3603,6 +3792,33 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Bloomberg)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Abloomberg.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Bloomberg%22+London+analyst)
+
+### Bloomberg LP London
+- Careers (try): [careers](https://bloomberg.com/company/careers) · [jobs](https://bloomberg.com/company/jobs) · [about/careers](https://bloomberg.com/company/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/bloomberg-lp-london/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Bloomberg+LP+London&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Bloomberg+LP+London&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Bloomberg+LP+London)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Abloomberg.com%2Fcompany+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Bloomberg+LP+London%22+London+analyst)
+
+### Canalyst
+- Careers (try): [careers](https://canalyst.com/careers) · [jobs](https://canalyst.com/jobs) · [about/careers](https://canalyst.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/canalyst/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Canalyst&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Canalyst&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Canalyst)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Acanalyst.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Canalyst%22+London+analyst)
+
+### Cappitech
+- Careers (try): [careers](https://cappitech.com/careers) · [jobs](https://cappitech.com/jobs) · [about/careers](https://cappitech.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/cappitech/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Cappitech&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Cappitech&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Cappitech)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Acappitech.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Cappitech%22+London+analyst)
 
 ### Carbon Tracker Initiative
 - Careers (try): [careers](https://carbontracker.org/careers) · [jobs](https://carbontracker.org/jobs) · [about/careers](https://carbontracker.org/about/careers)
@@ -3622,6 +3838,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Acardano.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Cardano%22+London+analyst)
 
+### Causaly
+- Careers (try): [careers](https://causaly.com/careers) · [jobs](https://causaly.com/jobs) · [about/careers](https://causaly.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/causaly/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Causaly&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Causaly&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Causaly)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Acausaly.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Causaly%22+London+analyst)
+
 ### Chatham House
 - Careers (try): [careers](https://chathamhouse.org/careers) · [jobs](https://chathamhouse.org/jobs) · [about/careers](https://chathamhouse.org/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/chatham-house/jobs/)
@@ -3630,6 +3855,51 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Chatham+House)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Achathamhouse.org+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Chatham+House%22+London+analyst)
+
+### Clarivate
+- Careers (try): [careers](https://clarivate.com/careers) · [jobs](https://clarivate.com/jobs) · [about/careers](https://clarivate.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/clarivate/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Clarivate&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Clarivate&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Clarivate)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aclarivate.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Clarivate%22+London+analyst)
+
+### Clausematch
+- Careers (try): [careers](https://clausematch.com/careers) · [jobs](https://clausematch.com/jobs) · [about/careers](https://clausematch.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/clausematch/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Clausematch&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Clausematch&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Clausematch)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aclausematch.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Clausematch%22+London+analyst)
+
+### Coleman Research
+- Careers (try): [careers](https://colemanrg.com/careers) · [jobs](https://colemanrg.com/jobs) · [about/careers](https://colemanrg.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/coleman-research/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Coleman+Research&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Coleman+Research&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Coleman+Research)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Acolemanrg.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Coleman+Research%22+London+analyst)
+
+### ComplyAdvantage
+- Careers (try): [careers](https://complyadvantage.com/careers) · [jobs](https://complyadvantage.com/jobs) · [about/careers](https://complyadvantage.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/complyadvantage/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=ComplyAdvantage&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=ComplyAdvantage&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=ComplyAdvantage)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Acomplyadvantage.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22ComplyAdvantage%22+London+analyst)
+
+### Corlytics
+- Careers (try): [careers](https://corlytics.com/careers) · [jobs](https://corlytics.com/jobs) · [about/careers](https://corlytics.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/corlytics/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Corlytics&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Corlytics&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Corlytics)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Acorlytics.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Corlytics%22+London+analyst)
 
 ### Cornwall Energy
 - Careers (try): [careers](https://cornwall-insight.com/careers) · [jobs](https://cornwall-insight.com/jobs) · [about/careers](https://cornwall-insight.com/about/careers)
@@ -3640,6 +3910,24 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Acornwall-insight.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Cornwall+Energy%22+London+analyst)
 
+### DTCC Report Hub
+- Careers (try): [careers](https://dtcc.com/repository-otc-data/careers) · [jobs](https://dtcc.com/repository-otc-data/jobs) · [about/careers](https://dtcc.com/repository-otc-data/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/dtcc-report-hub/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=DTCC+Report+Hub&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=DTCC+Report+Hub&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=DTCC+Report+Hub)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Adtcc.com%2Frepository-otc-data+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22DTCC+Report+Hub%22+London+analyst)
+
+### Dow Jones
+- Careers (try): [careers](https://dowjones.com/careers) · [jobs](https://dowjones.com/jobs) · [about/careers](https://dowjones.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/dow-jones/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Dow+Jones&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Dow+Jones&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Dow+Jones)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Adowjones.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Dow+Jones%22+London+analyst)
+
 ### Drewry Maritime
 - Careers (try): [careers](https://drewry.co.uk/careers) · [jobs](https://drewry.co.uk/jobs) · [about/careers](https://drewry.co.uk/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/drewry-maritime/jobs/)
@@ -3648,6 +3936,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Drewry+Maritime)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Adrewry.co.uk+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Drewry+Maritime%22+London+analyst)
+
+### Droit Financial
+- Careers (try): [careers](https://droit.tech/careers) · [jobs](https://droit.tech/jobs) · [about/careers](https://droit.tech/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/droit-financial/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Droit+Financial&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Droit+Financial&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Droit+Financial)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Adroit.tech+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Droit+Financial%22+London+analyst)
 
 ### ERCE
 - Careers (try): [careers](https://erce.energy/careers) · [jobs](https://erce.energy/jobs) · [about/careers](https://erce.energy/about/careers)
@@ -3666,6 +3963,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=ESAI+Energy)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Aesaienergy.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22ESAI+Energy%22+London+analyst)
+
+### Eagle Alpha
+- Careers (try): [careers](https://eaglealpha.com/careers) · [jobs](https://eaglealpha.com/jobs) · [about/careers](https://eaglealpha.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/eagle-alpha/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Eagle+Alpha&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Eagle+Alpha&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Eagle+Alpha)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aeaglealpha.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Eagle+Alpha%22+London+analyst)
 
 ### Elexonhub
 - Careers (try): [careers](https://elexonportal.co.uk/careers) · [jobs](https://elexonportal.co.uk/jobs) · [about/careers](https://elexonportal.co.uk/about/careers)
@@ -3693,6 +3999,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=EnAppSys)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Aenappsys.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22EnAppSys%22+London+analyst)
+
+### Encompass Corporation
+- Careers (try): [careers](https://encompasscorporation.com/careers) · [jobs](https://encompasscorporation.com/jobs) · [about/careers](https://encompasscorporation.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/encompass-corporation/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Encompass+Corporation&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Encompass+Corporation&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Encompass+Corporation)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aencompasscorporation.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Encompass+Corporation%22+London+analyst)
 
 ### Enerdata
 - Careers (try): [careers](https://enerdata.net/careers) · [jobs](https://enerdata.net/jobs) · [about/careers](https://enerdata.net/about/careers)
@@ -3775,6 +4090,33 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Aenverus.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Enverus%22+London+analyst)
 
+### Euromoney
+- Careers (try): [careers](https://euromoney.com/careers) · [jobs](https://euromoney.com/jobs) · [about/careers](https://euromoney.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/euromoney/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Euromoney&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Euromoney&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Euromoney)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aeuromoney.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Euromoney%22+London+analyst)
+
+### Eventus Systems
+- Careers (try): [careers](https://eventus.com/careers) · [jobs](https://eventus.com/jobs) · [about/careers](https://eventus.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/eventus-systems/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Eventus+Systems&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Eventus+Systems&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Eventus+Systems)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aeventus.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Eventus+Systems%22+London+analyst)
+
+### Exabel
+- Careers (try): [careers](https://exabel.com/careers) · [jobs](https://exabel.com/jobs) · [about/careers](https://exabel.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/exabel/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Exabel&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Exabel&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Exabel)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aexabel.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Exabel%22+London+analyst)
+
 ### FGE
 - Careers (try): [careers](https://fgenergy.com/careers) · [jobs](https://fgenergy.com/jobs) · [about/careers](https://fgenergy.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/fge/jobs/)
@@ -3802,6 +4144,33 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Afastmarkets.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Fastmarkets%22+London+analyst)
 
+### Featurespace
+- Careers (try): [careers](https://featurespace.com/careers) · [jobs](https://featurespace.com/jobs) · [about/careers](https://featurespace.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/featurespace/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Featurespace&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Featurespace&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Featurespace)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Afeaturespace.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Featurespace%22+London+analyst)
+
+### Fenergo
+- Careers (try): [careers](https://fenergo.com/careers) · [jobs](https://fenergo.com/jobs) · [about/careers](https://fenergo.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/fenergo/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Fenergo&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Fenergo&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Fenergo)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Afenergo.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Fenergo%22+London+analyst)
+
+### Financial Times
+- Careers (try): [careers](https://ft.com/careers) · [jobs](https://ft.com/jobs) · [about/careers](https://ft.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/financial-times/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Financial+Times&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Financial+Times&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Financial+Times)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aft.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Financial+Times%22+London+analyst)
+
 ### Fitch Ratings
 - Careers (try): [careers](https://fitchratings.com/careers) · [jobs](https://fitchratings.com/jobs) · [about/careers](https://fitchratings.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/fitch-ratings/jobs/)
@@ -3820,6 +4189,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Afreightos.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Freightos%22+London+analyst)
 
+### GLG Insights
+- Careers (try): [careers](https://glginsights.com/careers) · [jobs](https://glginsights.com/jobs) · [about/careers](https://glginsights.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/glg-insights/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=GLG+Insights&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=GLG+Insights&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=GLG+Insights)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aglginsights.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22GLG+Insights%22+London+analyst)
+
 ### Gaffney Cline
 - Careers (try): [careers](https://gaffneycline.com/careers) · [jobs](https://gaffneycline.com/jobs) · [about/careers](https://gaffneycline.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/gaffney-cline/jobs/)
@@ -3837,6 +4215,33 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=General+Index)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Ageneral-index.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22General+Index%22+London+analyst)
+
+### Global Relay
+- Careers (try): [careers](https://globalrelay.com/careers) · [jobs](https://globalrelay.com/jobs) · [about/careers](https://globalrelay.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/global-relay/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Global+Relay&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Global+Relay&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Global+Relay)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aglobalrelay.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Global+Relay%22+London+analyst)
+
+### GlobalData
+- Careers (try): [careers](https://globaldata.com/careers) · [jobs](https://globaldata.com/jobs) · [about/careers](https://globaldata.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/globaldata/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=GlobalData&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=GlobalData&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=GlobalData)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aglobaldata.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22GlobalData%22+London+analyst)
+
+### Guidepoint
+- Careers (try): [careers](https://guidepoint.com/careers) · [jobs](https://guidepoint.com/jobs) · [about/careers](https://guidepoint.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/guidepoint/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Guidepoint&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Guidepoint&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Guidepoint)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aguidepoint.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Guidepoint%22+London+analyst)
 
 ### HFR
 - Careers (try): [careers](https://hedgefundresearch.com/careers) · [jobs](https://hedgefundresearch.com/jobs) · [about/careers](https://hedgefundresearch.com/about/careers)
@@ -3865,6 +4270,24 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Aicis.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22ICIS%22+London+analyst)
 
+### IHS Markit
+- Careers (try): [careers](https://ihsmarkit.com/careers) · [jobs](https://ihsmarkit.com/jobs) · [about/careers](https://ihsmarkit.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/ihs-markit/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=IHS+Markit&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=IHS+Markit&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=IHS+Markit)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aihsmarkit.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22IHS+Markit%22+London+analyst)
+
+### Informa
+- Careers (try): [careers](https://informa.com/careers) · [jobs](https://informa.com/jobs) · [about/careers](https://informa.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/informa/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Informa&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Informa&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Informa)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Ainforma.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Informa%22+London+analyst)
+
 ### Isio
 - Careers (try): [careers](https://isio.com/careers) · [jobs](https://isio.com/jobs) · [about/careers](https://isio.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/isio/jobs/)
@@ -3892,6 +4315,24 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Akaiko.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Kaiko%22+London+analyst)
 
+### Kaizen Reporting
+- Careers (try): [careers](https://kaizenreporting.com/careers) · [jobs](https://kaizenreporting.com/jobs) · [about/careers](https://kaizenreporting.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/kaizen-reporting/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Kaizen+Reporting&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Kaizen+Reporting&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Kaizen+Reporting)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Akaizenreporting.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Kaizen+Reporting%22+London+analyst)
+
+### Kantar
+- Careers (try): [careers](https://kantar.com/careers) · [jobs](https://kantar.com/jobs) · [about/careers](https://kantar.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/kantar/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Kantar&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Kantar&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Kantar)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Akantar.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Kantar%22+London+analyst)
+
 ### Kayrros
 - Careers (try): [careers](https://kayrros.com/careers) · [jobs](https://kayrros.com/jobs) · [about/careers](https://kayrros.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/kayrros/jobs/)
@@ -3909,6 +4350,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Kayrros+Energy)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Akayrros.co.uk+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Kayrros+Energy%22+London+analyst)
+
+### Kensho
+- Careers (try): [careers](https://kensho.com/careers) · [jobs](https://kensho.com/jobs) · [about/careers](https://kensho.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/kensho/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Kensho&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Kensho&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Kensho)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Akensho.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Kensho%22+London+analyst)
 
 ### Kimberlite Research
 - Careers (try): [careers](https://kimberliteresearch.com/careers) · [jobs](https://kimberliteresearch.com/jobs) · [about/careers](https://kimberliteresearch.com/about/careers)
@@ -4036,6 +4486,33 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Amorningstar.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Morningstar%22+London+analyst)
 
+### NICE Actimize
+- Careers (try): [careers](https://niceactimize.com/careers) · [jobs](https://niceactimize.com/jobs) · [about/careers](https://niceactimize.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/nice-actimize/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=NICE+Actimize&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=NICE+Actimize&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=NICE+Actimize)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aniceactimize.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22NICE+Actimize%22+London+analyst)
+
+### Napier AI
+- Careers (try): [careers](https://napier.ai/careers) · [jobs](https://napier.ai/jobs) · [about/careers](https://napier.ai/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/napier-ai/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Napier+AI&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Napier+AI&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Napier+AI)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Anapier.ai+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Napier+AI%22+London+analyst)
+
+### Nasdaq Verafin
+- Careers (try): [careers](https://verafin.com/careers) · [jobs](https://verafin.com/jobs) · [about/careers](https://verafin.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/nasdaq-verafin/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Nasdaq+Verafin&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Nasdaq+Verafin&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Nasdaq+Verafin)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Averafin.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Nasdaq+Verafin%22+London+analyst)
+
 ### Netherland Sewell
 - Careers (try): [careers](https://netherlandsewell.com/careers) · [jobs](https://netherlandsewell.com/jobs) · [about/careers](https://netherlandsewell.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/netherland-sewell/jobs/)
@@ -4044,6 +4521,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Netherland+Sewell)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Anetherlandsewell.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Netherland+Sewell%22+London+analyst)
+
+### Neudata
+- Careers (try): [careers](https://neudata.co/careers) · [jobs](https://neudata.co/jobs) · [about/careers](https://neudata.co/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/neudata/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Neudata&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Neudata&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Neudata)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aneudata.co+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Neudata%22+London+analyst)
 
 ### OPIS
 - Careers (try): [careers](https://opisnet.com/careers) · [jobs](https://opisnet.com/jobs) · [about/careers](https://opisnet.com/about/careers)
@@ -4144,6 +4630,24 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Aprojectblue.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Project+Blue%22+London+analyst)
 
+### Quandl Data
+- Careers (try): [careers](https://data.nasdaq.com/careers) · [jobs](https://data.nasdaq.com/jobs) · [about/careers](https://data.nasdaq.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/quandl-data/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Quandl+Data&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Quandl+Data&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Quandl+Data)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Adata.nasdaq.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Quandl+Data%22+London+analyst)
+
+### Quantexa
+- Careers (try): [careers](https://quantexa.com/careers) · [jobs](https://quantexa.com/jobs) · [about/careers](https://quantexa.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/quantexa/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Quantexa&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Quantexa&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Quantexa)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aquantexa.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Quantexa%22+London+analyst)
+
 ### Quantum Commodity Intelligence
 - Careers (try): [careers](https://qcintel.com/careers) · [jobs](https://qcintel.com/jobs) · [about/careers](https://qcintel.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/quantum-commodity-intelligence/jobs/)
@@ -4152,6 +4656,24 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Quantum+Commodity+Intelligence)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Aqcintel.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Quantum+Commodity+Intelligence%22+London+analyst)
+
+### REGnosys
+- Careers (try): [careers](https://regnosys.com/careers) · [jobs](https://regnosys.com/jobs) · [about/careers](https://regnosys.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/regnosys/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=REGnosys&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=REGnosys&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=REGnosys)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aregnosys.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22REGnosys%22+London+analyst)
+
+### RELX
+- Careers (try): [careers](https://relx.com/careers) · [jobs](https://relx.com/jobs) · [about/careers](https://relx.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/relx/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=RELX&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=RELX&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=RELX)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Arelx.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22RELX%22+London+analyst)
 
 ### RISC Advisory
 - Careers (try): [careers](https://riscadvisory.com/careers) · [jobs](https://riscadvisory.com/jobs) · [about/careers](https://riscadvisory.com/about/careers)
@@ -4162,6 +4684,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Ariscadvisory.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22RISC+Advisory%22+London+analyst)
 
+### Red Deer
+- Careers (try): [careers](https://reddeer.io/careers) · [jobs](https://reddeer.io/jobs) · [about/careers](https://reddeer.io/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/red-deer/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Red+Deer&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Red+Deer&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Red+Deer)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Areddeer.io+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Red+Deer%22+London+analyst)
+
 ### Redington
 - Careers (try): [careers](https://redington.co.uk/careers) · [jobs](https://redington.co.uk/jobs) · [about/careers](https://redington.co.uk/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/redington/jobs/)
@@ -4171,6 +4702,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Aredington.co.uk+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Redington%22+London+analyst)
 
+### Reuters News
+- Careers (try): [careers](https://reuters.com/careers) · [jobs](https://reuters.com/jobs) · [about/careers](https://reuters.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/reuters-news/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Reuters+News&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Reuters+News&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Reuters+News)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Areuters.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Reuters+News%22+London+analyst)
+
 ### Rho Motion
 - Careers (try): [careers](https://rhomotion.com/careers) · [jobs](https://rhomotion.com/jobs) · [about/careers](https://rhomotion.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/rho-motion/jobs/)
@@ -4179,6 +4719,24 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Rho+Motion)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Arhomotion.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Rho+Motion%22+London+analyst)
+
+### Ripjar
+- Careers (try): [careers](https://ripjar.com/careers) · [jobs](https://ripjar.com/jobs) · [about/careers](https://ripjar.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/ripjar/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Ripjar&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Ripjar&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Ripjar)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aripjar.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Ripjar%22+London+analyst)
+
+### Risk.net
+- Careers (try): [careers](https://risk.net/careers) · [jobs](https://risk.net/jobs) · [about/careers](https://risk.net/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/risk-net/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Risk.net&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Risk.net&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Risk.net)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Arisk.net+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Risk.net%22+London+analyst)
 
 ### Roskill
 - Careers (try): [careers](https://crugroup.com/careers) · [jobs](https://crugroup.com/jobs) · [about/careers](https://crugroup.com/about/careers)
@@ -4198,6 +4756,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Arystadenergy.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Rystad+Energy%22+London+analyst)
 
+### Scila
+- Careers (try): [careers](https://scila.se/careers) · [jobs](https://scila.se/jobs) · [about/careers](https://scila.se/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/scila/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Scila&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Scila&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Scila)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Ascila.se+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Scila%22+London+analyst)
+
 ### Sea Intelligence
 - Careers (try): [careers](https://sea-intelligence.com/careers) · [jobs](https://sea-intelligence.com/jobs) · [about/careers](https://sea-intelligence.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/sea-intelligence/jobs/)
@@ -4207,6 +4774,24 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Asea-intelligence.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Sea+Intelligence%22+London+analyst)
 
+### Sentieo
+- Careers (try): [careers](https://sentieo.com/careers) · [jobs](https://sentieo.com/jobs) · [about/careers](https://sentieo.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/sentieo/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Sentieo&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Sentieo&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Sentieo)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Asentieo.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Sentieo%22+London+analyst)
+
+### Sigma Ratings
+- Careers (try): [careers](https://sigmaratings.com/careers) · [jobs](https://sigmaratings.com/jobs) · [about/careers](https://sigmaratings.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/sigma-ratings/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Sigma+Ratings&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Sigma+Ratings&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Sigma+Ratings)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Asigmaratings.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Sigma+Ratings%22+London+analyst)
+
 ### Signal Ocean
 - Careers (try): [careers](https://thesignalgroup.com/careers) · [jobs](https://thesignalgroup.com/jobs) · [about/careers](https://thesignalgroup.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/signal-ocean/jobs/)
@@ -4215,6 +4800,24 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Signal+Ocean)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Athesignalgroup.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Signal+Ocean%22+London+analyst)
+
+### Smarsh
+- Careers (try): [careers](https://smarsh.com/careers) · [jobs](https://smarsh.com/jobs) · [about/careers](https://smarsh.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/smarsh/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Smarsh&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Smarsh&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Smarsh)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Asmarsh.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Smarsh%22+London+analyst)
+
+### Smartkarma
+- Careers (try): [careers](https://smartkarma.com/careers) · [jobs](https://smartkarma.com/jobs) · [about/careers](https://smartkarma.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/smartkarma/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Smartkarma&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Smartkarma&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Smartkarma)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Asmartkarma.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Smartkarma%22+London+analyst)
 
 ### Sparta Commodities
 - Careers (try): [careers](https://spartacommodities.com/careers) · [jobs](https://spartacommodities.com/jobs) · [about/careers](https://spartacommodities.com/about/careers)
@@ -4243,6 +4846,51 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Asproule.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Sproule%22+London+analyst)
 
+### Steeleye
+- Careers (try): [careers](https://steel-eye.com/careers) · [jobs](https://steel-eye.com/jobs) · [about/careers](https://steel-eye.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/steeleye/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Steeleye&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Steeleye&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Steeleye)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Asteel-eye.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Steeleye%22+London+analyst)
+
+### Substantive Research
+- Careers (try): [careers](https://substantiveresearch.com/careers) · [jobs](https://substantiveresearch.com/jobs) · [about/careers](https://substantiveresearch.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/substantive-research/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Substantive+Research&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Substantive+Research&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Substantive+Research)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Asubstantiveresearch.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Substantive+Research%22+London+analyst)
+
+### Sybenetix
+- Careers (try): [careers](https://sybenetix.com/careers) · [jobs](https://sybenetix.com/jobs) · [about/careers](https://sybenetix.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/sybenetix/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Sybenetix&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Sybenetix&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Sybenetix)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Asybenetix.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Sybenetix%22+London+analyst)
+
+### Tegus
+- Careers (try): [careers](https://tegus.com/careers) · [jobs](https://tegus.com/jobs) · [about/careers](https://tegus.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/tegus/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Tegus&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Tegus&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Tegus)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Ategus.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Tegus%22+London+analyst)
+
+### Third Bridge
+- Careers (try): [careers](https://thirdbridge.com/careers) · [jobs](https://thirdbridge.com/jobs) · [about/careers](https://thirdbridge.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/third-bridge/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Third+Bridge&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Third+Bridge&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Third+Bridge)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Athirdbridge.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Third+Bridge%22+London+analyst)
+
 ### Thunder Said Energy
 - Careers (try): [careers](https://thundersaidenergy.com/careers) · [jobs](https://thundersaidenergy.com/jobs) · [about/careers](https://thundersaidenergy.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/thunder-said-energy/jobs/)
@@ -4270,6 +4918,24 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Atradewindsnews.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22TradeWinds%22+London+analyst)
 
+### Trading Technologies Surveillance
+- Careers (try): [careers](https://tradingtechnologies.com/surveillance/careers) · [jobs](https://tradingtechnologies.com/surveillance/jobs) · [about/careers](https://tradingtechnologies.com/surveillance/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/trading-technologies-surveillance/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Trading+Technologies+Surveillance&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Trading+Technologies+Surveillance&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Trading+Technologies+Surveillance)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Atradingtechnologies.com%2Fsurveillance+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Trading+Technologies+Surveillance%22+London+analyst)
+
+### UnaVista
+- Careers (try): [careers](https://unavista.londonstockexchange.com/careers) · [jobs](https://unavista.londonstockexchange.com/jobs) · [about/careers](https://unavista.londonstockexchange.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/unavista/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=UnaVista&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=UnaVista&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=UnaVista)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aunavista.londonstockexchange.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22UnaVista%22+London+analyst)
+
 ### Upstream Online
 - Careers (try): [careers](https://upstreamonline.com/careers) · [jobs](https://upstreamonline.com/jobs) · [about/careers](https://upstreamonline.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/upstream-online/jobs/)
@@ -4287,6 +4953,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Ursa+Space+Systems)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Aursaspace.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Ursa+Space+Systems%22+London+analyst)
+
+### Verisk
+- Careers (try): [careers](https://verisk.com/careers) · [jobs](https://verisk.com/jobs) · [about/careers](https://verisk.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/verisk/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Verisk&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Verisk&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Verisk)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Averisk.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Verisk%22+London+analyst)
 
 ### Veson Nautical
 - Careers (try): [careers](https://veson.com/careers) · [jobs](https://veson.com/jobs) · [about/careers](https://veson.com/about/careers)
@@ -4314,6 +4989,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Veyt)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Aveyt.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Veyt%22+London+analyst)
+
+### Visible Alpha
+- Careers (try): [careers](https://visiblealpha.com/careers) · [jobs](https://visiblealpha.com/jobs) · [about/careers](https://visiblealpha.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/visible-alpha/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Visible+Alpha&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Visible+Alpha&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Visible+Alpha)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Avisiblealpha.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Visible+Alpha%22+London+analyst)
 
 ### Volue
 - Careers (try): [careers](https://volue.com/careers) · [jobs](https://volue.com/jobs) · [about/careers](https://volue.com/about/careers)
@@ -4387,6 +5071,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Awithintelligence.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22With+Intelligence%22+London+analyst)
 
+### Wolters Kluwer
+- Careers (try): [careers](https://wolterskluwer.com/careers) · [jobs](https://wolterskluwer.com/jobs) · [about/careers](https://wolterskluwer.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/wolters-kluwer/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Wolters+Kluwer&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Wolters+Kluwer&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Wolters+Kluwer)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Awolterskluwer.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Wolters+Kluwer%22+London+analyst)
+
 ### Wood Mackenzie
 - Careers (try): [careers](https://woodmac.com/careers) · [jobs](https://woodmac.com/jobs) · [about/careers](https://woodmac.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/wood-mackenzie/jobs/)
@@ -4413,6 +5106,24 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Xeneta)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Axeneta.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Xeneta%22+London+analyst)
+
+### YouGov
+- Careers (try): [careers](https://yougov.co.uk/careers) · [jobs](https://yougov.co.uk/jobs) · [about/careers](https://yougov.co.uk/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/yougov/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=YouGov&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=YouGov&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=YouGov)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Ayougov.co.uk+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22YouGov%22+London+analyst)
+
+### b-next
+- Careers (try): [careers](https://b-next.com/careers) · [jobs](https://b-next.com/jobs) · [about/careers](https://b-next.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/b-next/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=b-next&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=b-next&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=b-next)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Ab-next.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22b-next%22+London+analyst)
 
 ### bfinance
 - Careers (try): [careers](https://bfinance.com/careers) · [jobs](https://bfinance.com/jobs) · [about/careers](https://bfinance.com/about/careers)
@@ -12330,6 +13041,15 @@ Generated from `firms.csv` — 2081 firms.
 
 ## Metals
 
+### Acerinox
+- Careers (try): [careers](https://acerinox.com/careers) · [jobs](https://acerinox.com/jobs) · [about/careers](https://acerinox.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/acerinox/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Acerinox&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Acerinox&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Acerinox)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aacerinox.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Acerinox%22+London+analyst)
+
 ### Agnico Eagle
 - Careers (try): [careers](https://agnicoeagle.com/careers) · [jobs](https://agnicoeagle.com/jobs) · [about/careers](https://agnicoeagle.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/agnico-eagle/jobs/)
@@ -12402,6 +13122,24 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Aantofagasta.co.uk+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Antofagasta%22+London+analyst)
 
+### Aperam
+- Careers (try): [careers](https://aperam.com/careers) · [jobs](https://aperam.com/jobs) · [about/careers](https://aperam.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/aperam/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Aperam&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Aperam&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Aperam)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aaperam.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Aperam%22+London+analyst)
+
+### ArcelorMittal
+- Careers (try): [careers](https://arcelormittal.com/careers) · [jobs](https://arcelormittal.com/jobs) · [about/careers](https://arcelormittal.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/arcelormittal/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=ArcelorMittal&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=ArcelorMittal&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=ArcelorMittal)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aarcelormittal.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22ArcelorMittal%22+London+analyst)
+
 ### Argor-Heraeus
 - Careers (try): [careers](https://argor.com/careers) · [jobs](https://argor.com/jobs) · [about/careers](https://argor.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/argor-heraeus/jobs/)
@@ -12446,6 +13184,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Aurubis)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Aaurubis.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Aurubis%22+London+analyst)
+
+### Aurubis UK
+- Careers (try): [careers](https://aurubis.co.uk/careers) · [jobs](https://aurubis.co.uk/jobs) · [about/careers](https://aurubis.co.uk/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/aurubis-uk/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Aurubis+UK&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Aurubis+UK&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Aurubis+UK)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aaurubis.co.uk+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Aurubis+UK%22+London+analyst)
 
 ### BHP
 - Careers (try): [careers](https://bhp.com/careers) · [jobs](https://bhp.com/jobs) · [about/careers](https://bhp.com/about/careers)
@@ -12501,6 +13248,24 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Aglencore.co.uk+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Britannia+Refined+Metals%22+London+analyst)
 
+### British Steel
+- Careers (try): [careers](https://britishsteel.co.uk/careers) · [jobs](https://britishsteel.co.uk/jobs) · [about/careers](https://britishsteel.co.uk/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/british-steel/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=British+Steel&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=British+Steel&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=British+Steel)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Abritishsteel.co.uk+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22British+Steel%22+London+analyst)
+
+### Celsa Steel
+- Careers (try): [careers](https://celsauk.com/careers) · [jobs](https://celsauk.com/jobs) · [about/careers](https://celsauk.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/celsa-steel/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Celsa+Steel&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Celsa+Steel&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Celsa+Steel)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Acelsauk.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Celsa+Steel%22+London+analyst)
+
 ### Centamin
 - Careers (try): [careers](https://centamin.com/careers) · [jobs](https://centamin.com/jobs) · [about/careers](https://centamin.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/centamin/jobs/)
@@ -12536,6 +13301,33 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Concord+Resources+Metals)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Aconcordresources.co.uk+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Concord+Resources+Metals%22+London+analyst)
+
+### Derichebourg
+- Careers (try): [careers](https://derichebourg.com/careers) · [jobs](https://derichebourg.com/jobs) · [about/careers](https://derichebourg.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/derichebourg/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Derichebourg&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Derichebourg&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Derichebourg)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aderichebourg.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Derichebourg%22+London+analyst)
+
+### EMR Metal Recycling
+- Careers (try): [careers](https://emrgroup.com/careers) · [jobs](https://emrgroup.com/jobs) · [about/careers](https://emrgroup.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/emr-metal-recycling/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=EMR+Metal+Recycling&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=EMR+Metal+Recycling&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=EMR+Metal+Recycling)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aemrgroup.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22EMR+Metal+Recycling%22+London+analyst)
+
+### Ecobat
+- Careers (try): [careers](https://ecobat.com/careers) · [jobs](https://ecobat.com/jobs) · [about/careers](https://ecobat.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/ecobat/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Ecobat&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Ecobat&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Ecobat)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aecobat.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Ecobat%22+London+analyst)
 
 ### Ecora Resources
 - Careers (try): [careers](https://ecoraresources.com/careers) · [jobs](https://ecoraresources.com/jobs) · [about/careers](https://ecoraresources.com/about/careers)
@@ -12618,6 +13410,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Ageraldmetals.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Gerald+Metals%22+London+analyst)
 
+### Glencore Recycling
+- Careers (try): [careers](https://glencorerecycling.com/careers) · [jobs](https://glencorerecycling.com/jobs) · [about/careers](https://glencorerecycling.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/glencore-recycling/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Glencore+Recycling&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Glencore+Recycling&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Glencore+Recycling)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aglencorerecycling.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Glencore+Recycling%22+London+analyst)
+
 ### Gold Fields
 - Careers (try): [careers](https://goldfields.com/careers) · [jobs](https://goldfields.com/jobs) · [about/careers](https://goldfields.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/gold-fields/jobs/)
@@ -12653,6 +13454,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Heraeus+Precious+Metals)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Aheraeus-precious-metals.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Heraeus+Precious+Metals%22+London+analyst)
+
+### Hindalco
+- Careers (try): [careers](https://hindalco.com/careers) · [jobs](https://hindalco.com/jobs) · [about/careers](https://hindalco.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/hindalco/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Hindalco&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Hindalco&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Hindalco)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Ahindalco.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Hindalco%22+London+analyst)
 
 ### Hochschild Mining
 - Careers (try): [careers](https://hochschildmining.com/careers) · [jobs](https://hochschildmining.com/jobs) · [about/careers](https://hochschildmining.com/about/careers)
@@ -12699,6 +13509,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Aivanhoemines.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Ivanhoe+Mines%22+London+analyst)
 
+### JSW Steel
+- Careers (try): [careers](https://jsw.in/careers) · [jobs](https://jsw.in/jobs) · [about/careers](https://jsw.in/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/jsw-steel/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=JSW+Steel&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=JSW+Steel&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=JSW+Steel)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Ajsw.in+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22JSW+Steel%22+London+analyst)
+
 ### Kinross Gold
 - Careers (try): [careers](https://kinross.com/careers) · [jobs](https://kinross.com/jobs) · [about/careers](https://kinross.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/kinross-gold/jobs/)
@@ -12708,6 +13527,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Akinross.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Kinross+Gold%22+London+analyst)
 
+### Liberty Steel
+- Careers (try): [careers](https://libertysteelgroup.com/careers) · [jobs](https://libertysteelgroup.com/jobs) · [about/careers](https://libertysteelgroup.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/liberty-steel/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Liberty+Steel&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Liberty+Steel&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Liberty+Steel)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Alibertysteelgroup.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Liberty+Steel%22+London+analyst)
+
 ### Lundin Mining
 - Careers (try): [careers](https://lundinmining.com/careers) · [jobs](https://lundinmining.com/jobs) · [about/careers](https://lundinmining.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/lundin-mining/jobs/)
@@ -12716,6 +13544,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Lundin+Mining)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Alundinmining.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Lundin+Mining%22+London+analyst)
+
+### Marcegaglia
+- Careers (try): [careers](https://marcegaglia.com/careers) · [jobs](https://marcegaglia.com/jobs) · [about/careers](https://marcegaglia.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/marcegaglia/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Marcegaglia&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Marcegaglia&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Marcegaglia)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Amarcegaglia.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Marcegaglia%22+London+analyst)
 
 ### Metalor
 - Careers (try): [careers](https://metalor.com/careers) · [jobs](https://metalor.com/jobs) · [about/careers](https://metalor.com/about/careers)
@@ -12798,6 +13635,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Aoceanpartners.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Ocean+Partners%22+London+analyst)
 
+### Outokumpu
+- Careers (try): [careers](https://outokumpu.com/careers) · [jobs](https://outokumpu.com/jobs) · [about/careers](https://outokumpu.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/outokumpu/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Outokumpu&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Outokumpu&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Outokumpu)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aoutokumpu.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Outokumpu%22+London+analyst)
+
 ### PAMP
 - Careers (try): [careers](https://pamp.com/careers) · [jobs](https://pamp.com/jobs) · [about/careers](https://pamp.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/pamp/jobs/)
@@ -12843,6 +13689,24 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Ariotinto.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Rio+Tinto%22+London+analyst)
 
+### SSAB
+- Careers (try): [careers](https://ssab.com/careers) · [jobs](https://ssab.com/jobs) · [about/careers](https://ssab.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/ssab/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=SSAB&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=SSAB&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=SSAB)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Assab.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22SSAB%22+London+analyst)
+
+### Salzgitter
+- Careers (try): [careers](https://salzgitter-ag.com/careers) · [jobs](https://salzgitter-ag.com/jobs) · [about/careers](https://salzgitter-ag.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/salzgitter/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Salzgitter&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Salzgitter&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Salzgitter)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Asalzgitter-ag.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Salzgitter%22+London+analyst)
+
 ### Sharps Pixley
 - Careers (try): [careers](https://sharpspixley.com/careers) · [jobs](https://sharpspixley.com/jobs) · [about/careers](https://sharpspixley.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/sharps-pixley/jobs/)
@@ -12851,6 +13715,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Sharps+Pixley)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Asharpspixley.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Sharps+Pixley%22+London+analyst)
+
+### Sheffield Forgemasters
+- Careers (try): [careers](https://sheffieldforgemasters.com/careers) · [jobs](https://sheffieldforgemasters.com/jobs) · [about/careers](https://sheffieldforgemasters.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/sheffield-forgemasters/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Sheffield+Forgemasters&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Sheffield+Forgemasters&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Sheffield+Forgemasters)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Asheffieldforgemasters.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Sheffield+Forgemasters%22+London+analyst)
 
 ### Sibanye Stillwater
 - Careers (try): [careers](https://sibanyestillwater.com/careers) · [jobs](https://sibanyestillwater.com/jobs) · [about/careers](https://sibanyestillwater.com/about/careers)
@@ -12861,6 +13734,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Asibanyestillwater.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Sibanye+Stillwater%22+London+analyst)
 
+### Sims Metal
+- Careers (try): [careers](https://simsmetalmanagement.com/careers) · [jobs](https://simsmetalmanagement.com/jobs) · [about/careers](https://simsmetalmanagement.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/sims-metal/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Sims+Metal&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Sims+Metal&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Sims+Metal)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Asimsmetalmanagement.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Sims+Metal%22+London+analyst)
+
 ### Southern Copper
 - Careers (try): [careers](https://southerncoppercorp.com/careers) · [jobs](https://southerncoppercorp.com/jobs) · [about/careers](https://southerncoppercorp.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/southern-copper/jobs/)
@@ -12870,6 +13752,24 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Asoutherncoppercorp.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Southern+Copper%22+London+analyst)
 
+### Stena Recycling
+- Careers (try): [careers](https://stenarecycling.com/careers) · [jobs](https://stenarecycling.com/jobs) · [about/careers](https://stenarecycling.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/stena-recycling/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Stena+Recycling&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Stena+Recycling&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Stena+Recycling)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Astenarecycling.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Stena+Recycling%22+London+analyst)
+
+### Tata Steel Europe
+- Careers (try): [careers](https://tatasteeleurope.com/careers) · [jobs](https://tatasteeleurope.com/jobs) · [about/careers](https://tatasteeleurope.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/tata-steel-europe/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Tata+Steel+Europe&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Tata+Steel+Europe&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Tata+Steel+Europe)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Atatasteeleurope.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Tata+Steel+Europe%22+London+analyst)
+
 ### Teck Resources
 - Careers (try): [careers](https://teck.com/careers) · [jobs](https://teck.com/jobs) · [about/careers](https://teck.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/teck-resources/jobs/)
@@ -12878,6 +13778,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Teck+Resources)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Ateck.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Teck+Resources%22+London+analyst)
+
+### Thyssenkrupp Materials
+- Careers (try): [careers](https://thyssenkrupp-materials.com/careers) · [jobs](https://thyssenkrupp-materials.com/jobs) · [about/careers](https://thyssenkrupp-materials.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/thyssenkrupp-materials/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Thyssenkrupp+Materials&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Thyssenkrupp+Materials&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Thyssenkrupp+Materials)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Athyssenkrupp-materials.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Thyssenkrupp+Materials%22+London+analyst)
 
 ### Tiberius Group
 - Careers (try): [careers](https://tiberiusgroup.com/careers) · [jobs](https://tiberiusgroup.com/jobs) · [about/careers](https://tiberiusgroup.com/about/careers)
@@ -12932,6 +13841,24 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Vale)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Avale.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Vale%22+London+analyst)
+
+### Vedanta Resources
+- Careers (try): [careers](https://vedantaresources.com/careers) · [jobs](https://vedantaresources.com/jobs) · [about/careers](https://vedantaresources.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/vedanta-resources/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Vedanta+Resources&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Vedanta+Resources&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Vedanta+Resources)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Avedantaresources.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Vedanta+Resources%22+London+analyst)
+
+### Voestalpine
+- Careers (try): [careers](https://voestalpine.com/careers) · [jobs](https://voestalpine.com/jobs) · [about/careers](https://voestalpine.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/voestalpine/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Voestalpine&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Voestalpine&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Voestalpine)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Avoestalpine.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Voestalpine%22+London+analyst)
 
 ### Wheaton Precious Metals
 - Careers (try): [careers](https://wheatonpm.com/careers) · [jobs](https://wheatonpm.com/jobs) · [about/careers](https://wheatonpm.com/about/careers)
@@ -18207,6 +19134,42 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Aaot.trading+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22AOT+Trading%22+London+analyst)
 
+### Adani Global
+- Careers (try): [careers](https://adani.com/careers) · [jobs](https://adani.com/jobs) · [about/careers](https://adani.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/adani-global/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Adani+Global&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Adani+Global&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Adani+Global)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aadani.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Adani+Global%22+London+analyst)
+
+### Agritrade International
+- Careers (try): [careers](https://agritrade.com.sg/careers) · [jobs](https://agritrade.com.sg/jobs) · [about/careers](https://agritrade.com.sg/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/agritrade-international/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Agritrade+International&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Agritrade+International&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Agritrade+International)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aagritrade.com.sg+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Agritrade+International%22+London+analyst)
+
+### Alcazar Energy
+- Careers (try): [careers](https://alcazarenergy.com/careers) · [jobs](https://alcazarenergy.com/jobs) · [about/careers](https://alcazarenergy.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/alcazar-energy/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Alcazar+Energy&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Alcazar+Energy&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Alcazar+Energy)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aalcazarenergy.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Alcazar+Energy%22+London+analyst)
+
+### Ampol
+- Careers (try): [careers](https://ampol.com.au/careers) · [jobs](https://ampol.com.au/jobs) · [about/careers](https://ampol.com.au/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/ampol/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Ampol&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Ampol&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Ampol)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aampol.com.au+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Ampol%22+London+analyst)
+
 ### Arkema
 - Careers (try): [careers](https://arkema.com/careers) · [jobs](https://arkema.com/jobs) · [about/careers](https://arkema.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/arkema/jobs/)
@@ -18252,6 +19215,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Abb-energy.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22BB+Energy%22+London+analyst)
 
+### Bapco Trading
+- Careers (try): [careers](https://bapcotrading.com/careers) · [jobs](https://bapcotrading.com/jobs) · [about/careers](https://bapcotrading.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/bapco-trading/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Bapco+Trading&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Bapco+Trading&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Bapco+Trading)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Abapcotrading.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Bapco+Trading%22+London+analyst)
+
 ### Borealis
 - Careers (try): [careers](https://borealisgroup.com/careers) · [jobs](https://borealisgroup.com/jobs) · [about/careers](https://borealisgroup.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/borealis/jobs/)
@@ -18279,6 +19251,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Abrenntag.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Brenntag%22+London+analyst)
 
+### CNOOC Trading
+- Careers (try): [careers](https://cnoocinternational.com/careers) · [jobs](https://cnoocinternational.com/jobs) · [about/careers](https://cnoocinternational.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/cnooc-trading/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=CNOOC+Trading&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=CNOOC+Trading&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=CNOOC+Trading)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Acnoocinternational.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22CNOOC+Trading%22+London+analyst)
+
 ### Castleton Commodities International
 - Careers (try): [careers](https://cci.com/careers) · [jobs](https://cci.com/jobs) · [about/careers](https://cci.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/castleton-commodities-international/jobs/)
@@ -18287,6 +19268,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Castleton+Commodities+International)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Acci.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Castleton+Commodities+International%22+London+analyst)
+
+### Castleton Commodities Trading
+- Careers (try): [careers](https://cci.co.uk/careers) · [jobs](https://cci.co.uk/jobs) · [about/careers](https://cci.co.uk/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/castleton-commodities-trading/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Castleton+Commodities+Trading&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Castleton+Commodities+Trading&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Castleton+Commodities+Trading)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Acci.co.uk+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Castleton+Commodities+Trading%22+London+analyst)
 
 ### Celanese
 - Careers (try): [careers](https://celanese.com/careers) · [jobs](https://celanese.com/jobs) · [about/careers](https://celanese.com/about/careers)
@@ -18305,6 +19295,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Chemoil)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Achemoil.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Chemoil%22+London+analyst)
+
+### Chinaoil Hong Kong
+- Careers (try): [careers](https://chinaoilhk.com/careers) · [jobs](https://chinaoilhk.com/jobs) · [about/careers](https://chinaoilhk.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/chinaoil-hong-kong/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Chinaoil+Hong+Kong&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Chinaoil+Hong+Kong&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Chinaoil+Hong+Kong)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Achinaoilhk.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Chinaoil+Hong+Kong%22+London+analyst)
 
 ### Clariant
 - Careers (try): [careers](https://clariant.com/careers) · [jobs](https://clariant.com/jobs) · [about/careers](https://clariant.com/about/careers)
@@ -18387,6 +19386,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Aelementis.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Elementis%22+London+analyst)
 
+### Emarat
+- Careers (try): [careers](https://emarat.ae/careers) · [jobs](https://emarat.ae/jobs) · [about/careers](https://emarat.ae/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/emarat/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Emarat&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Emarat&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Emarat)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aemarat.ae+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Emarat%22+London+analyst)
+
 ### Emerald Energy
 - Careers (try): [careers](https://emeraldenergy.com/careers) · [jobs](https://emeraldenergy.com/jobs) · [about/careers](https://emeraldenergy.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/emerald-energy/jobs/)
@@ -18404,6 +19412,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Engelhart+Commodities)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Aengelhartct.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Engelhart+Commodities%22+London+analyst)
+
+### Enoc
+- Careers (try): [careers](https://enoc.com/careers) · [jobs](https://enoc.com/jobs) · [about/careers](https://enoc.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/enoc/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Enoc&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Enoc&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Enoc)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aenoc.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Enoc%22+London+analyst)
 
 ### Evonik
 - Careers (try): [careers](https://evonik.com/careers) · [jobs](https://evonik.com/jobs) · [about/careers](https://evonik.com/about/careers)
@@ -18423,6 +19440,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Afreepoint.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Freepoint+Commodities%22+London+analyst)
 
+### Freepoint Eco-Systems
+- Careers (try): [careers](https://freepointeco.com/careers) · [jobs](https://freepointeco.com/jobs) · [about/careers](https://freepointeco.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/freepoint-eco-systems/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Freepoint+Eco-Systems&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Freepoint+Eco-Systems&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Freepoint+Eco-Systems)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Afreepointeco.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Freepoint+Eco-Systems%22+London+analyst)
+
 ### Gerald Group
 - Careers (try): [careers](https://geraldgroup.com/careers) · [jobs](https://geraldgroup.com/jobs) · [about/careers](https://geraldgroup.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/gerald-group/jobs/)
@@ -18441,6 +19467,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Aglencore.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Glencore%22+London+analyst)
 
+### Glencore Energy UK
+- Careers (try): [careers](https://glencore.co.jp/careers) · [jobs](https://glencore.co.jp/jobs) · [about/careers](https://glencore.co.jp/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/glencore-energy-uk/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Glencore+Energy+UK&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Glencore+Energy+UK&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Glencore+Energy+UK)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aglencore.co.jp+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Glencore+Energy+UK%22+London+analyst)
+
 ### Gunvor
 - Careers (try): [careers](https://gunvorgroup.com/careers) · [jobs](https://gunvorgroup.com/jobs) · [about/careers](https://gunvorgroup.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/gunvor/jobs/)
@@ -18449,6 +19484,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Gunvor)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Agunvorgroup.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Gunvor%22+London+analyst)
+
+### Gunvor Services
+- Careers (try): [careers](https://gunvor.com/careers) · [jobs](https://gunvor.com/jobs) · [about/careers](https://gunvor.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/gunvor-services/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Gunvor+Services&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Gunvor+Services&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Gunvor+Services)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Agunvor.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Gunvor+Services%22+London+analyst)
 
 ### Hanwa
 - Careers (try): [careers](https://hanwa.co.jp/careers) · [jobs](https://hanwa.co.jp/jobs) · [about/careers](https://hanwa.co.jp/about/careers)
@@ -18459,6 +19503,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Ahanwa.co.jp+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Hanwa%22+London+analyst)
 
+### Hanwa Europe
+- Careers (try): [careers](https://hanwa.eu/careers) · [jobs](https://hanwa.eu/jobs) · [about/careers](https://hanwa.eu/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/hanwa-europe/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Hanwa+Europe&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Hanwa+Europe&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Hanwa+Europe)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Ahanwa.eu+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Hanwa+Europe%22+London+analyst)
+
 ### Hartree Partners
 - Careers (try): [careers](https://hartreepartners.com/careers) · [jobs](https://hartreepartners.com/jobs) · [about/careers](https://hartreepartners.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/hartree-partners/jobs/)
@@ -18468,6 +19521,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Ahartreepartners.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Hartree+Partners%22+London+analyst)
 
+### Hartree Partners Europe
+- Careers (try): [careers](https://hartree.com/careers) · [jobs](https://hartree.com/jobs) · [about/careers](https://hartree.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/hartree-partners-europe/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Hartree+Partners+Europe&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Hartree+Partners+Europe&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Hartree+Partners+Europe)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Ahartree.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Hartree+Partners+Europe%22+London+analyst)
+
 ### Helm AG
 - Careers (try): [careers](https://helmag.com/careers) · [jobs](https://helmag.com/jobs) · [about/careers](https://helmag.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/helm-ag/jobs/)
@@ -18476,6 +19538,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Helm+AG)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Ahelmag.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Helm+AG%22+London+analyst)
+
+### Hyundai Corporation
+- Careers (try): [careers](https://hyundaicorp.com/careers) · [jobs](https://hyundaicorp.com/jobs) · [about/careers](https://hyundaicorp.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/hyundai-corporation/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Hyundai+Corporation&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Hyundai+Corporation&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Hyundai+Corporation)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Ahyundaicorp.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Hyundai+Corporation%22+London+analyst)
 
 ### IMCD
 - Careers (try): [careers](https://imcdgroup.com/careers) · [jobs](https://imcdgroup.com/jobs) · [about/careers](https://imcdgroup.com/about/careers)
@@ -18495,6 +19566,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Aixm.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22IXM%22+London+analyst)
 
+### Idemitsu Trading
+- Careers (try): [careers](https://idemitsu.co.uk/careers) · [jobs](https://idemitsu.co.uk/jobs) · [about/careers](https://idemitsu.co.uk/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/idemitsu-trading/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Idemitsu+Trading&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Idemitsu+Trading&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Idemitsu+Trading)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aidemitsu.co.uk+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Idemitsu+Trading%22+London+analyst)
+
 ### Ineos
 - Careers (try): [careers](https://ineos.com/careers) · [jobs](https://ineos.com/jobs) · [about/careers](https://ineos.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/ineos/jobs/)
@@ -18513,6 +19593,24 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Aitochu.co.jp+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Itochu%22+London+analyst)
 
+### Itochu Europe
+- Careers (try): [careers](https://itochu.eu/careers) · [jobs](https://itochu.eu/jobs) · [about/careers](https://itochu.eu/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/itochu-europe/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Itochu+Europe&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Itochu+Europe&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Itochu+Europe)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aitochu.eu+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Itochu+Europe%22+London+analyst)
+
+### Iwatani
+- Careers (try): [careers](https://iwatani.co.jp/careers) · [jobs](https://iwatani.co.jp/jobs) · [about/careers](https://iwatani.co.jp/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/iwatani/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Iwatani&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Iwatani&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Iwatani)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aiwatani.co.jp+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Iwatani%22+London+analyst)
+
 ### Johnson Matthey
 - Careers (try): [careers](https://matthey.com/careers) · [jobs](https://matthey.com/jobs) · [about/careers](https://matthey.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/johnson-matthey/jobs/)
@@ -18521,6 +19619,24 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Johnson+Matthey)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Amatthey.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Johnson+Matthey%22+London+analyst)
+
+### Kanematsu
+- Careers (try): [careers](https://kanematsu.co.jp/careers) · [jobs](https://kanematsu.co.jp/jobs) · [about/careers](https://kanematsu.co.jp/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/kanematsu/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Kanematsu&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Kanematsu&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Kanematsu)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Akanematsu.co.jp+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Kanematsu%22+London+analyst)
+
+### LX International
+- Careers (try): [careers](https://lxinternational.com/careers) · [jobs](https://lxinternational.com/jobs) · [about/careers](https://lxinternational.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/lx-international/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=LX+International&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=LX+International&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=LX+International)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Alxinternational.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22LX+International%22+London+analyst)
 
 ### Litasco
 - Careers (try): [careers](https://litasco.com/careers) · [jobs](https://litasco.com/jobs) · [about/careers](https://litasco.com/about/careers)
@@ -18549,6 +19665,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Amarubeni.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Marubeni%22+London+analyst)
 
+### Marubeni Europe
+- Careers (try): [careers](https://marubeni-europe.com/careers) · [jobs](https://marubeni-europe.com/jobs) · [about/careers](https://marubeni-europe.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/marubeni-europe/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Marubeni+Europe&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Marubeni+Europe&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Marubeni+Europe)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Amarubeni-europe.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Marubeni+Europe%22+London+analyst)
+
 ### Mercuria
 - Careers (try): [careers](https://mercuria.com/careers) · [jobs](https://mercuria.com/jobs) · [about/careers](https://mercuria.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/mercuria/jobs/)
@@ -18557,6 +19682,24 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Mercuria)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Amercuria.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Mercuria%22+London+analyst)
+
+### Mercuria Energy Trading UK
+- Careers (try): [careers](https://mercuria.co.uk/careers) · [jobs](https://mercuria.co.uk/jobs) · [about/careers](https://mercuria.co.uk/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/mercuria-energy-trading-uk/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Mercuria+Energy+Trading+UK&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Mercuria+Energy+Trading+UK&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Mercuria+Energy+Trading+UK)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Amercuria.co.uk+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Mercuria+Energy+Trading+UK%22+London+analyst)
+
+### Millennium Energy
+- Careers (try): [careers](https://millenniumenergy.com/careers) · [jobs](https://millenniumenergy.com/jobs) · [about/careers](https://millenniumenergy.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/millennium-energy/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Millennium+Energy&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Millennium+Energy&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Millennium+Energy)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Amillenniumenergy.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Millennium+Energy%22+London+analyst)
 
 ### Mitsubishi Chemical
 - Careers (try): [careers](https://mcgc.com/careers) · [jobs](https://mcgc.com/jobs) · [about/careers](https://mcgc.com/about/careers)
@@ -18585,6 +19728,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Amitsui.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Mitsui+and+Co%22+London+analyst)
 
+### Mitsui and Co Europe
+- Careers (try): [careers](https://mitsui.eu/careers) · [jobs](https://mitsui.eu/jobs) · [about/careers](https://mitsui.eu/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/mitsui-and-co-europe/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Mitsui+and+Co+Europe&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Mitsui+and+Co+Europe&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Mitsui+and+Co+Europe)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Amitsui.eu+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Mitsui+and+Co+Europe%22+London+analyst)
+
 ### Muntajat
 - Careers (try): [careers](https://muntajat.com/careers) · [jobs](https://muntajat.com/jobs) · [about/careers](https://muntajat.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/muntajat/jobs/)
@@ -18594,6 +19746,24 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Amuntajat.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Muntajat%22+London+analyst)
 
+### Nippon Steel Trading
+- Careers (try): [careers](https://nst.nipponsteel.com/careers) · [jobs](https://nst.nipponsteel.com/jobs) · [about/careers](https://nst.nipponsteel.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/nippon-steel-trading/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Nippon+Steel+Trading&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Nippon+Steel+Trading&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Nippon+Steel+Trading)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Anst.nipponsteel.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Nippon+Steel+Trading%22+London+analyst)
+
+### Noble Resources
+- Careers (try): [careers](https://thisisnoble.com/careers) · [jobs](https://thisisnoble.com/jobs) · [about/careers](https://thisisnoble.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/noble-resources/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Noble+Resources&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Noble+Resources&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Noble+Resources)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Athisisnoble.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Noble+Resources%22+London+analyst)
+
 ### Nouryon
 - Careers (try): [careers](https://nouryon.com/careers) · [jobs](https://nouryon.com/jobs) · [about/careers](https://nouryon.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/nouryon/jobs/)
@@ -18602,6 +19772,24 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Nouryon)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Anouryon.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Nouryon%22+London+analyst)
+
+### Oando
+- Careers (try): [careers](https://oandoplc.com/careers) · [jobs](https://oandoplc.com/jobs) · [about/careers](https://oandoplc.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/oando/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Oando&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Oando&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Oando)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aoandoplc.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Oando%22+London+analyst)
+
+### Oilinvest
+- Careers (try): [careers](https://oilinvest.com/careers) · [jobs](https://oilinvest.com/jobs) · [about/careers](https://oilinvest.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/oilinvest/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Oilinvest&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Oilinvest&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Oilinvest)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aoilinvest.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Oilinvest%22+London+analyst)
 
 ### Omya
 - Careers (try): [careers](https://omya.com/careers) · [jobs](https://omya.com/jobs) · [about/careers](https://omya.com/about/careers)
@@ -18630,6 +19818,33 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Apetraco.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Petraco+Oil%22+London+analyst)
 
+### Petrogress
+- Careers (try): [careers](https://petrogres.com/careers) · [jobs](https://petrogres.com/jobs) · [about/careers](https://petrogres.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/petrogress/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Petrogress&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Petrogress&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Petrogress)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Apetrogres.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Petrogress%22+London+analyst)
+
+### Posco International
+- Careers (try): [careers](https://poscointl.com/careers) · [jobs](https://poscointl.com/jobs) · [about/careers](https://poscointl.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/posco-international/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Posco+International&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Posco+International&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Posco+International)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aposcointl.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Posco+International%22+London+analyst)
+
+### Reliance Global Energy
+- Careers (try): [careers](https://ril.co.uk/careers) · [jobs](https://ril.co.uk/jobs) · [about/careers](https://ril.co.uk/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/reliance-global-energy/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Reliance+Global+Energy&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Reliance+Global+Energy&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Reliance+Global+Energy)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aril.co.uk+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Reliance+Global+Energy%22+London+analyst)
+
 ### SABIC
 - Careers (try): [careers](https://sabic.com/careers) · [jobs](https://sabic.com/jobs) · [about/careers](https://sabic.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/sabic/jobs/)
@@ -18638,6 +19853,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=SABIC)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Asabic.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22SABIC%22+London+analyst)
+
+### SK Networks
+- Careers (try): [careers](https://sknetworks.co.kr/careers) · [jobs](https://sknetworks.co.kr/jobs) · [about/careers](https://sknetworks.co.kr/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/sk-networks/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=SK+Networks&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=SK+Networks&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=SK+Networks)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Asknetworks.co.kr+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22SK+Networks%22+London+analyst)
 
 ### Sahara Energy
 - Careers (try): [careers](https://saharagroup.com/careers) · [jobs](https://saharagroup.com/jobs) · [about/careers](https://saharagroup.com/about/careers)
@@ -18648,6 +19872,51 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Asaharagroup.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Sahara+Energy%22+London+analyst)
 
+### Sahara Group
+- Careers (try): [careers](https://sahara-group.com/careers) · [jobs](https://sahara-group.com/jobs) · [about/careers](https://sahara-group.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/sahara-group/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Sahara+Group&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Sahara+Group&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Sahara+Group)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Asahara-group.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Sahara+Group%22+London+analyst)
+
+### Samsung C and T Trading
+- Careers (try): [careers](https://samsungcnt.com/careers) · [jobs](https://samsungcnt.com/jobs) · [about/careers](https://samsungcnt.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/samsung-c-and-t-trading/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Samsung+C+and+T+Trading&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Samsung+C+and+T+Trading&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Samsung+C+and+T+Trading)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Asamsungcnt.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Samsung+C+and+T+Trading%22+London+analyst)
+
+### Saras Trading
+- Careers (try): [careers](https://sarasenergia.com/careers) · [jobs](https://sarasenergia.com/jobs) · [about/careers](https://sarasenergia.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/saras-trading/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Saras+Trading&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Saras+Trading&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Saras+Trading)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Asarasenergia.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Saras+Trading%22+London+analyst)
+
+### Sinochem International
+- Careers (try): [careers](https://sinochemintl.com/careers) · [jobs](https://sinochemintl.com/jobs) · [about/careers](https://sinochemintl.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/sinochem-international/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Sinochem+International&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Sinochem+International&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Sinochem+International)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Asinochemintl.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Sinochem+International%22+London+analyst)
+
+### Sinopec Trading
+- Careers (try): [careers](https://sinopec.com/careers) · [jobs](https://sinopec.com/jobs) · [about/careers](https://sinopec.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/sinopec-trading/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Sinopec+Trading&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Sinopec+Trading&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Sinopec+Trading)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Asinopec.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Sinopec+Trading%22+London+analyst)
+
 ### Sojitz
 - Careers (try): [careers](https://sojitz.com/careers) · [jobs](https://sojitz.com/jobs) · [about/careers](https://sojitz.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/sojitz/jobs/)
@@ -18656,6 +19925,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Sojitz)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Asojitz.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Sojitz%22+London+analyst)
+
+### Sojitz Europe
+- Careers (try): [careers](https://sojitz-europe.com/careers) · [jobs](https://sojitz-europe.com/jobs) · [about/careers](https://sojitz-europe.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/sojitz-europe/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Sojitz+Europe&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Sojitz+Europe&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Sojitz+Europe)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Asojitz-europe.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Sojitz+Europe%22+London+analyst)
 
 ### Solvay
 - Careers (try): [careers](https://solvay.com/careers) · [jobs](https://solvay.com/jobs) · [about/careers](https://solvay.com/about/careers)
@@ -18675,6 +19953,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Asumitomocorp.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Sumitomo+Corporation%22+London+analyst)
 
+### Sumitomo Corporation Europe
+- Careers (try): [careers](https://sumitomocorp.eu/careers) · [jobs](https://sumitomocorp.eu/jobs) · [about/careers](https://sumitomocorp.eu/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/sumitomo-corporation-europe/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Sumitomo+Corporation+Europe&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Sumitomo+Corporation+Europe&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Sumitomo+Corporation+Europe)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Asumitomocorp.eu+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Sumitomo+Corporation+Europe%22+London+analyst)
+
 ### Synthomer
 - Careers (try): [careers](https://synthomer.com/careers) · [jobs](https://synthomer.com/jobs) · [about/careers](https://synthomer.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/synthomer/jobs/)
@@ -18684,6 +19971,24 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Asynthomer.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Synthomer%22+London+analyst)
 
+### Tamoil
+- Careers (try): [careers](https://tamoil.com/careers) · [jobs](https://tamoil.com/jobs) · [about/careers](https://tamoil.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/tamoil/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Tamoil&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Tamoil&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Tamoil)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Atamoil.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Tamoil%22+London+analyst)
+
+### Total Trading Asia
+- Careers (try): [careers](https://totalenergies.sg/careers) · [jobs](https://totalenergies.sg/jobs) · [about/careers](https://totalenergies.sg/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/total-trading-asia/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Total+Trading+Asia&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Total+Trading+Asia&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Total+Trading+Asia)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Atotalenergies.sg+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Total+Trading+Asia%22+London+analyst)
+
 ### Toyota Tsusho
 - Careers (try): [careers](https://toyota-tsusho.com/careers) · [jobs](https://toyota-tsusho.com/jobs) · [about/careers](https://toyota-tsusho.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/toyota-tsusho/jobs/)
@@ -18692,6 +19997,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Toyota+Tsusho)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Atoyota-tsusho.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Toyota+Tsusho%22+London+analyst)
+
+### Toyota Tsusho Europe
+- Careers (try): [careers](https://toyotatsusho.eu/careers) · [jobs](https://toyotatsusho.eu/jobs) · [about/careers](https://toyotatsusho.eu/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/toyota-tsusho-europe/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Toyota+Tsusho+Europe&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Toyota+Tsusho+Europe&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Toyota+Tsusho+Europe)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Atoyotatsusho.eu+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Toyota+Tsusho+Europe%22+London+analyst)
 
 ### Trafigura
 - Careers (try): [careers](https://trafigura.com/careers) · [jobs](https://trafigura.com/jobs) · [about/careers](https://trafigura.com/about/careers)
@@ -18756,6 +20070,15 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Atrinseo.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Trinseo%22+London+analyst)
 
+### Unipec Asia
+- Careers (try): [careers](https://unipec.com/careers) · [jobs](https://unipec.com/jobs) · [about/careers](https://unipec.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/unipec-asia/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Unipec+Asia&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Unipec+Asia&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Unipec+Asia)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Aunipec.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Unipec+Asia%22+London+analyst)
+
 ### Univar Solutions
 - Careers (try): [careers](https://univarsolutions.com/careers) · [jobs](https://univarsolutions.com/jobs) · [about/careers](https://univarsolutions.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/univar-solutions/jobs/)
@@ -18783,6 +20106,33 @@ Generated from `firms.csv` — 2081 firms.
 - [Google X-ray careers](https://www.google.com/search?q=site%3Avitol.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Vitol%22+London+analyst)
 
+### Vitol Group Services
+- Careers (try): [careers](https://vitol.co.uk/careers) · [jobs](https://vitol.co.uk/jobs) · [about/careers](https://vitol.co.uk/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/vitol-group-services/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Vitol+Group+Services&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Vitol+Group+Services&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Vitol+Group+Services)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Avitol.co.uk+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Vitol+Group+Services%22+London+analyst)
+
+### Viva Energy
+- Careers (try): [careers](https://vivaenergy.com.au/careers) · [jobs](https://vivaenergy.com.au/jobs) · [about/careers](https://vivaenergy.com.au/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/viva-energy/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Viva+Energy&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Viva+Energy&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Viva+Energy)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Avivaenergy.com.au+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Viva+Energy%22+London+analyst)
+
+### Vivo Energy
+- Careers (try): [careers](https://vivoenergy.com/careers) · [jobs](https://vivoenergy.com/jobs) · [about/careers](https://vivoenergy.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/vivo-energy/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Vivo+Energy&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Vivo+Energy&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Vivo+Energy)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Avivoenergy.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Vivo+Energy%22+London+analyst)
+
 ### Wacker Chemie
 - Careers (try): [careers](https://wacker.com/careers) · [jobs](https://wacker.com/jobs) · [about/careers](https://wacker.com/about/careers)
 - [LinkedIn company](https://www.linkedin.com/company/wacker-chemie/jobs/)
@@ -18791,3 +20141,21 @@ Generated from `firms.csv` — 2081 firms.
 - [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Wacker+Chemie)
 - [Google X-ray careers](https://www.google.com/search?q=site%3Awacker.com+careers+OR+jobs+analyst)
 - [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Wacker+Chemie%22+London+analyst)
+
+### Z Energy
+- Careers (try): [careers](https://z.co.nz/careers) · [jobs](https://z.co.nz/jobs) · [about/careers](https://z.co.nz/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/z-energy/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Z+Energy&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Z+Energy&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Z+Energy)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Az.co.nz+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Z+Energy%22+London+analyst)
+
+### Zhenhua Oil
+- Careers (try): [careers](https://zhenhuaoil.com/careers) · [jobs](https://zhenhuaoil.com/jobs) · [about/careers](https://zhenhuaoil.com/about/careers)
+- [LinkedIn company](https://www.linkedin.com/company/zhenhua-oil/jobs/)
+- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords=Zhenhua+Oil&location=London%2C%20England%2C%20United%20Kingdom)
+- [Indeed](https://uk.indeed.com/jobs?q=Zhenhua+Oil&l=London)
+- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword=Zhenhua+Oil)
+- [Google X-ray careers](https://www.google.com/search?q=site%3Azhenhuaoil.com+careers+OR+jobs+analyst)
+- [Google X-ray LinkedIn](https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs+%22Zhenhua+Oil%22+London+analyst)
