@@ -75,7 +75,11 @@ jobs:
           # heartbeat the schedule could switch off silently, with no error
           # anywhere, if a few runs in a row happened to change nothing.
           mkdir -p .github && date -u +%FT%TZ > .github/last-run
-          git add -f .github/last-run jobs.db.gpg 2>/dev/null || true
+          # Staged separately on purpose: `git add a b` stages NOTHING if b is
+          # missing, and jobs.db.gpg is missing on any run that failed before the
+          # database existed — exactly the runs where the heartbeat matters most.
+          git add -f .github/last-run
+          [ -f jobs.db.gpg ] && git add -f jobs.db.gpg
           git commit -m "weekly run $(date -u +%F)" || echo "nothing to commit"
           git push || true
 
