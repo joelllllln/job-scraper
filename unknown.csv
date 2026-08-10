@@ -1,0 +1,993 @@
+name,category,domain
+Engelhart Commodities,trading_house,
+Mercuria,trading_house,
+Hartree Partners,trading_house,
+BB Energy,trading_house,
+Wilmar International,softs,
+Baird and Co,metals,
+COFCO International,softs,
+Louis Dreyfus Company,softs,
+Concord Energy,trading_house,
+IXM,trading_house,
+Cargill,softs,
+Gerald Group,trading_house,geraldgroup.com
+Gleadell,softs,
+Auramet,metals,auramet.com
+Ameropa,softs,ameropa.com
+Touton,softs,touton.com
+Bunge,softs,bunge.com
+Sucafina,softs,sucafina.com
+Trammo,trading_house,trammo.com
+Olam Agri,softs,olamagri.com
+Varo Energy,refining,
+Greenergy,refining,
+Traxys,trading_house,traxys.com
+Concord Resources,metals,concordresources.com
+SOCAR Trading,major,socartrading.com
+Prax Group,refining,praxgroup.com
+Glencore,trading_house,glencore.com
+ofi,softs,ofi.com
+Openfield,softs,openfield.co.uk
+Czarnikow,softs,czarnikow.com
+EDF Trading,power_gas,
+Uniper,power_gas,
+Repsol,major,repsol.com
+Volcafe,softs,volcafe.com
+ED and F Man,softs,edfman.com
+Aramco Trading,major,aramcotrading.com
+Freepoint Commodities,trading_house,freepoint.com
+Sucden,softs,sucden.com
+OMV,major,omv.com
+Fortum,power_gas,
+Orsted,power_gas,
+Cockett Marine Oil,bunkers,cockettgroup.com
+Frontier Agriculture,softs,frontierag.co.uk
+Phillips 66,refining,phillips66.com
+ADNOC,major,adnoc.ae
+Chevron,refining,chevron.com
+Monjasa,bunkers,monjasa.com
+InCommodities,power_gas,incommodities.com
+Neste,refining,neste.com
+Petrobras,major,petrobras.com.br
+Vattenfall,power_gas,vattenfall.com
+Orlen,major,orlen.pl
+Zenobe,flex_optimiser,
+Statkraft,power_gas,statkraft.com
+MET Group,power_gas,met.com
+Limejump,flex_optimiser,limejump.com
+Alvean,softs,alvean.com
+QatarEnergy,major,qatarenergy.qa
+Bunker Holding,bunkers,bunker-holding.com
+Centrica Energy,power_gas,centrica.com
+Entrix,flex_optimiser,
+Statera Energy,flex_optimiser,
+KPI OceanConnect,bunkers,kpioceanconnect.com
+Axpo,power_gas,axpo.com
+Apatura,flex_optimiser,
+Yu Energy,flex_optimiser,
+Flexitricity,flex_optimiser,flexitricity.com
+SEFE Marketing and Trading,power_gas,sefe-mt.com
+JERA Global Markets,lng,
+Pulse Clean Energy,flex_optimiser,pulsecleanenergy.com
+Kraken Technologies,flex_optimiser,kraken.tech
+Axle Energy,flex_optimiser,axle.energy
+Engie Global Markets,power_gas,engie.com
+Scoular,softs,scoular.com
+Alpiq,power_gas,alpiq.com
+Citadel Securities,prop_mm,
+Venture Global,lng,venturegloballng.com
+Habitat Energy,flex_optimiser,habitat.energy
+Cheniere Marketing,lng,cheniere.com
+Gresham House,flex_optimiser,greshamhouse.com
+SSE,power_gas,sse.com
+Susquehanna,prop_mm,sig.com
+SmartestEnergy,flex_optimiser,smartestenergy.com
+Flow Traders,prop_mm,flowtraders.com
+OSTC,prop_mm,
+Da Vinci Derivatives,prop_mm,
+Liquid Capital,prop_mm,
+Minerva Bunkering,bunkers,minervabunkering.com
+DRW,prop_mm,drw.com
+Jump Trading,prop_mm,jumptrading.com
+Wolverine Trading,prop_mm,
+VPI,power_gas,vpi-i.com
+Eku Energy,flex_optimiser,ekuenergy.com
+Schneider Trading,prop_mm,
+Futex,prop_mm,
+Harmony Energy,flex_optimiser,harmonyenergy.co.uk
+Modo Energy,flex_optimiser,modoenergy.com
+Northlander Commodity Advisors,fund,
+Optiver,prop_mm,optiver.com
+Squarepoint Capital,prop_mm,squarepoint-capital.com
+Man Group,fund,
+Andurand Capital,fund,andurandcapital.com
+Jane Street,prop_mm,janestreet.com
+CTC Trading,prop_mm,chicagotrading.com
+Tower Research Capital,prop_mm,tower-research.com
+Corona Energy,flex_optimiser,coronaenergy.co.uk
+Schonfeld,fund,
+PEAK6,prop_mm,peak6.com
+Florin Court Capital,fund,florincourt.com
+Eisler Capital,fund,
+Conrad Energy,flex_optimiser,conradenergy.co.uk
+Trium Capital,fund,
+Hoegh Evi,lng,hoeghevi.com
+Amplify Trading,prop_mm,amplifyme.com
+Westbeck Capital,fund,westbeckcapital.com
+Danske Commodities,power_gas,danskecommodities.com
+Moore Capital,fund,
+Akuna Capital,prop_mm,akunacapital.com
+Woodside Energy,lng,woodside.com
+BlueCrest Capital,fund,bluecrestcapital.com
+G-Research,prop_mm,gresearch.com
+Winton,fund,winton.com
+Point72,fund,point72.com
+Selwood Asset Management,fund,selwoodam.com
+Svelland Capital,fund,svelland.com
+Qube Research and Technologies,prop_mm,qube-rt.com
+Arini,fund,arini.com
+Cheyne Capital,fund,cheynecapital.com
+Sona Asset Management,fund,sonaam.com
+Aspect Capital,fund,aspectcapital.com
+Rokos Capital,fund,rokoscapital.com
+Platts Analytics,data_vendor,
+LMR Partners,fund,lmrpartners.com
+Kite Lake Capital,fund,kitelake.com
+Millennium,fund,mlp.com
+IMC Trading,prop_mm,imc.com
+Balyasny Asset Management,fund,bamfunds.com
+Marshall Wace,fund,mwam.com
+Verition,fund,verition.com
+Axia Futures,prop_mm,axiafutures.com
+Bloomberg,data_vendor,
+Capula Investment Management,fund,capulaglobal.com
+FGE,data_vendor,fgenergy.com
+TCI Fund Management,fund,tcifund.com
+Autonomy Capital,fund,autonomycapital.com
+Montel,data_vendor,montelnews.com
+Ursa Space Systems,data_vendor,ursaspace.com
+Brevan Howard,fund,brevanhoward.com
+MarineTraffic,data_vendor,marinetraffic.com
+ExodusPoint,fund,exoduspoint.com
+Veson Nautical,data_vendor,veson.com
+Egerton Capital,fund,egertoncapital.com
+Quantum Commodity Intelligence,data_vendor,qcintel.com
+Kaiko,data_vendor,kaiko.com
+StoneX,broker,
+Sucden Financial,broker,
+Lansdowne Partners,fund,lansdownepartners.com
+RJ OBrien,broker,
+Timera Energy,data_vendor,timera-energy.com
+Vantage Capital Markets,broker,
+LCP Delta,data_vendor,lcp.com
+PVM Oil Associates,broker,
+Signal Ocean,data_vendor,thesignalgroup.com
+BGC Group,broker,
+General Index,data_vendor,general-index.com
+Numerco,carbon,numerco.com
+Volue,data_vendor,volue.com
+Spire Global,data_vendor,spire.com
+Sparta Commodities,data_vendor,spartacommodities.com
+Intercontinental Exchange,exchange,
+London Metal Exchange,exchange,
+Braemar,shipbroker,braemar.com
+CME Group,exchange,
+Energy Intelligence,data_vendor,energyintel.com
+ICIS,data_vendor,icis.com
+AFS Energy,carbon,afsenergy.com
+SSY,shipbroker,ssyonline.com
+Tradition,broker,tradition.com
+Vertis Environmental Finance,carbon,vertis.com
+ClearBlue Markets,carbon,clearbluemarkets.com
+Keyrock,crypto,
+OPIS,data_vendor,opisnet.com
+Argus Media,data_vendor,argusmedia.com
+Redshaw Advisors,carbon,redshawadvisors.com
+Affinity Shipping,shipbroker,affinityship.com
+STX Group,carbon,stxgroup.com
+ADM Investor Services,broker,admis.com
+Clarksons,shipbroker,clarksons.com
+Griffin Markets,broker,griffinmarkets.com
+Portofino Technologies,crypto,portofino.tech
+B2C2,crypto,b2c2.com
+Trading Technologies,exchange,tradingtechnologies.com
+Archax,crypto,archax.com
+Amber Group,crypto,ambergroup.io
+Veyt,data_vendor,veyt.com
+Eni,major,eni.com
+EEX,exchange,eex.com
+Cumberland,crypto,cumberland.io
+Freight Investor Services,broker,freightinvestorservices.com
+Copper,crypto,copper.co
+BNP Paribas,bank,
+Societe Generale,bank,
+Natixis,bank,
+Howe Robinson Partners,shipbroker,howerobinson.com
+Rabobank,bank,
+JPMorgan,bank,jpmorganchase.com
+Flowdesk,crypto,flowdesk.co
+UBS,bank,
+Talos,crypto,talos.com
+LMAX Group,crypto,lmax.com
+MUFG,bank,
+SMBC,bank,
+FalconX,crypto,falconx.io
+Nickel Digital,crypto,nickel.digital
+Frontier Economics,consultancy,
+Morgan Stanley,bank,morganstanley.com
+Elwood Technologies,crypto,elwood.io
+Hidden Road,crypto,hiddenroad.com
+Zodia Markets,crypto,zodia-markets.com
+ING,bank,ing.com
+Elexon,exchange,elexon.co.uk
+Proco Commodities,recruiter,
+Commodity Appointments,recruiter,
+Selby Jennings,recruiter,
+Bank of America,bank,bankofamerica.com
+CoinShares,crypto,coinshares.com
+Aurora Energy Research,data_vendor,auroraer.com
+GQR,recruiter,
+Paritas Recruitment,recruiter,
+Goldman Sachs,bank,goldmansachs.com
+Nomura,bank,nomura.com
+HC Group,recruiter,hcgroup.global
+E.ON UK,power_gas,
+ScottishPower,power_gas,
+Iberdrola,power_gas,
+Wincent,crypto,wincent.co
+Macquarie,bank,macquarie.com
+CEZ Group,power_gas,
+Naturgy,power_gas,
+Mizuho,bank,mizuhogroup.com
+Baringa,consultancy,baringa.com
+Deutsche Bank,bank,db.com
+Standard Chartered,bank,sc.com
+Oxford Knight,recruiter,oxfordknight.co.uk
+Rebellion Energy,power_gas,
+NERA,consultancy,nera.com
+Durlston Partners,recruiter,durlstonpartners.com
+Barclays,bank,barclays.com
+Jefferies,bank,jefferies.com
+AFRY,consultancy,afry.com
+Greencoat Capital,flex_optimiser,
+So Energy,power_gas,so.energy
+UniCredit,bank,unicredit.eu
+Nord Pool,exchange,nordpoolgroup.com
+Energy Systems Catapult,consultancy,es.catapult.org.uk
+Low Carbon,flex_optimiser,lowcarbon.com
+Penso Power,flex_optimiser,
+Ovo Energy,power_gas,ovoenergy.com
+Ofgem,regulator,ofgem.gov.uk
+Bluefield Partners,flex_optimiser,bluefieldpartners.co.uk
+Balance Power,flex_optimiser,balancepower.co.uk
+EnBW,power_gas,enbw.com
+EPEX Spot,exchange,epexspot.com
+NextEnergy Capital,flex_optimiser,nextenergycapital.com
+OilX,data_vendor,
+EelPower,flex_optimiser,eelpower.co.uk
+Quinbrook Infrastructure Partners,flex_optimiser,quinbrook.com
+Ecotricity,power_gas,ecotricity.co.uk
+Mondrian Alpha,recruiter,mondrian-alpha.com
+Citadel,fund,
+Aura Power,flex_optimiser,aurapower.com
+Copenhagen Infrastructure Partners,flex_optimiser,cipartners.dk
+Energy UK,regulator,energy-uk.org.uk
+Downing,flex_optimiser,downing.co.uk
+Arrow Shipbroking,shipbroker,
+Verbund,power_gas,verbund.com
+Poten and Partners,shipbroker,
+Banchero Costa,shipbroker,
+HSBC,bank,hsbc.com
+EDF Energy,power_gas,edfenergy.com
+GSR,crypto,gsr.io
+Barry Callebaut,softs,
+NatPower,flex_optimiser,natpower.com
+Fearnleys,shipbroker,fearnleys.com
+EnAppSys,data_vendor,enappsys.com
+Clearstone Energy,flex_optimiser,clearstoneenergy.com
+Watt-Logic,data_vendor,watt-logic.com
+Bridgewater Associates,fund,bridgewater.com
+DNV,consultancy,
+ESAI Energy,data_vendor,esaienergy.com
+Mott MacDonald,consultancy,
+Carlton Power,flex_optimiser,carltonpower.co.uk
+Root-Power,flex_optimiser,root-power.com
+Foresight Group,flex_optimiser,foresightgroup.eu
+PetroChina,major,
+Unipec,major,
+Two Sigma,fund,twosigma.com
+Renewable Energy Systems,flex_optimiser,res-group.com
+Kayrros,data_vendor,kayrros.com
+DE Shaw,fund,deshaw.com
+JBC Energy,data_vendor,jbcenergy.com
+OKX,crypto,okx.com
+Peel Hunt,bank,
+Maersk Broker,shipbroker,maerskbroker.com
+Planet Labs,data_vendor,planet.com
+Everoze,consultancy,everoze.com
+RBC Capital Markets,bank,
+BMO Capital Markets,bank,
+Lazard,bank,lazard.com
+Evolution Markets,broker,evomarkets.com
+Tereos,softs,tereos.com
+Bitpanda,crypto,bitpanda.com
+AQR Capital Management,fund,aqr.com
+BTG Pactual,bank,
+ION Group,broker,iongroup.com
+Regen,consultancy,regen.co.uk
+NatWest Group,bank,natwestgroup.com
+Occidental Petroleum,major,oxy.com
+Perella Weinberg Partners,bank,pwpartners.com
+ABN AMRO,bank,
+CaixaBank,bank,caixabank.com
+Evercore,bank,evercore.com
+SEB,bank,seb.se
+Investec,bank,investec.com
+Close Brothers,bank,closebrothers.com
+Scotiabank,bank,scotiabank.com
+Canaccord Genuity,bank,canaccordgenuity.com
+Bank of China,bank,
+ICBC,bank,
+China Construction Bank,bank,
+CITIC Securities,bank,
+CICC,bank,
+Daiwa Capital Markets,bank,
+TD Securities,bank,tdsecurities.com
+Rothschild and Co,bank,rothschildandco.com
+Intesa Sanpaolo,bank,intesasanpaolo.com
+Danske Bank,bank,danskebank.com
+Gulf International Bank,bank,
+Arab Banking Corporation,bank,
+Blockchain.com,crypto,blockchain.com
+Raiffeisen Bank International,bank,rbinternational.com
+Erste Group,bank,erstegroup.com
+National Grid,regulator,nationalgrid.com
+abrdn,fund,
+Swedbank,bank,swedbank.com
+M and G Investments,fund,
+Legal and General Investment Management,fund,
+Aviva Investors,fund,
+KBC Group,bank,kbc.com
+ANZ,bank,anz.com
+Standard Bank,bank,standardbank.com
+Nordea,bank,nordea.com
+Commerzbank,bank,commerzbank.com
+Bank of Ireland,bank,bankofireland.com
+Berenberg,bank,berenberg.de
+Mediobanca,bank,mediobanca.com
+Handelsbanken,bank,handelsbanken.com
+DNB,bank,dnb.no
+BlackRock,fund,blackrock.com
+AXA Investment Managers,fund,
+Fidelity International,fund,fidelityinternational.com
+Allianz Global Investors,fund,
+ICICI Bank,bank,icicibank.com
+Enel,power_gas,enel.com
+State Bank of India,bank,sbi.co.in
+Royal London Asset Management,fund,rlam.com
+Qatar National Bank,bank,qnb.com
+Emirates NBD,bank,emiratesnbd.com
+Edmond de Rothschild,fund,
+Insight Investment,fund,insightinvestment.com
+Columbia Threadneedle,fund,columbiathreadneedle.com
+Wintermute,crypto,wintermute.com
+Unigestion,fund,unigestion.com
+Jupiter Asset Management,fund,jupiteram.com
+Neuberger Berman,fund,
+Amundi,fund,amundi.com
+First Sentier Investors,fund,
+Janus Henderson,fund,janushenderson.com
+Brooks Macdonald,fund,
+Invesco,fund,invesco.com
+Baillie Gifford,fund,bailliegifford.com
+Franklin Templeton,fund,franklintempleton.com
+RBC BlueBay Asset Management,fund,bluebay.com
+Waverton Investment Management,fund,
+Artemis Investment Management,fund,artemisfunds.com
+Stonehage Fleming,fund,
+Westpac,bank,westpac.com.au
+Liontrust,fund,liontrust.co.uk
+CQS,fund,
+Candriam,fund,candriam.com
+Capital Group,fund,capitalgroup.com
+Ninety One,fund,ninetyone.com
+Charles Stanley,fund,charles-stanley.co.uk
+Record Financial Group,fund,recordfg.com
+Intermediate Capital Group,fund,
+Alcentra,fund,
+BNP Paribas Asset Management,fund,bnpparibas-am.com
+Bybrook Capital,fund,
+Schroders,fund,schroders.com
+Diameter Capital Partners,fund,
+Sarasin and Partners,fund,sarasinandpartners.com
+Napier Park Global Capital,fund,napierparkglobal.com
+Lindsell Train,fund,lindselltrain.com
+Polar Capital,fund,polarcapital.co.uk
+First Abu Dhabi Bank,bank,bankfab.com
+King Street Capital Management,fund,kingstreet.com
+Angelo Gordon,fund,
+Marathon Asset Management,fund,marathon.co.uk
+Fundsmith,fund,fundsmith.co.uk
+Astaris Capital Management,fund,
+Hayfin Capital Management,fund,hayfin.com
+Carlyle Group,fund,
+Third Point,fund,thirdpoint.com
+Ares Management,fund,
+Troy Asset Management,fund,taml.co.uk
+Park Square Capital,fund,parksquarecapital.com
+Global Infrastructure Partners,fund,
+Veritas Asset Management,fund,vamllp.com
+Robeco,fund,robeco.com
+Bridgepoint,fund,
+Farallon Capital,fund,faralloncapital.com
+St Jamess Place,fund,sjp.co.uk
+Attestor Capital,fund,attestorcapital.com
+Sandbar Asset Management,fund,sandbaram.com
+Centerbridge Partners,fund,centerbridge.com
+Davidson Kempner,fund,dkpartners.com
+Ruffer,fund,ruffer.co.uk
+Elliott Management,fund,elliottmgmt.com
+Hudson Bay Capital,fund,hudsonbaycapital.com
+Ardian,fund,
+Arcmont Asset Management,fund,arcmont.com
+Meridiam,fund,
+Silver Point Capital,fund,silverpointcapital.com
+Carmignac,fund,carmignac.com
+Warburg Pincus,fund,warburgpincus.com
+Hg,fund,hgcapital.com
+Beazley,insurance,
+KKR,fund,kkr.com
+EQT,fund,eqtgroup.com
+Vitruvian Partners,fund,vitruvianpartners.com
+MS Amlin,insurance,
+Canyon Partners,fund,canyonpartners.com
+Chenavari Investment Managers,fund,chenavari.com
+Permira,fund,permira.com
+CVC Capital Partners,fund,cvc.com
+Apax Partners,fund,apax.com
+InfraVia Capital Partners,fund,infraviacapital.com
+Advent International,fund,adventinternational.com
+Aspen Insurance,insurance,aspen.co
+Inflexion Private Equity,fund,inflexion.com
+WTW,insurance,
+Livingbridge,fund,livingbridge.com
+Rathbones,fund,rathbones.com
+BC Partners,fund,bcpartners.com
+Inigo,insurance,inigoinsurance.com
+Tysers,insurance,
+Miller Insurance,insurance,
+Charterhouse Capital Partners,fund,charterhouse.co.uk
+DTCC,exchange,
+SWIFT,exchange,
+Lancashire Holdings,insurance,lancashiregroup.com
+Arcus Infrastructure Partners,fund,arcusip.com
+Tikehau Capital,fund,tikehaucapital.com
+Munich Re,insurance,munichre.com
+InfraRed Capital Partners,fund,ircp.com
+MarketAxess,exchange,
+Amber Infrastructure,fund,amberinfrastructure.com
+FIS,exchange,
+Enfusion,exchange,
+Conduit Re,insurance,conduitreinsurance.com
+Clearstream,exchange,clearstream.com
+Equitix,fund,equitix.co.uk
+Moodys,data_vendor,
+Brit Insurance,insurance,britinsurance.com
+Eurazeo,fund,eurazeo.com
+Federated Hermes,fund,federatedhermes.com
+Energean,major,
+FactSet,data_vendor,factset.com
+Tullow Oil,major,
+Fidelis Insurance,insurance,fidelisinsurance.com
+SCOR,insurance,scor.com
+Howden Group,insurance,howdengroup.com
+Perenco,major,
+Neptune Energy,major,
+Canopius,insurance,canopius.com
+Kistos,major,kistosplc.com
+SS and C Technologies,exchange,ssctech.com
+DNO,major,
+Ithaca Energy,major,ithacaenergy.com
+SimCorp,exchange,simcorp.com
+PTT,major,
+ONGC,major,
+Morningstar,data_vendor,morningstar.com
+CNOOC,major,
+Ascot Group,insurance,ascotgroup.com
+Suncor Energy,major,
+Euroclear,exchange,euroclear.com
+Tradeweb,exchange,tradeweb.com
+NEO Energy,major,neo-energy.com
+Lockton,insurance,lockton.com
+Spirit Energy,major,spirit-energy.com
+Diversified Energy,major,div.energy
+Capricorn Energy,major,capricornenergy.com
+Sempra Infrastructure,lng,
+UK Power Networks,power_gas,
+Northern Powergrid,power_gas,
+Electricity North West,power_gas,
+SP Energy Networks,power_gas,
+Serica Energy,major,serica-energy.com
+Aker BP,major,akerbp.com
+Cenovus Energy,major,cenovus.com
+Acciona Energia,flex_optimiser,
+Euronext,exchange,euronext.com
+Falck Renewables,flex_optimiser,
+Harbour Energy,major,harbourenergy.com
+Voltalia,flex_optimiser,
+Kinder Morgan,major,kindermorgan.com
+Ecopetrol,major,ecopetrol.com.co
+MOL Group,major,molgroup.info
+Var Energi,major,varenergi.no
+SGN,power_gas,sgn.co.uk
+Cadent Gas,power_gas,cadentgas.com
+CLS Group,exchange,cls-group.com
+Petronas,major,petronas.com
+Neoen,flex_optimiser,neoen.com
+Elgin Energy,flex_optimiser,
+Wintershall Dea,major,wintershalldea.com
+Fred Olsen Renewables,flex_optimiser,fredolsenrenewables.com
+New Fortress Energy,lng,newfortressenergy.com
+Reliance Industries,major,ril.com
+Pivot Power,flex_optimiser,
+Siemens Gamesa,flex_optimiser,siemensgamesa.com
+Corio Generation,flex_optimiser,coriogeneration.com
+Island Green Power,flex_optimiser,
+Wales and West Utilities,power_gas,wwutilities.co.uk
+BMS Group,insurance,bmsgroup.com
+Encavis,flex_optimiser,encavis.com
+Flotation Energy,flex_optimiser,flotationenergy.com
+BHP,metals,
+SSE Renewables,flex_optimiser,sserenewables.com
+Lightsource bp,flex_optimiser,lightsourcebp.com
+Antofagasta,metals,
+Fresnillo,metals,
+Vestas,flex_optimiser,vestas.com
+Centamin,metals,
+Endeavour Mining,metals,
+Ocean Winds,flex_optimiser,oceanwinds.com
+ERG,flex_optimiser,erg.eu
+Ecora Resources,metals,
+Hochschild Mining,metals,hochschildmining.com
+Northern Gas Networks,power_gas,northerngasnetworks.co.uk
+Sonnedix,flex_optimiser,sonnedix.com
+Banks Renewables,flex_optimiser,banksgroup.co.uk
+Enel Green Power,flex_optimiser,enelgreenpower.com
+Community Windpower,flex_optimiser,communitywindpower.co.uk
+Toyota Tsusho,trading_house,
+Mitsui and Co,trading_house,
+Mitsubishi Corporation,trading_house,
+Sumitomo Corporation,trading_house,
+Marubeni,trading_house,
+Itochu,trading_house,
+Sojitz,trading_house,
+Hanwa,trading_house,
+Fitch Ratings,data_vendor,fitchratings.com
+Hapag-Lloyd,shipping,
+CMA CGM,shipping,
+Metdist,metals,metdist.com
+Euronav,shipping,
+Franco-Nevada,metals,franco-nevada.com
+Enso Energy,flex_optimiser,ensoenergy.co.uk
+Gridserve,flex_optimiser,gridserve.com
+EDF Renewables UK,flex_optimiser,edf-re.uk
+EDP Renewables,flex_optimiser,edpr.com
+Amalgamated Metal Trading,metals,amt.co.uk
+Frontline,shipping,frontline.bm
+Golden Ocean,shipping,
+BayWa re,flex_optimiser,baywa-re.com
+Atalaya Mining,metals,atalayamining.com
+Hannover Re,insurance,hannover-re.com
+Ferrexpo,metals,ferrexpo.com
+Maersk,shipping,maersk.com
+Ardmore Shipping,shipping,ardmoreshipping.com
+BRS Shipbrokers,shipbroker,
+Anesco,flex_optimiser,anesco.co.uk
+Riverlake,shipbroker,
+Rio Tinto,metals,riotinto.com
+Anglo American,metals,angloamerican.com
+Wheaton Precious Metals,metals,wheatonpm.com
+Gemini,crypto,
+Transamine,trading_house,transamine.com
+Teekay,shipping,teekay.com
+Gore Street Capital,flex_optimiser,gorestreetcap.com
+Wogen Resources,metals,wogen.com
+Bitstamp,crypto,bitstamp.net
+Atrato Partners,flex_optimiser,atratopartners.com
+McQuilling Partners,shipbroker,mcquilling.com
+Torvald Klaveness,shipping,klaveness.com
+Ifchor Galbraiths,shipbroker,ifchorgalbraiths.com
+Oldendorff Carriers,shipping,oldendorff.com
+Bitfinex,crypto,bitfinex.com
+International Seaways,shipping,intlseas.com
+TORM,shipping,torm.com
+Hafnia,shipping,hafniabw.com
+Star Bulk Carriers,shipping,starbulk.com
+Scorpio Tankers,shipping,scorpiotankers.com
+Elliptic,crypto,elliptic.co
+Vale,metals,vale.com
+Western Bulk,shipping,westernbulk.com
+Bitget,crypto,bitget.com
+Crypto.com,crypto,crypto.com
+Coinbase,crypto,coinbase.com
+DHT Holdings,shipping,dhtankers.com
+Norden,shipping,ds-norden.com
+Bybit,crypto,bybit.com
+IG Group,broker,
+Form3,exchange,form3.tech
+Wise,exchange,wise.com
+Chainalysis,crypto,chainalysis.com
+Starling Bank,exchange,starlingbank.com
+GH Financials,broker,
+ED and F Man Capital Markets,broker,
+Cantor Fitzgerald,broker,
+Ramp Network,crypto,ramp.network
+Aquis Exchange,exchange,
+Turquoise,exchange,
+CMC Markets,broker,cmcmarkets.com
+Bitmex,crypto,bitmex.com
+OMIE,exchange,
+Gaspoint Nordic,exchange,
+PEGAS,exchange,
+Grexel,carbon,
+Wave Digital Assets,crypto,wavedigitalassets.com
+Checkout.com,exchange,checkout.com
+Revolut,exchange,revolut.com
+ClearBank,exchange,clear.bank
+Aon,insurance,aon.com
+Ebury,exchange,ebury.com
+Rapyd,exchange,rapyd.net
+Plaid,exchange,plaid.com
+YPF,major,ypf.com
+Pepperstone,broker,pepperstone.com
+TrueLayer,exchange,truelayer.com
+McKinsey and Company,consultancy,
+Boston Consulting Group,consultancy,
+Interactive Brokers,broker,interactivebrokers.com
+HUPX,exchange,hupx.hu
+MEFF,exchange,meff.es
+Modulr,exchange,modulrfinance.com
+Luno,crypto,luno.com
+Abatable,carbon,abatable.com
+BeZero Carbon,carbon,bezerocarbon.com
+Supercritical,carbon,gosupercritical.com
+Argentex,broker,argentex.com
+Alvarez and Marsal,consultancy,
+Liquidnet,broker,liquidnet.com
+Xpansiv,carbon,xpansiv.com
+WSP,consultancy,
+AIB European Energy Certificate System,carbon,aib-net.org
+Wood Group,consultancy,
+Instinet,broker,instinet.com
+Tickmill,broker,tickmill.com
+Plus500,broker,plus500.com
+Gemserv,consultancy,
+Gold Standard,carbon,goldstandard.org
+LEK Consulting,consultancy,lek.com
+EcoAct,carbon,eco-act.com
+Rebel Energy,power_gas,
+Carbon Trust,carbon,carbontrust.com
+Bain and Company,consultancy,bain.com
+Octopus Energy Group,power_gas,
+Tomato Energy,power_gas,
+Squeaky,power_gas,
+Egg Energy,power_gas,
+PwC,consultancy,pwc.com
+KPMG,consultancy,kpmg.com
+Gazprom Marketing and Trading,power_gas,
+Bulb Energy,power_gas,bulb.co.uk
+Sahara Energy,trading_house,
+Vivid Economics,consultancy,vivideconomics.com
+Coral Energy,trading_house,
+Petraco Oil,trading_house,petraco.com
+AOT Trading,trading_house,
+Fuse Energy,power_gas,fuse.energy
+Augusta Energy,trading_house,
+Trailstone,trading_house,
+100Green,power_gas,100green.co.uk
+Roland Berger,consultancy,rolandberger.com
+FTI Consulting,consultancy,fticonsulting.com
+EY,consultancy,ey.com
+XTB,broker,xtb.com
+Inter Terminals,refining,
+Kearney,consultancy,kearney.com
+AlixPartners,consultancy,alixpartners.com
+Rubis Terminal,refining,
+Emerald Energy,trading_house,emeraldenergy.com
+ATFX,broker,atfx.com
+BDO,consultancy,bdo.co.uk
+Bomin,bunkers,
+Chimbusco,bunkers,
+Glander International Bunkering,bunkers,
+Eneco,power_gas,eneco.com
+Sea Oil,bunkers,
+EnergyQuote JHA,data_vendor,
+South Pole,carbon,southpole.com
+Petrofac,consultancy,petrofac.com
+Clearlake Shipping,trading_house,clearlakeshipping.com
+Capgemini,consultancy,capgemini.com
+Outfox the Market,power_gas,outfoxthemarket.co.uk
+Bunkerlink,bunkers,bunkerlink.com
+Delta-EE,consultancy,delta-ee.com
+Worley,consultancy,worley.com
+KazMunayGas,major,
+SOCAR,major,
+Chemoil,trading_house,chemoil.com
+Dan-Bunkering,bunkers,dan-bunkering.com
+PDVSA,major,
+Grant Thornton,consultancy,grantthornton.co.uk
+Litasco,trading_house,litasco.com
+Oiltanking,refining,oiltanking.com
+Arup,consultancy,arup.com
+ExxonMobil,major,exxonmobil.com
+Lukoil,major,lukoil.com
+EnergyScan,data_vendor,energyscan.engie.com
+Essar Oil UK,refining,essaroil.co.uk
+Rosneft,major,rosneft.com
+Bluefin Trading,prop_mm,
+Marquette Partners,prop_mm,
+NNPC,major,nnpcgroup.com
+Ronin Capital,prop_mm,
+Vopak,refining,vopak.com
+Spot Trading,prop_mm,
+Allston Trading,prop_mm,
+Vivienne Court,prop_mm,viviennecourt.com
+Volant Trading,prop_mm,volanttrading.com
+Geneva Trading,prop_mm,gtrading.com
+Consolidated Trading,prop_mm,
+XR Trading,prop_mm,xrtrading.com
+Kershner Trading,prop_mm,
+Galp Energia,major,galp.com
+Renantis,flex_optimiser,
+Enerdata,data_vendor,enerdata.net
+Econergy,flex_optimiser,
+Alight,flex_optimiser,
+Innova Renewables,flex_optimiser,
+Sasol,major,sasol.com
+Nico Trading,prop_mm,nicotrading.com
+Crown Gas and Power,power_gas,crowngas.co.uk
+Zestec,flex_optimiser,
+Pacific Green,flex_optimiser,
+Petroineos,refining,petroineos.com
+Constantine Energy Storage,flex_optimiser,
+Return Energy,flex_optimiser,
+Kuwait Petroleum,major,kpc.com.kw
+Vertex Energy,refining,vertexenergy.com
+Motor Oil Hellas,major,moh.gr
+Exolum,refining,exolum.com
+Vantage RE,flex_optimiser,vantagere.com
+Green Nation,flex_optimiser,greennation.co.uk
+Tagenergy,flex_optimiser,tagenergy.com
+WH Trading,prop_mm,whtrading.com
+Grasshopper Asia,prop_mm,grasshopperasia.com
+Sosteneo,flex_optimiser,sosteneo.com
+Bapco Energies,major,bapco.net
+Zenith Energy,refining,zenithenergy.com
+Exagen,flex_optimiser,exagen.co.uk
+Origami Energy,flex_optimiser,
+Aegean Marine Petroleum,bunkers,aegeanoil.com
+Transmarket Group,prop_mm,transmarketgroup.com
+Valkyrie Trading,prop_mm,valkyrietrading.com
+Advanced Infrastructure,flex_optimiser,advancedinfrastructure.io
+Ember,data_vendor,
+Energy Institute,data_vendor,
+Rho Motion,data_vendor,
+Enfinium,flex_optimiser,enfinium.co.uk
+Roskill,data_vendor,
+Chatham House,data_vendor,
+Oxford Institute for Energy Studies,data_vendor,
+Thunder Said Energy,data_vendor,
+Kaluza,flex_optimiser,kaluza.com
+Grid Edge,flex_optimiser,gridedge.co.uk
+Hellenic Petroleum,major,helpe.gr
+Ampyr Energy,flex_optimiser,ampyrenergy.com
+Gaffney Cline,data_vendor,
+Ohme,flex_optimiser,ohme-ev.com
+Kona Energy,flex_optimiser,konaenergy.co.uk
+Fuuse,flex_optimiser,fuuse.io
+Sagil Capital,fund,
+Aquila Capital,flex_optimiser,aquila-capital.com
+Cubico Sustainable Investments,flex_optimiser,cubicoinvest.com
+Levelise,flex_optimiser,levelise.com
+Zapmap,flex_optimiser,zap-map.com
+Bodenholm Capital,fund,
+Kuvari Partners,fund,
+Naya Capital,fund,
+Ameresco,flex_optimiser,ameresco.com
+Glennmont Partners,flex_optimiser,glennmont.com
+Tresidor Investment Management,fund,
+Susi Partners,flex_optimiser,susi-partners.com
+Group One Trading,prop_mm,group1.com
+Portsea Asset Management,fund,
+Benchmark Mineral Intelligence,data_vendor,benchmarkminerals.com
+Steadview Capital,fund,
+Coltrane Asset Management,fund,
+Grenergy,flex_optimiser,grenergy.eu
+Ib Vogt,flex_optimiser,ibvogt.com
+Kimberlite Research,data_vendor,kimberliteresearch.com
+Ospraie Management,fund,
+Eclipse Trading,prop_mm,eclipsetrading.com
+Pelham Capital,fund,pelhamcapital.com
+Garda Capital Partners,fund,
+Electron,flex_optimiser,electron.net
+Vanda Insight,fund,vandainsights.com
+Sonatrach,major,sonatrach.dz
+Goldenwood Capital,fund,goldenwoodcapital.com
+Frontier Road,fund,
+Welligence,data_vendor,welligence.com
+Believ,flex_optimiser,believ.com
+Riverstone Holdings,fund,
+Whitebox Advisors,fund,whiteboxadvisors.com
+Symmetry Investments,fund,symmetryinvestments.com
+Taula Capital,fund,taulacapital.com
+Bluewater Energy,fund,
+Gladstone Capital,fund,gladstonecapital.com
+Ofwat,regulator,
+Department for Energy Security and Net Zero,regulator,
+Netherland Sewell,data_vendor,netherlandsewell.com
+RISC Advisory,data_vendor,riscadvisory.com
+Westwood Global Energy,data_vendor,westwoodenergy.com
+Prudential Regulation Authority,regulator,
+Payment Systems Regulator,regulator,
+Metacapital,fund,metacapital.com
+UK Infrastructure Bank,regulator,
+Ilex Capital,fund,ilexcapital.com
+EnCap Investments,fund,encapinvestments.com
+Palliser Capital,fund,pallisercap.com
+Awilco LNG,lng,
+Dynagas,lng,
+Tailwater Capital,fund,tailwatercapital.com
+Capital Gas,lng,
+Buckthorn Partners,fund,buckthornpartners.com
+Pertento Partners,fund,pertento.com
+Sproule,data_vendor,sproule.com
+Mitsui OSK Lines,lng,
+Kawasaki Kisen,lng,
+Glazer Capital,fund,glazercapital.com
+Commonwealth LNG,lng,
+Toscafund,fund,toscafund.com
+ERCE,data_vendor,erce.energy
+Nordkinn Asset Management,fund,nordkinnam.com
+Anson Funds,fund,ansonfunds.com
+Crown Estate Scotland,regulator,crownestatescotland.com
+Odey Asset Management,fund,odey.com
+Gold Fields,metals,
+Delfin Midstream,lng,delfinlng.com
+Knutsen,lng,knutsenoas.com
+Quantum Capital Group,fund,quantumcap.com
+Melqart Asset Management,fund,melqart.com
+Kinross Gold,metals,
+Zadig Asset Management,fund,zadigam.com
+Northam Platinum,metals,northam.co.za
+Pensions Regulator,regulator,thepensionsregulator.gov.uk
+Glenfarne Energy Transition,lng,glenfarnegroup.com
+Golar LNG,lng,golarlng.com
+Southern Copper,metals,
+Ako Capital,fund,akocapital.com
+Nexa Resources,metals,
+NYK Line,lng,nyk.com
+Norsk Hydro,metals,hydro.com
+Codelco,metals,codelco.com
+Fuji Oil,softs,
+GasLog,lng,gaslogltd.com
+Blommer Chocolate,softs,
+Guan Chong,softs,
+Lundin Mining,metals,lundinmining.com
+NGP Energy Capital,fund,ngpenergycapital.com
+Climate Change Committee,regulator,theccc.org.uk
+Offshore Petroleum Regulator,regulator,nstauthority.co.uk
+Ceres Global Ag,softs,
+Nedcoffee,softs,
+Ipanema Coffee,softs,ipanemacoffees.com.br
+Al Ghurair Resources,softs,
+Solaris Commodities,softs,
+Bunge Loders Croklaan,softs,bungeloders.com
+Barrick,metals,barrick.com
+Ivanhoe Mines,metals,ivanhoemines.com
+CHS Inc,softs,chsinc.com
+Umicore,metals,umicore.com
+Harmony Gold,metals,harmony.co.za
+Nyrstar,metals,nyrstar.com
+Raizen,softs,
+AAK,softs,aak.com
+Vicentin,softs,vicentin.com.ar
+Aurubis,metals,aurubis.com
+Alpha Marine Fuels,bunkers,
+Vermont Bunkering,bunkers,
+Prime Oil and Gas,bunkers,
+Ilmarinen,fund,ilmarinen.fi
+NSI Bunkers,bunkers,
+Grupo Mexico,metals,gmexico.com
+GP Global,bunkers,gp-global.com
+Evergreen Marine,shipping,
+Yang Ming,shipping,
+HMM,shipping,
+ZIM,shipping,
+Wan Hai Lines,shipping,
+Pacific Basin,shipping,
+Grindrod Shipping,shipping,
+Aegean Bunkering,bunkers,aegeanbunkering.com
+Bunker One,bunkers,bunker-one.com
+Nornickel,metals,nornickel.com
+Sibanye Stillwater,metals,sibanyestillwater.com
+Himalaya Shipping,shipping,himalayashipping.com
+Comexim,softs,comexim.com.br
+Imperial Petroleum,shipping,
+2020 Bulkers,shipping,2020bulkers.com
+Flex LNG,lng,flexlng.com
+Avance Gas,shipping,
+Epic Gas,shipping,
+Fratelli Cosulich Bunkers,bunkers,cosulichgroup.com
+Okeanis Eco Tankers,shipping,okeanisecotankers.com
+Performance Shipping,shipping,performanceshipping.com
+Ocean Network Express,shipping,one-line.com
+AngloGold Ashanti,metals,anglogoldashanti.com
+Adecoagro,softs,adecoagro.com
+Optima Shipping,shipbroker,
+Lightship Chartering,shipbroker,
+Impala Platinum,metals,implats.co.za
+Hartland Shipping,shipbroker,
+SLC Agricola,softs,slcagricola.com.br
+Nordzucker,softs,nordzucker.com
+Dorian LPG,shipping,dorianlpg.com
+Genchart,shipbroker,genchart.com
+Agrocorp International,softs,agrocorp.com.sg
+Interunity,shipbroker,interunity.com
+Trident Alliance,shipbroker,
+Seascope Shipbroking,shipbroker,seascope.co.uk
+Perenia Group,carbon,
+JB Cocoa,softs,jbcocoa.com
+GrainCorp,softs,graincorp.com.au
+Tidewater Shipbrokers,shipbroker,tidewater.co.uk
+Carbon Growth Partners,carbon,carbongrowthpartners.com
+Pfeifer and Langen,softs,pfeifer-langen.com
+Stolt-Nielsen,shipping,stolt-nielsen.com
+Copersucar,softs,copersucar.com.br
+Belships,shipping,belships.com
+Bahri,shipping,bahri.sa
+Odfjell,shipping,odfjell.com
+Weber Shipbroking,shipbroker,crweber.com
+Amaggi,softs,amaggi.com.br
+Alcyon Shipping,shipbroker,alcyonshipping.com
+Alibra Shipping,shipbroker,alibrashipping.com
+Northern Shipping,shipbroker,northernshipping.com
+Grupa Lotos,refining,
+BW LPG,shipping,bwlpg.com
+Star Refinery,refining,
+Bharat Petroleum,refining,
+Hindustan Petroleum,refining,
+Nayara Energy,refining,
+Formosa Petrochemical,refining,
+Navigator Gas,shipping,navigatorgas.com
+Tsakos Energy Navigation,shipping,tenn.gr
+Ecosecurities,carbon,ecosecurities.com
+Idemitsu Kosan,refining,
+Karbon-X,carbon,karbon-x.com
+Cosmo Oil,refining,
+Anew Climate,carbon,anewclimate.com
+Nordic American Tankers,shipping,nat.bm
+Respira International,carbon,respira-international.com
+Eneos,refining,hd.eneos.co.jp
+S-Oil,refining,s-oil.com
+SK Energy,refining,skenergy.com
+Exmar,shipping,exmar.be
+Emergent Forest Finance,carbon,emergentclimate.com
+Astute Technical Recruitment,recruiter,
+Bazan Group,refining,bazan.co.il
+Cool Effect,carbon,cooleffect.org
+Saras,refining,saras.it
+Glocomms,recruiter,
+LarsonMaddox,recruiter,
+Cristal Union,softs,cristal-union.fr
+SThree,recruiter,
+Ruubarb,carbon,ruubarb.com
+Zeromission,carbon,zeromission.se
+Eramet,metals,eramet.com
+Preem,refining,preem.com
+ACT Group,carbon,actcommodities.com
+Marks Sattin,recruiter,markssattin.co.uk
+Terra Global Capital,carbon,terraglobalcapital.com
+GS Caltex,refining,gscaltex.com
+Armstrong Craven,recruiter,armstrongcraven.com
+Airswift,recruiter,airswift.com
+Petroplan,recruiter,petroplan.com

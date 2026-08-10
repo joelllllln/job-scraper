@@ -1,0 +1,575 @@
+name,category,ats,token,url,n_jobs,checked_at
+Access Bank,bank,ashby,access,https://api.ashbyhq.com/posting-api/job-board/access,17,2026-08-10T16:24:50+00:00
+BTG Pactual,bank,greenhouse,btgpactual,https://boards-api.greenhouse.io/v1/boards/btgpactual/jobs?content=false,294,2026-08-10T16:08:02+00:00
+CICC,bank,bamboohr,cicc,https://cicc.bamboohr.com/careers/list,1,2026-08-10T16:08:20+00:00
+Close Brothers,bank,ashby,close,https://api.ashbyhq.com/posting-api/job-board/close,7,2026-08-10T16:08:03+00:00
+Commercial Bank of Dubai,bank,bamboohr,commercial,https://commercial.bamboohr.com/careers/list,8,2026-08-10T16:25:10+00:00
+Credit Agricole CIB,bank,greenhouse,creditagricolecib,https://boards-api.greenhouse.io/v1/boards/creditagricolecib/jobs?content=false,1,2026-08-10T16:24:28+00:00
+DBS Bank,bank,personio,dbs,https://dbs.jobs.personio.com/xml,9,2026-08-10T16:08:02+00:00
+DNB,bank,lever,dnb,https://api.lever.co/v0/postings/dnb?mode=json,132,2026-08-10T16:08:10+00:00
+KBC Group,bank,personio,kbc,https://kbc.jobs.personio.com/xml,6,2026-08-10T16:08:10+00:00
+National Bank of Fujairah,bank,greenhouse,national,https://boards-api.greenhouse.io/v1/boards/national/jobs?content=false,7,2026-08-10T16:25:06+00:00
+Rand Merchant Bank,bank,pinpoint,rand,https://rand.pinpointhq.com/postings.json,5,2026-08-10T16:24:47+00:00
+Rothschild and Co,bank,pinpoint,rothschildandco,https://rothschildandco.pinpointhq.com/postings.json,3,2026-08-10T16:07:57+00:00
+Standard Bank,bank,recruitee,standard,https://standard.recruitee.com/api/offers/,2,2026-08-10T16:08:16+00:00
+Standard Chartered,bank,recruitee,standard,https://standard.recruitee.com/api/offers/,2,2026-08-10T16:06:51+00:00
+Stifel,bank,smartrecruiters,stifel,https://api.smartrecruiters.com/v1/companies/stifel/postings?limit=100,1,2026-08-10T16:07:57+00:00
+United Bank for Africa,bank,teamtailor,united,https://united.teamtailor.com/jobs.rss,15,2026-08-10T16:24:57+00:00
+CMC Markets,broker,personio,cmc,https://cmc.jobs.personio.com/xml,5,2026-08-10T16:12:42+00:00
+Carnegie Investment Bank,broker,bamboohr,carnegie,https://carnegie.bamboohr.com/careers/list,1,2026-08-10T16:20:47+00:00
+Evolution Markets,broker,smartrecruiters,evolution,https://api.smartrecruiters.com/v1/companies/evolution/postings?limit=100,295,2026-08-10T16:08:05+00:00
+Griffin Markets,broker,ashby,griffin,https://api.ashbyhq.com/posting-api/job-board/griffin,3,2026-08-10T16:06:40+00:00
+ION Group,broker,lever,ion,https://api.lever.co/v0/postings/ion?mode=json,78,2026-08-10T16:08:10+00:00
+Marex Solutions,broker,breezy,marex,https://marex.breezy.hr/json,76,2026-08-10T16:25:53+00:00
+Novum Securities,broker,personio,novum,https://novum.jobs.personio.com/xml,3,2026-08-10T16:20:38+00:00
+PVM Oil Associates,broker,bamboohr,pvm,https://pvm.bamboohr.com/careers/list,5,2026-08-10T16:06:15+00:00
+Pareto Securities,broker,teamtailor,paretosecurities,https://paretosecurities.teamtailor.com/jobs.rss,12,2026-08-10T16:20:26+00:00
+TP ICAP,broker,smartrecruiters,tpicap,https://api.smartrecruiters.com/v1/companies/tpicap/postings?limit=100,4,2026-08-10T16:05:55+00:00
+Tickmill,broker,bamboohr,tickmill,https://tickmill.bamboohr.com/careers/list,34,2026-08-10T16:12:36+00:00
+Tradition,broker,smartrecruiters,tradition,https://api.smartrecruiters.com/v1/companies/tradition/postings?limit=100,3,2026-08-10T16:06:14+00:00
+VSA Capital,broker,breezy,vsa,https://vsa.breezy.hr/json,17,2026-08-10T16:20:23+00:00
+Vantage Capital Markets,broker,ashby,vantage,https://api.ashbyhq.com/posting-api/job-board/vantage,7,2026-08-10T16:06:12+00:00
+XTB,broker,lever,xtb,https://api.lever.co/v0/postings/xtb?mode=json,2,2026-08-10T16:12:23+00:00
+Alpha Marine Fuels,bunkers,recruitee,alpha,https://alpha.recruitee.com/api/offers/,2,2026-08-10T16:16:45+00:00
+Blue Ocean Bunkering,bunkers,lever,blue,https://api.lever.co/v0/postings/blue?mode=json,10,2026-08-10T16:33:22+00:00
+Consolidated Marine Management,bunkers,bamboohr,consolidated,https://consolidated.bamboohr.com/careers/list,1,2026-08-10T16:33:25+00:00
+Dan-Bunkering,bunkers,bamboohr,dan,https://dan.bamboohr.com/careers/list,13,2026-08-10T16:13:47+00:00
+Minerva Bunkering,bunkers,ashby,minerva,https://api.ashbyhq.com/posting-api/job-board/minerva,9,2026-08-10T16:04:32+00:00
+Minerva Bunkering Europe,bunkers,ashby,minerva,https://api.ashbyhq.com/posting-api/job-board/minerva,9,2026-08-10T16:33:14+00:00
+Nordic Marine Oil,bunkers,personio,nordic,https://nordic.jobs.personio.com/xml,2,2026-08-10T16:30:14+00:00
+Sinopec Fuel Oil,bunkers,bamboohr,sinopec,https://sinopec.bamboohr.com/careers/list,5,2026-08-10T16:30:22+00:00
+Victory Fuels,bunkers,greenhouse,victory,https://boards-api.greenhouse.io/v1/boards/victory/jobs?content=false,1,2026-08-10T16:30:11+00:00
+World Fuel Services,bunkers,bamboohr,world,https://world.bamboohr.com/careers/list,5,2026-08-10T16:16:56+00:00
+ACT Group,carbon,personio,act,https://act.jobs.personio.com/xml,3,2026-08-10T16:17:31+00:00
+AFS Energy,carbon,recruitee,afsenergy,https://afsenergy.recruitee.com/api/offers/,4,2026-08-10T16:05:58+00:00
+BeZero Carbon,carbon,pinpoint,bezerocarbon,https://bezerocarbon.pinpointhq.com/postings.json,3,2026-08-10T16:12:47+00:00
+Carbon Growth Partners,carbon,greenhouse,carbon,https://boards-api.greenhouse.io/v1/boards/carbon/jobs?content=false,21,2026-08-10T16:17:32+00:00
+Carbon Trust,carbon,greenhouse,carbon,https://boards-api.greenhouse.io/v1/boards/carbon/jobs?content=false,21,2026-08-10T16:13:08+00:00
+Chloris Geospatial,carbon,bamboohr,chloris,https://chloris.bamboohr.com/careers/list,2,2026-08-10T16:30:14+00:00
+Emergent Forest Finance,carbon,bamboohr,emergentclimate,https://emergentclimate.bamboohr.com/careers/list,2,2026-08-10T16:17:15+00:00
+First Climate,carbon,personio,firstclimate,https://firstclimate.jobs.personio.com/xml,4,2026-08-10T16:17:15+00:00
+Gold Standard,carbon,teamtailor,goldstandard,https://goldstandard.teamtailor.com/jobs.rss,2,2026-08-10T16:12:39+00:00
+Isometric,carbon,ashby,isometric,https://api.ashbyhq.com/posting-api/job-board/isometric,5,2026-08-10T16:30:15+00:00
+Karbon-X,carbon,greenhouse,karbon,https://boards-api.greenhouse.io/v1/boards/karbon/jobs?content=false,12,2026-08-10T16:17:46+00:00
+Puro Earth,carbon,bamboohr,puro,https://puro.bamboohr.com/careers/list,1,2026-08-10T16:30:19+00:00
+STX Group,carbon,greenhouse,stxgroup,https://boards-api.greenhouse.io/v1/boards/stxgroup/jobs?content=false,12,2026-08-10T16:05:52+00:00
+South Pole,carbon,teamtailor,southpole,https://southpole.teamtailor.com/jobs.rss,14,2026-08-10T16:12:47+00:00
+Space Intelligence,carbon,greenhouse,space,https://boards-api.greenhouse.io/v1/boards/space/jobs?content=false,7,2026-08-10T16:30:25+00:00
+Terra Global Capital,carbon,ashby,terra,https://api.ashbyhq.com/posting-api/job-board/terra,1,2026-08-10T16:17:49+00:00
+Vertis Environmental Finance,carbon,bamboohr,vertis,https://vertis.bamboohr.com/careers/list,4,2026-08-10T16:05:54+00:00
+AFRY,consultancy,smartrecruiters,afry,https://api.smartrecruiters.com/v1/companies/afry/postings?limit=100,955,2026-08-10T16:06:47+00:00
+Accenture,consultancy,recruitee,accenture,https://accenture.recruitee.com/api/offers/,2,2026-08-10T16:12:54+00:00
+Afry Sweden,consultancy,smartrecruiters,afry,https://api.smartrecruiters.com/v1/companies/afry/postings?limit=100,955,2026-08-10T16:20:52+00:00
+Agora Energiewende,consultancy,rippling,agora,https://api.rippling.com/platform/api/ats/v1/board/agora/jobs,14,2026-08-10T16:21:06+00:00
+AlixPartners,consultancy,greenhouse,alixpartners,https://boards-api.greenhouse.io/v1/boards/alixpartners/jobs?content=false,110,2026-08-10T16:12:49+00:00
+BDO,consultancy,teamtailor,bdo,https://bdo.teamtailor.com/jobs.rss,12,2026-08-10T16:12:57+00:00
+Baringa,consultancy,greenhouse,baringa,https://boards-api.greenhouse.io/v1/boards/baringa/jobs?content=false,97,2026-08-10T16:06:45+00:00
+Baringa Australia,consultancy,greenhouse,baringa,https://boards-api.greenhouse.io/v1/boards/baringa/jobs?content=false,97,2026-08-10T16:20:53+00:00
+Brunswick Group,consultancy,greenhouse,brunswickgroup,https://boards-api.greenhouse.io/v1/boards/brunswickgroup/jobs?content=false,49,2026-08-10T16:32:34+00:00
+Carbon Limiting Technologies,consultancy,greenhouse,carbon,https://boards-api.greenhouse.io/v1/boards/carbon/jobs?content=false,21,2026-08-10T16:21:02+00:00
+Control Risks,consultancy,pinpoint,controlrisks,https://controlrisks.pinpointhq.com/postings.json,5,2026-08-10T16:32:32+00:00
+Deloitte,consultancy,bamboohr,deloitte,https://deloitte.bamboohr.com/careers/list,2,2026-08-10T16:12:59+00:00
+E3G,consultancy,bamboohr,e3g,https://e3g.bamboohr.com/careers/list,1,2026-08-10T16:20:49+00:00
+Element Energy,consultancy,bamboohr,element,https://element.bamboohr.com/careers/list,4,2026-08-10T16:20:56+00:00
+Energy Systems Catapult,consultancy,greenhouse,energysystemscatapult,https://boards-api.greenhouse.io/v1/boards/energysystemscatapult/jobs?content=false,1,2026-08-10T16:06:44+00:00
+FTI Consulting,consultancy,bamboohr,fti,https://fti.bamboohr.com/careers/list,1,2026-08-10T16:13:32+00:00
+Grant Thornton,consultancy,recruitee,grantthornton,https://grantthornton.recruitee.com/api/offers/,83,2026-08-10T16:12:52+00:00
+Green Alliance,consultancy,teamtailor,greenalliance,https://greenalliance.teamtailor.com/jobs.rss,3,2026-08-10T16:20:52+00:00
+KPMG,consultancy,pinpoint,kpmg,https://kpmg.pinpointhq.com/postings.json,5,2026-08-10T16:12:53+00:00
+Kroll,consultancy,bamboohr,kroll,https://kroll.bamboohr.com/careers/list,9,2026-08-10T16:32:31+00:00
+Mott MacDonald,consultancy,smartrecruiters,mottmacdonald,https://api.smartrecruiters.com/v1/companies/mottmacdonald/postings?limit=100,1,2026-08-10T16:07:54+00:00
+Oliver Wyman,consultancy,lever,oliverwyman,https://api.lever.co/v0/postings/oliverwyman?mode=json,2,2026-08-10T16:12:43+00:00
+Petrofac,consultancy,pinpoint,petrofac,https://petrofac.pinpointhq.com/postings.json,3,2026-08-10T16:13:11+00:00
+Roland Berger,consultancy,smartrecruiters,rolandberger,https://api.smartrecruiters.com/v1/companies/rolandberger/postings?limit=100,197,2026-08-10T16:12:48+00:00
+S-RM,consultancy,greenhouse,srm,https://boards-api.greenhouse.io/v1/boards/srm/jobs?content=false,23,2026-08-10T16:32:52+00:00
+Sia Partners,consultancy,smartrecruiters,sia,https://api.smartrecruiters.com/v1/companies/sia/postings?limit=100,583,2026-08-10T16:20:48+00:00
+Systemiq,consultancy,greenhouse,systemiq,https://boards-api.greenhouse.io/v1/boards/systemiq/jobs?content=false,19,2026-08-10T16:20:39+00:00
+Teneo,consultancy,greenhouse,teneo,https://boards-api.greenhouse.io/v1/boards/teneo/jobs?content=false,57,2026-08-10T16:32:54+00:00
+Tractebel,consultancy,personio,tractebel,https://tractebel.jobs.personio.com/xml,34,2026-08-10T16:20:38+00:00
+Vivid Economics,consultancy,ashby,vivid,https://api.ashbyhq.com/posting-api/job-board/vivid,2,2026-08-10T16:13:16+00:00
+WSP,consultancy,rippling,wsp,https://api.rippling.com/platform/api/ats/v1/board/wsp/jobs,9,2026-08-10T16:12:55+00:00
+Wood Thilsted,consultancy,bamboohr,woodthilsted,https://woodthilsted.bamboohr.com/careers/list,8,2026-08-10T16:20:36+00:00
+21Shares,crypto,greenhouse,21shares,https://boards-api.greenhouse.io/v1/boards/21shares/jobs?content=false,1,2026-08-10T16:25:36+00:00
+Amber Group,crypto,lever,ambergroup,https://api.lever.co/v0/postings/ambergroup?mode=json,3,2026-08-10T16:06:25+00:00
+B2C2,crypto,greenhouse,b2c2,https://boards-api.greenhouse.io/v1/boards/b2c2/jobs?content=false,5,2026-08-10T16:06:24+00:00
+Bitfinex,crypto,recruitee,bitfinex,https://bitfinex.recruitee.com/api/offers/,12,2026-08-10T16:12:14+00:00
+Bitfinex Securities,crypto,recruitee,bitfinex,https://bitfinex.recruitee.com/api/offers/,12,2026-08-10T16:25:42+00:00
+Bitpanda,crypto,greenhouse,bitpanda,https://boards-api.greenhouse.io/v1/boards/bitpanda/jobs?content=false,46,2026-08-10T16:07:38+00:00
+Blockchain Capital,crypto,greenhouse,blockchain,https://boards-api.greenhouse.io/v1/boards/blockchain/jobs?content=false,37,2026-08-10T16:25:26+00:00
+Blockchain.com,crypto,greenhouse,blockchain,https://boards-api.greenhouse.io/v1/boards/blockchain/jobs?content=false,37,2026-08-10T16:07:37+00:00
+Blockdaemon,crypto,ashby,blockdaemon,https://api.ashbyhq.com/posting-api/job-board/blockdaemon,2,2026-08-10T16:25:21+00:00
+Bybit,crypto,greenhouse,bybit,https://boards-api.greenhouse.io/v1/boards/bybit/jobs?content=false,142,2026-08-10T16:12:10+00:00
+Clear Street,crypto,greenhouse,clearstreet,https://boards-api.greenhouse.io/v1/boards/clearstreet/jobs?content=false,29,2026-08-10T16:25:22+00:00
+Coinbase,crypto,greenhouse,coinbase,https://boards-api.greenhouse.io/v1/boards/coinbase/jobs?content=false,173,2026-08-10T16:12:13+00:00
+Coinbase Institutional,crypto,greenhouse,coinbase,https://boards-api.greenhouse.io/v1/boards/coinbase/jobs?content=false,173,2026-08-10T16:25:39+00:00
+Consensys,crypto,greenhouse,consensys,https://boards-api.greenhouse.io/v1/boards/consensys/jobs?content=false,4,2026-08-10T16:25:27+00:00
+Copper,crypto,pinpoint,copper,https://copper.pinpointhq.com/postings.json,5,2026-08-10T16:06:25+00:00
+Crypto.com,crypto,lever,crypto,https://api.lever.co/v0/postings/crypto?mode=json,24,2026-08-10T16:12:21+00:00
+Elliptic,crypto,ashby,elliptic,https://api.ashbyhq.com/posting-api/job-board/elliptic,33,2026-08-10T16:12:16+00:00
+Elwood Technologies,crypto,bamboohr,elwood,https://elwood.bamboohr.com/careers/list,2,2026-08-10T16:06:31+00:00
+Falcon X Europe,crypto,greenhouse,falconx,https://boards-api.greenhouse.io/v1/boards/falconx/jobs?content=false,14,2026-08-10T16:25:19+00:00
+FalconX,crypto,greenhouse,falconx,https://boards-api.greenhouse.io/v1/boards/falconx/jobs?content=false,14,2026-08-10T16:06:23+00:00
+Flowdesk,crypto,smartrecruiters,flowdesk,https://api.smartrecruiters.com/v1/companies/flowdesk/postings?limit=100,2,2026-08-10T16:06:28+00:00
+Gemini,crypto,greenhouse,gemini,https://boards-api.greenhouse.io/v1/boards/gemini/jobs?content=false,42,2026-08-10T16:12:14+00:00
+Keyrock,crypto,ashby,keyrock,https://api.ashbyhq.com/posting-api/job-board/keyrock,5,2026-08-10T16:06:26+00:00
+Luno,crypto,greenhouse,luno,https://boards-api.greenhouse.io/v1/boards/luno/jobs?content=false,13,2026-08-10T16:12:19+00:00
+Nethermind,crypto,ashby,nethermind,https://api.ashbyhq.com/posting-api/job-board/nethermind,2,2026-08-10T16:25:23+00:00
+OKX,crypto,greenhouse,okx,https://boards-api.greenhouse.io/v1/boards/okx/jobs?content=false,329,2026-08-10T16:07:42+00:00
+Paradigm,crypto,greenhouse,paradigm,https://boards-api.greenhouse.io/v1/boards/paradigm/jobs?content=false,1,2026-08-10T16:25:21+00:00
+Wave Digital Assets,crypto,teamtailor,wave,https://wave.teamtailor.com/jobs.rss,2,2026-08-10T16:12:40+00:00
+Wincent,crypto,ashby,wincent,https://api.ashbyhq.com/posting-api/job-board/wincent,15,2026-08-10T16:06:22+00:00
+WisdomTree Digital,crypto,lever,wisdomtree,https://api.lever.co/v0/postings/wisdomtree?mode=json,2,2026-08-10T16:25:39+00:00
+AlphaSense,data_vendor,greenhouse,alphasense,https://boards-api.greenhouse.io/v1/boards/alphasense/jobs?content=false,228,2026-08-10T16:32:21+00:00
+AlphaSights,data_vendor,greenhouse,alphasights,https://boards-api.greenhouse.io/v1/boards/alphasights/jobs?content=false,88,2026-08-10T16:32:00+00:00
+Argus Media,data_vendor,teamtailor,argusmedia,https://argusmedia.teamtailor.com/jobs.rss,46,2026-08-10T16:05:38+00:00
+Ascent RegTech,data_vendor,personio,ascent,https://ascent.jobs.personio.com/xml,1,2026-08-10T16:32:33+00:00
+Aurora Energy Research,data_vendor,pinpoint,auroraer,https://auroraer.pinpointhq.com/postings.json,85,2026-08-10T16:05:48+00:00
+Aurora Insight,data_vendor,pinpoint,auroraer,https://auroraer.pinpointhq.com/postings.json,85,2026-08-10T16:20:49+00:00
+Behavox,data_vendor,greenhouse,behavox,https://boards-api.greenhouse.io/v1/boards/behavox/jobs?content=false,35,2026-08-10T16:32:14+00:00
+Benchmark Mineral Intelligence,data_vendor,bamboohr,benchmark,https://benchmark.bamboohr.com/careers/list,9,2026-08-10T16:14:55+00:00
+Causaly,data_vendor,ashby,causaly,https://api.ashbyhq.com/posting-api/job-board/causaly,8,2026-08-10T16:32:11+00:00
+Coleman Research,data_vendor,greenhouse,colemanresearch,https://boards-api.greenhouse.io/v1/boards/colemanresearch/jobs?content=false,7,2026-08-10T16:32:05+00:00
+ComplyAdvantage,data_vendor,greenhouse,complyadvantage,https://boards-api.greenhouse.io/v1/boards/complyadvantage/jobs?content=false,23,2026-08-10T16:32:22+00:00
+Eagle Alpha,data_vendor,ashby,eagle,https://api.ashbyhq.com/posting-api/job-board/eagle,2,2026-08-10T16:32:30+00:00
+Ember,data_vendor,recruitee,ember,https://ember.recruitee.com/api/offers/,20,2026-08-10T16:14:20+00:00
+Enverus,data_vendor,pinpoint,enverus,https://enverus.pinpointhq.com/postings.json,3,2026-08-10T16:05:45+00:00
+Eventus Systems,data_vendor,bamboohr,eventussystems,https://eventussystems.bamboohr.com/careers/list,5,2026-08-10T16:32:44+00:00
+General Index,data_vendor,greenhouse,general,https://boards-api.greenhouse.io/v1/boards/general/jobs?content=false,1,2026-08-10T16:06:21+00:00
+Global Relay,data_vendor,greenhouse,globalrelay,https://boards-api.greenhouse.io/v1/boards/globalrelay/jobs?content=false,20,2026-08-10T16:32:13+00:00
+GlobalData,data_vendor,recruitee,globaldata,https://globaldata.recruitee.com/api/offers/,2,2026-08-10T16:31:54+00:00
+Guidepoint,data_vendor,greenhouse,guidepoint,https://boards-api.greenhouse.io/v1/boards/guidepoint/jobs?content=false,121,2026-08-10T16:32:05+00:00
+Hymans Robertson,data_vendor,pinpoint,hymans,https://hymans.pinpointhq.com/postings.json,5,2026-08-10T16:24:09+00:00
+Isio,data_vendor,teamtailor,isio,https://isio.teamtailor.com/jobs.rss,44,2026-08-10T16:24:08+00:00
+Kaiko,data_vendor,personio,kaiko,https://kaiko.jobs.personio.com/xml,3,2026-08-10T16:06:02+00:00
+Lloyds List Intelligence,data_vendor,teamtailor,lloydslistintelligence,https://lloydslistintelligence.teamtailor.com/jobs.rss,8,2026-08-10T16:21:04+00:00
+Modo Energy Research,data_vendor,bamboohr,modo,https://modo.bamboohr.com/careers/list,5,2026-08-10T16:20:56+00:00
+Montel,data_vendor,teamtailor,montel,https://montel.teamtailor.com/jobs.rss,7,2026-08-10T16:05:49+00:00
+Moodys,data_vendor,bamboohr,moodys,https://moodys.bamboohr.com/careers/list,5,2026-08-10T16:10:37+00:00
+NICE Actimize,data_vendor,greenhouse,nice,https://boards-api.greenhouse.io/v1/boards/nice/jobs?content=false,293,2026-08-10T16:32:33+00:00
+Napier AI,data_vendor,pinpoint,napier,https://napier.pinpointhq.com/postings.json,2,2026-08-10T16:32:27+00:00
+Neudata,data_vendor,ashby,neudata,https://api.ashbyhq.com/posting-api/job-board/neudata,5,2026-08-10T16:32:13+00:00
+Planet Labs,data_vendor,greenhouse,planetlabs,https://boards-api.greenhouse.io/v1/boards/planetlabs/jobs?content=false,80,2026-08-10T16:07:28+00:00
+Preqin,data_vendor,pinpoint,preqin,https://preqin.pinpointhq.com/postings.json,1,2026-08-10T16:24:03+00:00
+Quandl Data,data_vendor,recruitee,data,https://data.recruitee.com/api/offers/,1,2026-08-10T16:32:07+00:00
+Quantexa,data_vendor,ashby,quantexa,https://api.ashbyhq.com/posting-api/job-board/quantexa,31,2026-08-10T16:32:25+00:00
+Quantum Commodity Intelligence,data_vendor,ashby,quantum,https://api.ashbyhq.com/posting-api/job-board/quantum,11,2026-08-10T16:06:24+00:00
+Rho Motion,data_vendor,ashby,rho,https://api.ashbyhq.com/posting-api/job-board/rho,40,2026-08-10T16:14:38+00:00
+Sigma Ratings,data_vendor,teamtailor,sigma,https://sigma.teamtailor.com/jobs.rss,6,2026-08-10T16:32:48+00:00
+Signal Ocean,data_vendor,lever,signal,https://api.lever.co/v0/postings/signal?mode=json,1,2026-08-10T16:06:02+00:00
+Smarsh,data_vendor,lever,smarsh,https://api.lever.co/v0/postings/smarsh?mode=json,42,2026-08-10T16:32:18+00:00
+Smartkarma,data_vendor,smartrecruiters,smartkarma,https://api.smartrecruiters.com/v1/companies/smartkarma/postings?limit=100,10,2026-08-10T16:32:05+00:00
+Sparta Commodities,data_vendor,bamboohr,spartacommodities,https://spartacommodities.bamboohr.com/careers/list,1,2026-08-10T16:05:33+00:00
+Spire Global,data_vendor,greenhouse,spire,https://boards-api.greenhouse.io/v1/boards/spire/jobs?content=false,46,2026-08-10T16:05:50+00:00
+Steeleye,data_vendor,smartrecruiters,steeleye,https://api.smartrecruiters.com/v1/companies/steeleye/postings?limit=100,2,2026-08-10T16:32:27+00:00
+Third Bridge,data_vendor,greenhouse,thirdbridge,https://boards-api.greenhouse.io/v1/boards/thirdbridge/jobs?content=false,115,2026-08-10T16:32:00+00:00
+Volue,data_vendor,teamtailor,volue,https://volue.teamtailor.com/jobs.rss,13,2026-08-10T16:05:44+00:00
+Watt-Logic,data_vendor,bamboohr,watt,https://watt.bamboohr.com/careers/list,3,2026-08-10T16:08:00+00:00
+Westwood Global Energy,data_vendor,personio,westwood,https://westwood.jobs.personio.com/xml,3,2026-08-10T16:14:58+00:00
+Xeneta,data_vendor,pinpoint,xeneta,https://xeneta.pinpointhq.com/postings.json,1,2026-08-10T16:21:07+00:00
+bfinance,data_vendor,bamboohr,bfinance,https://bfinance.bamboohr.com/careers/list,2,2026-08-10T16:24:06+00:00
+Aquis Exchange,exchange,teamtailor,aquisexchange,https://aquisexchange.teamtailor.com/jobs.rss,7,2026-08-10T16:12:34+00:00
+BME Spanish Exchanges,exchange,recruitee,bme,https://bme.recruitee.com/api/offers/,4,2026-08-10T16:23:48+00:00
+CLS Group,exchange,greenhouse,clsgroup,https://boards-api.greenhouse.io/v1/boards/clsgroup/jobs?content=false,42,2026-08-10T16:10:33+00:00
+ClearBank,exchange,greenhouse,clear,https://boards-api.greenhouse.io/v1/boards/clear/jobs?content=false,40,2026-08-10T16:12:19+00:00
+Dubai Financial Market,exchange,teamtailor,dfm,https://dfm.teamtailor.com/jobs.rss,12,2026-08-10T16:23:28+00:00
+Ebury,exchange,greenhouse,ebury,https://boards-api.greenhouse.io/v1/boards/ebury/jobs?content=false,174,2026-08-10T16:12:22+00:00
+Form3,exchange,greenhouse,form3,https://boards-api.greenhouse.io/v1/boards/form3/jobs?content=false,6,2026-08-10T16:12:18+00:00
+Indonesia Stock Exchange,exchange,smartrecruiters,indonesia,https://api.smartrecruiters.com/v1/companies/indonesia/postings?limit=100,9,2026-08-10T16:24:03+00:00
+Ion Markets,exchange,lever,ion,https://api.lever.co/v0/postings/ion?mode=json,78,2026-08-10T16:24:10+00:00
+Japan Exchange Group,exchange,greenhouse,japan,https://boards-api.greenhouse.io/v1/boards/japan/jobs?content=false,3,2026-08-10T16:23:51+00:00
+Korea Exchange,exchange,greenhouse,korea,https://boards-api.greenhouse.io/v1/boards/korea/jobs?content=false,1,2026-08-10T16:23:48+00:00
+London Metal Exchange,exchange,greenhouse,london,https://boards-api.greenhouse.io/v1/boards/london/jobs?content=false,4,2026-08-10T16:06:40+00:00
+Modulr,exchange,greenhouse,modulrfinance,https://boards-api.greenhouse.io/v1/boards/modulrfinance/jobs?content=false,20,2026-08-10T16:12:37+00:00
+National Stock Exchange India,exchange,greenhouse,national,https://boards-api.greenhouse.io/v1/boards/national/jobs?content=false,7,2026-08-10T16:24:02+00:00
+Plaid,exchange,ashby,plaid,https://api.ashbyhq.com/posting-api/job-board/plaid,106,2026-08-10T16:12:19+00:00
+Symphony Communication,exchange,greenhouse,symphony,https://boards-api.greenhouse.io/v1/boards/symphony/jobs?content=false,15,2026-08-10T16:23:53+00:00
+TMX Group,exchange,bamboohr,tmx,https://tmx.bamboohr.com/careers/list,2,2026-08-10T16:23:23+00:00
+Trading Technologies,exchange,pinpoint,tradingtechnologies,https://tradingtechnologies.pinpointhq.com/postings.json,17,2026-08-10T16:06:22+00:00
+TrueLayer,exchange,greenhouse,truelayer,https://boards-api.greenhouse.io/v1/boards/truelayer/jobs?content=false,10,2026-08-10T16:12:18+00:00
+Warsaw Stock Exchange,exchange,greenhouse,warsaw,https://boards-api.greenhouse.io/v1/boards/warsaw/jobs?content=false,1,2026-08-10T16:23:43+00:00
+Wise,exchange,smartrecruiters,wise,https://api.smartrecruiters.com/v1/companies/wise/postings?limit=100,408,2026-08-10T16:12:30+00:00
+Advanced Infrastructure,flex_optimiser,recruitee,advanced,https://advanced.recruitee.com/api/offers/,2,2026-08-10T16:14:36+00:00
+Alight,flex_optimiser,smartrecruiters,alight,https://api.smartrecruiters.com/v1/companies/alight/postings?limit=100,2,2026-08-10T16:14:01+00:00
+Aquila Capital,flex_optimiser,personio,aquila,https://aquila.jobs.personio.com/xml,3,2026-08-10T16:14:25+00:00
+Aquila European Renewables,flex_optimiser,personio,aquila,https://aquila.jobs.personio.com/xml,3,2026-08-10T16:30:47+00:00
+Aura Power,flex_optimiser,greenhouse,aura,https://boards-api.greenhouse.io/v1/boards/aura/jobs?content=false,5,2026-08-10T16:07:34+00:00
+Axle Energy,flex_optimiser,greenhouse,axle,https://boards-api.greenhouse.io/v1/boards/axle/jobs?content=false,43,2026-08-10T16:04:32+00:00
+Bluefield Partners,flex_optimiser,recruitee,bluefield,https://bluefield.recruitee.com/api/offers/,6,2026-08-10T16:07:36+00:00
+Bluefield Solar Income Fund,flex_optimiser,recruitee,bluefield,https://bluefield.recruitee.com/api/offers/,6,2026-08-10T16:30:51+00:00
+Community Windpower,flex_optimiser,greenhouse,community,https://boards-api.greenhouse.io/v1/boards/community/jobs?content=false,1,2026-08-10T16:11:35+00:00
+Constantine Energy Storage,flex_optimiser,bamboohr,constantine,https://constantine.bamboohr.com/careers/list,5,2026-08-10T16:14:31+00:00
+Coriolis Energy,flex_optimiser,personio,coriolis,https://coriolis.jobs.personio.com/xml,5,2026-08-10T16:30:35+00:00
+Cubico Sustainable Investments,flex_optimiser,pinpoint,cubico,https://cubico.pinpointhq.com/postings.json,4,2026-08-10T16:14:34+00:00
+ERG,flex_optimiser,lever,erg,https://api.lever.co/v0/postings/erg?mode=json,28,2026-08-10T16:11:06+00:00
+Elgin Energy,flex_optimiser,personio,elgin-energy,https://elgin-energy.jobs.personio.com/xml,7,2026-08-10T16:11:31+00:00
+Enso Energy,flex_optimiser,teamtailor,enso,https://enso.teamtailor.com/jobs.rss,1,2026-08-10T16:11:51+00:00
+Entrix,flex_optimiser,personio,entrix,https://entrix.jobs.personio.com/xml,14,2026-08-10T16:04:39+00:00
+Foresight Group,flex_optimiser,ashby,foresight,https://api.ashbyhq.com/posting-api/job-board/foresight,1,2026-08-10T16:07:28+00:00
+Foresight Solar Fund,flex_optimiser,ashby,foresight,https://api.ashbyhq.com/posting-api/job-board/foresight,1,2026-08-10T16:30:40+00:00
+Grid Edge,flex_optimiser,bamboohr,gridedge,https://gridedge.bamboohr.com/careers/list,2,2026-08-10T16:14:28+00:00
+Habitat Energy,flex_optimiser,teamtailor,habitat,https://habitat.teamtailor.com/jobs.rss,90,2026-08-10T16:04:31+00:00
+Harmony Energy,flex_optimiser,personio,harmonyenergy,https://harmonyenergy.jobs.personio.com/xml,3,2026-08-10T16:04:33+00:00
+Harmony Energy Income Trust,flex_optimiser,lever,harmony,https://api.lever.co/v0/postings/harmony?mode=json,9,2026-08-10T16:30:54+00:00
+Kaluza,flex_optimiser,greenhouse,kaluza,https://boards-api.greenhouse.io/v1/boards/kaluza/jobs?content=false,19,2026-08-10T16:14:14+00:00
+Kraken Technologies,flex_optimiser,pinpoint,kraken,https://kraken.pinpointhq.com/postings.json,4,2026-08-10T16:04:37+00:00
+Lightsource bp,flex_optimiser,ashby,lightsource,https://api.ashbyhq.com/posting-api/job-board/lightsource,1,2026-08-10T16:11:37+00:00
+Modo Energy,flex_optimiser,greenhouse,modoenergy,https://boards-api.greenhouse.io/v1/boards/modoenergy/jobs?content=false,17,2026-08-10T16:04:34+00:00
+Next Kraftwerke,flex_optimiser,personio,next-kraftwerke,https://next-kraftwerke.jobs.personio.com/xml,2,2026-08-10T16:21:16+00:00
+NextEnergy Capital,flex_optimiser,recruitee,nextenergy,https://nextenergy.recruitee.com/api/offers/,15,2026-08-10T16:07:20+00:00
+NextEnergy Solar Fund,flex_optimiser,recruitee,nextenergy,https://nextenergy.recruitee.com/api/offers/,15,2026-08-10T16:30:38+00:00
+Nidec ASI,flex_optimiser,teamtailor,nidec,https://nidec.teamtailor.com/jobs.rss,36,2026-08-10T16:21:44+00:00
+Ocean Winds,flex_optimiser,ashby,ocean,https://api.ashbyhq.com/posting-api/job-board/ocean,2,2026-08-10T16:11:45+00:00
+Ohme,flex_optimiser,greenhouse,ohme,https://boards-api.greenhouse.io/v1/boards/ohme/jobs?content=false,19,2026-08-10T16:14:27+00:00
+Pacific Green,flex_optimiser,bamboohr,pacific,https://pacific.bamboohr.com/careers/list,9,2026-08-10T16:14:21+00:00
+Pivot Power,flex_optimiser,ashby,pivot,https://api.ashbyhq.com/posting-api/job-board/pivot,6,2026-08-10T16:11:43+00:00
+Pulse Clean Energy,flex_optimiser,ashby,pulse,https://api.ashbyhq.com/posting-api/job-board/pulse,9,2026-08-10T16:05:02+00:00
+Return Energy,flex_optimiser,bamboohr,return,https://return.bamboohr.com/careers/list,2,2026-08-10T16:14:19+00:00
+Ripple Energy,flex_optimiser,greenhouse,ripple,https://boards-api.greenhouse.io/v1/boards/ripple/jobs?content=false,130,2026-08-10T16:30:40+00:00
+Root-Power,flex_optimiser,teamtailor,root,https://root.teamtailor.com/jobs.rss,3,2026-08-10T16:07:42+00:00
+Schneider Electric,flex_optimiser,bamboohr,schneider,https://schneider.bamboohr.com/careers/list,10,2026-08-10T16:21:49+00:00
+SmartestEnergy,flex_optimiser,teamtailor,smartestenergy,https://smartestenergy.teamtailor.com/jobs.rss,37,2026-08-10T16:04:34+00:00
+Statera Energy,flex_optimiser,bamboohr,stateraenergy,https://stateraenergy.bamboohr.com/careers/list,1,2026-08-10T16:04:39+00:00
+Stem Inc,flex_optimiser,rippling,stem-inc,https://api.rippling.com/platform/api/ats/v1/board/stem-inc/jobs,8,2026-08-10T16:21:41+00:00
+Thrive Renewables,flex_optimiser,greenhouse,thrive,https://boards-api.greenhouse.io/v1/boards/thrive/jobs?content=false,3,2026-08-10T16:30:33+00:00
+Vantage RE,flex_optimiser,ashby,vantage,https://api.ashbyhq.com/posting-api/job-board/vantage,7,2026-08-10T16:14:17+00:00
+Voltus,flex_optimiser,lever,voltus,https://api.lever.co/v0/postings/voltus?mode=json,14,2026-08-10T16:21:24+00:00
+Yu Energy,flex_optimiser,pinpoint,yuenergy,https://yuenergy.pinpointhq.com/postings.json,45,2026-08-10T16:04:42+00:00
+AJ Bell,fund,pinpoint,ajbell,https://ajbell.pinpointhq.com/postings.json,4,2026-08-10T16:18:49+00:00
+AQR Capital Management,fund,greenhouse,aqr,https://boards-api.greenhouse.io/v1/boards/aqr/jobs?content=false,47,2026-08-10T16:07:29+00:00
+Adelphi Capital,fund,personio,adelphi,https://adelphi.jobs.personio.com/xml,2,2026-08-10T16:19:16+00:00
+Ako Capital,fund,pinpoint,akocapital,https://akocapital.pinpointhq.com/postings.json,3,2026-08-10T16:14:51+00:00
+Alliance Trust,fund,breezy,alliance,https://alliance.breezy.hr/json,5,2026-08-10T16:19:06+00:00
+Amber Capital,fund,ashby,amber,https://api.ashbyhq.com/posting-api/job-board/amber,22,2026-08-10T16:19:16+00:00
+Amber Infrastructure,fund,ashby,amber,https://api.ashbyhq.com/posting-api/job-board/amber,22,2026-08-10T16:10:30+00:00
+Amber Infrastructure Group,fund,ashby,amber,https://api.ashbyhq.com/posting-api/job-board/amber,22,2026-08-10T16:22:54+00:00
+Amundi,fund,bamboohr,amundi,https://amundi.bamboohr.com/careers/list,4,2026-08-10T16:08:54+00:00
+Apax Partners,fund,recruitee,apax,https://apax.recruitee.com/api/offers/,2,2026-08-10T16:09:51+00:00
+Apollo Global Management,fund,pinpoint,apollo,https://apollo.pinpointhq.com/postings.json,9,2026-08-10T16:09:46+00:00
+Arcus Infrastructure Partners,fund,recruitee,arcus,https://arcus.recruitee.com/api/offers/,19,2026-08-10T16:10:29+00:00
+Ares Management,fund,personio,ares,https://ares.jobs.personio.com/xml,5,2026-08-10T16:09:59+00:00
+Arini,fund,ashby,arini,https://api.ashbyhq.com/posting-api/job-board/arini,1,2026-08-10T16:05:26+00:00
+Artemis Investment Management,fund,ashby,artemis,https://api.ashbyhq.com/posting-api/job-board/artemis,16,2026-08-10T16:09:07+00:00
+Aspect Capital,fund,bamboohr,aspect,https://aspect.bamboohr.com/careers/list,5,2026-08-10T16:05:40+00:00
+Aurelius Capital,fund,bamboohr,aurelius,https://aurelius.bamboohr.com/careers/list,2,2026-08-10T16:22:52+00:00
+BC Partners,fund,recruitee,bcpartners,https://bcpartners.recruitee.com/api/offers/,2,2026-08-10T16:09:54+00:00
+Baillie Gifford,fund,pinpoint,bailliegifford,https://bailliegifford.pinpointhq.com/postings.json,4,2026-08-10T16:08:39+00:00
+BlackRock,fund,bamboohr,blackrock,https://blackrock.bamboohr.com/careers/list,3,2026-08-10T16:08:28+00:00
+Blue Owl Capital,fund,lever,blue,https://api.lever.co/v0/postings/blue?mode=json,10,2026-08-10T16:10:20+00:00
+Blue Whale Capital,fund,lever,blue,https://api.lever.co/v0/postings/blue?mode=json,10,2026-08-10T16:18:28+00:00
+BlueCrest Capital,fund,smartrecruiters,bluecrest,https://api.smartrecruiters.com/v1/companies/bluecrest/postings?limit=100,1,2026-08-10T16:05:43+00:00
+Bridgepoint,fund,pinpoint,bridgepoint,https://bridgepoint.pinpointhq.com/postings.json,5,2026-08-10T16:09:53+00:00
+Brooks Macdonald,fund,bamboohr,brooks,https://brooks.bamboohr.com/careers/list,5,2026-08-10T16:09:33+00:00
+C Hoare and Co,fund,pinpoint,hoaresbank,https://hoaresbank.pinpointhq.com/postings.json,3,2026-08-10T16:18:59+00:00
+Capital Group,fund,lever,capital,https://api.lever.co/v0/postings/capital?mode=json,41,2026-08-10T16:09:12+00:00
+Charles Stanley,fund,greenhouse,charles,https://boards-api.greenhouse.io/v1/boards/charles/jobs?content=false,3,2026-08-10T16:09:17+00:00
+Coast Capital,fund,greenhouse,coast,https://boards-api.greenhouse.io/v1/boards/coast/jobs?content=false,19,2026-08-10T16:22:52+00:00
+Crabel Capital Management,fund,greenhouse,crabel,https://boards-api.greenhouse.io/v1/boards/crabel/jobs?content=false,2,2026-08-10T16:21:45+00:00
+DWS,fund,bamboohr,dws,https://dws.bamboohr.com/careers/list,5,2026-08-10T16:08:52+00:00
+Diameter Capital Partners,fund,bamboohr,diametercapitalpartners,https://diametercapitalpartners.bamboohr.com/careers/list,3,2026-08-10T16:09:29+00:00
+Dimensional Fund Advisors,fund,ashby,dimensional,https://api.ashbyhq.com/posting-api/job-board/dimensional,8,2026-08-10T16:22:02+00:00
+Dunedin,fund,greenhouse,dunedin,https://boards-api.greenhouse.io/v1/boards/dunedin/jobs?content=false,3,2026-08-10T16:18:09+00:00
+Dunn Capital Management,fund,bamboohr,dunn,https://dunn.bamboohr.com/careers/list,6,2026-08-10T16:22:09+00:00
+Eagle Point Credit,fund,lever,eaglepointcredit,https://api.lever.co/v0/postings/eaglepointcredit?mode=json,6,2026-08-10T16:19:52+00:00
+Edinburgh Partners,fund,greenhouse,edinburgh,https://boards-api.greenhouse.io/v1/boards/edinburgh/jobs?content=false,4,2026-08-10T16:18:27+00:00
+Element Capital Management,fund,bamboohr,element,https://element.bamboohr.com/careers/list,4,2026-08-10T16:22:01+00:00
+Engine Capital,fund,greenhouse,engine,https://boards-api.greenhouse.io/v1/boards/engine/jobs?content=false,67,2026-08-10T16:23:04+00:00
+Equitix,fund,bamboohr,equitix,https://equitix.bamboohr.com/careers/list,5,2026-08-10T16:10:06+00:00
+ExodusPoint,fund,greenhouse,exoduspoint,https://boards-api.greenhouse.io/v1/boards/exoduspoint/jobs?content=false,2,2026-08-10T16:05:14+00:00
+Finisterre Capital,fund,rippling,finisterre,https://api.rippling.com/platform/api/ats/v1/board/finisterre/jobs,13,2026-08-10T16:19:27+00:00
+GMO,fund,lever,gmo,https://api.lever.co/v0/postings/gmo?mode=json,9,2026-08-10T16:22:05+00:00
+Gladstone Capital,fund,bamboohr,gladstone,https://gladstone.bamboohr.com/careers/list,3,2026-08-10T16:14:57+00:00
+Graham Capital Management,fund,greenhouse,grahamcapitalmanagement,https://boards-api.greenhouse.io/v1/boards/grahamcapitalmanagement/jobs?content=false,9,2026-08-10T16:22:11+00:00
+Hg,fund,pinpoint,hgcapital,https://hgcapital.pinpointhq.com/postings.json,1,2026-08-10T16:10:05+00:00
+Hudson Bay Capital,fund,teamtailor,hudson,https://hudson.teamtailor.com/jobs.rss,7,2026-08-10T16:09:49+00:00
+ISAM,fund,greenhouse,isam,https://boards-api.greenhouse.io/v1/boards/isam/jobs?content=false,20,2026-08-10T16:21:46+00:00
+InfraRed Capital Partners,fund,bamboohr,ircp,https://ircp.bamboohr.com/careers/list,5,2026-08-10T16:10:08+00:00
+Janus Henderson,fund,recruitee,janus,https://janus.recruitee.com/api/offers/,1,2026-08-10T16:08:45+00:00
+Kairos Partners,fund,bamboohr,kairos,https://kairos.bamboohr.com/careers/list,4,2026-08-10T16:19:34+00:00
+Kite Lake Capital,fund,greenhouse,kite,https://boards-api.greenhouse.io/v1/boards/kite/jobs?content=false,1,2026-08-10T16:05:51+00:00
+LMR Partners,fund,greenhouse,lmr,https://boards-api.greenhouse.io/v1/boards/lmr/jobs?content=false,8,2026-08-10T16:05:40+00:00
+Legal and General Investment Management,fund,recruitee,legal,https://legal.recruitee.com/api/offers/,1,2026-08-10T16:08:57+00:00
+Lynx Asset Management,fund,teamtailor,lynxassetmanagement,https://lynxassetmanagement.teamtailor.com/jobs.rss,1,2026-08-10T16:19:36+00:00
+Man Group,fund,greenhouse,mangroup,https://boards-api.greenhouse.io/v1/boards/mangroup/jobs?content=false,60,2026-08-10T16:05:11+00:00
+Marathon Asset Management,fund,pinpoint,marathon,https://marathon.pinpointhq.com/postings.json,3,2026-08-10T16:09:13+00:00
+Marathon Asset Management US,fund,pinpoint,marathon,https://marathon.pinpointhq.com/postings.json,3,2026-08-10T16:23:15+00:00
+Marble Bar Asset Management,fund,ashby,marble,https://api.ashbyhq.com/posting-api/job-board/marble,5,2026-08-10T16:19:47+00:00
+Marshall Wace,fund,greenhouse,marshallwace,https://boards-api.greenhouse.io/v1/boards/marshallwace/jobs?content=false,1,2026-08-10T16:05:28+00:00
+Meridiam,fund,recruitee,meridiam,https://meridiam.recruitee.com/api/offers/,2,2026-08-10T16:10:04+00:00
+MetLife Investment Management,fund,lever,metlife,https://api.lever.co/v0/postings/metlife?mode=json,39,2026-08-10T16:22:11+00:00
+NGP Energy Capital,fund,pinpoint,ngp,https://ngp.pinpointhq.com/postings.json,3,2026-08-10T16:15:30+00:00
+Napier Park Global Capital,fund,pinpoint,napier,https://napier.pinpointhq.com/postings.json,2,2026-08-10T16:09:40+00:00
+Ninety One,fund,rippling,ninety,https://api.rippling.com/platform/api/ats/v1/board/ninety/jobs,1,2026-08-10T16:09:06+00:00
+North Asset Management,fund,bamboohr,north,https://north.bamboohr.com/careers/list,2,2026-08-10T16:19:53+00:00
+Northern Trust Asset Management,fund,bamboohr,northern,https://northern.bamboohr.com/careers/list,5,2026-08-10T16:09:33+00:00
+Numeric Investors,fund,ashby,numeric,https://api.ashbyhq.com/posting-api/job-board/numeric,21,2026-08-10T16:22:30+00:00
+Oaktree Capital Management,fund,bamboohr,oaktree,https://oaktree.bamboohr.com/careers/list,12,2026-08-10T16:10:09+00:00
+Pacific Asset Management,fund,bamboohr,pacific,https://pacific.bamboohr.com/careers/list,9,2026-08-10T16:18:55+00:00
+Pharo Management,fund,greenhouse,pharomanagement,https://boards-api.greenhouse.io/v1/boards/pharomanagement/jobs?content=false,12,2026-08-10T16:19:24+00:00
+Point72,fund,greenhouse,point72,https://boards-api.greenhouse.io/v1/boards/point72/jobs?content=false,231,2026-08-10T16:05:18+00:00
+Polar Capital,fund,ashby,polar,https://api.ashbyhq.com/posting-api/job-board/polar,5,2026-08-10T16:08:54+00:00
+Prosperity Capital Management,fund,personio,prosperity,https://prosperity.jobs.personio.com/xml,3,2026-08-10T16:19:48+00:00
+Quantica Capital,fund,personio,quantica,https://quantica.jobs.personio.com/xml,3,2026-08-10T16:19:51+00:00
+Quantum Capital Group,fund,ashby,quantum,https://api.ashbyhq.com/posting-api/job-board/quantum,11,2026-08-10T16:15:25+00:00
+Quilter,fund,ashby,quilter,https://api.ashbyhq.com/posting-api/job-board/quilter,5,2026-08-10T16:09:04+00:00
+RPM Risk and Portfolio Management,fund,bamboohr,rpm,https://rpm.bamboohr.com/careers/list,8,2026-08-10T16:21:55+00:00
+Royal London Asset Management,fund,personio,royal,https://royal.jobs.personio.com/xml,2,2026-08-10T16:09:01+00:00
+Sandbar Asset Management,fund,ashby,sandbar,https://api.ashbyhq.com/posting-api/job-board/sandbar,13,2026-08-10T16:10:12+00:00
+Schonfeld,fund,greenhouse,schonfeld,https://boards-api.greenhouse.io/v1/boards/schonfeld/jobs?content=false,54,2026-08-10T16:05:14+00:00
+Schroders,fund,pinpoint,schroders,https://schroders.pinpointhq.com/postings.json,5,2026-08-10T16:08:29+00:00
+Seilern Investment Management,fund,bamboohr,seilern,https://seilern.bamboohr.com/careers/list,1,2026-08-10T16:19:15+00:00
+Silver Point Capital,fund,ashby,silver,https://api.ashbyhq.com/posting-api/job-board/silver,45,2026-08-10T16:09:39+00:00
+Sona Asset Management,fund,ashby,sona,https://api.ashbyhq.com/posting-api/job-board/sona,11,2026-08-10T16:06:13+00:00
+Sunrise Capital Partners,fund,greenhouse,sunrise,https://boards-api.greenhouse.io/v1/boards/sunrise/jobs?content=false,17,2026-08-10T16:22:23+00:00
+Symmetry Investments,fund,greenhouse,symmetry,https://boards-api.greenhouse.io/v1/boards/symmetry/jobs?content=false,2,2026-08-10T16:15:14+00:00
+TCI Fund Management,fund,bamboohr,tci,https://tci.bamboohr.com/careers/list,3,2026-08-10T16:05:52+00:00
+Tikehau Capital,fund,smartrecruiters,tikehaucapital,https://api.smartrecruiters.com/v1/companies/tikehaucapital/postings?limit=100,1,2026-08-10T16:09:59+00:00
+Two Sigma,fund,teamtailor,two,https://two.teamtailor.com/jobs.rss,2,2026-08-10T16:07:48+00:00
+Veritas Asset Management,fund,recruitee,veritas,https://veritas.recruitee.com/api/offers/,1,2026-08-10T16:09:28+00:00
+Vitruvian Partners,fund,bamboohr,vitruvianpartners,https://vitruvianpartners.bamboohr.com/careers/list,2,2026-08-10T16:10:02+00:00
+Voya Investment Management,fund,personio,voya,https://voya.jobs.personio.com/xml,2,2026-08-10T16:22:40+00:00
+Winton,fund,greenhouse,winton,https://boards-api.greenhouse.io/v1/boards/winton/jobs?content=false,10,2026-08-10T16:05:11+00:00
+Zebedee Capital Partners,fund,pinpoint,zebedee,https://zebedee.pinpointhq.com/postings.json,1,2026-08-10T16:20:10+00:00
+Aegis London,insurance,rippling,aegis,https://api.rippling.com/platform/api/ats/v1/board/aegis/jobs,34,2026-08-10T16:23:33+00:00
+Apollo Underwriting,insurance,pinpoint,apollo,https://apollo.pinpointhq.com/postings.json,9,2026-08-10T16:23:40+00:00
+Arch Insurance,insurance,ashby,arch,https://api.ashbyhq.com/posting-api/job-board/arch,6,2026-08-10T16:23:21+00:00
+Argo Group,insurance,personio,argo,https://argo.jobs.personio.com/xml,10,2026-08-10T16:23:21+00:00
+Ark Insurance,insurance,greenhouse,ark,https://boards-api.greenhouse.io/v1/boards/ark/jobs?content=false,5,2026-08-10T16:23:31+00:00
+Ascot Group,insurance,pinpoint,ascot,https://ascot.pinpointhq.com/postings.json,5,2026-08-10T16:10:29+00:00
+Atrium Underwriters,insurance,bamboohr,atrium,https://atrium.bamboohr.com/careers/list,2,2026-08-10T16:23:41+00:00
+CFC Underwriting,insurance,pinpoint,cfcunderwriting,https://cfcunderwriting.pinpointhq.com/postings.json,66,2026-08-10T16:23:19+00:00
+Canopius,insurance,pinpoint,canopius,https://canopius.pinpointhq.com/postings.json,4,2026-08-10T16:10:10+00:00
+Conduit Re,insurance,bamboohr,conduitre,https://conduitre.bamboohr.com/careers/list,1,2026-08-10T16:10:15+00:00
+Everest Insurance,insurance,recruitee,everest,https://everest.recruitee.com/api/offers/,3,2026-08-10T16:23:57+00:00
+Gallagher,insurance,bamboohr,gallagher,https://gallagher.bamboohr.com/careers/list,15,2026-08-10T16:10:32+00:00
+Hamilton Insurance,insurance,pinpoint,hamiltongroup,https://hamiltongroup.pinpointhq.com/postings.json,4,2026-08-10T16:23:10+00:00
+Howden Group,insurance,recruitee,howden,https://howden.recruitee.com/api/offers/,37,2026-08-10T16:10:35+00:00
+Liberty Specialty Markets,insurance,bamboohr,liberty,https://liberty.bamboohr.com/careers/list,4,2026-08-10T16:23:18+00:00
+Lockton,insurance,smartrecruiters,lockton,https://api.smartrecruiters.com/v1/companies/lockton/postings?limit=100,1,2026-08-10T16:10:22+00:00
+MS Amlin,insurance,pinpoint,msamlin,https://msamlin.pinpointhq.com/postings.json,4,2026-08-10T16:10:15+00:00
+Markel International,insurance,smartrecruiters,markel,https://api.smartrecruiters.com/v1/companies/markel/postings?limit=100,1,2026-08-10T16:23:06+00:00
+Miller Insurance,insurance,pinpoint,miller,https://miller.pinpointhq.com/postings.json,1,2026-08-10T16:10:53+00:00
+Munich Re,insurance,bamboohr,munichre,https://munichre.bamboohr.com/careers/list,1,2026-08-10T16:10:20+00:00
+Nexus Underwriting,insurance,greenhouse,nexus,https://boards-api.greenhouse.io/v1/boards/nexus/jobs?content=false,4,2026-08-10T16:23:32+00:00
+Pen Underwriting,insurance,bamboohr,pen,https://pen.bamboohr.com/careers/list,8,2026-08-10T16:23:40+00:00
+Sompo International,insurance,pinpoint,sompo-intl,https://sompo-intl.pinpointhq.com/postings.json,2,2026-08-10T16:23:07+00:00
+Starr Insurance,insurance,recruitee,starr,https://starr.recruitee.com/api/offers/,5,2026-08-10T16:23:29+00:00
+WTW,insurance,smartrecruiters,wtw,https://api.smartrecruiters.com/v1/companies/wtw/postings?limit=100,7,2026-08-10T16:10:19+00:00
+Capital Gas,lng,lever,capital,https://api.lever.co/v0/postings/capital?mode=json,41,2026-08-10T16:15:37+00:00
+Commonwealth LNG,lng,pinpoint,commonwealthlng,https://commonwealthlng.pinpointhq.com/postings.json,43,2026-08-10T16:15:37+00:00
+Excelerate Energy,lng,ashby,excelerate,https://api.ashbyhq.com/posting-api/job-board/excelerate,5,2026-08-10T16:05:14+00:00
+Flex LNG,lng,greenhouse,flex,https://boards-api.greenhouse.io/v1/boards/flex/jobs?content=false,43,2026-08-10T16:15:39+00:00
+Gate Terminal,lng,recruitee,gateterminal,https://gateterminal.recruitee.com/api/offers/,7,2026-08-10T16:29:42+00:00
+Golden Pass LNG,lng,rippling,golden,https://api.rippling.com/platform/api/ats/v1/board/golden/jobs,7,2026-08-10T16:29:50+00:00
+Grain LNG,lng,teamtailor,grain,https://grain.teamtailor.com/jobs.rss,13,2026-08-10T16:29:56+00:00
+New Fortress Energy,lng,greenhouse,new,https://boards-api.greenhouse.io/v1/boards/new/jobs?content=false,1,2026-08-10T16:11:17+00:00
+NextDecade,lng,pinpoint,next-decade,https://next-decade.pinpointhq.com/postings.json,5,2026-08-10T16:11:05+00:00
+Petronas LNG,lng,pinpoint,petronas,https://petronas.pinpointhq.com/postings.json,4,2026-08-10T16:29:53+00:00
+Venture Global,lng,bamboohr,venture,https://venture.bamboohr.com/careers/list,4,2026-08-10T16:05:22+00:00
+Aker BP,major,teamtailor,akerbp,https://akerbp.teamtailor.com/jobs.rss,11,2026-08-10T16:10:44+00:00
+Aker Solutions,major,smartrecruiters,akersolutions,https://api.smartrecruiters.com/v1/companies/akersolutions/postings?limit=100,1,2026-08-10T16:28:20+00:00
+Baker Hughes,major,breezy,baker,https://baker.breezy.hr/json,1,2026-08-10T16:28:36+00:00
+Baron Oil,major,smartrecruiters,baron,https://api.smartrecruiters.com/v1/companies/baron/postings?limit=100,5,2026-08-10T16:29:49+00:00
+Capricorn Energy,major,breezy,capricorn,https://capricorn.breezy.hr/json,23,2026-08-10T16:10:59+00:00
+Chariot Limited,major,ashby,chariot,https://api.ashbyhq.com/posting-api/job-board/chariot,15,2026-08-10T16:29:30+00:00
+Diamond Offshore,major,teamtailor,diamond,https://diamond.teamtailor.com/jobs.rss,66,2026-08-10T16:28:51+00:00
+Diversified Energy,major,lever,div,https://api.lever.co/v0/postings/div?mode=json,1,2026-08-10T16:10:40+00:00
+KBR,major,breezy,kbr,https://kbr.breezy.hr/json,14,2026-08-10T16:28:37+00:00
+Kuwait Petroleum,major,bamboohr,kpc,https://kpc.bamboohr.com/careers/list,2,2026-08-10T16:13:42+00:00
+Neptune Energy,major,ashby,neptune,https://api.ashbyhq.com/posting-api/job-board/neptune,4,2026-08-10T16:11:01+00:00
+Noble Corporation,major,greenhouse,noble,https://boards-api.greenhouse.io/v1/boards/noble/jobs?content=false,2,2026-08-10T16:28:56+00:00
+Petrofac Engineering,major,pinpoint,petrofac,https://petrofac.pinpointhq.com/postings.json,3,2026-08-10T16:28:59+00:00
+Petronas,major,pinpoint,petronas,https://petronas.pinpointhq.com/postings.json,4,2026-08-10T16:10:50+00:00
+Pharos Energy,major,ashby,pharos,https://api.ashbyhq.com/posting-api/job-board/pharos,1,2026-08-10T16:29:18+00:00
+SLB,major,personio,slb,https://slb.jobs.personio.com/xml,7,2026-08-10T16:28:29+00:00
+Samsung Heavy Industries,major,recruitee,samsung,https://samsung.recruitee.com/api/offers/,1,2026-08-10T16:29:07+00:00
+Shelf Drilling,major,greenhouse,shelf,https://boards-api.greenhouse.io/v1/boards/shelf/jobs?content=false,9,2026-08-10T16:28:47+00:00
+Transocean,major,bamboohr,deepwater,https://deepwater.bamboohr.com/careers/list,1,2026-08-10T16:28:33+00:00
+Union Jack Oil,major,ashby,union,https://api.ashbyhq.com/posting-api/job-board/union,2,2026-08-10T16:29:10+00:00
+United Oil and Gas,major,teamtailor,united,https://united.teamtailor.com/jobs.rss,15,2026-08-10T16:29:47+00:00
+Vantage Drilling,major,ashby,vantage,https://api.ashbyhq.com/posting-api/job-board/vantage,7,2026-08-10T16:28:49+00:00
+Williams Companies,major,teamtailor,williams,https://williams.teamtailor.com/jobs.rss,5,2026-08-10T16:10:57+00:00
+Alfred H Knight,metals,bamboohr,ahkgroup,https://ahkgroup.bamboohr.com/careers/list,63,2026-08-10T16:25:14+00:00
+BHP,metals,pinpoint,bhp,https://bhp.pinpointhq.com/postings.json,5,2026-08-10T16:11:34+00:00
+Derichebourg,metals,personio,derichebourg,https://derichebourg.jobs.personio.com/xml,15,2026-08-10T16:31:49+00:00
+Endeavour Mining,metals,smartrecruiters,endeavourmining,https://api.smartrecruiters.com/v1/companies/endeavourmining/postings?limit=100,1,2026-08-10T16:11:39+00:00
+Harmony Gold,metals,lever,harmony,https://api.lever.co/v0/postings/harmony?mode=json,9,2026-08-10T16:15:43+00:00
+Liberty Steel,metals,bamboohr,liberty,https://liberty.bamboohr.com/careers/list,4,2026-08-10T16:32:15+00:00
+Ocean Partners,metals,ashby,ocean,https://api.ashbyhq.com/posting-api/job-board/ocean,2,2026-08-10T16:25:49+00:00
+Rand Refinery,metals,pinpoint,rand,https://rand.pinpointhq.com/postings.json,5,2026-08-10T16:26:14+00:00
+Rio Tinto,metals,bamboohr,rio,https://rio.bamboohr.com/careers/list,4,2026-08-10T16:11:49+00:00
+Sharps Pixley,metals,teamtailor,sharps,https://sharps.teamtailor.com/jobs.rss,6,2026-08-10T16:26:06+00:00
+Stena Recycling,metals,teamtailor,stena,https://stena.teamtailor.com/jobs.rss,4,2026-08-10T16:32:08+00:00
+Thyssenkrupp Materials,metals,pinpoint,thyssenkrupp,https://thyssenkrupp.pinpointhq.com/postings.json,8,2026-08-10T16:32:03+00:00
+Tiberius Group,metals,lever,tiberius,https://api.lever.co/v0/postings/tiberius?mode=json,10,2026-08-10T16:25:59+00:00
+Amprion,power_gas,rippling,amprion,https://api.rippling.com/platform/api/ats/v1/board/amprion/jobs,4,2026-08-10T16:26:35+00:00
+Andel,power_gas,ashby,andel,https://api.ashbyhq.com/posting-api/job-board/andel,1,2026-08-10T16:28:18+00:00
+Austrian Power Grid,power_gas,pinpoint,austrian,https://austrian.pinpointhq.com/postings.json,2,2026-08-10T16:27:05+00:00
+BBL Company,power_gas,bamboohr,bbl,https://bbl.bamboohr.com/careers/list,2,2026-08-10T16:27:37+00:00
+Budget Energie,power_gas,recruitee,budgetenergie,https://budgetenergie.recruitee.com/api/offers/,6,2026-08-10T16:28:11+00:00
+ElecLink,power_gas,teamtailor,eleclink,https://eleclink.teamtailor.com/jobs.rss,1,2026-08-10T16:27:13+00:00
+Fingrid,power_gas,teamtailor,fingrid,https://fingrid.teamtailor.com/jobs.rss,4,2026-08-10T16:26:45+00:00
+Fuse Energy,power_gas,ashby,fuse,https://api.ashbyhq.com/posting-api/job-board/fuse,17,2026-08-10T16:13:01+00:00
+Gasunie,power_gas,smartrecruiters,gasunie,https://api.smartrecruiters.com/v1/companies/gasunie/postings?limit=100,1,2026-08-10T16:26:50+00:00
+Greenchoice,power_gas,recruitee,greenchoice,https://greenchoice.recruitee.com/api/offers/,17,2026-08-10T16:28:06+00:00
+Groupe E,power_gas,teamtailor,groupe,https://groupe.teamtailor.com/jobs.rss,78,2026-08-10T16:27:55+00:00
+Hafslund,power_gas,teamtailor,hafslund,https://hafslund.teamtailor.com/jobs.rss,10,2026-08-10T16:28:17+00:00
+Hera Group,power_gas,breezy,hera,https://hera.breezy.hr/json,1,2026-08-10T16:27:46+00:00
+Heron Energy,power_gas,bamboohr,heron,https://heron.bamboohr.com/careers/list,2,2026-08-10T16:28:22+00:00
+Ignitis Group,power_gas,smartrecruiters,ignitisgroup,https://api.smartrecruiters.com/v1/companies/ignitisgroup/postings?limit=100,97,2026-08-10T16:28:19+00:00
+Lahti Energia,power_gas,teamtailor,lahtienergia,https://lahtienergia.teamtailor.com/jobs.rss,2,2026-08-10T16:28:16+00:00
+Litgrid,power_gas,smartrecruiters,litgrid,https://api.smartrecruiters.com/v1/companies/litgrid/postings?limit=100,4,2026-08-10T16:26:45+00:00
+Luminus,power_gas,recruitee,luminus,https://luminus.recruitee.com/api/offers/,24,2026-08-10T16:28:07+00:00
+MET Group,power_gas,smartrecruiters,metgroup,https://api.smartrecruiters.com/v1/companies/metgroup/postings?limit=100,69,2026-08-10T16:04:36+00:00
+NIS Serbia,power_gas,personio,nis,https://nis.jobs.personio.com/xml,6,2026-08-10T16:27:47+00:00
+National Gas,power_gas,greenhouse,national,https://boards-api.greenhouse.io/v1/boards/national/jobs?content=false,7,2026-08-10T16:27:11+00:00
+Nemo Link,power_gas,recruitee,nemo,https://nemo.recruitee.com/api/offers/,3,2026-08-10T16:27:40+00:00
+North Sea Link,power_gas,bamboohr,north,https://north.bamboohr.com/careers/list,2,2026-08-10T16:27:31+00:00
+Northern Gas Networks,power_gas,bamboohr,northern,https://northern.bamboohr.com/careers/list,5,2026-08-10T16:11:29+00:00
+Northern Powergrid,power_gas,bamboohr,northern,https://northern.bamboohr.com/careers/list,5,2026-08-10T16:11:28+00:00
+Open Grid Europe,power_gas,personio,open,https://open.jobs.personio.com/xml,4,2026-08-10T16:27:28+00:00
+Ovo Energy,power_gas,greenhouse,ovoenergy,https://boards-api.greenhouse.io/v1/boards/ovoenergy/jobs?content=false,10,2026-08-10T16:07:03+00:00
+Public Power Corporation,power_gas,greenhouse,public,https://boards-api.greenhouse.io/v1/boards/public/jobs?content=false,2,2026-08-10T16:28:01+00:00
+Rebel Energy,power_gas,bamboohr,rebel,https://rebel.bamboohr.com/careers/list,5,2026-08-10T16:13:16+00:00
+SONI,power_gas,personio,soni,https://soni.jobs.personio.com/xml,3,2026-08-10T16:26:45+00:00
+So Energy,power_gas,pinpoint,soenergy,https://soenergy.pinpointhq.com/postings.json,5,2026-08-10T16:07:04+00:00
+VPI,power_gas,bamboohr,vpi,https://vpi.bamboohr.com/careers/list,10,2026-08-10T16:04:44+00:00
+Vattenfall,power_gas,smartrecruiters,vattenfall,https://api.smartrecruiters.com/v1/companies/vattenfall/postings?limit=100,242,2026-08-10T16:04:19+00:00
+Vattenfall Energy Trading,power_gas,smartrecruiters,vattenfall,https://api.smartrecruiters.com/v1/companies/vattenfall/postings?limit=100,242,2026-08-10T16:21:09+00:00
+Vattenfall Nordic,power_gas,smartrecruiters,vattenfall,https://api.smartrecruiters.com/v1/companies/vattenfall/postings?limit=100,242,2026-08-10T16:28:16+00:00
+Akuna Capital,prop_mm,greenhouse,akunacapital,https://boards-api.greenhouse.io/v1/boards/akunacapital/jobs?content=false,34,2026-08-10T16:04:48+00:00
+Amplify Trading,prop_mm,ashby,amplify,https://api.ashbyhq.com/posting-api/job-board/amplify,45,2026-08-10T16:05:29+00:00
+Aquatic Capital Management,prop_mm,greenhouse,aquaticcapitalmanagement,https://boards-api.greenhouse.io/v1/boards/aquaticcapitalmanagement/jobs?content=false,9,2026-08-10T16:21:43+00:00
+Axia Futures,prop_mm,personio,axia,https://axia.jobs.personio.com/xml,2,2026-08-10T16:05:25+00:00
+CTC Trading,prop_mm,greenhouse,chicagotrading,https://boards-api.greenhouse.io/v1/boards/chicagotrading/jobs?content=false,23,2026-08-10T16:04:53+00:00
+Consolidated Trading,prop_mm,bamboohr,consolidated,https://consolidated.bamboohr.com/careers/list,1,2026-08-10T16:14:13+00:00
+Da Vinci Derivatives,prop_mm,greenhouse,davinciderivatives,https://boards-api.greenhouse.io/v1/boards/davinciderivatives/jobs?content=false,12,2026-08-10T16:04:49+00:00
+Eclipse Trading,prop_mm,greenhouse,eclipsetrading,https://boards-api.greenhouse.io/v1/boards/eclipsetrading/jobs?content=false,15,2026-08-10T16:13:47+00:00
+Engineers Gate,prop_mm,greenhouse,engineersgate,https://boards-api.greenhouse.io/v1/boards/engineersgate/jobs?content=false,8,2026-08-10T16:21:35+00:00
+Five Rings,prop_mm,teamtailor,five,https://five.teamtailor.com/jobs.rss,91,2026-08-10T16:05:08+00:00
+Flow Traders,prop_mm,greenhouse,flowtraders,https://boards-api.greenhouse.io/v1/boards/flowtraders/jobs?content=false,42,2026-08-10T16:04:42+00:00
+Geneva Trading,prop_mm,greenhouse,genevatrading,https://boards-api.greenhouse.io/v1/boards/genevatrading/jobs?content=false,13,2026-08-10T16:13:51+00:00
+Grasshopper Asia,prop_mm,greenhouse,grasshopperasia,https://boards-api.greenhouse.io/v1/boards/grasshopperasia/jobs?content=false,7,2026-08-10T16:13:41+00:00
+IMC Trading,prop_mm,greenhouse,imc,https://boards-api.greenhouse.io/v1/boards/imc/jobs?content=false,167,2026-08-10T16:04:41+00:00
+Jane Street,prop_mm,greenhouse,janestreet,https://boards-api.greenhouse.io/v1/boards/janestreet/jobs?content=false,231,2026-08-10T16:04:43+00:00
+Jump Trading,prop_mm,greenhouse,jumptrading,https://boards-api.greenhouse.io/v1/boards/jumptrading/jobs?content=false,104,2026-08-10T16:04:44+00:00
+Liquid Capital,prop_mm,ashby,liquid,https://api.ashbyhq.com/posting-api/job-board/liquid,2,2026-08-10T16:05:05+00:00
+Nico Trading,prop_mm,personio,nico,https://nico.jobs.personio.com/xml,3,2026-08-10T16:14:19+00:00
+PDT Partners,prop_mm,greenhouse,pdtpartners,https://boards-api.greenhouse.io/v1/boards/pdtpartners/jobs?content=false,10,2026-08-10T16:21:31+00:00
+Qube Research and Technologies,prop_mm,greenhouse,quberesearchandtechnologies,https://boards-api.greenhouse.io/v1/boards/quberesearchandtechnologies/jobs?content=false,193,2026-08-10T16:05:13+00:00
+Schneider Trading,prop_mm,bamboohr,schneider,https://schneider.bamboohr.com/careers/list,10,2026-08-10T16:05:29+00:00
+Spot Trading,prop_mm,teamtailor,spot,https://spot.teamtailor.com/jobs.rss,100,2026-08-10T16:14:07+00:00
+Squarepoint Capital,prop_mm,greenhouse,squarepointcapital,https://boards-api.greenhouse.io/v1/boards/squarepointcapital/jobs?content=false,88,2026-08-10T16:04:55+00:00
+Susquehanna,prop_mm,personio,sig,https://sig.jobs.personio.com/xml,5,2026-08-10T16:04:47+00:00
+Tower Research Capital,prop_mm,greenhouse,towerresearchcapital,https://boards-api.greenhouse.io/v1/boards/towerresearchcapital/jobs?content=false,72,2026-08-10T16:05:07+00:00
+Transmarket Group,prop_mm,greenhouse,transmarketgroup,https://boards-api.greenhouse.io/v1/boards/transmarketgroup/jobs?content=false,17,2026-08-10T16:13:42+00:00
+Valkyrie Trading,prop_mm,lever,valkyrietrading,https://api.lever.co/v0/postings/valkyrietrading?mode=json,6,2026-08-10T16:13:55+00:00
+Voleon Group,prop_mm,ashby,voleon,https://api.ashbyhq.com/posting-api/job-board/voleon,55,2026-08-10T16:21:31+00:00
+Airswift,recruiter,smartrecruiters,airswift,https://api.smartrecruiters.com/v1/companies/airswift/postings?limit=100,1,2026-08-10T16:17:38+00:00
+Ambition,recruiter,rippling,ambition,https://api.rippling.com/platform/api/ats/v1/board/ambition/jobs,1,2026-08-10T16:18:00+00:00
+Broadgate Search,recruiter,teamtailor,broadgate,https://broadgate.teamtailor.com/jobs.rss,2,2026-08-10T16:18:14+00:00
+Brunel,recruiter,pinpoint,brunel,https://brunel.pinpointhq.com/postings.json,5,2026-08-10T16:17:39+00:00
+Goodman Masson,recruiter,greenhouse,goodman,https://boards-api.greenhouse.io/v1/boards/goodman/jobs?content=false,35,2026-08-10T16:17:52+00:00
+HC Group,recruiter,bamboohr,hcgroup,https://hcgroup.bamboohr.com/careers/list,1,2026-08-10T16:06:49+00:00
+Harrington Starr,recruiter,smartrecruiters,harringtonstarr,https://api.smartrecruiters.com/v1/companies/harringtonstarr/postings?limit=100,2,2026-08-10T16:17:38+00:00
+Huxley,recruiter,personio,huxley,https://huxley.jobs.personio.com/xml,3,2026-08-10T16:17:48+00:00
+Marks Sattin,recruiter,teamtailor,markssattin,https://markssattin.teamtailor.com/jobs.rss,9,2026-08-10T16:17:42+00:00
+Michael Page,recruiter,pinpoint,michaelpage,https://michaelpage.pinpointhq.com/postings.json,4,2026-08-10T16:18:00+00:00
+Morgan McKinley,recruiter,pinpoint,morganmckinley,https://morganmckinley.pinpointhq.com/postings.json,3,2026-08-10T16:17:59+00:00
+NES Fircroft,recruiter,bamboohr,nes,https://nes.bamboohr.com/careers/list,4,2026-08-10T16:17:56+00:00
+Odgers Berndtson,recruiter,personio,odgers,https://odgers.jobs.personio.com/xml,6,2026-08-10T16:18:15+00:00
+Orion Group,recruiter,greenhouse,oriongroup,https://boards-api.greenhouse.io/v1/boards/oriongroup/jobs?content=false,9,2026-08-10T16:17:40+00:00
+Robert Walters,recruiter,pinpoint,robertwalters,https://robertwalters.pinpointhq.com/postings.json,5,2026-08-10T16:17:58+00:00
+Sheffield Haworth,recruiter,bamboohr,sheffieldhaworth,https://sheffieldhaworth.bamboohr.com/careers/list,2,2026-08-10T16:17:47+00:00
+Spencer Ogden,recruiter,pinpoint,spencer-ogden,https://spencer-ogden.pinpointhq.com/postings.json,4,2026-08-10T16:17:41+00:00
+Spencer Stuart,recruiter,greenhouse,spencer,https://boards-api.greenhouse.io/v1/boards/spencer/jobs?content=false,3,2026-08-10T16:17:57+00:00
+Taylor Hopkinson,recruiter,rippling,taylor,https://api.rippling.com/platform/api/ats/v1/board/taylor/jobs,5,2026-08-10T16:17:50+00:00
+Chevron,refining,bamboohr,chevron,https://chevron.bamboohr.com/careers/list,5,2026-08-10T16:04:20+00:00
+Circle K Europe,refining,pinpoint,circlek,https://circlek.pinpointhq.com/postings.json,5,2026-08-10T16:26:07+00:00
+Crown Oil,refining,teamtailor,crownoil,https://crownoil.teamtailor.com/jobs.rss,3,2026-08-10T16:26:01+00:00
+Greenergy,refining,pinpoint,greenergy,https://greenergy.pinpointhq.com/postings.json,14,2026-08-10T16:04:10+00:00
+Greenergy Fuels,refining,pinpoint,greenergy,https://greenergy.pinpointhq.com/postings.json,14,2026-08-10T16:26:39+00:00
+Harvest Energy,refining,rippling,harvest,https://api.rippling.com/platform/api/ats/v1/board/harvest/jobs,12,2026-08-10T16:26:19+00:00
+Inter Terminals,refining,greenhouse,inter,https://boards-api.greenhouse.io/v1/boards/inter/jobs?content=false,169,2026-08-10T16:13:39+00:00
+Petroineos,refining,pinpoint,petroineos,https://petroineos.pinpointhq.com/postings.json,13,2026-08-10T16:13:24+00:00
+Watson Fuels,refining,breezy,watson,https://watson.breezy.hr/json,1,2026-08-10T16:26:14+00:00
+World Kinect,refining,bamboohr,world,https://world.bamboohr.com/careers/list,5,2026-08-10T16:04:32+00:00
+AFME,regulator,pinpoint,afme,https://afme.pinpointhq.com/postings.json,1,2026-08-10T16:33:28+00:00
+British Private Equity and Venture Capital Association,regulator,bamboohr,bvca,https://bvca.bamboohr.com/careers/list,5,2026-08-10T16:33:45+00:00
+Climate Change Committee,regulator,personio,climate,https://climate.jobs.personio.com/xml,4,2026-08-10T16:15:57+00:00
+Grain and Feed Trade Association,regulator,teamtailor,grain,https://grain.teamtailor.com/jobs.rss,13,2026-08-10T16:33:59+00:00
+International Aluminium Institute,regulator,greenhouse,international,https://boards-api.greenhouse.io/v1/boards/international/jobs?content=false,1,2026-08-10T16:34:06+00:00
+International Chamber of Shipping,regulator,greenhouse,international,https://boards-api.greenhouse.io/v1/boards/international/jobs?content=false,1,2026-08-10T16:33:48+00:00
+International Cocoa Organization,regulator,greenhouse,international,https://boards-api.greenhouse.io/v1/boards/international/jobs?content=false,1,2026-08-10T16:34:02+00:00
+International Coffee Organization,regulator,greenhouse,international,https://boards-api.greenhouse.io/v1/boards/international/jobs?content=false,1,2026-08-10T16:33:59+00:00
+International Copper Study Group,regulator,greenhouse,international,https://boards-api.greenhouse.io/v1/boards/international/jobs?content=false,1,2026-08-10T16:34:06+00:00
+International Energy Agency,regulator,greenhouse,international,https://boards-api.greenhouse.io/v1/boards/international/jobs?content=false,1,2026-08-10T16:26:41+00:00
+International Grains Council,regulator,greenhouse,international,https://boards-api.greenhouse.io/v1/boards/international/jobs?content=false,1,2026-08-10T16:33:59+00:00
+International Lead and Zinc Study Group,regulator,greenhouse,international,https://boards-api.greenhouse.io/v1/boards/international/jobs?content=false,1,2026-08-10T16:34:03+00:00
+International Sugar Organization,regulator,greenhouse,international,https://boards-api.greenhouse.io/v1/boards/international/jobs?content=false,1,2026-08-10T16:33:59+00:00
+International Wrought Copper Council,regulator,greenhouse,international,https://boards-api.greenhouse.io/v1/boards/international/jobs?content=false,1,2026-08-10T16:34:03+00:00
+London Bullion Market Association,regulator,greenhouse,london,https://boards-api.greenhouse.io/v1/boards/london/jobs?content=false,4,2026-08-10T16:33:49+00:00
+London Platinum and Palladium Market,regulator,greenhouse,london,https://boards-api.greenhouse.io/v1/boards/london/jobs?content=false,4,2026-08-10T16:33:58+00:00
+Low Carbon Contracts Company,regulator,pinpoint,lowcarboncontracts,https://lowcarboncontracts.pinpointhq.com/postings.json,8,2026-08-10T16:33:22+00:00
+National Grid,regulator,greenhouse,national,https://boards-api.greenhouse.io/v1/boards/national/jobs?content=false,7,2026-08-10T16:07:07+00:00
+World Steel Association,regulator,bamboohr,world,https://world.bamboohr.com/careers/list,5,2026-08-10T16:34:06+00:00
+Zero Emissions Traders Alliance,regulator,ashby,zero,https://api.ashbyhq.com/posting-api/job-board/zero,7,2026-08-10T16:33:47+00:00
+Advanced Shipping and Trading,shipbroker,recruitee,advanced,https://advanced.recruitee.com/api/offers/,2,2026-08-10T16:33:13+00:00
+Affinity Shipping,shipbroker,bamboohr,affinity,https://affinity.bamboohr.com/careers/list,2,2026-08-10T16:06:45+00:00
+Allied Shipbroking,shipbroker,greenhouse,allied,https://boards-api.greenhouse.io/v1/boards/allied/jobs?content=false,7,2026-08-10T16:33:24+00:00
+Golden Destiny,shipbroker,rippling,golden,https://api.rippling.com/platform/api/ats/v1/board/golden/jobs,7,2026-08-10T16:33:14+00:00
+Howe Robinson Partners,shipbroker,pinpoint,howe,https://howe.pinpointhq.com/postings.json,3,2026-08-10T16:06:30+00:00
+Lightship Chartering,shipbroker,lever,lightship,https://api.lever.co/v0/postings/lightship?mode=json,10,2026-08-10T16:17:09+00:00
+Maersk Broker,shipbroker,teamtailor,maersk,https://maersk.teamtailor.com/jobs.rss,10,2026-08-10T16:07:49+00:00
+Nordic Shipping and Trading,shipbroker,personio,nordic,https://nordic.jobs.personio.com/xml,2,2026-08-10T16:32:54+00:00
+Northern Shipping,shipbroker,bamboohr,northern,https://northern.bamboohr.com/careers/list,5,2026-08-10T16:17:26+00:00
+Simpson Spence Young Futures,shipbroker,breezy,simpson,https://simpson.breezy.hr/json,1,2026-08-10T16:33:15+00:00
+Trident Alliance,shipbroker,greenhouse,trident,https://boards-api.greenhouse.io/v1/boards/trident/jobs?content=false,6,2026-08-10T16:17:24+00:00
+Weber Shipbroking,shipbroker,bamboohr,weber,https://weber.bamboohr.com/careers/list,4,2026-08-10T16:17:32+00:00
+Ardmore Shipping,shipping,bamboohr,ardmoreshipping,https://ardmoreshipping.bamboohr.com/careers/list,3,2026-08-10T16:12:09+00:00
+Avance Gas,shipping,personio,avance,https://avance.jobs.personio.com/xml,1,2026-08-10T16:17:15+00:00
+CMA CGM,shipping,greenhouse,cma,https://boards-api.greenhouse.io/v1/boards/cma/jobs?content=false,1,2026-08-10T16:12:10+00:00
+Frontline,shipping,pinpoint,frontline,https://frontline.pinpointhq.com/postings.json,3,2026-08-10T16:11:57+00:00
+Golden Ocean,shipping,rippling,golden,https://api.rippling.com/platform/api/ats/v1/board/golden/jobs,7,2026-08-10T16:12:14+00:00
+International Seaways,shipping,greenhouse,international,https://boards-api.greenhouse.io/v1/boards/international/jobs?content=false,1,2026-08-10T16:12:36+00:00
+Maersk,shipping,teamtailor,maersk,https://maersk.teamtailor.com/jobs.rss,10,2026-08-10T16:11:52+00:00
+Nordic American Tankers,shipping,personio,nordic,https://nordic.jobs.personio.com/xml,2,2026-08-10T16:17:08+00:00
+Ocean Network Express,shipping,ashby,ocean,https://api.ashbyhq.com/posting-api/job-board/ocean,2,2026-08-10T16:16:51+00:00
+Pacific Basin,shipping,bamboohr,pacific,https://pacific.bamboohr.com/careers/list,9,2026-08-10T16:16:54+00:00
+Agrocorp International,softs,teamtailor,agrocorpinternational,https://agrocorpinternational.teamtailor.com/jobs.rss,7,2026-08-10T16:16:18+00:00
+Bartlett and Company,softs,smartrecruiters,bartlett,https://api.smartrecruiters.com/v1/companies/bartlett/postings?limit=100,1,2026-08-10T16:25:04+00:00
+Bureau Veritas,softs,ashby,bureau,https://api.ashbyhq.com/posting-api/job-board/bureau,10,2026-08-10T16:25:23+00:00
+Ceres Global Ag,softs,pinpoint,ceres,https://ceres.pinpointhq.com/postings.json,5,2026-08-10T16:16:40+00:00
+ETG Commodities,softs,personio,etg,https://etg.jobs.personio.com/xml,3,2026-08-10T16:25:22+00:00
+Enviva,softs,greenhouse,enviva,https://boards-api.greenhouse.io/v1/boards/enviva/jobs?content=false,49,2026-08-10T16:26:14+00:00
+Frontier Agriculture,softs,smartrecruiters,frontieragriculture,https://api.smartrecruiters.com/v1/companies/frontieragriculture/postings?limit=100,25,2026-08-10T16:04:10+00:00
+Golden Agri-Resources,softs,rippling,golden,https://api.rippling.com/platform/api/ats/v1/board/golden/jobs,7,2026-08-10T16:16:27+00:00
+Kernel Holding,softs,ashby,kernel,https://api.ashbyhq.com/posting-api/job-board/kernel,3,2026-08-10T16:25:02+00:00
+Louis Dreyfus Company,softs,smartrecruiters,louisdreyfuscompany,https://api.smartrecruiters.com/v1/companies/louisdreyfuscompany/postings?limit=100,430,2026-08-10T16:03:44+00:00
+MHP,softs,greenhouse,mhp,https://boards-api.greenhouse.io/v1/boards/mhp/jobs?content=false,3,2026-08-10T16:24:49+00:00
+Pinnacle Renewable Energy,softs,bamboohr,pinnacle,https://pinnacle.bamboohr.com/careers/list,20,2026-08-10T16:26:33+00:00
+SGS,softs,smartrecruiters,sgs,https://api.smartrecruiters.com/v1/companies/sgs/postings?limit=100,4279,2026-08-10T16:25:09+00:00
+Solaris Commodities,softs,bamboohr,solaris,https://solaris.bamboohr.com/careers/list,3,2026-08-10T16:16:46+00:00
+Tereos,softs,recruitee,tereos,https://tereos.recruitee.com/api/offers/,8,2026-08-10T16:07:36+00:00
+Alcazar Energy,trading_house,ashby,alcazar-energy,https://api.ashbyhq.com/posting-api/job-board/alcazar-energy,13,2026-08-10T16:31:04+00:00
+Ampol,trading_house,smartrecruiters,ampol,https://api.smartrecruiters.com/v1/companies/ampol/postings?limit=100,134,2026-08-10T16:31:06+00:00
+BB Energy,trading_house,bamboohr,bbenergy,https://bbenergy.bamboohr.com/careers/list,6,2026-08-10T16:03:47+00:00
+Braskem,trading_house,greenhouse,braskem,https://boards-api.greenhouse.io/v1/boards/braskem/jobs?content=false,9,2026-08-10T16:24:13+00:00
+Castleton Commodities International,trading_house,bamboohr,cci,https://cci.bamboohr.com/careers/list,1,2026-08-10T16:03:42+00:00
+Celanese,trading_house,smartrecruiters,celanese,https://api.smartrecruiters.com/v1/companies/celanese/postings?limit=100,5,2026-08-10T16:24:19+00:00
+Engelhart Commodities,trading_house,greenhouse,engelhart,https://boards-api.greenhouse.io/v1/boards/engelhart/jobs?content=false,8,2026-08-10T16:04:05+00:00
+Ineos,trading_house,bamboohr,ineos,https://ineos.bamboohr.com/careers/list,7,2026-08-10T16:24:17+00:00
+Johnson Matthey,trading_house,personio,johnson,https://johnson.jobs.personio.com/xml,3,2026-08-10T16:24:45+00:00
+Noble Resources,trading_house,greenhouse,noble,https://boards-api.greenhouse.io/v1/boards/noble/jobs?content=false,2,2026-08-10T16:31:32+00:00
+Oando,trading_house,breezy,oando,https://oando.breezy.hr/json,1,2026-08-10T16:31:14+00:00
+Omya,trading_house,smartrecruiters,omya,https://api.smartrecruiters.com/v1/companies/omya/postings?limit=100,5,2026-08-10T16:24:28+00:00
+Sahara Energy,trading_house,ashby,sahara,https://api.ashbyhq.com/posting-api/job-board/sahara,3,2026-08-10T16:13:26+00:00
+Sahara Group,trading_house,smartrecruiters,saharagroup,https://api.smartrecruiters.com/v1/companies/saharagroup/postings?limit=100,1,2026-08-10T16:31:00+00:00
+Samsung C and T Trading,trading_house,recruitee,samsung,https://samsung.recruitee.com/api/offers/,1,2026-08-10T16:31:38+00:00
+Sinopec Trading,trading_house,bamboohr,sinopec,https://sinopec.bamboohr.com/careers/list,5,2026-08-10T16:31:39+00:00
+Sojitz,trading_house,bamboohr,sojitz,https://sojitz.bamboohr.com/careers/list,5,2026-08-10T16:11:54+00:00
+Sojitz Europe,trading_house,bamboohr,sojitz,https://sojitz.bamboohr.com/careers/list,5,2026-08-10T16:31:21+00:00
+Toyota Tsusho,trading_house,teamtailor,toyota,https://toyota.teamtailor.com/jobs.rss,5,2026-08-10T16:11:57+00:00
+Toyota Tsusho Europe,trading_house,teamtailor,toyota,https://toyota.teamtailor.com/jobs.rss,5,2026-08-10T16:31:33+00:00
+Tricon Energy,trading_house,bamboohr,triconenergy,https://triconenergy.bamboohr.com/careers/list,30,2026-08-10T16:24:28+00:00
+Vitol Group Services,trading_house,smartrecruiters,vitol,https://api.smartrecruiters.com/v1/companies/vitol/postings?limit=100,33,2026-08-10T16:31:02+00:00
+Vivo Energy,trading_house,bamboohr,vivo,https://vivo.bamboohr.com/careers/list,3,2026-08-10T16:31:24+00:00
