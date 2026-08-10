@@ -101,7 +101,7 @@ jobs:
           # Discovery answers, so the next run doesn't re-derive them. Without
           # this they are rebuilt weekly, which at thousands of firms is by far
           # the most expensive thing here.
-          for f in sniffed.csv endpoints.csv no_ats.csv manual.csv unknown.csv firms.csv; do
+          for f in sniffed.csv endpoints.csv no_ats.csv manual.csv unknown.csv firms.csv firm_check.csv; do
             [ -f "$f" ] && git add -f "$f"
           done
           true

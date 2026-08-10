@@ -1011,3 +1011,161 @@ EnCap Investments,fund,encapinvestments.com
 Tailwater Capital,fund,tailwatercapital.com
 Bluewater Energy,fund,bluewater-partners.com
 Buckthorn Partners,fund,buckthornpartners.com
+Ofwat,regulator,ofwat.gov.uk
+Department for Energy Security and Net Zero,regulator,gov.uk
+Climate Change Committee,regulator,theccc.org.uk
+Crown Estate,regulator,thecrownestate.co.uk
+Crown Estate Scotland,regulator,crownestatescotland.com
+Offshore Petroleum Regulator,regulator,nstauthority.co.uk
+Prudential Regulation Authority,regulator,bankofengland.co.uk
+Payment Systems Regulator,regulator,psr.org.uk
+Pensions Regulator,regulator,thepensionsregulator.gov.uk
+UK Infrastructure Bank,regulator,ukib.org.uk
+Great British Energy,regulator,gbe.gov.uk
+Golar LNG,lng,golarlng.com
+Flex LNG,lng,flexlng.com
+Awilco LNG,lng,awilcolng.com
+Dynagas,lng,dynagaspartners.com
+GasLog,lng,gaslogltd.com
+Capital Gas,lng,capitalgascorp.com
+Nakilat,lng,nakilat.com
+Knutsen,lng,knutsenoas.com
+NYK Line,lng,nyk.com
+Mitsui OSK Lines,lng,mol.co.jp
+Kawasaki Kisen,lng,kline.co.jp
+Delfin Midstream,lng,delfinlng.com
+Glenfarne Energy Transition,lng,glenfarnegroup.com
+Commonwealth LNG,lng,commonwealthlng.com
+Alcoa,metals,alcoa.com
+Norsk Hydro,metals,hydro.com
+Aurubis,metals,aurubis.com
+Boliden,metals,boliden.com
+Nyrstar,metals,nyrstar.com
+Umicore,metals,umicore.com
+Sibanye Stillwater,metals,sibanyestillwater.com
+Impala Platinum,metals,implats.co.za
+Northam Platinum,metals,northam.co.za
+Gold Fields,metals,goldfields.com
+AngloGold Ashanti,metals,anglogoldashanti.com
+Harmony Gold,metals,harmony.co.za
+Barrick,metals,barrick.com
+Newmont,metals,newmont.com
+Kinross Gold,metals,kinross.com
+Agnico Eagle,metals,agnicoeagle.com
+Teck Resources,metals,teck.com
+First Quantum Minerals,metals,first-quantum.com
+Lundin Mining,metals,lundinmining.com
+Hudbay Minerals,metals,hudbayminerals.com
+Eramet,metals,eramet.com
+Nornickel,metals,nornickel.com
+Codelco,metals,codelco.com
+Southern Copper,metals,southerncoppercorp.com
+Grupo Mexico,metals,gmexico.com
+Nexa Resources,metals,nexaresources.com
+Ivanhoe Mines,metals,ivanhoemines.com
+Bunge Loders Croklaan,softs,bungeloders.com
+Golden Agri-Resources,softs,goldenagri.com.sg
+Musim Mas,softs,musimmas.com
+Apical Group,softs,apicalgroup.com
+Fuji Oil,softs,fujioilholdings.com
+AAK,softs,aak.com
+Blommer Chocolate,softs,blommer.com
+Guan Chong,softs,guanchongcocoa.com
+JB Cocoa,softs,jbcocoa.com
+Agrocorp International,softs,agrocorp.com.sg
+GrainCorp,softs,graincorp.com.au
+CHS Inc,softs,chsinc.com
+Andersons,softs,andersonsinc.com
+Ceres Global Ag,softs,ceresglobalagcorp.com
+Comexim,softs,comexim.com.br
+Nedcoffee,softs,nedcoffee.com
+Ipanema Coffee,softs,ipanemacoffees.com.br
+Al Ghurair Resources,softs,alghurairresources.com
+Solaris Commodities,softs,solaris-commodities.com
+Vicentin,softs,vicentin.com.ar
+Amaggi,softs,amaggi.com.br
+SLC Agricola,softs,slcagricola.com.br
+Adecoagro,softs,adecoagro.com
+Nordzucker,softs,nordzucker.com
+Pfeifer and Langen,softs,pfeifer-langen.com
+Cristal Union,softs,cristal-union.fr
+Raizen,softs,raizen.com.br
+Copersucar,softs,copersucar.com.br
+World Fuel Services,bunkers,wfscorp.com
+Bunker One,bunkers,bunker-one.com
+GP Global,bunkers,gp-global.com
+Alpha Marine Fuels,bunkers,alphamarinefuels.com
+Vermont Bunkering,bunkers,vermontuk.com
+Prime Oil and Gas,bunkers,primeoil.gr
+Aegean Bunkering,bunkers,aegeanbunkering.com
+NSI Bunkers,bunkers,nsibunkers.com
+Fratelli Cosulich Bunkers,bunkers,cosulichgroup.com
+Ocean Network Express,shipping,one-line.com
+Evergreen Marine,shipping,evergreen-marine.com
+Yang Ming,shipping,yangming.com
+HMM,shipping,hmm21.com
+ZIM,shipping,zim.com
+Wan Hai Lines,shipping,wanhai.com
+Pacific Basin,shipping,pacificbasin.com
+Grindrod Shipping,shipping,grinshipping.com
+Belships,shipping,belships.com
+2020 Bulkers,shipping,2020bulkers.com
+Himalaya Shipping,shipping,himalayashipping.com
+Okeanis Eco Tankers,shipping,okeanisecotankers.com
+Tsakos Energy Navigation,shipping,tenn.gr
+Nordic American Tankers,shipping,nat.bm
+Performance Shipping,shipping,performanceshipping.com
+Imperial Petroleum,shipping,imperialpetroleums.com
+Dorian LPG,shipping,dorianlpg.com
+BW LPG,shipping,bwlpg.com
+Avance Gas,shipping,avancegas.com
+Epic Gas,shipping,epic-gas.com
+Navigator Gas,shipping,navigatorgas.com
+Exmar,shipping,exmar.be
+Stolt-Nielsen,shipping,stolt-nielsen.com
+Odfjell,shipping,odfjell.com
+Bahri,shipping,bahri.sa
+Alcyon Shipping,shipbroker,alcyonshipping.com
+Optima Shipping,shipbroker,optimashipping.gr
+Lightship Chartering,shipbroker,lightship.co.uk
+Alibra Shipping,shipbroker,alibrashipping.com
+Hartland Shipping,shipbroker,hartlandshipping.com
+Genchart,shipbroker,genchart.com
+Interunity,shipbroker,interunity.com
+Weber Shipbroking,shipbroker,crweber.com
+Seascope Shipbroking,shipbroker,seascope.co.uk
+Tidewater Shipbrokers,shipbroker,tidewater.co.uk
+Northern Shipping,shipbroker,northernshipping.com
+Trident Alliance,shipbroker,tridentalliance.org
+ACT Group,carbon,actcommodities.com
+Perenia Group,carbon,perenia.com
+Carbon Growth Partners,carbon,carbongrowthpartners.com
+Respira International,carbon,respira-international.com
+Climate Impact Partners,carbon,climateimpact.com
+Anew Climate,carbon,anewclimate.com
+Ruubarb,carbon,ruubarb.com
+Emergent Forest Finance,carbon,emergentclimate.com
+Ecosecurities,carbon,ecosecurities.com
+First Climate,carbon,firstclimate.com
+Zeromission,carbon,zeromission.se
+Sindicatum,carbon,sindicatum.com
+Cool Effect,carbon,cooleffect.org
+Karbon-X,carbon,karbon-x.com
+Rubicon Carbon,carbon,rubiconcarbon.com
+Terra Global Capital,carbon,terraglobalcapital.com
+Preem,refining,preem.com
+Saras,refining,saras.it
+Grupa Lotos,refining,lotos.pl
+Slovnaft,refining,slovnaft.sk
+Bazan Group,refining,bazan.co.il
+Star Refinery,refining,socarturkey.com.tr
+Bharat Petroleum,refining,bharatpetroleum.in
+Hindustan Petroleum,refining,hindustanpetroleum.com
+Nayara Energy,refining,nayaraenergy.com
+Formosa Petrochemical,refining,fpcc.com.tw
+GS Caltex,refining,gscaltex.com
+S-Oil,refining,s-oil.com
+SK Energy,refining,skenergy.com
+Idemitsu Kosan,refining,idemitsu.com
+Eneos,refining,hd.eneos.co.jp
+Cosmo Oil,refining,cosmo-oil.co.jp

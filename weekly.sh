@@ -104,6 +104,12 @@ if [ -z "$RESEND" ]; then
     run "expand firms" $PYTHON companies_house.py --append
   fi
 
+  # --- prove the registry before trusting it ----------------------------------
+  # Only the firms not yet confirmed, so this is cheap after the first pass. A
+  # domain that turns out to belong to someone else is blanked rather than left
+  # to send sniff.py off to read a stranger's careers page.
+  run "check firms" $PYTHON check_firms.py --only-new --fix
+
   # --- discovery (slow, slow-changing) ---------------------------------------
   # sniff reads every firm's own careers page. Slow, and which ATS a firm uses
   # changes about never, so only on --full or the very first run.

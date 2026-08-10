@@ -114,6 +114,45 @@ def main():
         check(f"shell company rejected: {nm[:30]}", bool(ch.JUNK.search(nm)), want)
     check_true("companies house covers finance and energy", len(ch.SIC) >= 25)
 
+    print("\ncheck_firms — a domain must prove it belongs to the firm")
+    import check_firms
+    import http_client as _hc
+    check("short all-noise names still have something to match",
+          (check_firms.name_tokens("BP"), check_firms.name_tokens("SSE")), (["bp"], ["sse"]))
+    check("corporate furniture is not identity",
+          check_firms.name_tokens("Harbour Energy Capital Management"), ["harbour"])
+    ident = check_firms.page_identity(
+        '<title>Harbour Energy | Home</title><h1>Welcome</h1>'
+        '<footer>&copy; 2026 Harbour Energy plc</footer>')
+    check_true("identity read from title and copyright", "harbour energy" in ident, ident[:60])
+
+    class Resp:
+        def __init__(self, url, code=200, text=""):
+            self.url, self.status_code, self.text = url, code, text
+            self.encoding, self.headers = "utf-8", {}
+
+    saved_get = _hc.get
+    try:
+        firm = {"name": "Harbour Energy", "domain": "harbourenergy.com"}
+        _hc.get = lambda u, **k: Resp("https://harbourenergy.com/",
+                                     200, "<title>Harbour Energy</title>" + "energy " * 30)
+        check("right company passes", check_firms.check_one(None, firm)["verdict"], "ok")
+        _hc.get = lambda u, **k: Resp("https://plumbing.example/", 200,
+                                     "<title>Bob's Plumbing</title>" + "pipes " * 30)
+        check("someone else's site is caught",
+              check_firms.check_one(None, firm)["verdict"], "moved")
+        _hc.get = lambda u, **k: None
+        check("dead domain is caught",
+              check_firms.check_one(None, firm)["verdict"], "unreachable")
+        _hc.get = lambda u, **k: Resp("https://harbourenergy.com/", 200,
+                                     "<title>This domain is for sale</title>" + "parked " * 30)
+        check("parked domain is caught",
+              check_firms.check_one(None, firm)["verdict"], "mismatch")
+        check("a firm with no domain is not a failure",
+              check_firms.check_one(None, {"name": "X", "domain": ""})["verdict"], "ok")
+    finally:
+        _hc.get = saved_get
+
     print("\nnew boards — one tolerant reader, several shapes")
     import discover, json as _json
     shapes = {
