@@ -65,11 +65,11 @@ def check_config():
         # a filter that rejects the obvious keepers is broken even if it compiles
         must_keep = ["Commodity Analyst", "Junior Trader", "Market Analyst",
                      "Quantitative Researcher", "Data Scientist, Trading",
-                     # early career is the whole point — if the filter stops
-                     # collecting these, the digest quietly loses its best roles
-                     "Graduate Scheme, Commodities", "Summer Analyst Programme",
-                     "Trading Internship", "Sales and Trading Graduate Programme",
-                     "Commercial Placement Year", "Trainee Broker"]
+                     # junior without being student-only — the actual target. If
+                     # the filter stops collecting these the digest quietly
+                     # loses its best roles.
+                     "Junior Market Analyst", "Trainee Broker",
+                     "Entry Level Trading Analyst", "Assistant Trader"]
         must_drop = ["Head of Trading", "Credit Risk Analyst", "Trade Support Analyst",
                      "Marketing Manager"]
         for t in must_keep:

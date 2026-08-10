@@ -257,21 +257,32 @@ def main():
     check_true("direct beats aggregator", good > viaboard, f"{good} vs {viaboard}")
     check_true("regulatory background rewarded", edge > good, f"{edge} vs {good}")
 
-    # early career is weighted above everything else in the rubric
-    grad = score.score_job(job(title="Graduate Commodity Analyst"), cfg, cats, set())[0]
-    intern = score.score_job(job(title="Summer Analyst Programme"), cfg, cats, set())[0]
+    # Junior is weighted above everything else. Student intake is not: a
+    # graduate scheme or internship wants a current undergraduate, so it earns
+    # nothing for its title however well it matches otherwise.
+    junior = score.score_job(job(title="Junior Market Analyst"), cfg, cats, set())[0]
+    trainee = score.score_job(job(title="Trainee Commodity Analyst"), cfg, cats, set())[0]
     trains = score.score_job(job(title="Market Analyst",
                                  description="full training provided, no prior experience"),
                              cfg, cats, set())[0]
-    check_true("a graduate role beats the same role without the word",
-               grad > good + 30, f"{grad} vs {good}")
-    check_true("an internship outranks a plain good role", intern > good, f"{intern} vs {good}")
+    check_true("junior beats the same role without the word",
+               junior > good + 30, f"{junior} vs {good}")
+    check_true("trainee counts as junior too", trainee > good + 30, f"{trainee} vs {good}")
     check_true("'no prior experience' in the description is worth real points",
                trains > good + 15, f"{trains} vs {good}")
-    check("entry tier wins over core when both match",
-          [l for l, _ in score.score_job(job(title="Graduate Commodity Analyst"),
-                                         cfg, cats, set())[1] if l.startswith("title:")],
-          ["title:entry"])
+
+    for title in ("Graduate Commodity Analyst", "Summer Analyst Programme",
+                  "Trading Internship", "Sales and Trading Graduate Programme",
+                  "Commercial Placement Year", "Off-Cycle Analyst"):
+        pts, why = score.score_job(job(title=title), cfg, cats, set())
+        tier = [(l, n) for l, n in why if l.startswith("title:")]
+        check(f"student intake earns nothing for its title: {title[:34]}",
+              tier, [("title:student_only", 0)])
+        check_true(f"and ranks below an ordinary match: {title[:30]}",
+                   pts < good, f"{pts} vs {good}")
+    check_true("no junior bonus for a graduate scheme either",
+               not any(l == "junior title" for l, _ in
+                       score.score_job(job(title="Graduate Analyst"), cfg, cats, set())[1]))
 
     print("\nscore — ghost detection over history")
     rows = [{"id": f"g{i}", "company": "Ghost Co", "title": "Market Analyst",

@@ -3,23 +3,36 @@
 
 # --- 1. Title strength. First tier that matches wins. ---
 title_tiers:
-  entry: # explicit early-career. First tier listed, so it wins over the others —
-         # a "Graduate Commodity Analyst" scores as entry, not as core.
-    points: 45
+  student_only: # Zero on purpose. Graduate schemes, internships and placements
+                # almost all require you to be a current undergraduate, usually
+                # in your penultimate year, so they are not open to you however
+                # well they match otherwise. Listed first, so a "Graduate
+                # Commodity Analyst" takes this tier and earns nothing for its
+                # title rather than scoring as core.
+                # Set this to -1000 to drop them from the digest entirely.
+    points: 0
     patterns:
-      - "\\bgrad(uate)?\\b"      # anywhere in the title — "Graduate Commodity
-                                 # Analyst" must not fall through to the core tier
+      - "\\bgrad(uate)?s?\\b"
+      - "\\b(intern|interns|internship)\\b"
+      - "placement"
+      - "apprentice\\w*"
+      - "(summer|spring|winter|campus) (analyst|intern|programme|program|scheme)"
       - "analyst (programme|program|scheme)"
-      - "\\b(intern|internship|placement|apprentice\\w*)\\b"
-      - "trainee"
-      - "entry.?level"
-      - "\\bjunior\\b"
-      - "early care"
-      - "(summer|spring|winter|campus) (analyst|intern|programme|program)"
       - "off.?cycle"
       - "school leaver"
-      - "new grad"
-      - "rotation(al)?"
+      - "penultimate"
+      - "(year in industry|industrial year|sandwich (year|placement))"
+      - "rotation(al)? (programme|program|scheme)"
+  junior: # starting out, but not a student — this is the target
+    points: 45
+    patterns:
+      - "\\bjunior\\b"
+      - "entry.?level"
+      - "trainee"
+      - "\\banalyst i\\b"
+      - "assistant (analyst|trader|broker)"
+      - "associate analyst"
+      - "early care"
   core: # exactly what you're going after
     points: 30
     patterns:
@@ -122,15 +135,18 @@ description_signals:
   trading_exposure:
     points: 6
     patterns: ["trading desk", "front office", "traders", "p&l", "position", "hedg"]
-  no_experience_needed:   # the description saying so, rather than the title
+  no_experience_needed:   # the description saying so, rather than the title.
+                          # Nothing student-specific here — no "graduate",
+                          # "penultimate year" or "placement" — those describe
+                          # who the role is open to, not how much experience it
+                          # wants, and they are not open to you.
     points: 25
     patterns: ["no prior experience", "no experience (is )?(necessary|required)",
-               "graduate", "entry level", "we will train", "full training",
+               "entry level", "we will train", "full training",
                "training (programme|program) provided", "early care",
                "0-2 years", "1-2 years", "0-1 year", "up to 2 years",
-               "recent graduate", "final year", "penultimate year",
-               "school leaver", "apprentice", "placement", "internship",
-               "no previous", "all backgrounds", "career chang"]
+               "no previous", "all backgrounds", "career chang",
+               "will consider candidates", "transferable skills"]
 
 # --- 5. Provenance. Applying direct beats going through an agency. ---
 source_weights:

@@ -134,9 +134,10 @@ def score_job(r, cfg, cats, ghosts):
 
     # 2. seniority
     sen = cfg["seniority"]
-    if re.search(r"junior|graduate|\bgrad\b|trainee|entry|\bintern(ship)?\b|placement|"
-                 r"apprentic|early care|new grad|campus|school leaver|off.?cycle|"
-                 r"rotation|associate|analyst i\b", title, re.I):
+    # deliberately no graduate/intern/placement/campus here — those are student
+    # intake, and they are handled by the student_only title tier instead
+    if re.search(r"\bjunior\b|trainee|entry.?level|early care|assistant|"
+                 r"associate|analyst i\b", title, re.I):
         add(sen["junior_markers"], "junior title")
     else:
         add(sen["no_marker"], "no seniority marker")
