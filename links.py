@@ -33,14 +33,22 @@ def slug(name):
 def block(name, domain):
     q = quote_plus(name)
     s = slug(name)
-    lines = [
-        f"### {name}",
-        f"- Careers (try): " + " · ".join(f"[{p}](https://{domain}/{p})" for p in CAREER_PATHS[:3]),
+    lines = [f"### {name}"]
+    if domain:
+        lines.append("- Careers (try): " +
+                     " · ".join(f"[{p}](https://{domain}/{p})" for p in CAREER_PATHS[:3]))
+    else:
+        # Companies House firms arrive with no website. A search for the name is
+        # the only honest starting point; a guessed domain would be worse.
+        lines.append(f"- No website on record — "
+                     f"[find it](https://www.google.com/search?q={quote_plus(name + ' London careers')})")
+    lines += [
         f"- [LinkedIn company](https://www.linkedin.com/company/{s}/jobs/)",
         f"- [LinkedIn jobs search](https://www.linkedin.com/jobs/search/?keywords={q}&location=London%2C%20England%2C%20United%20Kingdom)",
         f"- [Indeed](https://uk.indeed.com/jobs?q={q}&l=London)",
         f"- [Glassdoor](https://www.glassdoor.co.uk/Search/results.htm?keyword={q})",
-        f"- [Google X-ray careers](https://www.google.com/search?q=" + quote_plus(f"site:{domain} careers OR jobs analyst") + ")",
+        *([f"- [Google X-ray careers](https://www.google.com/search?q="
+           + quote_plus(f"site:{domain} careers OR jobs analyst") + ")"] if domain else []),
         f"- [Google X-ray LinkedIn](https://www.google.com/search?q=" + quote_plus(f'site:linkedin.com/jobs "{name}" London analyst') + ")",
         "",
     ]

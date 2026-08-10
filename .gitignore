@@ -9,11 +9,11 @@ report.html
 report.md
 scored.csv
 latest.csv
-endpoints.csv
-sniffed.csv
-no_ats.csv
-unknown.csv
-manual.csv
+# Discovery output is COMMITTED, not ignored. Which ATS a firm uses changes
+# about never, and at several thousand firms re-deriving it every week is the
+# most expensive thing the pipeline does. Committing the answers makes it a
+# one-off you refresh deliberately with ./weekly.sh --full. None of it is
+# personal — it is a public list of which company uses which job board.
 companies_house.csv
 
 # State is committed encrypted instead — see .github/workflows/weekly.yml

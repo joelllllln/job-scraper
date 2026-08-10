@@ -95,6 +95,25 @@ def main():
           scrape.ATS_ENDPOINT["lever"].format(t="kpler"),
           "https://api.lever.co/v0/postings/kpler?mode=json")
 
+    print("\nscale — what breaks at thousands of firms")
+    import links
+    # Companies House supplies names with no website. Each blank domain used to
+    # cost 13 DNS timeouts in sniff.py — hours of the run, proving nothing.
+    check("no domain, nothing to sniff", sniff.sniff_one(None, {"name": "X", "domain": ""}), None)
+    check("no domain key at all", sniff.sniff_one(None, {"name": "X"}), None)
+    check_true("a blank domain never becomes a broken link",
+               "https:///" not in links.block("Acme Energy", ""))
+    import companies_house as ch
+    for pc, want in [("EC2V 7NQ", True), ("E14 5AB", True), ("SE1 9SG", True),
+                     ("NW1 6XE", True), ("EX1 1AA", False), ("NE1 4ST", False),
+                     ("WA1 1AA", False)]:
+        check(f"london postcode: {pc}", bool(ch.LONDON_POSTCODES.match(pc)), want)
+    for nm, want in [("Acme Bidco Limited", True), ("Sunrise Energy No. 4 Limited", True),
+                     ("Green Power III Limited", True), ("Riverside Nominees Ltd", True),
+                     ("Mercuria Energy Trading", False), ("Onyx Capital Group", False)]:
+        check(f"shell company rejected: {nm[:30]}", bool(ch.JUNK.search(nm)), want)
+    check_true("companies house covers finance and energy", len(ch.SIC) >= 25)
+
     print("\nnew boards — one tolerant reader, several shapes")
     import discover, json as _json
     shapes = {

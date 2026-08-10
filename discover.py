@@ -12,8 +12,10 @@ Output: endpoints.csv  (name, category, ats, token, url, n_jobs, checked_at)
 Run this weekly-ish. It's slow (a few minutes) but you only need it occasionally.
 """
 
+import argparse
 import csv
 import json
+import os
 import re
 import sys
 import time
@@ -23,7 +25,7 @@ from datetime import datetime, timezone
 import http_client
 
 TIMEOUT = 12
-WORKERS = 12
+WORKERS = 24
 UA = {"User-Agent": "Mozilla/5.0 (compatible; job-registry/1.0)"}
 
 # Public, documented-ish job board APIs. {t} = company token.
@@ -142,26 +144,59 @@ def write_endpoints(found):
         w.writerows(sorted(found, key=lambda r: (r["category"], r["name"])))
 
 
-def already_sniffed(path="sniffed.csv"):
-    """Firms whose board sniff.py already read off their own careers page.
+def write_misses(misses):
+    with open("no_ats.csv", "w", newline="") as fh:
+        w = csv.DictWriter(fh, fieldnames=["name", "category", "domain"],
+                           extrasaction="ignore")
+        w.writeheader()
+        w.writerows(misses)
 
-    Guessing at a token we have already been told is wasted work, and sniff's
-    answer is the better one anyway.
-    """
+
+def names_in(path, keep=lambda r: True):
     try:
-        return {(r.get("name") or "").strip().lower() for r in csv.DictReader(open(path))
-                if (r.get("ats") or "") not in ("", "workday", "bullhorn")}
+        return {(r.get("name") or "").strip().lower()
+                for r in csv.DictReader(open(path)) if keep(r)}
     except OSError:
         return set()
 
 
+def settled():
+    """Firms we already have an answer for, good or bad.
+
+    Which ATS a firm uses changes about never, so re-deriving it every week is
+    pure cost — and at several thousand firms it is the single most expensive
+    thing the pipeline does. Both the hits and the misses are remembered, so an
+    ordinary run only looks at firms that are genuinely new. `--recheck` (or
+    deleting the CSVs) forces the full sweep again.
+    """
+    return (names_in("sniffed.csv", lambda r: (r.get("ats") or "") not in ("", "workday", "bullhorn"))
+            | names_in("endpoints.csv")
+            | names_in("no_ats.csv"))
+
+
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--recheck", action="store_true",
+                    help="probe every firm again, including ones already answered")
+    args = ap.parse_args()
+
     firms = list(csv.DictReader(open("firms.csv")))
-    known = already_sniffed()
-    if known:
+    total = len(firms)
+    found = [r for r in csv.DictReader(open("endpoints.csv"))] if os.path.exists("endpoints.csv") else []
+    misses = [r for r in csv.DictReader(open("no_ats.csv"))] if os.path.exists("no_ats.csv") else []
+
+    if not args.recheck:
+        known = settled()
         firms = [f for f in firms if (f["name"] or "").strip().lower() not in known]
-        print(f"skipping {len(known)} firms already fingerprinted by sniff.py\n")
-    found, misses = [], []
+        print(f"{total} firms, {len(known)} already answered -> probing {len(firms)}\n")
+    else:
+        found, misses = [], []
+        print(f"rechecking all {total} firms\n")
+
+    if not firms:
+        print("nothing new to probe — use --recheck to sweep everything again")
+        return
+
     session = http_client.session()
 
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
@@ -182,13 +217,13 @@ def main():
             else:
                 misses.append(firm)
                 print(f"[{i}/{len(firms)}] ---  {firm['name']}")
+                # Misses are an answer too, and remembering them is what stops
+                # the next run re-probing thousands of firms with no board.
+                if i % 25 == 0:
+                    write_misses(misses)
 
     write_endpoints(found)
-
-    with open("no_ats.csv", "w", newline="") as fh:
-        w = csv.DictWriter(fh, fieldnames=["name", "category", "domain"])
-        w.writeheader()
-        w.writerows(misses)
+    write_misses(misses)
 
     print(f"\n{len(found)} endpoints -> endpoints.csv")
     print(f"{len(misses)} firms with no public ATS -> no_ats.csv (use links.md / Adzuna for these)")

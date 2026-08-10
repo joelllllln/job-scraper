@@ -25,7 +25,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import http_client
 
 TIMEOUT = 15
-WORKERS = 10
+WORKERS = 24        # each firm is a different host, so the per-host throttle
+                    # never binds; the limit is how many sockets we want open
 UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
                     "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"}
 
@@ -86,7 +87,12 @@ MANUAL = {
 
 
 def sniff_one(session, firm):
-    name, domain = firm["name"], firm["domain"]
+    name, domain = firm["name"], (firm.get("domain") or "").strip()
+    # No domain, nothing to read. Companies House supplies thousands of firms
+    # with no website, and "https:///careers" still costs a full DNS timeout —
+    # 13 of those per firm is hours of the run spent proving nothing.
+    if not domain:
+        return None
     for path in PATHS:
         url = f"https://{domain}{path}"
         r = http_client.get(url, sess=session)

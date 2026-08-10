@@ -25,12 +25,14 @@ STAGE_TIMEOUT=${STAGE_TIMEOUT:-2400}      # 40 min ceiling per stage
 
 FULL=""
 RESEND=""
+EXPAND=""
 for arg in "$@"; do
   case "$arg" in
-    --full)       FULL=1 ;;
-    --resend-all) RESEND=1 ;;
+    --full)         FULL=1 ;;
+    --resend-all)   RESEND=1 ;;
+    --expand-firms) EXPAND=1 ;;
     *) echo "unknown option: $arg" >&2
-       echo "usage: weekly.sh [--full] [--resend-all]" >&2
+       echo "usage: weekly.sh [--full] [--resend-all] [--expand-firms]" >&2
        exit 2 ;;
   esac
 done
@@ -94,9 +96,26 @@ $PYTHON -c "import store; p = store.backup(); print(f'backup: {p}' if p else 'ba
 
 if [ -z "$RESEND" ]; then
 
+  # --- widen the registry from the official register --------------------------
+  # Opt-in and one-off-ish: pulls every active London finance and energy company
+  # from Companies House and appends the new ones to firms.csv with a BLANK
+  # domain. discover.py picks them up on the same run.
+  if [ -n "$EXPAND" ]; then
+    run "expand firms" $PYTHON companies_house.py --append
+  fi
+
   # --- discovery (slow, slow-changing) ---------------------------------------
+  # sniff reads every firm's own careers page. Slow, and which ATS a firm uses
+  # changes about never, so only on --full or the very first run.
   if [ -n "$FULL" ] || [ ! -f sniffed.csv ]; then
-    run "sniff"    $PYTHON sniff.py
+    run "sniff" $PYTHON sniff.py
+  fi
+  # discover is incremental — it probes only firms with no answer recorded yet,
+  # so it costs nothing on a steady week and picks up newly added firms by
+  # itself. That is what makes adding thousands of firms a one-off.
+  if [ -n "$FULL" ]; then
+    run "discover" $PYTHON discover.py --recheck
+  else
     run "discover" $PYTHON discover.py
   fi
 
