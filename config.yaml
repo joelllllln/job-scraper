@@ -41,8 +41,10 @@ include:
   - "flexibility analyst"
   - "optimi(s|z)ation analyst"
   - "asset optimi(s|z)"
-  - "battery"
-  - "electricity"
+  # "battery" and "electricity" alone also collect battery technicians and meter
+  # readers, so both must sit next to something that makes it a markets job
+  - "battery (storage|optimi|market|trading|analy)"
+  - "electricity (market|trading|analy|price|demand|balanc)"
   - "renewables? analyst"
   - "market modell?(er|ing)"
   - "energy modell?(er|ing)"
@@ -51,7 +53,9 @@ include:
 
   # --- regulatory / surveillance ---
   # Where a REMIT and market-abuse background is the qualification itself.
-  - "surveillance"
+  # Scoped: bare "surveillance" is mostly CCTV and store security.
+  - "(trade|market|transaction|abuse) surveillance"
+  - "surveillance (analyst|analytics|quant)"
   - "market abuse"
   - "regulatory analyst"
   - "regulation analyst"
@@ -60,12 +64,17 @@ include:
   # --- early career, whatever the discipline ---
   # The point of the whole exercise. These are collected on the strength of the
   # programme alone, because a graduate scheme rarely names the desk in its title.
+  # Each of these must name the discipline as well as the stage. Unscoped,
+  # "trainee" collects dental nurses and driving instructors, "apprentice"
+  # collects chefs and plumbers, and "placement" collects nursing coordinators.
   - "graduate (scheme|programme|program|analyst|trader|developer|engineer)"
   - "analyst (programme|program|scheme)"
-  - "\\b(internship|intern)\\b"
-  - "placement"
-  - "apprentice"
-  - "trainee"
+  - "(trading|commodit|energy|market|quant|research|finance|investment) intern"
+  - "intern(ship)?.{0,24}(trading|commodit|energy|market|quant|research)"
+  - "(industrial|commercial|finance|trading|analyst) placement|placement year"
+  - "apprentice.{0,20}(trader|analyst|broker|dealer|trading)"
+  - "trainee.{0,20}(trader|analyst|broker|dealer|quant)"
+  - "(trading|commodit|energy|market|shipping|chartering).{0,20}trainee"
   - "entry.?level"
   - "early care"
   - "school leaver"
@@ -85,8 +94,8 @@ include:
   - "trader"
   - "trading (graduate|intern|programme|program|rotation)"
   - "front office"
-  - "structur(er|ing)"
-  - "origination"
+  - "structur(er|ing) (analyst|associate|desk)|structured (products|commodit|finance)"
+  - "origination (analyst|associate|desk)|(power|gas|energy|commodit).{0,20}origination"
   - "pricing analyst"
   - "execution (analyst|trader)"
   - "sales (and|&) trading"
@@ -95,7 +104,7 @@ include:
   - "commodity sales"
   - "physical trading"
   - "cargo (analyst|operations)"
-  - "chartering"
+  - "chartering (analyst|broker|trainee|desk|manager)|(dry cargo|tanker|freight) chartering"
 
   # --- quant ---
   - "quant(itative)? analyst"

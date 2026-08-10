@@ -479,6 +479,47 @@ def main():
                         ("Sales Executive", False), ("Account Manager", False)]:
         check(f"filter: {title}", bool(inc.search(title)) and not exc.search(title), want)
 
+    print("\nrubric coverage — everything collected must be scorable")
+    # A title the filter collects but no tier matches scores zero for its title
+    # and lands mid-table on firm and freshness alone. That is how a prime
+    # target quietly ranks below an ordinary one.
+    for title in ("Battery Storage Analyst", "Electricity Market Analyst",
+                  "Market Surveillance Analyst", "Trade Surveillance Analyst",
+                  "Market Abuse Analyst", "Renewables Analyst",
+                  "Power Market Modeller", "Asset Optimisation Analyst",
+                  "Flexibility Analyst", "Regulatory Analyst"):
+        tier = [l for l, _ in score.score_job(job(title=title), cfg, cats, set())[1]
+                if l.startswith("title:")]
+        check_true(f"scored on its title: {title[:34]}", bool(tier), "no tier matched")
+
+    print("\nfilter precision — the widened patterns must not go permissive")
+    keep = scrape.build_filter(yaml.safe_load(open("config.yaml")))
+    # Real titles that sit next to the words this filter was widened with.
+    # Unscoped, "battery" collects technicians, "trainee" dental nurses,
+    # "apprentice" chefs, "placement" nursing coordinators and "surveillance"
+    # CCTV operators. 20 of these once got through.
+    noise = ["Battery Production Operative", "Battery Technician", "Electrician",
+             "Electricity Meter Reader", "CCTV Surveillance Operator",
+             "Security Surveillance Officer", "Retail Placement Assistant",
+             "Nursing Placement Coordinator", "Apprentice Plumber", "Apprentice Chef",
+             "Apprentice Electrician", "Trainee Dental Nurse", "Trainee Driving Instructor",
+             "Trainee Estate Agent", "Trainee Accountant", "Graduate Nurse",
+             "Internship - Fashion PR", "Yacht Chartering Assistant",
+             "Structuring Engineer - Buildings", "Origination Manager - Mortgages",
+             "Warehouse Operative", "Care Assistant", "Delivery Driver", "Receptionist"]
+    signal = ["Junior Market Analyst", "Trainee Commodity Broker",
+              "Entry Level Trading Analyst", "Battery Storage Optimisation Analyst",
+              "Electricity Market Analyst", "Trade Surveillance Analyst",
+              "Market Abuse Analyst", "REMIT Analyst", "Graduate Commodity Analyst",
+              "Commodity Analyst", "Power Trading Analyst", "LNG Analyst",
+              "Quantitative Researcher", "Structuring Analyst",
+              "Origination Analyst - Power", "Dry Cargo Chartering Trainee",
+              "Assistant Trader", "Commodities Trading Internship"]
+    caught = [t for t in noise if keep({"title": t, "location": "London"})]
+    missed = [t for t in signal if not keep({"title": t, "location": "London"})]
+    check(f"none of {len(noise)} unrelated titles collected", caught, [])
+    check(f"all {len(signal)} on-target titles collected", missed, [])
+
     print()
     if FAILS:
         print(f"{len(FAILS)} FAILED: {', '.join(FAILS)}")

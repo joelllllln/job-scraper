@@ -45,6 +45,14 @@ title_tiers:
       - "data scientist.*(trading|commodit|energy|market)"
       - "(power|gas|lng|crude|carbon|freight).{0,12}analyst"
       - "short.?term analyst"
+      # config.yaml collects these; without them here they arrived scoring zero
+      # for their title, which is how a prime target ends up mid-table
+      - "(battery|storage|flexibilit|electricity|renewables?).{0,14}analyst"
+      - "(trade|market|transaction) surveillance"
+      - "surveillance (analyst|analytics|quant)"
+      - "market abuse"
+      - "regulator(y)? analyst"
+      - "regulation analyst"
   strong: # same floor, one step off the target
     points: 20
     patterns:
@@ -59,6 +67,11 @@ title_tiers:
       - "pricing analyst"
       - "structur(er|ing) analyst"
       - "origination analyst"
+      - "market modell?(er|ing)"
+      - "energy modell?(er|ing)"
+      - "asset optimi(s|z)ation"
+      - "portfolio analyst"
+      - "dispatch analyst"
   adjacent: # worth a look, not the target
     points: 10
     patterns:
