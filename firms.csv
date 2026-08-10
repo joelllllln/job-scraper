@@ -1753,3 +1753,330 @@ Pinnacle Renewable Energy,softs,pinnaclepellet.com
 Graanul Invest,softs,graanulinvest.com
 Drax Biomass,softs,draxbiomass.com
 Lignetics,softs,lignetics.com
+ENTSO-E,regulator,entsoe.eu
+ENTSOG,regulator,entsog.eu
+ACER,regulator,acer.europa.eu
+CEER,regulator,ceer.eu
+Commission de Regulation de lEnergie,regulator,cre.fr
+Bundesnetzagentur,regulator,bundesnetzagentur.de
+ARERA,regulator,arera.it
+CNMC,regulator,cnmc.es
+E-Control,regulator,e-control.at
+Energy Community Secretariat,regulator,energy-community.org
+International Energy Agency,regulator,iea.org
+IRENA,regulator,irena.org
+OPEC Secretariat,regulator,opec.org
+Energy Charter Secretariat,regulator,energycharter.org
+European Investment Bank,regulator,eib.org
+EBRD,regulator,ebrd.com
+Elia Group,power_gas,eliagroup.eu
+TenneT,power_gas,tennet.eu
+Amprion,power_gas,amprion.net
+50Hertz,power_gas,50hertz.com
+TransnetBW,power_gas,transnetbw.de
+RTE France,power_gas,rte-france.com
+Terna,power_gas,terna.it
+Red Electrica,power_gas,ree.es
+Swissgrid,power_gas,swissgrid.ch
+Austrian Power Grid,power_gas,apg.at
+Energinet,power_gas,energinet.dk
+Svenska kraftnat,power_gas,svk.se
+Statnett,power_gas,statnett.no
+Fingrid,power_gas,fingrid.fi
+PSE Polska,power_gas,pse.pl
+CEPS,power_gas,ceps.cz
+SEPS Slovakia,power_gas,sepsas.sk
+MAVIR,power_gas,mavir.hu
+Transelectrica,power_gas,transelectrica.ro
+IPTO Greece,power_gas,admie.gr
+EirGrid,power_gas,eirgrid.ie
+SONI,power_gas,soni.ltd.uk
+Litgrid,power_gas,litgrid.eu
+Augstsprieguma tikls,power_gas,ast.lv
+Elering,power_gas,elering.ee
+HOPS Croatia,power_gas,hops.hr
+ELES Slovenia,power_gas,eles.si
+Landsnet,power_gas,landsnet.is
+Creos,power_gas,creos-net.lu
+Gasunie,power_gas,gasunie.nl
+Fluxys,power_gas,fluxys.com
+GRTgaz,power_gas,grtgaz.com
+Terega,power_gas,terega.fr
+Snam,power_gas,snam.it
+Enagas,power_gas,enagas.es
+Gas Networks Ireland,power_gas,gasnetworks.ie
+National Gas,power_gas,nationalgas.com
+Open Grid Europe,power_gas,oge.net
+Gascade,power_gas,gascade.de
+ONTRAS,power_gas,ontras.com
+Gaz-System,power_gas,gaz-system.pl
+Bulgartransgaz,power_gas,bulgartransgaz.bg
+Transgaz,power_gas,transgaz.ro
+DESFA,power_gas,desfa.gr
+Botas,power_gas,botas.gov.tr
+Plinacro,power_gas,plinacro.hr
+Eustream,power_gas,eustream.sk
+FGSZ,power_gas,fgsz.hu
+Net4Gas,power_gas,net4gas.cz
+Gasgrid Finland,power_gas,gasgrid.fi
+Nordion Energi,power_gas,nordionenergi.se
+Baltic Connector,power_gas,elering.ee/en
+Interconnector UK,power_gas,interconnector.com
+BBL Company,power_gas,bblcompany.com
+Nemo Link,power_gas,nemolink.co.uk
+IFA Interconnexion,power_gas,ifa-interconnector.com
+NeuConnect,power_gas,neuconnect-interconnector.com
+Viking Link,power_gas,viking-link.com
+Greenlink Interconnector,power_gas,greenlink.ie
+North Sea Link,power_gas,northsealink.com
+ElecLink,power_gas,eleclink.co.uk
+Xlinks,power_gas,xlinks.co
+Sea-Change Green Link,power_gas,seachange.energy
+Aquind,power_gas,aquind.co.uk
+Engie France,power_gas,engie.fr
+EDF Group,power_gas,edf.fr
+Enel Global Trading,power_gas,enel.it
+Iberdrola Energia,power_gas,iberdrola.es
+Endesa,power_gas,endesa.com
+Naturgy Energy Group,power_gas,naturgy.es
+EDP Energias de Portugal,power_gas,edp.com
+Galp Power,power_gas,galp.pt
+A2A,power_gas,a2a.eu
+Edison,power_gas,edison.it
+Iren,power_gas,gruppoiren.it
+Hera Group,power_gas,gruppohera.it
+Acea,power_gas,acea.it
+Sorgenia,power_gas,sorgenia.it
+Repower,power_gas,repower.com
+BKW Energie,power_gas,bkw.ch
+Romande Energie,power_gas,romande-energie.ch
+Groupe E,power_gas,groupe-e.ch
+IWB Basel,power_gas,iwb.ch
+EWZ Zurich,power_gas,ewz.ch
+Wien Energie,power_gas,wienenergie.at
+EVN,power_gas,evn.at
+Energie Steiermark,power_gas,e-steiermark.com
+Salzburg AG,power_gas,salzburg-ag.at
+Illwerke VKW,power_gas,illwerkevkw.at
+Tiwag,power_gas,tiwag.at
+CEZ Trading,power_gas,cez.com
+PGE Polska Grupa,power_gas,gkpge.pl
+Tauron,power_gas,tauron.pl
+Enea,power_gas,enea.pl
+Energa,power_gas,energa.pl
+Orlen Energia,power_gas,orlen.com
+MVM Group,power_gas,mvm.hu
+Hidroelectrica,power_gas,hidroelectrica.ro
+Nuclearelectrica,power_gas,nuclearelectrica.ro
+OMV Petrom,power_gas,omvpetrom.com
+NIS Serbia,power_gas,nis.eu
+HEP Croatia,power_gas,hep.hr
+Petrol Slovenia,power_gas,petrol.eu
+GEN-I,power_gas,gen-i.si
+Holding Slovenske Elektrarne,power_gas,hse.si
+Public Power Corporation,power_gas,dei.gr
+Mytilineos,power_gas,mytilineos.gr
+Motor Oil Renewable Energy,power_gas,moh.gr/en
+Heron Energy,power_gas,heron.gr
+Elpedison,power_gas,elpedison.gr
+Enel Romania,power_gas,enel.ro
+Verbund Trading,power_gas,verbund.at
+Uniper Energy Trading,power_gas,uniper.de
+E.ON Energy Markets,power_gas,eon.com
+LEAG,power_gas,leag.de
+Steag,power_gas,steag.com
+EnviaM,power_gas,enviam.de
+Lechwerke,power_gas,lew.de
+N-Ergie,power_gas,n-ergie.de
+Stadtwerke Munchen,power_gas,swm.de
+RheinEnergie,power_gas,rheinenergie.com
+Badenova,power_gas,badenova.de
+Thuga,power_gas,thuega.de
+Getec,power_gas,getec.de
+Eneco Energy Trade,power_gas,eneco.nl
+Essent,power_gas,essent.nl
+Greenchoice,power_gas,greenchoice.nl
+Budget Energie,power_gas,budgetenergie.nl
+Luminus,power_gas,luminus.be
+Lampiris,power_gas,lampiris.be
+Octa Plus,power_gas,octaplus.be
+Enovos,power_gas,enovos.lu
+Elektrilevi,power_gas,elektrilevi.ee
+Ignitis Group,power_gas,ignitisgrupe.lt
+Latvenergo,power_gas,latvenergo.lv
+Eesti Energia,power_gas,energia.ee
+Vattenfall Nordic,power_gas,vattenfall.se
+Skelleftea Kraft,power_gas,skekraft.se
+Jamtkraft,power_gas,jamtkraft.se
+Goteborg Energi,power_gas,goteborgenergi.se
+Helen Oy,power_gas,helen.fi
+Turku Energia,power_gas,turkuenergia.fi
+Lahti Energia,power_gas,lahtienergia.fi
+Agder Energi,power_gas,ae.no
+Lyse,power_gas,lyse.no
+Hafslund,power_gas,hafslund.no
+BKK,power_gas,bkk.no
+Andel,power_gas,andel.dk
+Norlys,power_gas,norlys.dk
+Orsted Sales and Distribution,power_gas,orsted.dk
+SLB,major,slb.com
+Halliburton,major,halliburton.com
+Baker Hughes,major,bakerhughes.com
+Weatherford,major,weatherford.com
+TechnipFMC,major,technipfmc.com
+Saipem,major,saipem.com
+Subsea 7,major,subsea7.com
+Aker Solutions,major,akersolutions.com
+McDermott,major,mcdermott.com
+NOV,major,nov.com
+Expro Group,major,expro.com
+Oceaneering,major,oceaneering.com
+Helix Energy Solutions,major,helixesg.com
+Tidewater Marine,major,tdw.com
+Valaris,major,valaris.com
+Transocean,major,deepwater.com
+Noble Corporation,major,noblecorp.com
+Seadrill,major,seadrill.com
+Diamond Offshore,major,diamondoffshore.com
+Borr Drilling,major,borrdrilling.com
+Odfjell Drilling,major,odfjelldrilling.com
+Shelf Drilling,major,shelfdrilling.com
+Vantage Drilling,major,vantagedrilling.com
+Petrofac Engineering,major,petrofac.com/engineering
+Wood Energy,major,woodplc.com/energy
+KBR,major,kbr.com
+Fluor,major,fluor.com
+Bechtel,major,bechtel.com
+Chiyoda,major,chiyodacorp.com
+JGC Holdings,major,jgc.com
+Hyundai Engineering,major,hec.co.kr
+Samsung Heavy Industries,major,samsungshi.com
+Daewoo Shipbuilding,major,hanwhaocean.com
+Hyundai Heavy Industries,major,hd.hhi.co.kr
+Sembcorp Marine,major,seatriumltd.com
+Keppel,major,kepcorp.com
+Santos,major,santos.com
+Inpex,major,inpex.co.jp
+Beach Energy,major,beachenergy.com.au
+Karoon Energy,major,karoonenergy.com.au
+Cooper Energy,major,cooperenergy.com.au
+Genel Energy,major,genelenergy.com
+Gulf Keystone Petroleum,major,gulfkeystone.com
+Zephyr Energy,major,zephyrplc.com
+Union Jack Oil,major,unionjackoil.com
+Egdon Resources,major,egdon-resources.com
+Star Energy,major,starenergy.co.uk
+IGas Energy,major,igasplc.com
+Deltic Energy,major,delticenergy.com
+Longboat Energy,major,longboatenergy.com
+Jersey Oil and Gas,major,jerseyoilandgas.com
+Hartshead Resources,major,hartshead.com.au
+Orcadian Energy,major,orcadian.energy
+Pharos Energy,major,pharos.energy
+Chariot Limited,major,chariotenergygroup.com
+Savannah Energy,major,savannah-energy.com
+Seplat Energy,major,seplatenergy.com
+Afentra,major,afentraplc.com
+Trinity Exploration,major,trinityexploration.com
+Touchstone Exploration,major,touchstoneexploration.com
+Valeura Energy,major,valeuraenergy.com
+Coro Energy,major,coroenergyplc.com
+Predator Oil and Gas,major,predatoroilandgas.com
+Sound Energy,major,soundenergyplc.com
+Petro Matad,major,petromatad.com
+Arrow Exploration,major,arrowexploration.com
+Nostrum Oil and Gas,major,nostrumoilandgas.com
+Enwell Energy,major,enwellenergy.com
+Wentworth Resources,major,wentworthresources.com
+Aminex,major,aminex-plc.com
+Tower Resources,major,towerresources.co.uk
+88 Energy,major,88energy.com
+Empyrean Energy,major,empyreanenergy.com
+Reabold Resources,major,reaboldresources.co.uk
+Angus Energy,major,angusenergy.co.uk
+Corcel,major,corcelplc.com
+Europa Oil and Gas,major,europaoil.com
+Baron Oil,major,baronoil.com
+United Oil and Gas,major,uogplc.com
+Molecular Energies,major,molecularenergies.com
+Freeport LNG,lng,freeportlng.com
+Cameron LNG,lng,cameronlng.com
+Golden Pass LNG,lng,goldenpasslng.com
+Nigeria LNG,lng,nlng.com
+Oman LNG,lng,omanlng.co.om
+ADNOC LNG,lng,adnocgas.ae
+Petronas LNG,lng,petronaslng.com
+South Hook LNG,lng,southhooklng.com
+Dragon LNG,lng,dragonlng.co.uk
+Grain LNG,lng,grainlng.com
+Elengy,lng,elengy.com
+Gate Terminal,lng,gate.nl
+Adriatic LNG,lng,adriaticlng.it
+OLT Offshore LNG Toscana,lng,oltoffshore.it
+Klaipedos Nafta,lng,kn.lt
+Gasum,lng,gasum.com
+DEPA Commercial,lng,depa.gr
+Hoegh LNG,lng,hoeghlng.com
+Sing Fuels,bunkers,singfuels.com
+Victory Fuels,bunkers,victoryfuels.com
+LQM Petroleum Services,bunkers,lqm.com
+Nordic Marine Oil,bunkers,nordicmarineoil.dk
+Oceanic Fuels,bunkers,oceanicfuels.com
+PetroChina International London,bunkers,petrochinaintl.com
+Sinopec Fuel Oil,bunkers,sinopecfuel.com
+Uni Marine and Energy,bunkers,unimarine.gr
+Ecomar Energy Solutions,bunkers,ecomarenergy.com
+ClimeCo,carbon,climeco.com
+3Degrees,carbon,3degreesinc.com
+Forliance,carbon,forliance.com
+Wilder Carbon,carbon,wildercarbon.com
+Treeconomy,carbon,treeconomy.co
+Earthly,carbon,earthly.org
+Compensate,carbon,compensate.com
+Milkywire,carbon,milkywire.com
+Senken,carbon,senken.io
+ALLCOT,carbon,allcot.com
+Permian Global,carbon,permianglobal.com
+Wildlife Works,carbon,wildlifeworks.com
+Everland,carbon,everlandmarketing.com
+Space Intelligence,carbon,space-intelligence.com
+Chloris Geospatial,carbon,chloris.earth
+Pachama,carbon,pachama.com
+Calyx Global,carbon,calyxglobal.com
+Renoster,carbon,renoster.com
+Isometric,carbon,isometric.com
+Puro Earth,carbon,puro.earth
+Riverse,carbon,riverse.io
+Coriolis Energy,flex_optimiser,coriolisenergy.com
+Ridgewind,flex_optimiser,ridgewind.com
+Muirhall Energy,flex_optimiser,muirhallenergy.co.uk
+Force 9 Energy,flex_optimiser,force9energy.com
+Locogen,flex_optimiser,locogen.com
+Renewable Connections,flex_optimiser,renewableconnections.co.uk
+Belltown Power,flex_optimiser,belltownpower.com
+Windel Energy,flex_optimiser,windelenergy.co.uk
+Ripple Energy,flex_optimiser,rippleenergy.com
+Thrive Renewables,flex_optimiser,thriverenewables.co.uk
+Abundance Investment,flex_optimiser,abundanceinvestment.com
+Triodos Bank,flex_optimiser,triodos.co.uk
+Ecology Building Society,flex_optimiser,ecology.co.uk
+Bluefield Solar Income Fund,flex_optimiser,bluefieldsif.com
+NextEnergy Solar Fund,flex_optimiser,nextenergysolarfund.com
+Foresight Solar Fund,flex_optimiser,foresightsolarfund.com
+Greencoat UK Wind,flex_optimiser,greencoat-ukwind.com
+The Renewables Infrastructure Group,flex_optimiser,trig-ltd.com
+JLEN Environmental Assets,flex_optimiser,jlen.com
+Octopus Renewables Infrastructure,flex_optimiser,octopusrenewablesinfrastructure.com
+Downing Renewables,flex_optimiser,downingrenewables.com
+VH Global Energy Infrastructure,flex_optimiser,vhgei.com
+Aquila European Renewables,flex_optimiser,aquila-european-renewables.com
+US Solar Fund,flex_optimiser,ussolarfund.co.uk
+Harmony Energy Income Trust,flex_optimiser,harmonyenergyincometrust.com
+Gresham House Energy Storage,flex_optimiser,greshamhouse.com/energy-storage
+Gore Street Energy Storage Fund,flex_optimiser,gsenergystoragefund.com
+Atrato Onsite Energy,flex_optimiser,atratoonsiteenergy.com
+SDCL Energy Efficiency,flex_optimiser,sdclee.com
+Ecofin Global Utilities,flex_optimiser,ecofininvest.com
+Premier Miton Global Renewables,flex_optimiser,pmgr.co.uk
+Menhaden Resource Efficiency,flex_optimiser,menhaden.com
+Impax Environmental Markets,flex_optimiser,impaxenvironmentalmarkets.co.uk
