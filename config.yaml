@@ -60,6 +60,28 @@ include:
   - "regulatory analyst"
   - "regulation analyst"
   - "\\bremit\\b"
+  # The FCA-to-industry routes proper. Transaction reporting is the closest
+  # thing to a straight lateral move there is: the firms doing it are staffed
+  # by people who used to read the other side of the same submissions.
+  - "(transaction|regulatory|trade|prudential) reporting"
+  - "\\b(emir|mifid|mifir|sftr|dodd.?frank)\\b"
+  - "reporting (analyst|analytics|specialist)"
+  - "financial crime (analyst|analytics|data)"
+  - "compliance (data|analytics|technology|systems) analyst"
+  - "conduct (risk )?analyst"
+  - "regulatory (affairs|change|policy) analyst"
+
+  # --- investment side ---
+  # 387 fund firms in the registry were producing almost nothing, because none
+  # of their analyst titles matched any pattern above.
+  - "investment analyst"
+  - "investment (research|associate)"
+  - "fund analyst"
+  - "credit analyst"
+  - "fixed income analyst"
+  - "equity analyst"
+  - "infrastructure (investment )?analyst"
+  - "portfolio (analyst|associate)"
 
   # --- early career, whatever the discipline ---
   # The point of the whole exercise. These are collected on the strength of the

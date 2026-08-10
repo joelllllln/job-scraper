@@ -544,6 +544,28 @@ def main():
                 if l.startswith("title:")]
         check_true(f"scored on its title: {title[:34]}", bool(tier), "no tier matched")
 
+    print("\nFCA routes — the moves an in-post regulator analyst can actually make")
+    fca_keep = scrape.build_filter(yaml.safe_load(open("config.yaml")))
+    for title in ("Transaction Reporting Analyst", "Regulatory Reporting Analyst",
+                  "MiFID Reporting Analyst", "EMIR Analyst", "Trade Surveillance Analyst",
+                  "Market Abuse Analyst", "Financial Crime Analytics Analyst",
+                  "Conduct Risk Analyst", "Compliance Data Analyst",
+                  "Investment Analyst", "Infrastructure Investment Analyst",
+                  "Credit Analyst", "Fund Analyst"):
+        check_true(f"collected: {title[:36]}", fca_keep({"title": title, "location": "London"}))
+    # the regulatory signal stacks on the title tier, so these clear the rest
+    reg = score.score_job(job(title="Transaction Reporting Analyst",
+                              description="mifid transaction reporting and market abuse "
+                                          "surveillance, python and sql"), cfg, cats, set())[0]
+    plain = score.score_job(job(title="Commodity Analyst",
+                                description="python and sql"), cfg, cats, set())[0]
+    check_true("a reporting/surveillance role outranks a plain commodity analyst",
+               reg > plain, f"{reg} vs {plain}")
+    # no pattern may be silently dead — a Cyrillic lookalike once made one unmatchable
+    for spec in list(cfg["description_signals"].values()) + list(cfg["title_tiers"].values()):
+        for p in spec["patterns"]:
+            check_true(f"pattern is ascii and live: {p[:32]}", all(ord(c) < 128 for c in p))
+
     print("\nfilter precision — the widened patterns must not go permissive")
     keep = scrape.build_filter(yaml.safe_load(open("config.yaml")))
     # Real titles that sit next to the words this filter was widened with.

@@ -53,6 +53,9 @@ title_tiers:
       - "market abuse"
       - "regulator(y)? analyst"
       - "regulation analyst"
+      - "(transaction|regulatory|trade) reporting"
+      - "\\b(emir|mifid|mifir|sftr)\\b"
+      - "financial crime (analyst|analytics|data)"
   strong: # same floor, one step off the target
     points: 20
     patterns:
@@ -72,6 +75,10 @@ title_tiers:
       - "asset optimi(s|z)ation"
       - "portfolio analyst"
       - "dispatch analyst"
+      - "investment analyst"
+      - "investment (research|associate)"
+      - "infrastructure (investment )?analyst"
+      - "(fund|credit|equity|fixed income) analyst"
   adjacent: # worth a look, not the target
     points: 10
     patterns:
@@ -141,10 +148,17 @@ description_signals:
     points: 8
     patterns: ["commodit", "energy market", "power market", "crude", "lng", "refinery",
                "freight", "carbon", "gas market", "electricity"]
-  regulatory_edge:   # your actual differentiator — regulator + data
-    points: 10
-    patterns: ["remit", "emir", "mifid", "market abuse", "surveillance", "regulator",
-               "compliance framework", "fca"]
+  regulatory_edge:   # your actual differentiator — an FCA data analyst reading
+                     # the other side of these submissions is the person these
+                     # roles are written for. Raised from 10: this stacks on top
+                     # of the title tier, so a Junior Surveillance Analyst clears
+                     # everything else in the digest, which is correct.
+    points: 18
+    patterns: ["remit", "emir", "mifid", "mifir", "sftr", "market abuse",
+               "surveillance", "regulator", "compliance framework", "\\bfca\\b",
+               "transaction reporting", "regulatory reporting", "trade reporting",
+               "financial crime", "market integrity", "conduct risk",
+               "\\bpra\\b", "esma", "supervis"]
   trading_exposure:
     points: 6
     patterns: ["trading desk", "front office", "traders", "p&l", "position", "hedg"]
