@@ -145,11 +145,62 @@ def sniff_one(session, firm):
     return None
 
 
+COLS = ["name", "ats", "token", "tenant", "dc", "site", "locale", "board_url", "found_on"]
+
+
+def write_all(hits, manual, unknown):
+    for path, rows, fields in [("sniffed.csv", hits, COLS),
+                               ("manual.csv", manual, COLS),
+                               ("unknown.csv", unknown, ["name", "category", "domain"])]:
+        with open(path, "w", newline="") as fh:
+            w = csv.DictWriter(fh, fieldnames=fields, extrasaction="ignore")
+            w.writeheader()
+            w.writerows(rows)
+
+
+def answered(path="sniffed.csv", *extra):
+    """Firms already fingerprinted, so a rerun only looks at what is new.
+
+    Reading a firm's careers page is the slowest thing the pipeline does and the
+    answer changes about never. Unincremental, it re-read all 2303 every run,
+    overran the stage timeout, and — because the CSVs were only written at the
+    very end — threw away the entire 40 minutes, which also left workday.py with
+    no tenants to page through.
+    """
+    seen = set()
+    for p in (path,) + extra:
+        try:
+            seen |= {(r.get("name") or "").strip().lower() for r in csv.DictReader(open(p))}
+        except OSError:
+            pass
+    return seen
+
+
 def main():
     src = sys.argv[1] if len(sys.argv) > 1 else "firms.csv"
+    recheck = "--recheck" in sys.argv
     firms = list(csv.DictReader(open(src)))
-    session = http_client.session()
+    total = len(firms)
+
     hits, manual, unknown = [], [], []
+    if not recheck:
+        for path, bucket in (("sniffed.csv", hits), ("manual.csv", manual)):
+            try:
+                bucket += list(csv.DictReader(open(path)))
+            except OSError:
+                pass
+        try:
+            unknown += list(csv.DictReader(open("unknown.csv")))
+        except OSError:
+            pass
+        known = answered("sniffed.csv", "manual.csv", "unknown.csv")
+        firms = [f for f in firms if (f["name"] or "").strip().lower() not in known]
+        print(f"{total} firms, {len(known)} already fingerprinted -> reading {len(firms)}\n")
+        if not firms:
+            print("nothing new to sniff — pass --recheck to read every careers page again")
+            return
+
+    session = http_client.session()
 
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
         futs = {pool.submit(sniff_one, session, f): f for f in firms}
@@ -169,15 +220,12 @@ def main():
             else:
                 unknown.append(firm)
                 print(f"[{i}/{len(firms)}] ---  {firm['name']}")
+            # Checkpointed, because this stage runs under a timeout and being
+            # killed at firm 1800 used to discard all 1800 answers.
+            if i % 25 == 0:
+                write_all(hits, manual, unknown)
 
-    cols = ["name", "ats", "token", "tenant", "dc", "site", "locale", "board_url", "found_on"]
-    for path, rows, fields in [("sniffed.csv", hits, cols),
-                               ("manual.csv", manual, cols),
-                               ("unknown.csv", unknown, ["name", "category", "domain"])]:
-        with open(path, "w", newline="") as fh:
-            w = csv.DictWriter(fh, fieldnames=fields, extrasaction="ignore")
-            w.writeheader()
-            w.writerows(rows)
+    write_all(hits, manual, unknown)
 
     wd = sum(1 for h in hits if h["ats"] == "workday")
     print(f"\n{len(hits)} scrapable ({wd} Workday) -> sniffed.csv")

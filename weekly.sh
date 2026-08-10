@@ -111,9 +111,12 @@ if [ -z "$RESEND" ]; then
   run "check firms" $PYTHON check_firms.py --only-new --fix
 
   # --- discovery (slow, slow-changing) ---------------------------------------
-  # sniff reads every firm's own careers page. Slow, and which ATS a firm uses
-  # changes about never, so only on --full or the very first run.
-  if [ -n "$FULL" ] || [ ! -f sniffed.csv ]; then
+  # sniff reads every firm's own careers page — the slowest thing here. It is
+  # incremental and checkpointed now, so run it every week: it picks up newly
+  # added firms and costs nothing once a firm has an answer. --full re-reads all.
+  if [ -n "$FULL" ]; then
+    run "sniff" $PYTHON sniff.py firms.csv --recheck
+  else
     run "sniff" $PYTHON sniff.py
   fi
   # discover is incremental — it probes only firms with no answer recorded yet,

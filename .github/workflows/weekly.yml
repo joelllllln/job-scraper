@@ -108,7 +108,27 @@ jobs:
           done
           true
           git commit -m "weekly run $(date -u +%F)" || echo "nothing to commit"
-          git push || true
+          # A plain `git push || true` loses the entire run silently when anyone
+          # pushes to the branch while the run is going: the commit lands only on
+          # the runner, which is then destroyed. That costs the database, the
+          # discovery output and the domain verdicts — 85 minutes of work in the
+          # case that prompted this. Rebase onto whatever arrived and retry,
+          # preferring our generated state on conflict, and make a final failure
+          # loud rather than swallowed.
+          BRANCH="${GITHUB_REF_NAME}"
+          PUSHED=""
+          for attempt in 1 2 3; do
+            if git push origin "HEAD:$BRANCH"; then PUSHED=1; break; fi
+            echo "push rejected (attempt $attempt) — remote moved, rebasing onto it"
+            git fetch origin "$BRANCH" || break
+            # -X theirs during a rebase keeps the commit being replayed, i.e.
+            # this run's freshly generated state, over the older remote copy
+            git rebase -X theirs "origin/$BRANCH" || { git rebase --abort || true; }
+          done
+          if [ -z "$PUSHED" ]; then
+            echo "::error::Could not push run state after 3 attempts. This run's database, discovery output and domain verdicts are lost. Re-run the workflow."
+            exit 1
+          fi
 
       # Reports are NOT committed — they'd expose what you're applying to.
       # 90-day artifact, visible only to you.
