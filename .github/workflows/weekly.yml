@@ -6,6 +6,11 @@ on:
     - cron: "0 7 * * 0"
       timezone: "Europe/London"
   workflow_dispatch:        # lets you trigger it by hand from the Actions tab
+    inputs:
+      resend_all:
+        description: "Email every open role (skip collecting — takes seconds)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -43,6 +48,7 @@ jobs:
 
       - name: Run pipeline
         env:
+          RESEND_ALL: ${{ inputs.resend_all }}
           REED_API_KEY: ${{ secrets.REED_API_KEY }}
           ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
           ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
@@ -58,7 +64,11 @@ jobs:
           # blocked of the lot. Run boards.py at home for LinkedIn coverage.
           sed -i 's/boards.py --hours 192/boards.py --hours 192 --no-linkedin/' weekly.sh
           chmod +x weekly.sh
-          ./weekly.sh
+          # Ticking "Email every open role" re-sends the digest from the restored
+          # database without collecting anything. On the schedule this is empty.
+          ARGS=""
+          if [ "$RESEND_ALL" = "true" ]; then ARGS="--resend-all"; fi
+          ./weekly.sh $ARGS
 
       - name: Encrypt and commit state
         if: always()

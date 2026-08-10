@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
 # weekly.sh — the whole pipeline, once a week, unattended.
 #
-#   ./weekly.sh          normal weekly run
-#   ./weekly.sh --full   also re-sniff every firm's ATS (monthly is enough)
+#   ./weekly.sh                normal weekly run
+#   ./weekly.sh --full         also re-sniff every firm's ATS (monthly is enough)
+#   ./weekly.sh --resend-all   re-send the digest covering every open role, from
+#                              the database as it already stands. Collects
+#                              nothing, verifies nothing, records nothing —
+#                              seconds rather than half an hour. For when a
+#                              digest went missing or you want the whole list.
 #
 # Design rules for an unattended job:
 #   - never run twice at once (flock)
@@ -17,7 +22,18 @@ cd "$(dirname "$0")" || exit 1
 
 PYTHON=${PYTHON:-python3}
 STAGE_TIMEOUT=${STAGE_TIMEOUT:-2400}      # 40 min ceiling per stage
-FULL=${1:-}
+
+FULL=""
+RESEND=""
+for arg in "$@"; do
+  case "$arg" in
+    --full)       FULL=1 ;;
+    --resend-all) RESEND=1 ;;
+    *) echo "unknown option: $arg" >&2
+       echo "usage: weekly.sh [--full] [--resend-all]" >&2
+       exit 2 ;;
+  esac
+done
 
 mkdir -p logs backups
 LOG="logs/$(date +%F).log"
@@ -76,28 +92,39 @@ log "selftest: pass"
 $PYTHON -c "import store; p = store.backup(); print(f'backup: {p}' if p else 'backup: no db yet')" \
   2>&1 | tee -a "$LOG"
 
-# --- discovery (slow, slow-changing) -----------------------------------------
-if [ "$FULL" = "--full" ] || [ ! -f sniffed.csv ]; then
-  run "sniff"    $PYTHON sniff.py
-  run "discover" $PYTHON discover.py
+if [ -z "$RESEND" ]; then
+
+  # --- discovery (slow, slow-changing) ---------------------------------------
+  if [ -n "$FULL" ] || [ ! -f sniffed.csv ]; then
+    run "sniff"    $PYTHON sniff.py
+    run "discover" $PYTHON discover.py
+  fi
+
+  # --- collection --------------------------------------------------------------
+  # Order matters: direct ATS first, so when the same job also turns up on an
+  # aggregator the stored link is already the direct one.
+  run "ats endpoints" $PYTHON scrape.py
+  run "workday"       $PYTHON workday.py
+  run "reed+bullhorn" $PYTHON feeds.py --all
+  run "job boards"    $PYTHON boards.py --hours 192
+  run "efinancial"    $PYTHON efc.py --limit 200
+
+  # --- verification -------------------------------------------------------------
+  run "verify" $PYTHON verify.py
+
+else
+  log ""
+  log "### resend: reporting the database as it stands — no collection, no verification"
 fi
-
-# --- collection ----------------------------------------------------------------
-# Order matters: direct ATS first, so when the same job also turns up on an
-# aggregator the stored link is already the direct one.
-run "ats endpoints" $PYTHON scrape.py
-run "workday"       $PYTHON workday.py
-run "reed+bullhorn" $PYTHON feeds.py --all
-run "job boards"    $PYTHON boards.py --hours 192
-run "efinancial"    $PYTHON efc.py --limit 200
-
-# --- verification ---------------------------------------------------------------
-run "verify" $PYTHON verify.py
 
 # --- ranking --------------------------------------------------------------------
 # Only stamp the run if most stages worked. Recording a mostly-failed run would
 # silently swallow a week of new jobs from the next digest.
-if [ ${#FAILED[@]} -lt 5 ]; then
+if [ -n "$RESEND" ]; then
+  # every open role, not just the new ones — and deliberately not recorded, so a
+  # resend can't move the clock and hide next week's genuinely new jobs
+  run "score" $PYTHON score.py
+elif [ ${#FAILED[@]} -lt 5 ]; then
   run "score" $PYTHON score.py --new-only --record
 else
   log "!! ${#FAILED[@]} stages failed — scoring without --record so next week still sees these"

@@ -129,7 +129,9 @@ def main():
     subject = f"{n_new} new roles — {date}"
 
     lines = [subject, ""]
-    lines += [l for l in text_body.splitlines() if l.strip()][:40]
+    # generous cap: this is the plain-text half of the email, and on a --resend-all
+    # run it carries the whole open list. 40 lines used to cut it off mid-shortlist.
+    lines += [l for l in text_body.splitlines() if l.strip()][:200]
     lines += ["", f"open: {open_total} · applied: {applied}"]
     if warnings:
         lines += ["", "sources to check:"] + [f"  {w}" for w in warnings]

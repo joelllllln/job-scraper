@@ -297,8 +297,12 @@ a broken Workday tenant shouldn't cost you the LinkedIn results. Logs land in
 
 ```bash
 chmod +x weekly.sh
-./weekly.sh            # normal weekly run
-./weekly.sh --full     # also re-sniff every firm's ATS (monthly is plenty)
+./weekly.sh              # normal weekly run
+./weekly.sh --full       # also re-sniff every firm's ATS (monthly is plenty)
+./weekly.sh --resend-all # re-send the digest covering every open role, from the
+                         # database as it stands — no collection, no verification,
+                         # and the run is not recorded, so it can't hide next
+                         # week's genuinely new jobs. Seconds, not half an hour.
 ```
 
 Cron, Sunday 07:00:
