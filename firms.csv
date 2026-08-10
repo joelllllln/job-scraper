@@ -1429,3 +1429,327 @@ Nidec ASI,flex_optimiser,nidec-industrial.com
 Hitachi Energy,flex_optimiser,hitachienergy.com
 Siemens Energy,flex_optimiser,siemens-energy.com
 Schneider Electric,flex_optimiser,se.com
+Quantlab,prop_mm,quantlab.com
+Tradebot Systems,prop_mm,tradebot.com
+Hard Eight Trading,prop_mm,hardeight.com
+Aquatic Capital Management,prop_mm,aquatic.com
+Voleon Group,prop_mm,voleon.com
+Engineers Gate,prop_mm,engineersgate.com
+PDT Partners,prop_mm,pdtpartners.com
+Walleye Capital,prop_mm,walleyecapital.com
+Element Capital Management,fund,elementcapital.com
+Alphadyne Asset Management,fund,alphadyne.com
+Graticule Asset Management,fund,graticuleam.com
+Kirkoswald Asset Management,fund,kirkoswald.com
+Haidar Capital Management,fund,haidarcapital.com
+Discovery Capital Management,fund,discoverycapital.com
+Freestone Grove Partners,fund,freestonegrove.com
+Transtrend,fund,transtrend.com
+Campbell and Company,fund,campbell.com
+Millburn Ridgefield,fund,millburn.com
+Chesapeake Capital,fund,chesapeakecapital.com
+Mulvaney Capital Management,fund,mulvaneycapital.com
+Dunn Capital Management,fund,dunncapital.com
+Crabel Capital Management,fund,crabel.com
+Welton Investment Partners,fund,welton.com
+ISAM,fund,isam.com
+Estlander and Partners,fund,estlanderpartners.com
+Progressive Capital Partners,fund,progressivecapital.com
+RPM Risk and Portfolio Management,fund,rpm.se
+Sunrise Capital Partners,fund,sunrisecapital.com
+Abraham Trading Company,fund,abrahamtrading.com
+Graham Capital Management,fund,grahamcapital.com
+Bridgewater Europe,fund,bridgewater-europe.com
+Acadian Asset Management,fund,acadian-asset.com
+Arrowstreet Capital,fund,arrowstreetcapital.com
+Numeric Investors,fund,numeric.com
+Analytic Investors,fund,analyticinvestors.com
+Los Angeles Capital,fund,lacapm.com
+Intech Investment Management,fund,intechinvestments.com
+Parametric Portfolio,fund,parametricportfolio.com
+Dimensional Fund Advisors,fund,dimensional.com
+Research Affiliates,fund,researchaffiliates.com
+GMO,fund,gmo.com
+Bernstein Private Wealth,fund,bernstein.com
+AllianceBernstein,fund,alliancebernstein.com
+Lazard Asset Management,fund,lazardassetmanagement.com
+Brandywine Global,fund,brandywineglobal.com
+Western Asset Management,fund,westernasset.com
+Barings,fund,barings.com
+MetLife Investment Management,fund,metlife.com
+Principal Asset Management,fund,principalam.com
+Nuveen,fund,nuveen.com
+TIAA,fund,tiaa.org
+Voya Investment Management,fund,voyainvestments.com
+Guggenheim Investments,fund,guggenheiminvestments.com
+Angel Oak Capital,fund,angeloakcapital.com
+Marathon Asset Management US,fund,marathonfund.com
+Beach Point Capital,fund,beachpointcapital.com
+Ellington Management,fund,ellington.com
+Bardin Hill,fund,bardinhill.com
+Redwood Capital Management,fund,redwoodcap.com
+Contrarian Capital,fund,contrariancapital.com
+Aurelius Capital,fund,aureliuscapital.com
+Monarch Alternative Capital,fund,monarchlp.com
+Owl Creek Asset Management,fund,owlcreeklp.com
+Sachem Head Capital,fund,sachemhead.com
+Trian Partners,fund,trianpartners.com
+ValueAct Capital,fund,valueact.com
+Starboard Value,fund,starboardvalue.com
+Engine Capital,fund,enginecap.com
+Irenic Capital,fund,ireniccapital.com
+Bluebell Capital Partners,fund,bluebellpartners.com
+Cevian Capital,fund,cevian.com
+Petrus Advisers,fund,petrusadvisers.com
+Teleios Capital Partners,fund,teleioscapital.com
+Amber Infrastructure Group,fund,amberinfra.com
+Coast Capital,fund,coastcapital.com
+Gatemore Capital,fund,gatemore.com
+Crystal Amber,fund,crystalamber.com
+Harwood Capital,fund,harwoodcapital.co.uk
+Chelverton Equity Partners,fund,chelvertonequity.com
+Downing Strategic,fund,downingstrategic.com
+Rockwood Strategic,fund,rockwoodstrategic.com
+Palm Harbour Capital,fund,palmharbourcapital.com
+Sarasin Alpha,fund,sarasinalpha.com
+Chubb,insurance,chubb.com
+AIG,insurance,aig.com
+Zurich Insurance,insurance,zurich.com
+Allianz Commercial,insurance,allianz.com
+AXA XL,insurance,axaxl.com
+Berkshire Hathaway Specialty,insurance,bhspecialty.com
+Sompo International,insurance,sompo-intl.com
+Tokio Marine Kiln,insurance,tokiomarinekiln.com
+QBE,insurance,qbe.com
+RSA Insurance,insurance,rsagroup.com
+Liberty Specialty Markets,insurance,libertyspecialtymarkets.com
+Everest Insurance,insurance,everestglobal.com
+Arch Insurance,insurance,archinsurance.com
+Markel International,insurance,markel.com
+Starr Insurance,insurance,starrcompanies.com
+Argo Group,insurance,argogroup.com
+Hamilton Insurance,insurance,hamiltongroup.com
+Aegis London,insurance,aegislondon.co.uk
+Ark Insurance,insurance,arkunderwriting.com
+Dale Underwriting Partners,insurance,daleuw.com
+Apollo Underwriting,insurance,apolloakg.com
+Atrium Underwriters,insurance,atrium-uw.com
+Beat Capital Partners,insurance,beatcapitalpartners.com
+Blenheim Underwriting,insurance,blenheimunderwriting.com
+CFC Underwriting,insurance,cfcunderwriting.com
+Nexus Underwriting,insurance,nexusunderwriting.com
+Pen Underwriting,insurance,penunderwriting.com
+Rokstone Underwriting,insurance,rokstone.com
+Lloyds of London,insurance,lloyds.com
+Singapore Exchange,exchange,sgx.com
+Hong Kong Exchanges,exchange,hkex.com.hk
+Japan Exchange Group,exchange,jpx.co.jp
+ASX,exchange,asx.com.au
+TMX Group,exchange,tmx.com
+B3 Brasil Bolsa,exchange,b3.com.br
+BME Spanish Exchanges,exchange,bolsasymercados.es
+Warsaw Stock Exchange,exchange,gpw.pl
+Borsa Istanbul,exchange,borsaistanbul.com
+Tadawul,exchange,saudiexchange.sa
+Abu Dhabi Securities Exchange,exchange,adx.ae
+Dubai Financial Market,exchange,dfm.ae
+Qatar Stock Exchange,exchange,qe.com.qa
+Multi Commodity Exchange India,exchange,mcxindia.com
+National Stock Exchange India,exchange,nseindia.com
+Dubai Gold and Commodities Exchange,exchange,dgcx.ae
+Dalian Commodity Exchange,exchange,dce.com.cn
+Shanghai Futures Exchange,exchange,shfe.com.cn
+Zhengzhou Commodity Exchange,exchange,czce.com.cn
+Korea Exchange,exchange,krx.co.kr
+Bursa Malaysia,exchange,bursamalaysia.com
+Indonesia Stock Exchange,exchange,idx.co.id
+Johannesburg Stock Exchange,exchange,jse.co.za
+Oslo Bors,exchange,euronext.com/en/markets/oslo
+Nasdaq Clearing,exchange,nasdaqomx.com
+Eurex,exchange,eurex.com
+Cboe Clear Europe,exchange,cboeclear.com
+OCC Clearing,exchange,theocc.com
+ICE Clear Europe,exchange,theice.com/clear-europe
+CME Clearing Europe,exchange,cmegroup.com/clearing
+Ion Markets,exchange,iongroup.com/markets
+Trading Technologies International,exchange,tradingtechnologies.co.uk
+Itiviti,exchange,itiviti.com
+Fidessa,exchange,fidessa.com
+Bloomberg Terminal Services,exchange,bloomberg.co.uk
+Refinitiv Eikon,exchange,eikon.refinitiv.com
+Symphony Communication,exchange,symphony.com
+Ipreo,exchange,ipreo.com
+Dealogic,exchange,dealogic.com
+Preqin,data_vendor,preqin.com
+PitchBook,data_vendor,pitchbook.com
+With Intelligence,data_vendor,withintelligence.com
+HFR,data_vendor,hedgefundresearch.com
+eVestment,data_vendor,evestment.com
+Albourne Partners,data_vendor,albourne.com
+Mercer Investments,data_vendor,mercer.com
+Aon Investments,data_vendor,aon.com/investments
+bfinance,data_vendor,bfinance.com
+Redington,data_vendor,redington.co.uk
+Hymans Robertson,data_vendor,hymans.co.uk
+Barnett Waddingham,data_vendor,barnett-waddingham.co.uk
+XPS Pensions,data_vendor,xpsgroup.com
+Isio,data_vendor,isio.com
+Cardano,data_vendor,cardano.com
+Van Lanschot Kempen,fund,vanlanschotkempen.com
+Ineos,trading_house,ineos.com
+LyondellBasell,trading_house,lyondellbasell.com
+Dow,trading_house,dow.com
+BASF,trading_house,basf.com
+SABIC,trading_house,sabic.com
+Braskem,trading_house,braskem.com.br
+Borealis,trading_house,borealisgroup.com
+Trinseo,trading_house,trinseo.com
+Celanese,trading_house,celanese.com
+Eastman Chemical,trading_house,eastman.com
+Covestro,trading_house,covestro.com
+Evonik,trading_house,evonik.com
+Clariant,trading_house,clariant.com
+Arkema,trading_house,arkema.com
+Solvay,trading_house,solvay.com
+Wacker Chemie,trading_house,wacker.com
+Nouryon,trading_house,nouryon.com
+Johnson Matthey,trading_house,matthey.com
+Croda International,trading_house,croda.com
+Synthomer,trading_house,synthomer.com
+Elementis,trading_house,elementis.com
+Brenntag,trading_house,brenntag.com
+IMCD,trading_house,imcdgroup.com
+Azelis,trading_house,azelis.com
+Univar Solutions,trading_house,univarsolutions.com
+Helm AG,trading_house,helmag.com
+Vinmar International,trading_house,vinmar.com
+Tricon Energy,trading_house,triconenergy.com
+Muntajat,trading_house,muntajat.com
+Mitsubishi Chemical,trading_house,mcgc.com
+Omya,trading_house,omya.com
+Credit Agricole CIB,bank,ca-cib.com
+Banque de Commerce et de Placements,bank,bcp-bank.com
+BRED Banque Populaire,bank,bred.fr
+Afreximbank,bank,afreximbank.com
+Trade and Development Bank,bank,tdbgroup.org
+Ecobank,bank,ecobank.com
+Access Bank,bank,accessbankplc.com
+Zenith Bank,bank,zenithbank.com
+United Bank for Africa,bank,ubagroup.com
+Nedbank,bank,nedbank.co.za
+Rand Merchant Bank,bank,rmb.co.za
+Habib Bank,bank,hbl.com
+Mashreq,bank,mashreq.com
+Arab Bank,bank,arabbank.com
+National Bank of Fujairah,bank,nbf.ae
+Commercial Bank of Dubai,bank,cbd.ae
+Bank Muscat,bank,bankmuscat.com
+Ahli United Bank,bank,ahliunited.com
+Banque Misr,bank,banquemisr.com
+Attijariwafa Bank,bank,attijariwafabank.com
+Lansing Trade Group,softs,lansingtrade.com
+Seaboard Corporation,softs,seaboardcorp.com
+Perdue Agribusiness,softs,perdueagribusiness.com
+Bartlett and Company,softs,bartlettandcompany.com
+Zen-Noh Grain,softs,zengrain.com
+Sodrugestvo,softs,sodrugestvo.com
+Kernel Holding,softs,kernel.ua
+MHP,softs,mhp.com.ua
+Astarta Holding,softs,astartaholding.com
+Ridley Corporation,softs,ridley.com.au
+ETG Commodities,softs,etgworld.com
+Export Trading Group,softs,etgworld.co.uk
+Olam Food Ingredients,softs,ofi.com.sg
+Sucden Coffee,softs,sucden.co.uk
+DEMB Trading,softs,jdecoffee.com
+Neumann Kaffee Gruppe,softs,nkg.net
+Volcafe Specialty,softs,volcafespecialty.com
+Mercon Coffee,softs,mercon.com
+Louis Dreyfus Coffee,softs,ldc.co.uk
+Cofco Agri,softs,cofcoagri.com
+Agrofert,softs,agrofert.cz
+Baltic Control,softs,balticcontrol.com
+SGS,softs,sgs.com
+Bureau Veritas,softs,bureauveritas.com
+Intertek,softs,intertek.com
+Cotecna,softs,cotecna.com
+Alfred H Knight,metals,ahkgroup.com
+Inspectorate,metals,inspectorate.com
+Camin Cargo Control,refining,camincargo.com
+Saybolt,refining,corelab.com
+Amspec,refining,amspecgroup.com
+Viswa Group,refining,viswalab.com
+VPS Veritas Petroleum,refining,v-p-s.com
+Coinbase Institutional,crypto,coinbase.co.uk
+Bitstamp Europe,crypto,bitstamp.co.uk
+Falcon X Europe,crypto,falconx.co.uk
+Bitfinex Securities,crypto,bitfinexsecurities.com
+Deribit Europe,crypto,deribit.eu
+Paradigm,crypto,paradigm.co
+Hidden Road Partners,crypto,hiddenroad.co.uk
+Clear Street,crypto,clearstreet.io
+Blockdaemon,crypto,blockdaemon.com
+Chainlink Labs,crypto,chainlinklabs.com
+Consensys,crypto,consensys.io
+Aave Companies,crypto,aave.com
+Nethermind,crypto,nethermind.io
+Blockchain Capital,crypto,blockchain.capital
+Fabric Ventures,crypto,fabric.vc
+Greenfield Capital,crypto,greenfield.xyz
+Maven 11,crypto,maven11.com
+Bitwise Asset Management,crypto,bitwiseinvestments.com
+21Shares,crypto,21shares.com
+WisdomTree Digital,crypto,wisdomtree.com
+Valour,crypto,valour.com
+Hashdex,crypto,hashdex.com
+Marex Solutions,broker,marexsolutions.com
+Sucden Financial Metals,broker,sucfin.com
+Amalgamated Metal Corporation,metals,amcgroup.com
+Concord Resources Metals,metals,concordresources.co.uk
+Gerald Metals,metals,geraldmetals.com
+Traxys Europe,metals,traxys.eu
+Ocean Partners,metals,oceanpartners.com
+Trafigura Metals,metals,trafigura.co.uk
+Red Kite Capital,metals,redkitecm.com
+Tiberius Group,metals,tiberiusgroup.com
+Galena Asset Management,metals,galena-invest.com
+Britannia Refined Metals,metals,glencore.co.uk
+Metalor,metals,metalor.com
+Valcambi,metals,valcambi.com
+Argor-Heraeus,metals,argor.com
+PAMP,metals,pamp.com
+Heraeus Precious Metals,metals,heraeus-precious-metals.com
+Asahi Refining,metals,asahirefining.com
+Perth Mint,metals,perthmint.com
+Rand Refinery,metals,randrefinery.com
+Sharps Pixley,metals,sharpspixley.com
+Baird and Co Refinery,metals,bairdmint.com
+Prax Petroleum,refining,prax.com
+Harvest Energy,refining,harvestenergy.co.uk
+Certas Energy,refining,certasenergy.co.uk
+Watson Fuels,refining,watsonfuels.co.uk
+Crown Oil,refining,crownoil.co.uk
+Rontec,refining,rontec.co.uk
+Motor Fuel Group,refining,motorfuelgroup.com
+EG Group,refining,eg-group.com
+Applegreen,refining,applegreenstores.com
+Circle K Europe,refining,circlek.com
+Q8 Kuwait Petroleum,refining,q8.com
+Phillips 66 Limited,refining,phillips66.co.uk
+Valero UK,refining,valero.co.uk
+Puma Energy UK,refining,pumaenergy.co.uk
+Greenergy Fuels,refining,greenergy.co.uk
+Argent Energy,refining,argentenergy.com
+Olleco,refining,olleco.co.uk
+Convert Energy,refining,convertenergy.co.uk
+Green Fuels,refining,greenfuels.co.uk
+Velocys,refining,velocys.com
+Nova Pangaea Technologies,refining,novapangaea.com
+Vertex Bioenergy,refining,vertexbioenergy.com
+Verbio,refining,verbio.de
+Clariant Sunliquid,refining,clariant.co.uk
+Enviva,softs,enviva.com
+Pinnacle Renewable Energy,softs,pinnaclepellet.com
+Graanul Invest,softs,graanulinvest.com
+Drax Biomass,softs,draxbiomass.com
+Lignetics,softs,lignetics.com

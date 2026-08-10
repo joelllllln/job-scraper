@@ -1,6 +1,6 @@
 # Trading / market analyst job scraper
 
-1430 firms, London-focused. Front office and market-facing roles only.
+1754 firms, London-focused. Front office and market-facing roles only.
 
 ## Run order
 
@@ -37,11 +37,11 @@ All of them write to the same `jobs.db` and share dedupe.
 | `discover.py` | finds each firm's real ATS endpoint → `endpoints.csv` + `no_ats.csv` |
 | `scrape.py` | pulls every GET-based board (`sniffed.csv` + `endpoints.csv`) and Adzuna → `jobs.db`, `latest.csv` |
 | `links.py` | builds `links.md` — LinkedIn/Indeed/Glassdoor/X-ray URLs per firm |
-| `links.md` | already generated, 1430 firms |
+| `links.md` | already generated, 1754 firms |
 
 ## Why discovery instead of hardcoded URLs
 
-I don't have a reliable way to know which ATS each of 1430 firms uses, and
+I don't have a reliable way to know which ATS each of 1754 firms uses, and
 hardcoding tokens I can't verify would give you a list that silently returns
 zero jobs. `discover.py` finds them empirically and tells you which firms have
 no public endpoint at all — those go in `no_ats.csv` and you cover them via
