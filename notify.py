@@ -41,6 +41,20 @@ ALWAYS_CALLED = ("reed", "adzuna", "indeed", "glassdoor", "google", "linkedin",
                  "jooble", "careerjet", "efinancialcareers", "bullhorn")
 
 
+def ALWAYS_SKIPPED():
+    """Sources this environment deliberately does not call, and why.
+
+    Kept separate from the never-worked check: "we didn't ask" and "we asked and
+    it's broken" need different answers from you, and reporting the first as the
+    second — or as nothing at all — is how LinkedIn appeared to be running for
+    six weeks while contributing zero rows.
+    """
+    out = {}
+    if os.getenv("NO_LINKEDIN") == "1":
+        out["linkedin"] = "datacentre IPs are blocked; run boards.py at home"
+    return out
+
+
 def health(con):
     """Per-source counts this week vs the trailing four weeks."""
     now = datetime.now(timezone.utc)
@@ -58,8 +72,15 @@ def health(con):
     # A source that has never returned anything never appears in `prior`, so the
     # trailing-average check below could not see it: six sources were silently
     # contributing nothing while the digest looked perfectly healthy.
+    skipped = ALWAYS_SKIPPED()
     for src in ALWAYS_CALLED:
-        if src not in ever:
+        if src in skipped:
+            # Deliberately not run here, which is different from broken — but it
+            # still has to be said, or "no LinkedIn jobs" reads as "LinkedIn had
+            # nothing this week" rather than "LinkedIn was never asked".
+            warnings.append(f"{src}: not run in this environment ({skipped[src]}). "
+                            f"Nothing from it is in this digest.")
+        elif src not in ever:
             warnings.append(f"{src}: has never returned a single job — not just quiet, "
                             f"never working. Missing API key, or blocked.")
 

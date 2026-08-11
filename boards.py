@@ -17,6 +17,7 @@ and lean on Indeed + Google, which are far more tolerant.
 """
 
 import argparse
+import os
 import sqlite3
 import sys
 import time
@@ -66,30 +67,59 @@ QUERIES = [
 
 SITES_DEFAULT = ["linkedin", "indeed", "google", "glassdoor"]
 
+LOCATION = "London, United Kingdom"
+# Glassdoor's location lookup is a GET with the search term interpolated straight
+# into the URL: findPopularLocationAjax.htm?...&term=London, United Kingdom. The
+# unescaped comma and space make it a malformed request and Glassdoor answers 400,
+# so _get_location returns None and every single query aborts with "location not
+# parsed" before it searches for anything. It ran that way for six runs and
+# contributed zero rows. A bare city name is what it wants.
+SITE_LOCATION = {"glassdoor": "London"}
+
 
 def run(sites, hours, per_query, pause):
-    frames = []
-    for i, q in enumerate(QUERIES, 1):
-        print(f"[{i}/{len(QUERIES)}] {q}")
-        try:
-            df = scrape_jobs(
-                site_name=sites,
-                search_term=q,
-                google_search_term=f"{q} jobs in London since last week",
-                location="London, United Kingdom",
-                country_indeed="UK",
-                results_wanted=per_query,
-                hours_old=hours,
-                linkedin_fetch_description=False,   # much slower + far more likely to trip limits
-                description_format="markdown",
-                verbose=0,
-            )
-            if df is not None and len(df):
-                frames.append(df)
-                print(f"      {len(df)} rows")
-        except Exception as e:
-            print(f"      ! {e}", file=sys.stderr)
-        time.sleep(pause)
+    """One site at a time, counted.
+
+    Previously all four sites went into a single scrape_jobs call and only the
+    combined row count was printed. That hid two different failures at once:
+    Glassdoor erroring on every query, and LinkedIn — which returns an EMPTY
+    FRAME rather than raising when it is blocked — quietly contributing nothing.
+    Neither showed up as a failure. Per-site totals are the whole point here.
+    """
+    frames, per_site = [], {s: 0 for s in sites}
+    for site in sites:
+        for i, q in enumerate(QUERIES, 1):
+            print(f"[{site} {i}/{len(QUERIES)}] {q}")
+            try:
+                df = scrape_jobs(
+                    site_name=[site],
+                    search_term=q,
+                    google_search_term=f"{q} jobs in London since last week",
+                    location=SITE_LOCATION.get(site, LOCATION),
+                    country_indeed="UK",
+                    results_wanted=per_query,
+                    hours_old=hours,
+                    linkedin_fetch_description=False,   # much slower + far more likely to trip limits
+                    description_format="markdown",
+                    verbose=0,
+                )
+                if df is not None and len(df):
+                    frames.append(df)
+                    per_site[site] += len(df)
+                    print(f"      {len(df)} rows")
+            except Exception as e:
+                print(f"      ! {site}: {e}", file=sys.stderr)
+            time.sleep(pause)
+
+    print("\nper-site raw rows:")
+    for s in sites:
+        print(f"  {s:<12} {per_site[s]}")
+    # An empty site is not a quiet result, it is a broken one: these are all
+    # general job boards and every one of them has London finance roles today.
+    dead = [s for s in sites if per_site[s] == 0]
+    if dead:
+        print(f"  !! returned nothing at all: {', '.join(dead)} — blocked, "
+              f"rate limited, or the endpoint changed", file=sys.stderr)
 
     if not frames:
         return pd.DataFrame()
@@ -108,8 +138,15 @@ def main():
     sites = SITES_DEFAULT
     if args.linkedin_only:
         sites = ["linkedin"]
-    elif args.no_linkedin:
+    # The env var exists because the GitHub workflow used to strip LinkedIn with
+    # a sed against the exact text of the boards.py line in weekly.sh. Editing
+    # either file would have made that sed match nothing and silently stop
+    # applying, and a silent no-op on a rate-limit guard is how you get blocked.
+    elif args.no_linkedin or os.getenv("NO_LINKEDIN") == "1":
         sites = [s for s in SITES_DEFAULT if s != "linkedin"]
+        print("linkedin: skipped (datacentre IPs are blocked — run this at home "
+              "for LinkedIn coverage)")
+    print(f"sites: {', '.join(sites)}\n")
 
     cfg = yaml.safe_load(open("config.yaml"))
     keep = build_filter(cfg)

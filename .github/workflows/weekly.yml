@@ -56,6 +56,13 @@ jobs:
 
       - name: Run pipeline
         env:
+          # LinkedIn blocks datacentre IPs and GitHub's runners are the most
+          # blocked of the lot — it answers 403 and JobSpy returns an empty
+          # frame rather than raising, so it looks like "no jobs this week".
+          # Run boards.py at home for LinkedIn coverage. This used to be a sed
+          # against the text of weekly.sh, which would have stopped applying
+          # the moment either file was edited, without saying so.
+          NO_LINKEDIN: "1"
           RESEND_ALL: ${{ inputs.resend_all }}
           EXPAND_FIRMS: ${{ inputs.expand_firms }}
           REPORT_EVERYTHING: ${{ inputs.report_everything }}
@@ -73,9 +80,6 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
-          # LinkedIn blocks datacentre IPs and GitHub's runners are the most
-          # blocked of the lot. Run boards.py at home for LinkedIn coverage.
-          sed -i 's/boards.py --hours 192/boards.py --hours 192 --no-linkedin/' weekly.sh
           chmod +x weekly.sh
           # Ticking "Email every open role" re-sends the digest from the restored
           # database without collecting anything. On the schedule this is empty.

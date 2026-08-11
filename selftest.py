@@ -521,6 +521,20 @@ def main():
         _, warns2 = notify.health(c4)
         check_true("and stops being named once it works",
                    not any(w.startswith("reed:") for w in warns2))
+
+        # "Not run here" and "ran and returned nothing" need different answers
+        # from the reader. LinkedIn is deliberately off on GitHub Actions, and
+        # reporting that as silence made it look like LinkedIn simply had no
+        # London jobs for six weeks running.
+        os.environ["NO_LINKEDIN"] = "1"
+        _, warns3 = notify.health(c4)
+        li = [w for w in warns3 if w.startswith("linkedin:")]
+        check("linkedin reported as skipped, not as broken",
+              (len(li), "not run" in li[0] if li else None), (1, True))
+        os.environ.pop("NO_LINKEDIN")
+        _, warns4 = notify.health(c4)
+        check_true("and as broken again when it is meant to run",
+                   any(w.startswith("linkedin:") and "never returned" in w for w in warns4))
         c4.close()
         for suffix in ("", "-wal", "-shm"):
             if os.path.exists(tmp4 + suffix):
@@ -603,6 +617,19 @@ def main():
     for spec in list(cfg["description_signals"].values()) + list(cfg["title_tiers"].values()):
         for p in spec["patterns"]:
             check_true(f"pattern is ascii and live: {p[:32]}", all(ord(c) < 128 for c in p))
+
+    print("\nboards: per-site accounting, and the Glassdoor location bug")
+    import boards
+    check("glassdoor gets a bare city name",
+          boards.SITE_LOCATION.get("glassdoor"), "London")
+    check_true("everything else keeps the full location",
+               boards.SITE_LOCATION.get("indeed") is None
+               and boards.LOCATION == "London, United Kingdom")
+    # A comma or space in the term lands unescaped in Glassdoor's location URL
+    # and it answers 400 to every query, which is what happened for six runs.
+    for site, loc in list(boards.SITE_LOCATION.items()) or []:
+        check_true(f"{site} location has no character that breaks a bare URL",
+                   not any(ch in loc for ch in ", &?#"))
 
     print("\nfilter precision — the widened patterns must not go permissive")
     keep = scrape.build_filter(yaml.safe_load(open("config.yaml")))
