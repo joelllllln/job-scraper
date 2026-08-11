@@ -34,9 +34,22 @@ def check_true(name, cond, detail=""):
         FAILS.append(name)
 
 
+# Environment variables that change what the code under test does. weekly.sh
+# runs this as a gate from inside the GitHub workflow, which exports several of
+# them, so without scrubbing here a test can pass on a laptop and fail on the
+# runner — and a failing gate aborts the whole weekly run before it collects
+# anything. Tests that want one of these set it themselves and restore it.
+AMBIENT = ("NO_LINKEDIN", "JOBSPY_PROXIES", "SMTP_HOST", "SMTP_PORT", "SMTP_USER",
+           "SMTP_PASS", "DIGEST_TO", "TELEGRAM_TOKEN", "TELEGRAM_CHAT_ID",
+           "GITHUB_TOKEN", "RUN_MODE", "HOURS")
+
+
 def main():
     import store, verify, score
     import yaml
+
+    for var in AMBIENT:
+        os.environ.pop(var, None)
 
     print("\nstore — dedupe and provenance")
     check("word order ignored",
@@ -512,6 +525,12 @@ def main():
         c4 = store.connect(tmp4)
         store.save_new(c4, [{"company": "Kpler", "title": "Gas Analyst",
                              "url": "https://a", "source": "greenhouse"}])
+        # Explicitly cleared, not merely assumed absent. The GitHub workflow
+        # exports NO_LINKEDIN=1 for the whole step, so this block inherited it
+        # and the assertion below failed on the runner while passing locally —
+        # which aborted a whole run at the gate. A test that reads ambient
+        # environment is a test that passes on your machine and nowhere else.
+        os.environ.pop("NO_LINKEDIN", None)
         _, warns = notify.health(c4)
         silent = {w.split(":")[0] for w in warns if "never returned" in w}
         check("every never-working source is named",
