@@ -627,7 +627,16 @@ def main():
              "ESG Marketing Executive", "Commercial Manager - Construction",
              "Commercial Director", "Underwriting Manager", "Actuarial Director",
              "Corporate Finance Manager", "Insurance Broker - Motor", "Mortgage Broker",
-             "Broker Support Administrator", "Recruitment Consultant"]
+             "Broker Support Administrator", "Recruitment Consultant",
+             # neighbours of the pair matcher (role word + domain word). These
+             # all carry one half of a real title and must still be rejected.
+             "Head of Trading", "Senior Markets Analyst", "Trading Floor Cleaner",
+             "Insurance Sales Broker", "Commercial Insurance Broker",
+             "Energy Advisor - Call Centre", "Gas Engineer", "Gas Safe Engineer",
+             "Oil Rig Roustabout", "Shipping Clerk", "Cargo Handler",
+             "Policy Advisor - Housing", "Sports Performance Analyst",
+             "Debt Collector", "Debt Advisor", "Portfolio Manager", "Head of Risk",
+             "Risk Manager", "Trading Standards Officer", "Estate Agent"]
     signal = ["Junior Market Analyst", "Trainee Commodity Broker",
               "Entry Level Trading Analyst", "Battery Storage Optimisation Analyst",
               "Electricity Market Analyst", "Trade Surveillance Analyst",
@@ -646,11 +655,56 @@ def main():
               "Catastrophe Modelling Analyst", "Exposure Management Analyst",
               "Underwriting Assistant", "Investment Banking Analyst", "M&A Analyst",
               "Leveraged Finance Analyst", "Sale and Purchase Broker", "Dry Cargo Broker",
-              "Shipbroking Trainee", "Transaction Reporting Analyst", "Investment Analyst"]
+              "Shipbroking Trainee", "Transaction Reporting Analyst", "Investment Analyst",
+              # The inverted house style. Every include phrase spells
+              # "<domain> analyst"; banks write "Analyst, <domain>" at least as
+              # often, and 53 of a 103-title sample were being rejected on that
+              # alone. These are the forms that were missing.
+              "Analyst, Global Markets", "Analyst - Markets", "Markets Analyst",
+              "Analyst, Fixed Income", "Global Markets Analyst",
+              "Analyst, Commodities Trading", "Analyst - Capital Markets",
+              "Capital Markets Analyst", "Derivatives Analyst", "Treasury Analyst",
+              "Analyst, Risk", "Financial Analyst", "Analyst, Investment Management",
+              "Investment Operations Analyst", "Analyst - Energy Transition",
+              "Analyst, Private Credit", "Analyst, Prime Brokerage",
+              "Analyst, Electronic Trading", "Analyst, Insurance",
+              "Analyst, Model Risk", "Analyst, Asset Management",
+              "Real Assets Analyst", "Analyst, Real Estate Investment",
+              "Analyst - Hedge Fund", "Hedge Fund Analyst", "Analyst, Macro Research",
+              "Macro Analyst", "Rates Analyst", "FX Analyst",
+              "Analyst, Foreign Exchange", "Distressed Debt Analyst",
+              "Analyst - Corporate Finance", "Analyst, Valuations",
+              "Analyst - Financial Crime", "Analyst - Conduct Risk",
+              "Analyst, Prudential Risk", "Policy Analyst",
+              "Analyst, Financial Stability", "Equity Research Associate",
+              "Associate, Equity Research", "Trading Assistant", "Trade Floor Analyst",
+              "Business Analyst - Trading", "Broker", "Junior Broker", "Energy Broker",
+              "Analyst, Investor Relations", "Analyst, Trading Strategy",
+              # a junior marker outranks a rank word in the exclude list
+              "Junior Portfolio Manager"]
     caught = [t for t in noise if keep({"title": t, "location": "London"})]
     missed = [t for t in signal if not keep({"title": t, "location": "London"})]
     check(f"none of {len(noise)} unrelated titles collected", caught, [])
     check(f"all {len(signal)} on-target titles collected", missed, [])
+
+    print("\nlocation filter — London roles are labelled many ways")
+    for l in ["London", "London, United Kingdom", "City of London", "Canary Wharf",
+              "EC2M, England", "England", "GB", "Great Britain", "London (Hybrid)",
+              "EMEA", "Reading, England", "UK-London", ""]:
+        check_true(f"location kept: {l or '(blank)'}",
+                   keep({"title": "Market Analyst", "location": l}))
+    for l in ["Ukraine", "Paris, France", "Geneva", "Singapore", "Houston, TX",
+              "New York, NY", "Dubai", "Sydney"]:
+        check_true(f"location dropped: {l}",
+                   not keep({"title": "Market Analyst", "location": l}))
+
+    # The pair matcher must need BOTH halves. A role word alone or a domain word
+    # alone getting through is how it would silently become a single-word match.
+    for half in ["Analyst", "Associate", "Trader", "Researcher", "Manager",
+                 "Markets", "Energy", "Risk", "Investment", "Pricing"]:
+        check_true(f"bare '{half}' alone is not enough",
+                   not keep.matches(half) or half.lower() in
+                   " ".join(yaml.safe_load(open("config.yaml"))["include"]).lower())
 
     print()
     if FAILS:

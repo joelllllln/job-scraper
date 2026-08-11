@@ -3,9 +3,19 @@
 
 locations:
   # Keep jobs whose location matches any of these, or has no location field.
+  # Written out rather than left at london/uk: employers label London roles
+  # "EC2M, England", "Canary Wharf", "GB" and "EMEA" often enough that the
+  # short list was dropping them silently. `uk` was also unanchored, which
+  # let every Ukraine posting through.
   - london
   - united kingdom
-  - uk
+  - "\\buk\\b"
+  - "\\bgb\\b"
+  - great britain
+  - england
+  - canary wharf
+  - "\\b(ec[1-4]|wc[12]|e14|e1|sw1|w1[a-z]?)[a-z]?\\b"   # City / Docklands / West End postcodes
+  - "\\bemea\\b"
   - remote
   - hybrid
 
@@ -205,6 +215,12 @@ include:
   - "market data"
   - "python developer"
   - "trading systems"
+  # inverted and bare forms the phrase list never spelled — measured misses
+  - "trad(e|ing) floor"
+  - "trading (assistant|associate|support analyst)"
+  - "business analyst.{0,24}(trading|market|commodit|energy|risk|regulat|financ|invest)"
+  - "\\bbrokers?\\b"
+  - "(investment|fund|portfolio) performance"
 
 exclude:
   - "senior"
@@ -244,3 +260,118 @@ exclude:
   - "back office"
   - "middle office"
   - "clearing"
+  # a bare "broker" is now collected, so the retail broking trades that share
+  # the word have to be named — these are doorstep sales jobs, not desks
+  - "(insurance|mortgage|motor|life|health|travel|pet|protection)\\w*( \\w+)? broker"
+  - "broker support"
+  # "trading floor" collects the desk; it was also collecting the cleaner
+  - "clean(er|ing)"
+
+# --- pair matching: role word + domain word, in either order ------------------
+# Every pattern in `include` above spells a title one way round only —
+# "<domain> analyst". Banks and funds write the other way round at least as
+# often: "Analyst, Global Markets", "Analyst - Capital Markets",
+# "Associate, Equity Research". Measured against 103 realistic front-office
+# titles, the phrase list alone rejected 53 of them — half the target market,
+# invisibly, because nothing recorded what the filter threw away.
+#
+# So a title also passes if it contains one `role_words` entry AND one
+# `domain_words` entry, anywhere, in any order. That is how these titles are
+# actually constructed: what you'd be, plus what it's about. The exclude list
+# still applies afterwards, and a bare role word on its own is never enough —
+# "Crane Operator" has no domain, "Fire Risk Assessor" has no role.
+role_words:
+  - "analyst"
+  - "associate"
+  - "\\btrader\\b"
+  - "\\bbroker\\b"
+  - "trading"
+  - "economist"
+  - "strategist"
+  - "researcher"
+  - "research"
+  - "data scientist"
+  - "quant\\w*"
+  - "dealer"
+  - "scheduler"
+  - "\\bdesk\\b"
+  # safe here only because the exclude list still drops "manager" titles
+  # unless a junior marker is present — this exists so "Junior Portfolio
+  # Manager" can be collected, not to let management roles in
+  - "manager"
+
+domain_words:
+  # markets and asset classes
+  - "\\bmarkets?\\b"
+  - "capital markets"
+  - "global markets"
+  - "fixed income"
+  - "equit(y|ies)"
+  - "\\bcredit\\b"
+  - "\\brates\\b"
+  - "\\bfx\\b"
+  - "foreign exchange"
+  - "derivatives?"
+  - "\\bmacro\\b"
+  - "securities"
+  - "\\bbonds?\\b"
+  - "\\bcommodit\\w+"
+  - "\\bfutures\\b"
+  - "\\btrading\\b"
+  - "\\bdebt\\b"
+  - "insurance"
+  - "investor relations"
+  - "options (trading|market|desk)"
+  # the buy side
+  - "investment"
+  - "portfolio"
+  - "asset management"
+  - "\\bfunds?\\b"
+  - "hedge fund"
+  - "private (credit|equity|markets|debt)"
+  - "\\binfrastructure\\b"
+  - "real (assets|estate)"
+  - "leveraged finance"
+  - "corporate finance"
+  - "m(and|&)a\\b"
+  - "valuations?"
+  - "prime broker\\w*"
+  - "electronic trading"
+  - "\\btreasury\\b"
+  # energy and physical
+  - "\\benergy\\b"
+  - "\\bpower\\b"
+  - "\\bgas\\b"
+  - "\\blng\\b"
+  - "\\boil\\b"
+  - "\\bcarbon\\b"
+  - "renewables?"
+  - "\\bfreight\\b"
+  - "shipping"
+  - "\\bcargo\\b"
+  - "electricity"
+  - "energy transition"
+  # risk, regulation, control — the FCA-adjacent routes
+  - "\\brisk\\b"
+  - "model risk"
+  - "market abuse"
+  - "surveillance"
+  - "regulator\\w*"
+  - "regulation"
+  - "prudential"
+  - "conduct risk"
+  - "financial crime"
+  - "financial stability"
+  - "\\bpolicy\\b"
+  - "product control"
+  - "transaction reporting"
+  - "\\bfinancial\\b"
+  # desk-side
+  - "front office"
+  - "trading floor"
+  - "execution"
+  - "structur\\w+"
+  - "origination"
+  - "pricing"
+  - "underwrit\\w+"
+

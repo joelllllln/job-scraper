@@ -255,19 +255,97 @@ def from_adzuna(cfg):
 
 # ---------- filtering ----------
 
+# Rank words that a junior marker is allowed to override, and the markers that
+# do it. Kept narrow on purpose: "Head of Trading" must stay out even though
+# "Graduate" appearing anywhere in the blurb would be tempting to honour.
+RANK = re.compile(r"manager|lead|\bstaff\b|\bexpert\b|principal", re.I)
+JUNIOR = re.compile(r"\b(junior|jnr|trainee|graduate|entry.?level|assistant|"
+                    r"apprentice\w*|intern|placement)\b", re.I)
+
+
 def build_filter(cfg):
     inc = re.compile("|".join(cfg["include"]), re.I)
     exc = re.compile("|".join(cfg["exclude"]), re.I)
     loc = re.compile("|".join(cfg["locations"]), re.I)
+    # Optional, so an older config.yaml still loads.
+    role = re.compile("|".join(cfg["role_words"]), re.I) if cfg.get("role_words") else None
+    dom = re.compile("|".join(cfg["domain_words"]), re.I) if cfg.get("domain_words") else None
+
+    def matches(t):
+        """Two ways in, because titles are written both ways round.
+
+        The `include` phrases spell "<domain> analyst" and nothing else, so
+        "Analyst, Global Markets" — the house style at most banks — fell
+        straight through. The pair test catches the inverted form without
+        needing a phrase for every combination: one role word plus one domain
+        word, in any order. Neither half alone is enough.
+        """
+        if inc.search(t):
+            return True
+        if not (role and dom):
+            return False
+        r, d = role.search(t), dom.search(t)
+        # Distinct spans, or a word appearing in both lists would satisfy the
+        # pair on its own and quietly turn the test into a single-word match.
+        return bool(r and d and r.span() != d.span())
 
     def keep(j):
         t = re.sub(r"<[^>]+>", " ", j["title"])
-        if not inc.search(t) or exc.search(t):
+        if not matches(t):
+            return False
+        # A junior marker outranks a rank word: "Junior Portfolio Manager" and
+        # "Trainee Broker Manager" are entry-level roles that the blanket
+        # `manager` / `lead` excludes were throwing away. Only the rank words
+        # are overridden — the subject-matter excludes (marketing, recruit,
+        # back office) still apply, because those are the wrong job whoever
+        # is doing it.
+        hit = exc.search(t)
+        if hit and not (JUNIOR.search(t) and RANK.fullmatch(hit.group(0).strip().lower())):
             return False
         if j["location"] and not loc.search(j["location"]):
             return False
         return True
+
+    keep.matches = matches          # so audits can separate title from location
     return keep
+
+
+# ---------- audit ----------
+
+def write_rejects(raw, hits, keep, path="rejects.csv"):
+    """Record what the filter threw away, and why.
+
+    This exists because of a real failure: 15,000 postings were scanned and
+    ~215 kept, and there was no way to tell whether the other 14,785 were
+    genuinely irrelevant or whether the patterns were too narrow. They were
+    too narrow — half of a 103-title sample of ordinary front-office roles was
+    being rejected. A filter with no record of its rejections cannot be
+    audited, and an unauditable filter is one you end up trusting on faith.
+
+    Deduped by title so it stays readable: the same title from forty firms is
+    one line with a count, not forty lines.
+    """
+    kept_ids = {id(j) for j in hits}
+    counts, why = {}, {}
+    for j in raw:
+        if id(j) in kept_ids:
+            continue
+        t = re.sub(r"<[^>]+>", " ", j.get("title", "")).strip()
+        if not t:
+            continue
+        counts[t] = counts.get(t, 0) + 1
+        if t not in why:
+            why[t] = "title: no pattern matched" if not keep.matches(t) else "location"
+    try:
+        with open(path, "w", newline="") as fh:
+            w = csv.writer(fh)
+            w.writerow(["count", "title", "reason"])
+            for t, n in sorted(counts.items(), key=lambda x: (-x[1], x[0])):
+                w.writerow([n, t, why[t]])
+        print(f"wrote {path}: {len(counts)} distinct rejected titles "
+              f"({sum(counts.values())} postings)")
+    except OSError as e:
+        print(f"  ! could not write {path}: {e}", file=sys.stderr)
 
 
 # ---------- main ----------
@@ -284,6 +362,7 @@ def main():
 
     raw = from_ats(session) + from_adzuna(cfg)
     hits = [j for j in raw if keep(j)]
+    write_rejects(raw, hits, keep)
     new = store.save_new(con, hits)
 
     if args.all:

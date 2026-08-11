@@ -461,7 +461,12 @@ def main():
 
     scored = sorted(pool, key=lambda r: -r["score"])
     if not args.include_unverified:
-        scored = [r for r in scored if r["checked_at"] is not None and r["live"]]
+        # Only drop roles PROVEN dead. `checked_at is None` means verify.py never
+        # reached this one — it runs under a 40-minute ceiling and gets bot-blocked
+        # on some hosts — and treating "not yet checked" as "gone" was quietly
+        # binning a fifth of the pool, which is indistinguishable from the filter
+        # being too tight. Unknown is not dead.
+        scored = [r for r in scored if r["checked_at"] is None or r["live"]]
 
     rep = cfg["report"]
     top_n = args.top or rep["top_n"]

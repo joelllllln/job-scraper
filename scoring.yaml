@@ -248,6 +248,10 @@ verification:
 
 # --- 8. Report ---
 report:
-  top_n: 25
-  min_score: 25
+  # top_n caps each of the two sections, so the digest carries up to 2x this.
+  # It was 25, which on a normal weekly run was the binding constraint long
+  # before min_score was — the email showed 25 roles out of a 130-role pool
+  # and nothing said the other 105 existed.
+  top_n: 60
+  min_score: 20
   shortlist_threshold: 60
