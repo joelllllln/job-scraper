@@ -1,0 +1,24 @@
+# Railway service config.
+#
+# This exists for one reason: LinkedIn blocks datacentre IPs, and GitHub's
+# runners are the most blanket-blocked of the lot, so the weekly workflow runs
+# with NO_LINKEDIN=1 and LinkedIn contributes nothing. Railway is also a
+# datacentre, so it is NOT automatically a fix — whether LinkedIn answers from
+# here is an empirical question. RUN_MODE=probe asks it before anything is
+# built on top of the answer.
+#
+#   RUN_MODE=probe    one-shot: does LinkedIn answer from this host? (default)
+#   RUN_MODE=collect  scheduled: scrape LinkedIn and push the finds to GitHub
+#
+# Set JOBSPY_PROXIES to a RESIDENTIAL proxy if the probe says blocked. A
+# datacentre proxy will not help — the IP class is what LinkedIn rejects.
+
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "python railway_worker.py"
+# A probe is meant to run once and stop. Without this Railway treats the exit
+# as a crash and restarts it in a loop, which is both useless and the fastest
+# possible way to get the IP rate limited.
+restartPolicyType = "never"

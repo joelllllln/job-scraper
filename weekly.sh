@@ -138,6 +138,9 @@ if [ -z "$RESEND" ]; then
   run "reed+bullhorn" $PYTHON feeds.py --all
   run "job boards"    $PYTHON boards.py --hours 192
   run "efinancial"    $PYTHON efc.py --limit 200
+  # LinkedIn blocks datacentre IPs, so it is collected on Railway instead and
+  # pushed here as a CSV. No-op when the file is absent or empty.
+  run "linkedin inbox" $PYTHON inbox.py
 
   # --- verification -------------------------------------------------------------
   run "verify" $PYTHON verify.py

@@ -77,6 +77,20 @@ LOCATION = "London, United Kingdom"
 SITE_LOCATION = {"glassdoor": "London"}
 
 
+def proxies():
+    """Optional residential proxies, comma separated, from JOBSPY_PROXIES.
+
+        export JOBSPY_PROXIES="user:pass@host:port,user:pass@host2:port"
+
+    Only worth setting for LinkedIn, and only a RESIDENTIAL proxy helps: what
+    LinkedIn blocks is the IP class, so routing a datacentre request through
+    another datacentre changes nothing. Indeed and Google are tolerant enough
+    that they do not need one.
+    """
+    raw = os.getenv("JOBSPY_PROXIES", "").strip()
+    return [p.strip() for p in raw.split(",") if p.strip()] or None
+
+
 def run(sites, hours, per_query, pause):
     """One site at a time, counted.
 
@@ -101,6 +115,7 @@ def run(sites, hours, per_query, pause):
                     hours_old=hours,
                     linkedin_fetch_description=False,   # much slower + far more likely to trip limits
                     description_format="markdown",
+                    proxies=proxies(),
                     verbose=0,
                 )
                 if df is not None and len(df):

@@ -618,6 +618,24 @@ def main():
         for p in spec["patterns"]:
             check_true(f"pattern is ascii and live: {p[:32]}", all(ord(c) < 128 for c in p))
 
+    print("\ninbox — roles collected on another machine")
+    import inbox
+    inb = tempfile.mktemp(suffix=".csv")
+    with open(inb, "w", newline="") as fh:
+        fh.write("company,title,location,url,source,posted\n")
+        fh.write('Citadel,"Analyst, Global Markets",London,https://li/1,linkedin,\n')
+        fh.write("Badco,Delivery Driver,London,https://li/2,linkedin,\n")
+        fh.write("Nowhere,Market Analyst,Singapore,https://li/3,linkedin,\n")
+    got = inbox.read(inb)
+    check("every row read back", len(got), 3)
+    # The file comes from another machine running another checkout of the
+    # config, so the gate into the database has to re-apply the current rules.
+    keep2 = scrape.build_filter(yaml.safe_load(open("config.yaml")))
+    check("inbox re-filters on ingest",
+          [j["company"] for j in got if keep2(j)], ["Citadel"])
+    check("a missing inbox is a no-op, not an error", inbox.read("does-not-exist.csv"), [])
+    os.unlink(inb)
+
     print("\nboards: per-site accounting, and the Glassdoor location bug")
     import boards
     check("glassdoor gets a bare city name",
