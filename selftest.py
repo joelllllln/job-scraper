@@ -657,6 +657,9 @@ def main():
 
     print("\nboards: per-site accounting, and the Glassdoor location bug")
     import boards
+    # Glassdoor is known broken upstream — 400 from its location endpoint even
+    # with a bare city name, confirmed from Railway. These assert the input is
+    # well-formed, not that Glassdoor works; boards.py reports its zero loudly.
     check("glassdoor gets a bare city name",
           boards.SITE_LOCATION.get("glassdoor"), "London")
     check_true("everything else keeps the full location",

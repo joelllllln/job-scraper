@@ -68,12 +68,23 @@ QUERIES = [
 SITES_DEFAULT = ["linkedin", "indeed", "google", "glassdoor"]
 
 LOCATION = "London, United Kingdom"
-# Glassdoor's location lookup is a GET with the search term interpolated straight
-# into the URL: findPopularLocationAjax.htm?...&term=London, United Kingdom. The
-# unescaped comma and space make it a malformed request and Glassdoor answers 400,
-# so _get_location returns None and every single query aborts with "location not
-# parsed" before it searches for anything. It ran that way for six runs and
-# contributed zero rows. A bare city name is what it wants.
+# Glassdoor is BROKEN and this does not fix it. Recording what is actually known
+# so the next person does not re-derive it:
+#
+# Every query dies in JobSpy's _get_location, which GETs
+# findPopularLocationAjax.htm?...&term=<location> and gets 400 back, logs
+# "location not parsed", and returns zero rows without searching. First theory
+# was the unescaped comma and space in "London, United Kingdom" making the URL
+# malformed — hence the bare city name below. Tested from Railway with
+# term=London and it still 400s, so that theory is wrong. Cause unconfirmed:
+# possibly the double slash JobSpy builds into that URL, possibly the endpoint
+# is gone, possibly it is IP-blocked like Google is.
+#
+# The bare city name is kept because it is the more correct input either way and
+# costs nothing. Glassdoor stays in the site list because it now fails fast
+# (~0.15s per query) and reports its own zero loudly rather than hiding in a
+# combined total — which is the actual regression that let this run for six
+# weeks unnoticed.
 SITE_LOCATION = {"glassdoor": "London"}
 
 
