@@ -160,6 +160,12 @@ firm_categories:
   recruiter: 3
   unknown: 2
 
+# Below this many characters a stored description is treated as unreadable and
+# NONE of the signals below are scored. verify.py stores whatever came back, and
+# on a JS-rendered or walled page that is a cookie banner, not a job spec. A real
+# job description is comfortably over this; the failures are all far under it.
+min_jd_chars: 400
+
 # --- 4. Description signals. Each fires once. ---
 description_signals:
   python_sql:
@@ -245,6 +251,12 @@ verification:
   expired_validthrough: -30
   ghost_repost: -15      # same role posted repeatedly over months
   long_open: -6          # live for 60+ days with no close date
+  exclude_days_open: 120 # hard drop, not a penalty: a role advertised this long
+                         # with no closing date is an evergreen pipeline advert,
+                         # not a vacancy. Measured from the posting's own date,
+                         # so it is unaffected by how long this database has
+                         # existed; roles with a stated close date are exempt.
+                         # Blank it to disable.
 
 # --- 8. Report ---
 report:

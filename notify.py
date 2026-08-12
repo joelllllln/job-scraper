@@ -41,6 +41,25 @@ ALWAYS_CALLED = ("reed", "adzuna", "indeed", "glassdoor", "google", "linkedin",
                  "jooble", "careerjet", "efinancialcareers", "bullhorn")
 
 
+# Sources that cannot work without a key you have not set. Not broken — unasked.
+# Reported once, compactly, with the variable to set, rather than as four
+# separate alarms every week about something no code change can fix.
+NEEDS_KEY = {"reed": "REED_API_KEY", "adzuna": "ADZUNA_APP_ID + ADZUNA_APP_KEY",
+             "jooble": "JOOBLE_API_KEY", "careerjet": "CAREERJET_AFFID"}
+
+# Sources known to be broken, with what is known about why. These are stated
+# once and then left alone: repeating an alarm nobody can act on trains you to
+# skim the health section, which is exactly when a real regression slips past.
+# A source leaves this list the moment it returns a row — see health().
+KNOWN_BROKEN = {
+    "glassdoor": "JobSpy's location lookup 400s on every query; confirmed from "
+                 "two hosts, cause unconfirmed",
+    "efinancialcareers": "listing markup changed; the parser finds no rows",
+    "bullhorn": "no portals found across 54 recruiters — the API token is "
+                "injected by JavaScript, not present in the static HTML",
+}
+
+
 def ALWAYS_SKIPPED():
     """Sources this environment deliberately does not call, and why.
 
@@ -72,17 +91,33 @@ def health(con):
     # A source that has never returned anything never appears in `prior`, so the
     # trailing-average check below could not see it: six sources were silently
     # contributing nothing while the digest looked perfectly healthy.
+    # Four states, not two. A source that has never produced a row is either
+    # unasked (no key), known broken, deliberately skipped here, or genuinely
+    # unexplained — and only the last of those is news. Reporting all four the
+    # same way meant eight permanent alarms nobody could action, which is how a
+    # health section stops being read at all.
     skipped = ALWAYS_SKIPPED()
+    unasked, broken, unexplained = [], [], []
     for src in ALWAYS_CALLED:
+        if src in ever:
+            continue          # working; nothing to say, whatever list it is on
         if src in skipped:
-            # Deliberately not run here, which is different from broken — but it
-            # still has to be said, or "no LinkedIn jobs" reads as "LinkedIn had
-            # nothing this week" rather than "LinkedIn was never asked".
             warnings.append(f"{src}: not run in this environment ({skipped[src]}). "
                             f"Nothing from it is in this digest.")
-        elif src not in ever:
-            warnings.append(f"{src}: has never returned a single job — not just quiet, "
-                            f"never working. Missing API key, or blocked.")
+        elif src in NEEDS_KEY:
+            unasked.append(f"{src} ({NEEDS_KEY[src]})")
+        elif src in KNOWN_BROKEN:
+            broken.append(f"{src} — {KNOWN_BROKEN[src]}")
+        else:
+            unexplained.append(src)
+
+    for src in unexplained:
+        warnings.append(f"{src}: has never returned a single job, and nothing "
+                        f"explains why. Not a missing key, not a known fault.")
+    if unasked:
+        warnings.append("no API key set, so never called: " + ", ".join(unasked))
+    if broken:
+        warnings.append("known broken, already diagnosed: " + "; ".join(broken))
 
     for src, before in prior.items():
         avg = before / 4.0

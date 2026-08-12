@@ -16,6 +16,7 @@ scoring.yaml rather than guessing.
 
 import argparse
 import csv
+import hashlib
 import html
 import re
 import sqlite3
@@ -166,6 +167,57 @@ def requirements(desc, limit=260):
     return _trim(" ".join(asks[:3]), limit) if asks else ""
 
 
+def jd_fingerprint(desc, min_chars=400):
+    """Identity of a job description, or None if there isn't enough of one.
+
+    Whitespace, punctuation and case are stripped so the same posting rendered
+    by two different collectors fingerprints the same. Capped at 1500 characters
+    because the tail of a posting is boilerplate that varies (application dates,
+    tracking codes) while the opening is the job.
+    """
+    if not desc:
+        return None
+    t = re.sub(r"[^a-z0-9 ]+", " ", desc.lower())
+    t = re.sub(r"\s+", " ", t).strip()
+    if len(t) < min_chars:
+        return None                      # too little to be evidence of anything
+    return hashlib.sha1(t[:1500].encode()).hexdigest()[:16]
+
+
+def collapse_duplicates(rows, min_chars=400):
+    """One job advertised twice under slightly different titles.
+
+    store.canonical_key already merges word-order and punctuation variants, so
+    "Broker - FX Options" and "FX Options Broker" are one row before they ever
+    get here. What it cannot merge is a title with an extra word in it:
+    "Energy Operations Analyst" and "Energy Operations Analyst - Renewables"
+    hash differently, and both reached the digest.
+
+    So: same firm, byte-identical description, and one title's words a subset of
+    the other's. All three are required. Two genuinely different roles at one
+    firm — "Broker, FX" and "Broker, Rates" — share neither a description nor a
+    subset relationship, and stay separate. Roles with no readable description
+    are never merged, because an empty description matches every other empty one.
+    """
+    buckets = defaultdict(list)
+    for r in rows:
+        fp = jd_fingerprint(r.get("description"), min_chars)
+        if fp is not None:
+            buckets[(norm(r["company"]), fp)].append(r)
+    dropped = []
+    for items in buckets.values():
+        if len(items) < 2:
+            continue
+        items.sort(key=lambda r: -r.get("score", 0))
+        keep_words = set(norm(items[0]["title"]).split())
+        for other in items[1:]:
+            words = set(norm(other["title"]).split())
+            if keep_words <= words or words <= keep_words:
+                dropped.append((other, items[0]))
+    drop_ids = {id(o) for o, _ in dropped}
+    return [r for r in rows if id(r) not in drop_ids], dropped
+
+
 def find_ghosts(rows):
     """Same role, posted again and again over months. Usually never filled."""
     groups = defaultdict(list)
@@ -221,9 +273,21 @@ def score_job(r, cfg, cats, ghosts):
     add(cfg["firm_categories"].get(cat, cfg["firm_categories"]["unknown"]), f"firm:{cat}")
 
     # 4. description signals
-    for name, spec in cfg["description_signals"].items():
-        if any(re.search(p, desc) for p in spec["patterns"]):
-            add(spec["points"], f"jd:{name}")
+    # Only when there is a real description to read. verify.py stores whatever
+    # it got, and what it got is often a cookie banner, a JS shell or a login
+    # wall — a few hundred characters of furniture. Scoring that is scoring
+    # noise, and no_experience_needed is worth 25 points, more than any other
+    # single signal, so a stray "entry level" in a nav menu could push an
+    # unparsed page onto the shortlist on no evidence at all. Absence of a
+    # description is not evidence about the job; it is a gap in our data.
+    min_jd = cfg.get("min_jd_chars", 400)
+    if len(desc) < min_jd:
+        if desc:
+            add(0, f"jd too short to read ({len(desc)}c)")
+    else:
+        for name, spec in cfg["description_signals"].items():
+            if any(re.search(p, desc) for p in spec["patterns"]):
+                add(spec["points"], f"jd:{name}")
 
     # 5. provenance
     add(cfg["source_weights"].get(r["source"], 0), f"via {r['source']}")
@@ -424,11 +488,12 @@ def main():
         print(f"new since {since[:16]}: {len(pool)} of {len(rows)}")
     pool = [r for r in pool if (r.get("status") or "new") == "new"]
 
-    # Two hard filters, applied before scoring so nothing over the bar can rank
-    # its way back in on the strength of the firm or the freshness.
+    # Three hard filters, applied before scoring so nothing over the bar can
+    # rank its way back in on the strength of the firm or the freshness.
     excl = load_excludes()
     max_years = cfg["seniority"].get("exclude_over_years")
-    cut_title, cut_years, kept = [], [], []
+    max_open = cfg["verification"].get("exclude_days_open")
+    cut_title, cut_years, cut_stale, kept = [], [], [], []
     for r in pool:
         if excl and excl.search(r["title"] or ""):
             cut_title.append(r)
@@ -437,12 +502,25 @@ def main():
         if max_years is not None and yrs is not None and yrs > max_years:
             cut_years.append(r)
             continue
+        # Open for months with no closing date is the signature of a role that
+        # is not really being filled — an evergreen pipeline advert. The -6
+        # long_open penalty was far too small to keep these off a 99-role
+        # digest. Deliberately keyed on the posting's OWN date, never on
+        # first_seen: first_seen is when this scraper started watching, so
+        # using it would mean every role goes stale on the same schedule as
+        # the database itself. Roles that publish a close date are exempt —
+        # they are telling you when they shut, which is the opposite problem.
+        age = days_since(r.get("ld_posted") or r.get("posted"))
+        if max_open is not None and age is not None and age > max_open and not r["valid_through"]:
+            cut_stale.append(r)
+            continue
         kept.append(r)
     pool = kept
 
     # Named, not just counted — a hard filter that drops things silently is how
     # you lose a role you wanted and never find out.
-    for label, rows in (("title", cut_title), (f">{max_years}y experience", cut_years)):
+    for label, rows in (("title", cut_title), (f">{max_years}y experience", cut_years),
+                        (f"open >{max_open}d with no close date", cut_stale)):
         if rows:
             print(f"filtered out {len(rows)} on {label}:")
             for r in sorted(rows, key=lambda x: x["company"] or "")[:12]:
@@ -458,6 +536,18 @@ def main():
         # digest, which meant deciding whether to apply required opening the link
         r["summary"] = summarise(r.get("description"))
         r["requirements"] = requirements(r.get("description"))
+
+    # One job advertised twice under slightly different titles. Done after
+    # scoring so the better-scoring copy is the one kept, and reported by name
+    # because a silent merge is indistinguishable from a role going missing.
+    pool, merged = collapse_duplicates(pool, cfg.get("min_jd_chars", 400))
+    if merged:
+        print(f"merged {len(merged)} duplicate posting(s):")
+        for other, kept in merged[:12]:
+            print(f"    {(other['company'] or '')[:22]:<24} {(other['title'] or '')[:38]:<40}"
+                  f" -> {(kept['title'] or '')[:38]}")
+        if len(merged) > 12:
+            print(f"    ... and {len(merged) - 12} more")
 
     scored = sorted(pool, key=lambda r: -r["score"])
     if not args.include_unverified:

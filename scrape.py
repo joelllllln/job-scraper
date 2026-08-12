@@ -270,6 +270,8 @@ def build_filter(cfg):
     # Optional, so an older config.yaml still loads.
     role = re.compile("|".join(cfg["role_words"]), re.I) if cfg.get("role_words") else None
     dom = re.compile("|".join(cfg["domain_words"]), re.I) if cfg.get("domain_words") else None
+    notloc = (re.compile("|".join(cfg["location_exclude"]), re.I)
+              if cfg.get("location_exclude") else None)
 
     def matches(t):
         """Two ways in, because titles are written both ways round.
@@ -301,6 +303,12 @@ def build_filter(cfg):
         # is doing it.
         hit = exc.search(t)
         if hit and not (JUNIOR.search(t) and RANK.fullmatch(hit.group(0).strip().lower())):
+            return False
+        # Somewhere-else wins over anywhere. Checked against title AND location:
+        # "remote"/"hybrid" are legitimate keeps for UK roles, but they matched
+        # "Remote - India" too, and postings with no location field routinely
+        # name the city in the title instead.
+        if notloc and notloc.search(f"{t} {j['location']}"):
             return False
         if j["location"] and not loc.search(j["location"]):
             return False

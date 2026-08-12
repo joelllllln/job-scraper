@@ -19,6 +19,40 @@ locations:
   - remote
   - hybrid
 
+# Checked BEFORE `locations` and it wins outright. "remote" and "hybrid" are in
+# the list above so UK remote roles are kept, but bare substring matching means
+# "Remote - India", "Remote, United States" and "Hybrid - New York" matched too,
+# and roughly one in eight shortlisted roles was somewhere you cannot work.
+# Matched against the title as well as the location, because a lot of postings
+# carry no location field at all and say "Analyst, Mumbai" in the title instead.
+location_exclude:
+  # Every alternative is \b-anchored. Unanchored, "lima" matched c-LIMA-te and
+  # threw out Climate Risk Analyst — the same substring bug that had `uk`
+  # matching Ukraine. Anchor first, add the city second.
+  - "\\b(united states|usa|u\\.s\\.a?\\.|us)\\b"
+  - "\\b(canada|toronto|vancouver|montreal|ottawa)\\b"
+  - "\\b(india|mumbai|bangalore|bengaluru|delhi|hyderabad|pune|gurgaon|chennai)\\b"
+  - "\\b(brazil|brasil|sao paulo|s\u00e3o paulo|rio de janeiro)\\b"
+  - "\\b(new york|nyc|manhattan|brooklyn|san francisco|chicago|boston|austin)\\b"
+  - "\\b(seattle|houston|atlanta|denver|miami|dallas|philadelphia|charlotte)\\b"
+  - "\\b(washington d\\.?c\\.?|los angeles|san diego|phoenix|minneapolis)\\b"
+  - "\\b(singapore|hong kong|shanghai|beijing|shenzhen|tokyo|osaka|seoul|taipei)\\b"
+  - "\\b(sydney|melbourne|brisbane|perth|auckland|wellington)\\b"
+  - "\\b(dubai|abu dhabi|uae|qatar|doha|riyadh|saudi arabia|bahrain|kuwait)\\b"
+  - "\\b(germany|berlin|frankfurt|munich|hamburg|dusseldorf|d\u00fcsseldorf)\\b"
+  - "\\b(france|paris|lyon|marseille|spain|madrid|barcelona|valencia)\\b"
+  - "\\b(netherlands|amsterdam|rotterdam|the hague|utrecht|belgium|brussels|antwerp)\\b"
+  - "\\b(switzerland|zurich|z\u00fcrich|geneva|gen\u00e8ve|zug|basel|lausanne)\\b"
+  - "\\b(poland|warsaw|krakow|krak\u00f3w|wroclaw|romania|bucharest|hungary|budapest)\\b"
+  - "\\b(czech republic|czechia|prague|slovakia|bratislava|bulgaria|sofia)\\b"
+  - "\\b(ireland|dublin|cork|italy|milan|milano|rome|roma|turin|portugal|lisbon|porto)\\b"
+  - "\\b(sweden|stockholm|denmark|copenhagen|norway|oslo|finland|helsinki|iceland)\\b"
+  - "\\b(austria|vienna|greece|athens|turkey|istanbul|ankara|cyprus|nicosia)\\b"
+  - "\\b(south africa|johannesburg|cape town|nigeria|lagos|abuja|kenya|nairobi|egypt|cairo)\\b"
+  - "\\b(mexico|mexico city|argentina|buenos aires|chile|santiago|colombia|bogota|bogot\u00e1|peru|lima)\\b"
+  # US grid operators and market names — they turn up where a city would be
+  - "\\b(nyiso|ercot|caiso|miso|pjm|spp|isone|iso-ne|aeso|wecc)\\b"
+
 include:
   # --- market / fundamental analyst ---
   - "market analyst"

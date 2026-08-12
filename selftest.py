@@ -272,6 +272,16 @@ def main():
     cfg = yaml.safe_load(open("scoring.yaml"))
     now = datetime.now(timezone.utc)
 
+    # Real job descriptions run to thousands of characters; scoring now ignores
+    # anything under min_jd_chars because a short "description" is a cookie
+    # banner or a login wall, not a spec. Test fixtures have to look like the
+    # real thing or they measure the gate instead of the rubric. The filler is
+    # deliberately inert — no word in it matches any description_signal.
+    def jd(text):
+        filler = ("The successful applicant will join our London office and work "
+                  "alongside the wider team. Further details are available on request. ")
+        return text + " " + filler * (1 + cfg["min_jd_chars"] // len(filler))
+
     def job(**kw):
         base = {"id": "x", "company": "Kpler", "title": "Market Analyst", "location": "London",
                 "source": "greenhouse", "posted": (now - timedelta(days=2)).isoformat(),
@@ -289,7 +299,7 @@ def main():
     anon = score.score_job(job(anonymous=1), cfg, cats, set())[0]
     ghost = score.score_job(job(), cfg, cats, {"x"})[0]
     viaboard = score.score_job(job(source="indeed"), cfg, cats, set())[0]
-    edge = score.score_job(job(description="remit surveillance market abuse python commodit"),
+    edge = score.score_job(job(description=jd("remit surveillance market abuse python commodit")),
                            cfg, cats, set())[0]
 
     check_true("baseline good job scores well", good >= 60, f"got {good}")
@@ -310,13 +320,30 @@ def main():
     junior = score.score_job(job(title="Junior Market Analyst"), cfg, cats, set())[0]
     trainee = score.score_job(job(title="Trainee Commodity Analyst"), cfg, cats, set())[0]
     trains = score.score_job(job(title="Market Analyst",
-                                 description="full training provided, no prior experience"),
+                                 description=jd("full training provided, no prior experience")),
                              cfg, cats, set())[0]
     check_true("junior beats the same role without the word",
                junior > good + 30, f"{junior} vs {good}")
     check_true("trainee counts as junior too", trainee > good + 30, f"{trainee} vs {good}")
     check_true("'no prior experience' in the description is worth real points",
                trains > good + 15, f"{trains} vs {good}")
+
+    # verify.py stores whatever came back, and on a JS-rendered or walled page
+    # that is furniture. no_experience_needed is the biggest single description
+    # signal at 25 points, so a stray "entry level" in a nav menu could push an
+    # unparsed page onto the shortlist on no evidence whatsoever.
+    banner = "We use cookies. Entry level roles available. Accept all. Manage preferences."
+    check_true("a short page is under the floor", len(banner) < cfg["min_jd_chars"])
+    junk = score.score_job(job(description=banner), cfg, cats, set())
+    check("no description signal fires on an unreadable page",
+          [l for l, _ in junk[1] if l.startswith("jd:")], [])
+    check_true("and it says so rather than failing silently",
+               any("too short" in l for l, _ in junk[1]))
+    check("an unreadable page scores exactly as a missing one",
+          junk[0], score.score_job(job(description=""), cfg, cats, set())[0])
+    check_true("but a real description still scores",
+               score.score_job(job(description=jd("no prior experience")), cfg, cats,
+                               set())[0] > junk[0] + 15)
 
     for title in ("Graduate Commodity Analyst", "Summer Analyst Programme",
                   "Trading Internship", "Sales and Trading Graduate Programme",
@@ -426,11 +453,11 @@ def main():
               yrs is not None and yrs > cap, want_dropped)
 
     print("\ndigest content — the description and requirements reach the email")
-    jd = ("Home About Careers  About the role  We are looking for a Junior Gas Scheduler to join "
+    page = ("Home About Careers  About the role  We are looking for a Junior Gas Scheduler to join "
           "our London gas desk. You will manage daily nominations across UK pipelines. "
           "What you'll need  A numerate degree, 1-2 years of experience in energy, strong SQL. "
           "Benefits  Pension, bonus. We are an equal opportunities employer.")
-    s, w = score.summarise(jd), score.requirements(jd)
+    s, w = score.summarise(page), score.requirements(page)
     check_true("summary starts at the role, not the site navigation",
                s.startswith("We are looking for"), s[:50])
     check_true("summary stops before the requirements", "numerate degree" not in s, s[-50:])
@@ -532,14 +559,37 @@ def main():
         # environment is a test that passes on your machine and nowhere else.
         os.environ.pop("NO_LINKEDIN", None)
         _, warns = notify.health(c4)
-        silent = {w.split(":")[0] for w in warns if "never returned" in w}
-        check("every never-working source is named",
-              silent, set(notify.ALWAYS_CALLED))
-        store.save_new(c4, [{"company": "X", "title": "Power Analyst",
-                             "url": "https://b", "source": "reed"}])
+        named = " ".join(warns)
+        check_true("every never-working source is accounted for somewhere",
+                   all(s in named for s in notify.ALWAYS_CALLED),
+                   [s for s in notify.ALWAYS_CALLED if s not in named])
+
+        # Four states, not two. Eight permanent alarms nobody could act on is
+        # how a health section stops being read — and skimming it is exactly
+        # when a real regression slips past. A missing API key is not a fault,
+        # and an already-diagnosed fault is not news.
+        check("sources with no key are grouped into one actionable line",
+              len([w for w in warns if w.startswith("no API key set")]), 1)
+        check("already-diagnosed faults are stated once, not alarmed weekly",
+              len([w for w in warns if w.startswith("known broken")]), 1)
+        check_true("and a key-less source is never called 'unexplained'",
+                   not any("reed" in w and "unexplained" in w for w in warns))
+        unexplained = [w.split(":")[0] for w in warns if "nothing explains why" in w]
+        check_true("only genuinely unexplained silence gets its own alarm",
+                   set(unexplained).isdisjoint(set(notify.NEEDS_KEY) | set(notify.KNOWN_BROKEN)),
+                   unexplained)
+
+        # Whatever list it is on, a source that starts producing drops off.
+        # Distinct titles on purpose: same company + same title is one job, so
+        # a shared title would collapse these two rows into one and only the
+        # better-ranked source would survive.
+        for src in ("reed", "glassdoor"):
+            store.save_new(c4, [{"company": f"Firm {src}", "title": f"{src} Analyst",
+                                 "url": f"https://b/{src}", "source": src}])
         _, warns2 = notify.health(c4)
-        check_true("and stops being named once it works",
-                   not any(w.startswith("reed:") for w in warns2))
+        check_true("a source that starts working stops being reported",
+                   not any(src in w for w in warns2 for src in ("reed", "glassdoor")),
+                   warns2)
 
         # "Not run here" and "ran and returned nothing" need different answers
         # from the reader. LinkedIn is deliberately off on GitHub Actions, and
@@ -626,16 +676,53 @@ def main():
         check_true(f"collected: {title[:36]}", fca_keep({"title": title, "location": "London"}))
     # the regulatory signal stacks on the title tier, so these clear the rest
     reg = score.score_job(job(title="Transaction Reporting Analyst",
-                              description="mifid transaction reporting and market abuse "
-                                          "surveillance, python and sql"), cfg, cats, set())[0]
+                              description=jd("mifid transaction reporting and market abuse "
+                                             "surveillance, python and sql")), cfg, cats, set())[0]
     plain = score.score_job(job(title="Commodity Analyst",
-                                description="python and sql"), cfg, cats, set())[0]
+                                description=jd("python and sql")), cfg, cats, set())[0]
     check_true("a reporting/surveillance role outranks a plain commodity analyst",
                reg > plain, f"{reg} vs {plain}")
     # no pattern may be silently dead — a Cyrillic lookalike once made one unmatchable
     for spec in list(cfg["description_signals"].values()) + list(cfg["title_tiers"].values()):
         for p in spec["patterns"]:
             check_true(f"pattern is ascii and live: {p[:32]}", all(ord(c) < 128 for c in p))
+
+    print("\ndedupe — one job advertised twice under different titles")
+    D1 = "We are hiring an energy operations analyst for the London desk. " * 12
+    D2 = "A different posting about broking rates products in London. " * 12
+    dup_rows = [
+        dict(company="SmartestEnergy", title="Energy Operations Analyst", description=D1, score=70),
+        dict(company="SmartestEnergy", title="Energy Operations Analyst - Renewables",
+             description=D1, score=65),
+        dict(company="Ebury", title="FX Sales", description=D1, score=60),
+        dict(company="Ebury", title="FX Sales - London", description=D1, score=55),
+        # two desks at one firm: different descriptions, must stay separate
+        dict(company="Tradition", title="Broker - FX Options", description=D1, score=50),
+        dict(company="Tradition", title="Broker - Rates", description=D2, score=50),
+        # same boilerplate description, unrelated titles: must stay separate
+        dict(company="Acme", title="Power Analyst", description=D2, score=40),
+        dict(company="Acme", title="Gas Scheduler", description=D2, score=39),
+        # nothing readable: an empty description matches every other empty one,
+        # so it must never be treated as evidence that two rows are one job
+        dict(company="Beta", title="Analyst", description="", score=30),
+        dict(company="Beta", title="Analyst - Two", description="", score=29),
+    ]
+    kept_rows, merged_rows = score.collapse_duplicates(dup_rows)
+    check("only the title-superset duplicates merge",
+          sorted(o["title"] for o, _ in merged_rows),
+          ["Energy Operations Analyst - Renewables", "FX Sales - London"])
+    check_true("the better-scoring copy is the one kept",
+               all(k["score"] > o["score"] for o, k in merged_rows))
+    check("everything else survives", len(kept_rows), 8)
+    check_true("two desks at one firm are not merged",
+               sum(1 for r in kept_rows if r["company"] == "Tradition") == 2)
+    check_true("shared boilerplate does not merge unrelated titles",
+               sum(1 for r in kept_rows if r["company"] == "Acme") == 2)
+    check_true("rows with no readable description are never merged",
+               sum(1 for r in kept_rows if r["company"] == "Beta") == 2)
+    check("a short description has no fingerprint", score.jd_fingerprint("too short"), None)
+    check_true("and the same posting fingerprints the same through whitespace",
+               score.jd_fingerprint(D1) == score.jd_fingerprint("  " + D1.upper().replace(" ", "  ")))
 
     print("\ninbox — roles collected on another machine")
     import inbox
