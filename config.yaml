@@ -25,32 +25,52 @@ locations:
 # and roughly one in eight shortlisted roles was somewhere you cannot work.
 # Matched against the title as well as the location, because a lot of postings
 # carry no location field at all and say "Analyst, Mumbai" in the title instead.
-location_exclude:
-  # Every alternative is \b-anchored. Unanchored, "lima" matched c-LIMA-te and
-  # threw out Climate Risk Analyst — the same substring bug that had `uk`
-  # matching Ukraine. Anchor first, add the city second.
-  - "\\b(united states|usa|u\\.s\\.a?\\.|us)\\b"
-  - "\\b(canada|toronto|vancouver|montreal|ottawa)\\b"
-  - "\\b(india|mumbai|bangalore|bengaluru|delhi|hyderabad|pune|gurgaon|chennai)\\b"
-  - "\\b(brazil|brasil|sao paulo|s\u00e3o paulo|rio de janeiro)\\b"
-  - "\\b(new york|nyc|manhattan|brooklyn|san francisco|chicago|boston|austin)\\b"
-  - "\\b(seattle|houston|atlanta|denver|miami|dallas|philadelphia|charlotte)\\b"
-  - "\\b(washington d\\.?c\\.?|los angeles|san diego|phoenix|minneapolis)\\b"
+# A UK marker in the location beats everything below it. Without that override,
+# "London, New York, Singapore" — how multi-office funds advertise a London seat —
+# was dropped outright, and that is roughly five of every hundred shortlisted.
+# Deliberately excludes remote/hybrid/emea: "Remote United States of America"
+# must not count as a UK marker.
+uk_markers:
+  - "london|united kingdom|great britain|england|canary wharf"
+  - "\\b(uk|gb)\\b"
+  - "\\b(ec[1-4]|wc[12]|e14|e1|sw1|w1[a-z]?)[a-z]?\\b"
+
+# City names are decisive, and are matched against the TITLE as well: postings
+# with no location field say "Prices Data Analyst - Mumbai" in the title instead.
+# Every alternative is \b-anchored — unanchored, "lima" matched c-LIMA-te and
+# threw out Climate Risk Analyst.
+location_exclude_cities:
+  - "\\b(toronto|vancouver|montreal|ottawa)\\b"
+  - "\\b(mumbai|bangalore|bengaluru|delhi|hyderabad|pune|gurgaon|chennai)\\b"
+  - "\\b(sao paulo|s\u00e3o paulo|rio de janeiro|buenos aires|bogota|bogot\u00e1|santiago|lima)\\b"
+  - "\\b(new york|nyc|manhattan|brooklyn|stamford|san francisco|chicago|boston|austin)\\b"
+  - "\\b(seattle|houston|atlanta|denver|miami|dallas|philadelphia|charlotte|minneapolis)\\b"
+  - "\\b(los angeles|san diego|phoenix|washington d\\.?c\\.?)\\b"
   - "\\b(singapore|hong kong|shanghai|beijing|shenzhen|tokyo|osaka|seoul|taipei)\\b"
   - "\\b(sydney|melbourne|brisbane|perth|auckland|wellington)\\b"
-  - "\\b(dubai|abu dhabi|uae|qatar|doha|riyadh|saudi arabia|bahrain|kuwait)\\b"
-  - "\\b(germany|berlin|frankfurt|munich|hamburg|dusseldorf|d\u00fcsseldorf)\\b"
-  - "\\b(france|paris|lyon|marseille|spain|madrid|barcelona|valencia)\\b"
-  - "\\b(netherlands|amsterdam|rotterdam|the hague|utrecht|belgium|brussels|antwerp)\\b"
-  - "\\b(switzerland|zurich|z\u00fcrich|geneva|gen\u00e8ve|zug|basel|lausanne)\\b"
-  - "\\b(poland|warsaw|krakow|krak\u00f3w|wroclaw|romania|bucharest|hungary|budapest)\\b"
-  - "\\b(czech republic|czechia|prague|slovakia|bratislava|bulgaria|sofia)\\b"
-  - "\\b(ireland|dublin|cork|italy|milan|milano|rome|roma|turin|portugal|lisbon|porto)\\b"
-  - "\\b(sweden|stockholm|denmark|copenhagen|norway|oslo|finland|helsinki|iceland)\\b"
-  - "\\b(austria|vienna|greece|athens|turkey|istanbul|ankara|cyprus|nicosia)\\b"
-  - "\\b(south africa|johannesburg|cape town|nigeria|lagos|abuja|kenya|nairobi|egypt|cairo)\\b"
-  - "\\b(mexico|mexico city|argentina|buenos aires|chile|santiago|colombia|bogota|bogot\u00e1|peru|lima)\\b"
-  # US grid operators and market names — they turn up where a city would be
+  - "\\b(dubai|abu dhabi|doha|riyadh|bahrain|kuwait)\\b"
+  - "\\b(berlin|frankfurt|munich|hamburg|dusseldorf|d\u00fcsseldorf)\\b"
+  - "\\b(paris|lyon|marseille|madrid|barcelona|valencia)\\b"
+  - "\\b(amsterdam|rotterdam|the hague|utrecht|brussels|antwerp)\\b"
+  - "\\b(zurich|z\u00fcrich|geneva|gen\u00e8ve|\\bzug\\b|basel|lausanne)\\b"
+  - "\\b(warsaw|krakow|krak\u00f3w|wroclaw|bucharest|budapest|prague|bratislava|sofia)\\b"
+  - "\\b(dublin|cork|milan|milano|rome|roma|turin|lisbon|porto)\\b"
+  - "\\b(stockholm|copenhagen|oslo|helsinki|vienna|athens|istanbul|ankara|nicosia)\\b"
+  - "\\b(johannesburg|cape town|lagos|abuja|nairobi|cairo|mexico city)\\b"
+
+# Countries and market names. Location only, NEVER the title: "US Power Markets
+# Analyst" and "European Gas Analyst" are ordinary London jobs, and matching
+# those against the title would throw away exactly the desks worth having.
+location_exclude_regions:
+  - "\\b(united states|usa|u\\.s\\.a?\\.|us)\\b"
+  - "\\b(canada|india|brazil|brasil|mexico|argentina|chile|colombia|peru)\\b"
+  - "\\b(china|japan|korea|taiwan|australia|new zealand)\\b"
+  - "\\b(uae|qatar|saudi arabia|israel)\\b"
+  - "\\b(germany|france|spain|netherlands|belgium|switzerland|austria)\\b"
+  - "\\b(poland|romania|hungary|czech republic|czechia|slovakia|bulgaria)\\b"
+  - "\\b(ireland|italy|portugal|sweden|denmark|norway|finland|iceland|greece|turkey|cyprus)\\b"
+  - "\\b(south africa|nigeria|kenya|egypt)\\b"
+  # US grid operators — they turn up where a city would be
   - "\\b(nyiso|ercot|caiso|miso|pjm|spp|isone|iso-ne|aeso|wecc)\\b"
 
 include:
@@ -199,12 +219,22 @@ include:
   - "apprentice.{0,20}(trader|analyst|broker|dealer|trading)"
   - "trainee.{0,20}(trader|analyst|broker|dealer|quant)"
   - "(trading|commodit|energy|market|shipping|chartering).{0,20}trainee"
-  - "entry.?level"
-  - "early care"
-  - "school leaver"
+  # Scoped, all three. Bare, "entry level" collected Entry Level Chef, Nurse and
+  # Driver — and an "Operator I: Entry Level Operator" on a factory floor in
+  # Enfield, which scored 154 and came top of a 99-role digest. "early care"
+  # also matched early-years childcare and "school leaver" matched apprentice
+  # plumbers. Same bug as bare "battery" and bare "trainee"; these were missed.
+  - "entry.?level.{0,24}(analyst|trader|trading|broker|quant|research|market|data|risk|financ|invest|energy|commodit|econom|portfolio|deriv|equit|credit|bank)"
+  - "(analyst|trader|trading|broker|quant|research|market|data|risk|financ|invest|energy|commodit|econom|portfolio|deriv|equit|credit|bank).{0,24}entry.?level"
+  - "early care\\w*.{0,24}(analyst|trader|trading|broker|quant|research|market|data|risk|financ|invest|energy|commodit|econom|portfolio|deriv|equit|credit|bank)"
+  - "(analyst|trader|trading|broker|quant|research|market|data|risk|financ|invest|energy|commodit|econom|portfolio|deriv|equit|credit|bank).{0,24}early care"
+  - "school leaver.{0,24}(analyst|trader|trading|broker|quant|research|market|data|risk|financ|invest|energy|commodit|econom|portfolio|deriv|equit|credit|bank)"
+  # unambiguous as an exact phrase — always an early-careers intake, never a
+  # trade apprenticeship, unlike a bare "school leaver" followed by a job
+  - "school leaver (programme|program|scheme)"
   - "off.?cycle"
   - "(summer|spring|winter|campus) (analyst|intern|programme|program)"
-  - "new grad"
+  - "new grad\\w*.{0,24}(analyst|trader|trading|broker|quant|research|market|data|risk|financ|invest|energy|commodit|econom|portfolio|deriv|equit|credit|bank)"
   - "rotational (programme|program|scheme)"
 
   # --- desk / front office ---

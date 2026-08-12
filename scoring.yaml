@@ -126,6 +126,16 @@ seniority:
   years_cap: 2            # more than this many years required and it's not for you
   over_cap_penalty: -40
   per_year_over: -8       # additional, per year above the cap
+  # A doctorate gates a role harder than any number of years does, and nothing
+  # scored it: 18 of 99 shortlisted roles were PhD quant research, ranking level
+  # with roles actually open to you. Not a hard exclude — a fund that says "PhD
+  # preferred" often still hires numerate analysts, so it drops down the list
+  # rather than vanishing. A PhD in the TITLE is a doctoral intake, so that one
+  # is heavy enough to clear the shortlist threshold on its own.
+  phd_in_title: -60
+  phd_required: -45
+  phd_preferred: -12
+
   exclude_over_years: 2   # hard drop, not a penalty: a role demanding more than
                           # this never reaches the digest at all. Only applies
                           # where verify.py actually read a number out of the
@@ -264,6 +274,10 @@ report:
   # It was 25, which on a normal weekly run was the binding constraint long
   # before min_score was — the email showed 25 roles out of a 130-role pool
   # and nothing said the other 105 existed.
+  # One firm's careers page should not eat the digest: four firms held 25 of 99
+  # shortlist slots while 55 others shared the rest. Overflow is not dropped —
+  # it falls through to the section below the shortlist.
+  max_per_firm: 3
   top_n: 60
   min_score: 20
   shortlist_threshold: 60

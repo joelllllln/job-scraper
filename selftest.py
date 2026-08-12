@@ -687,6 +687,41 @@ def main():
         for p in spec["patterns"]:
             check_true(f"pattern is ascii and live: {p[:32]}", all(ord(c) < 128 for c in p))
 
+    print("\nPhD gating — a doctorate is a harder bar than years of experience")
+    F = " The successful applicant joins our London team and reports to the desk head. " * 8
+    for label, d, want in [("required", "You must hold a PhD in a quantitative field." + F, "required"),
+                           ("preferred", "A PhD is preferred but not required." + F, "preferred"),
+                           ("a plus", "PhD or equivalent experience a plus." + F, "preferred"),
+                           ("absent", "We want a numerate graduate." + F, None)]:
+        check(f"phd {label}", score.phd_requirement(d), want)
+    # "PhD preferred" and "Python required" in one posting must not read as
+    # "PhD required" — hence sentence-by-sentence rather than whole-document.
+    check("a hedged PhD beside an unrelated requirement stays 'preferred'",
+          score.phd_requirement("A PhD would be a plus. Experience with Python is required." + F),
+          "preferred")
+    check("an unreadable page says nothing about a PhD either way",
+          score.phd_requirement("PhD required"), None)
+    phd_title = score.score_job(job(title="Quantitative Research - PhD Graduate Programme",
+                                    description="Join us." + F), cfg, cats, set())[0]
+    phd_desc = score.score_job(job(title="Quantitative Researcher",
+                                   description="You must hold a PhD in maths." + F),
+                               cfg, cats, set())[0]
+    check_true("a PhD in the title falls below the shortlist threshold",
+               phd_title < cfg["report"]["shortlist_threshold"], f"got {phd_title}")
+    check_true("a PhD demanded in the description ranks well below an open role",
+               phd_desc < good - 25, f"{phd_desc} vs {good}")
+
+    print("\nfirm concentration — one careers page must not eat the digest")
+    many = [dict(company="Point72", title=f"Quant Researcher {i}", score=100 - i) for i in range(7)]
+    many += [dict(company="Kpler", title="Gas Analyst", score=90)]
+    many.sort(key=lambda r: -r["score"])
+    capped = score.cap_per_firm(many, 3)
+    check("no firm exceeds the cap", sum(1 for r in capped if r["company"] == "Point72"), 3)
+    check("other firms are not displaced", sum(1 for r in capped if r["company"] == "Kpler"), 1)
+    check_true("the best of a firm's roles are the ones kept",
+               [r["score"] for r in capped if r["company"] == "Point72"] == [100, 99, 98])
+    check("no cap configured means no capping", len(score.cap_per_firm(many, None)), len(many))
+
     print("\ndedupe — one job advertised twice under different titles")
     D1 = "We are hiring an energy operations analyst for the London desk. " * 12
     D2 = "A different posting about broking rates products in London. " * 12

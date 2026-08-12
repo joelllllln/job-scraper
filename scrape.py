@@ -270,8 +270,12 @@ def build_filter(cfg):
     # Optional, so an older config.yaml still loads.
     role = re.compile("|".join(cfg["role_words"]), re.I) if cfg.get("role_words") else None
     dom = re.compile("|".join(cfg["domain_words"]), re.I) if cfg.get("domain_words") else None
-    notloc = (re.compile("|".join(cfg["location_exclude"]), re.I)
-              if cfg.get("location_exclude") else None)
+    def opt(key):
+        return re.compile("|".join(cfg[key]), re.I) if cfg.get(key) else None
+
+    uk = opt("uk_markers")
+    bad_city = opt("location_exclude_cities")
+    bad_region = opt("location_exclude_regions")
 
     def matches(t):
         """Two ways in, because titles are written both ways round.
@@ -304,13 +308,23 @@ def build_filter(cfg):
         hit = exc.search(t)
         if hit and not (JUNIOR.search(t) and RANK.fullmatch(hit.group(0).strip().lower())):
             return False
-        # Somewhere-else wins over anywhere. Checked against title AND location:
-        # "remote"/"hybrid" are legitimate keeps for UK roles, but they matched
-        # "Remote - India" too, and postings with no location field routinely
-        # name the city in the title instead.
-        if notloc and notloc.search(f"{t} {j['location']}"):
+        where = j["location"] or ""
+        # A city in the TITLE is decisive wherever the location field points:
+        # "Prices Data Analyst - Mumbai" is in Mumbai. Countries are deliberately
+        # not checked here — "US Power Markets Analyst" is an ordinary London job.
+        if bad_city and bad_city.search(t):
             return False
-        if j["location"] and not loc.search(j["location"]):
+        # In the location field, a UK marker outranks everything: multi-office
+        # funds advertise a London seat as "London, New York, Singapore", and
+        # dropping those cost about five roles in every hundred shortlisted.
+        # remote/hybrid/emea are NOT UK markers, or "Remote United States of
+        # America" would qualify — which is how the leak started.
+        if not (uk and uk.search(where)):
+            if bad_city and bad_city.search(where):
+                return False
+            if bad_region and bad_region.search(where):
+                return False
+        if where and not loc.search(where):
             return False
         return True
 

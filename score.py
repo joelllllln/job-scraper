@@ -167,6 +167,34 @@ def requirements(desc, limit=260):
     return _trim(" ".join(asks[:3]), limit) if asks else ""
 
 
+PHD = re.compile(r"\bph\.?\s?d\b|\bdoctoral\b|\bdoctorate\b|\bdphil\b", re.I)
+# "a PhD would be a plus" is a different statement from "PhD required", and they
+# deserve different answers. Anything hedged is treated as preferred.
+PHD_SOFT = re.compile(r"preferred|a plus|desirable|nice to have|advantage|bonus|"
+                      r"or equivalent|welcome|ideally|not required", re.I)
+
+
+def phd_requirement(desc, min_chars=400):
+    """Whether the posting wants a doctorate: None, 'preferred' or 'required'.
+
+    Read per sentence, because a posting that says "PhD preferred" in one place
+    and "experience required" in another must not be read as demanding both.
+    Needs a readable description for the same reason every other description
+    signal does — a cookie banner is not evidence either way.
+    """
+    if not desc or len(desc) < min_chars:
+        return None
+    verdict = None
+    for sentence in SENTENCE_END.split(re.sub(r"\s+", " ", desc)):
+        if not PHD.search(sentence):
+            continue
+        if PHD_SOFT.search(sentence):
+            verdict = verdict or "preferred"
+        else:
+            return "required"
+    return verdict
+
+
 def jd_fingerprint(desc, min_chars=400):
     """Identity of a job description, or None if there isn't enough of one.
 
@@ -218,6 +246,27 @@ def collapse_duplicates(rows, min_chars=400):
     return [r for r in rows if id(r) not in drop_ids], dropped
 
 
+def cap_per_firm(rows, cap):
+    """At most `cap` roles per firm in the shortlist, best first.
+
+    One firm's careers page should not be able to eat the digest. Four firms
+    held 25 of 99 shortlist slots — seven near-identical quant roles from one
+    fund, while 55 other firms shared the rest. The overflow is not discarded,
+    it drops into the rest-of-list section below the shortlist, so nothing
+    becomes unreachable; it just stops crowding out the other 54 firms.
+    """
+    if not cap:
+        return rows
+    seen = defaultdict(int)
+    out = []
+    for r in rows:                       # already sorted by score
+        k = norm(r["company"])
+        seen[k] += 1
+        if seen[k] <= cap:
+            out.append(r)
+    return out
+
+
 def find_ghosts(rows):
     """Same role, posted again and again over months. Usually never filled."""
     groups = defaultdict(list)
@@ -267,6 +316,20 @@ def score_job(r, cfg, cats, ghosts):
     if yrs is not None and yrs > sen["years_cap"]:
         over = yrs - sen["years_cap"]
         add(sen["over_cap_penalty"] + sen["per_year_over"] * (over - 1), f"wants {yrs}y experience")
+
+    # A doctorate is a harder gate than years of experience and nothing scored
+    # it at all: 18% of a 99-role digest was PhD quant research, ranking on the
+    # same footing as roles open to a data analyst. The title is decisive — a
+    # "PhD Graduate Programme" is a doctoral intake, full stop — and the
+    # description is read per sentence so "PhD preferred" is not read as a bar.
+    if PHD.search(title):
+        add(sen.get("phd_in_title", -60), "title asks for a PhD")
+    else:
+        want = phd_requirement(r.get("description"), cfg.get("min_jd_chars", 400))
+        if want == "required":
+            add(sen.get("phd_required", -45), "description requires a PhD")
+        elif want == "preferred":
+            add(sen.get("phd_preferred", -12), "PhD preferred")
 
     # 3. firm category
     cat = cats.get(norm(r["company"]), "unknown")
@@ -567,7 +630,8 @@ def main():
         # without needing a separate rule
         min_score = 0
     keep = [r for r in scored if r["score"] >= min_score]
-    shortlist = [r for r in keep if r["score"] >= rep["shortlist_threshold"]][:top_n]
+    shortlist = cap_per_firm([r for r in keep if r["score"] >= rep["shortlist_threshold"]],
+                             rep.get("max_per_firm"))[:top_n]
     # identity, not equality — two rows can compare equal and dict compare is slow
     on_shortlist = {id(r) for r in shortlist}
     rest = [r for r in keep if id(r) not in on_shortlist][:top_n]
