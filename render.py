@@ -175,6 +175,9 @@ def render_firm(page, firm):
         jobs = embedded.jobs_from_html(name, html, page.url)
         if jobs:
             return None, jobs, f"{len(jobs)} jobs in page state at {page.url}"
+        jobs = embedded.jobs_from_links(name, html, page.url)
+        if jobs:
+            return None, jobs, f"{len(jobs)} jobs in the rendered markup at {page.url}"
     return None, [], "robots disallowed" if blocked_by_robots else "nothing found"
 
 

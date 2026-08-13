@@ -12,6 +12,7 @@ ranks the wrong things.
 """
 
 import csv
+import json
 import os
 import re
 import sqlite3
@@ -218,6 +219,53 @@ def main():
           (found or {}).get("ats"), "greenhouse")
     check("and recorded against the page it was actually on",
           (found or {}).get("found_on"), "https://acme.com/life-here")
+
+    print("\nplain HTML listings, and every extractor actually reachable")
+    import embedded as _emb, inspect as _i2
+    # A structural guard, because this exact bug has now happened twice: jobvite
+    # had a fetcher nothing could find, and jobs_from_links was written, tested
+    # and left unreachable. A parser nothing calls is worth nothing.
+    extractors = [n for n in dir(_emb) if n.startswith("jobs_from")]
+    body = _i2.getsource(_emb.scan_firm)
+    check("every extractor is reachable from scan_firm",
+          [n for n in extractors if n + "(" not in body], [])
+    import render as _r3
+    check("and from the browser pass",
+          [n for n in extractors if n + "(" not in _i2.getsource(_r3.render_firm)], [])
+
+    listing = ('<ul><li><a href="/jobs/junior-gas-analyst">Junior Gas Analyst</a>'
+               ' \u2014 London, UK</li>'
+               '<li><a href="/careers/risk-analyst-2026">Market Risk Analyst</a>'
+               ' \u2014 London</li>'
+               '<li><a href="/jobs/apply-now">Apply now</a></li>'
+               '<li><a href="/careers/benefits">Benefits</a></li>'
+               '<li><a href="/careers/our-culture">Our culture</a></li></ul>')
+    hl = _emb.jobs_from_links("Vitol", listing, "https://vitol.com/careers")
+    check("plain HTML listings are read at all",
+          [j["title"] for j in hl], ["Junior Gas Analyst", "Market Risk Analyst"])
+    # "Apply now" sits under a perfectly job-shaped /jobs/apply-now href, and a
+    # careers landing page is wall-to-wall two-word links under /careers/.
+    check_true("a call to action is not a vacancy",
+               not any(j["title"] == "Apply now" for j in hl))
+    check_true("nor is a page of perks",
+               not any(j["title"] in ("Benefits", "Our culture") for j in hl))
+    check("the location stops at the end of its own element",
+          hl[0]["location"], "London, UK")
+    check_true("and does not swallow the next job",
+               all(len(j["location"]) < 24 for j in hl))
+    # /careers/<slug> is real but ambiguous, so the text must name a role.
+    check("a role noun is what makes /careers/<slug> a vacancy",
+          [j["title"] for j in _emb.jobs_from_links(
+              "X", '<a href="/careers/spirit">Our spirit</a>'
+                   '<a href="/careers/gas-analyst">Gas Analyst</a>', "https://x.com/c")],
+          ["Gas Analyst"])
+    # Next.js 13+ streams its payload instead of emitting __NEXT_DATA__.
+    flight = ('<script>self.__next_f.push([1,' + json.dumps(
+        '{"openPositions":[{"title":"LNG Scheduler","location":"London","slug":"lng"}]}')
+        + '])</script>')
+    check("next.js app router payloads are read",
+          [j["title"] for j in _emb.jobs_from_html("X", flight, "https://x.com/c")],
+          ["LNG Scheduler"])
 
     print("\none page walker, so every source reaches the same pages")
     import embedded

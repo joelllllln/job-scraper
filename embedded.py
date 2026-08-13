@@ -49,6 +49,13 @@ NEXT_DATA = re.compile(
     r'<script[^>]+id=["\']__NEXT_DATA__["\'][^>]*>(.*?)</script>', re.S | re.I)
 JSON_SCRIPT = re.compile(
     r'<script[^>]+type=["\']application/json["\'][^>]*>(.*?)</script>', re.S | re.I)
+# Next.js 13+ App Router does not emit __NEXT_DATA__ at all. It streams the
+# payload as a series of self.__next_f.push([1, "<json as a JS string>"])
+# calls, so the data is there but wrapped in one more layer of encoding. Sites
+# on modern Next were invisible to the __NEXT_DATA__ reader.
+NEXT_FLIGHT = re.compile(r'self\.__next_f\.push\(\s*\[\s*\d+\s*,\s*("(?:[^"\\]|\\.)*")',
+                         re.S)
+
 ASSIGNED = re.compile(
     r'window\.(?:__NUXT__|__INITIAL_STATE__|__APOLLO_STATE__|__PRELOADED_STATE__|'
     r'__remixContext|__staticRouterHydrationData)\s*=\s*(\{.*?\})\s*[;<]', re.S)
@@ -68,10 +75,16 @@ DATE_KEYS = ("datePosted", "postedDate", "publishedAt", "published_at", "created
              "created_at", "date", "postingDate", "live_date")
 
 # Titles that are page furniture rather than vacancies.
+# Titles that are page furniture rather than vacancies. The call-to-action
+# phrases matter as much as the page names: "Apply now" sits under a perfectly
+# job-shaped /jobs/apply-now href on a lot of listings.
 NOT_A_JOB = re.compile(
-    r"^(home|about|contact|search|login|sign in|register|apply|menu|careers?|"
+    r"^(home|about|contact|search|login|sign in|register|menu|careers?|"
     r"privacy|cookies?|terms|news|blog|events?|team|our people|life at|"
-    r"benefits|culture|diversity|graduates?|students?|all jobs|view all)$", re.I)
+    r"benefits|culture|diversity|graduates?|students?|all jobs|view all|"
+    r"(apply|register|sign up|join)( now| here| today)?|read more|learn more|"
+    r"find out more|view (details|role|job|more)|see (all|more)|more info\w*|"
+    r"our culture|why (join )?us|open positions?|current (vacancies|openings))$", re.I)
 
 
 def blobs(html):
@@ -83,6 +96,19 @@ def blobs(html):
                 out.append(json.loads(m.strip()))
             except (ValueError, TypeError):
                 continue
+    # App Router: each push carries a JSON string. Unwrap the string literal
+    # first, then look for JSON objects inside what it yields.
+    for m in NEXT_FLIGHT.findall(html or ""):
+        try:
+            inner = json.loads(m)
+        except (ValueError, TypeError):
+            continue
+        for frag in re.findall(r"\{.*\}", inner or "", re.S):
+            try:
+                out.append(json.loads(frag))
+            except (ValueError, TypeError):
+                continue
+
     for m in ASSIGNED.findall(html or ""):
         try:
             out.append(json.loads(m))
@@ -156,6 +182,72 @@ def absolute(href, key, page_url):
     if " " in href:                      # a sentence, not a link
         return ""
     return urllib.parse.urljoin(page_url.rstrip("/") + "/", href)
+
+
+# An href that names a job detail page. Deliberately explicit: "/careers/" on
+# its own also matches /careers/benefits and /careers/our-culture, which is how
+# a careers landing page turns into six imaginary vacancies.
+JOB_HREF = re.compile(
+    r"/(?:jobs?|vacanc\w*|positions?|opportunit\w*|roles?|openings?|"
+    r"job-(?:detail|description)|apply)/[\w%-]{2,}", re.I)
+# Same idea for the /careers/<slug> shape, which is real but needs the slug to
+# look like a role rather than a page of perks.
+CAREERS_SLUG = re.compile(r"/careers?/[\w%-]+", re.I)
+# What makes a string a job title rather than a page name. Almost every real
+# vacancy contains one of these; "Our culture", "Benefits" and "Why join us"
+# contain none, which is exactly the distinction /careers/<slug> needs.
+ROLE_NOUN = re.compile(
+    r"\b(analyst|trader|broker|manager|engineer|developer|scientist|economist|"
+    r"associate|assistant|specialist|controller|scheduler|officer|adviser|advisor|"
+    r"consultant|accountant|auditor|actuary|actuarial|strategist|researcher|"
+    r"research|quant\w*|intern|graduate|trainee|apprentice|lead|head|director|"
+    r"supervisor|administrator|coordinator|executive|partner|counsel|paralegal|"
+    r"technician|operator|dealer|underwriter|architect|designer|marketer)\b", re.I)
+ANCHOR_TAG = re.compile(r'<a\b[^>]*href=["\']([^"\'#]+)["\'][^>]*>(.*?)</a>', re.S | re.I)
+# The text node immediately after a link, where a listing usually puts the
+# location. Bounded by the next tag: without that it ran on through the closing
+# </li> and swallowed the following job's title as part of the location.
+TRAILING = re.compile(r"^[\s\u2014\u2013,|·-]*([A-Za-z][\w .,'-]{2,40})")
+
+
+def jobs_from_links(company, html, page_url):
+    """Vacancies from a plain HTML listing — no JSON anywhere on the page.
+
+    Plenty of firms, especially smaller ones, still publish a <ul> of links.
+    The link text is the title and the href is a real URL taken off the page
+    rather than guessed, which matters: a guessed 404 is now read as proof the
+    job is gone.
+
+    Precision comes from requiring the href to name a job detail page. Anchor
+    text alone is far too weak — "Our culture" and "Benefits" are two-word
+    phrases sitting under /careers/ on almost every careers landing page.
+    """
+    out, seen = [], set()
+    for href, inner in ANCHOR_TAG.findall(html or ""):
+        title = re.sub(r"<[^>]+>", " ", inner)
+        title = re.sub(r"\s+", " ", title).strip()
+        if not title or not (3 <= len(title) <= 140) or NOT_A_JOB.match(title):
+            continue
+        explicit = JOB_HREF.search(href)
+        if not (explicit or CAREERS_SLUG.search(href)):
+            continue
+        # Under /careers/<slug> the slug could be anything — /careers/benefits and
+        # /careers/our-culture sit there on almost every site — so the link text
+        # has to read like a job title, meaning it names a role.
+        if not explicit and not ROLE_NOUN.search(title):
+            continue
+        full = absolute(href, "href", page_url)
+        if not full or full in seen:
+            continue
+        seen.add(full)
+        # Whatever follows the link before the next tag is usually the location.
+        after = html.split(f">{inner}</a>", 1)[-1] if f">{inner}</a>" in html else ""
+        tail = after.split("<", 1)[0][:80]
+        m = TRAILING.match(tail)
+        out.append({"company": company, "title": title,
+                    "location": (m.group(1).strip() if m else ""),
+                    "url": full, "source": "html", "posted": ""})
+    return out
 
 
 def looks_like_job(obj):
@@ -267,6 +359,11 @@ def scan_firm(session, firm):
         if jobs:
             return jobs
         jobs = jobs_from_html(firm["name"], html, url)
+        if jobs:
+            return jobs
+        # Last: a plain HTML listing, which is what smaller firms still publish
+        # and what nothing else here can read.
+        jobs = jobs_from_links(firm["name"], html, url)
         if jobs:
             return jobs
     return []
