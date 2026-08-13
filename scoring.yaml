@@ -248,11 +248,21 @@ description_signals:
                "will consider candidates", "transferable skills"]
 
 # --- 5. Provenance. Applying direct beats going through an agency. ---
+# The firm's own careers page is the most direct route there is, so it scores
+# with the ATS boards rather than below them. These five were missing entirely,
+# which meant a role read off the employer's own site defaulted to 0 — the same
+# weight as Glassdoor. jsonld/embedded/html are that site read three ways;
+# oracle and eightfold are enterprise boards added later and overlooked here.
 source_weights:
+  jsonld: 8
+  embedded: 8
+  html: 7
   greenhouse: 8
   lever: 8
   ashby: 8
   workday: 8
+  oracle: 8
+  eightfold: 7
   smartrecruiters: 7
   workable: 7
   recruitee: 7

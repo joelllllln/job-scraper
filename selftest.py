@@ -243,6 +243,8 @@ def main():
         emitted |= set(re.findall(r'"source": *"([a-z_]+)"', open(_p).read()))
     check("every source that can be emitted has a rank",
           sorted(emitted - set(_st.SOURCE_RANK)), [])
+    check("and a provenance weight",
+          sorted(emitted - set(yaml.safe_load(open("scoring.yaml"))["source_weights"])), [])
     check("the firm's own site outranks the aggregators",
           min(_st.SOURCE_RANK[s] for s in ("jsonld", "embedded", "html")) >
           max(_st.SOURCE_RANK[s] for s in ("indeed", "glassdoor", "linkedin", "reed")), True)
