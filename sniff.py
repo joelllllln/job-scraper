@@ -44,6 +44,18 @@ PATHS = ["", "/careers", "/careers/", "/jobs", "/about/careers", "/company/caree
 # working around the block: a host that answers is a host willing to serve us.
 SUBDOMAINS = ["careers", "jobs", "recruitment", "apply", "talent", "workfor"]
 
+# Guessing thirteen paths finds the careers page only if it is at one of them.
+# Following the link the site itself provides finds it wherever it lives —
+# /life-here, /who-we-are/opportunities, /en-gb/careers-and-benefits. This is
+# the last resort, after every guess has failed, so it costs one extra fetch
+# only for firms that were about to be recorded as unreachable.
+ANCHOR = re.compile(r'<a\b[^>]*href=["\']([^"\'#]+)["\'][^>]*>(.*?)</a>', re.S | re.I)
+CAREERS_WORDS = re.compile(
+    r"career|job|vacanc|opportunit|join\s+(?:us|our)|work\s+(?:for|with)\s+us|"
+    r"recruit|hiring|opening|life\s+(?:at|here)|working\s+(?:at|here)|"
+    r"our\s+people|grow\s+with\s+us|early\s+care|graduate", re.I)
+FOLLOW_LIMIT = 4
+
 # ATS with a public API we can scrape
 SCRAPABLE = {
     "greenhouse":      [r"(?:boards|job-boards)\.greenhouse\.io/(?:embed/job_board\?for=)?([a-z0-9_-]+)",
@@ -136,6 +148,86 @@ def candidate_urls(domain):
         yield f"https://{sub}.{base}"
 
 
+def careers_links(html, base_url, limit=FOLLOW_LIMIT):
+    """Links on this page that the site itself labels as careers or jobs.
+
+    Matched on the link TEXT as well as the href, because plenty of sites point
+    at /life-here or /who-we-are and only the words give it away. Stays on the
+    same host: an off-site link is either the ATS (already matched by the
+    fingerprints above) or somebody else's website.
+    """
+    import urllib.parse as _u
+    host = _u.urlsplit(base_url).netloc
+    out, seen = [], set()
+    for href, text in ANCHOR.findall(html or ""):
+        label = re.sub(r"<[^>]+>", " ", text)
+        if not (CAREERS_WORDS.search(href) or CAREERS_WORDS.search(label)):
+            continue
+        full = _u.urljoin(base_url, href.strip())
+        if not full.startswith("http") or _u.urlsplit(full).netloc != host:
+            continue
+        full = full.split("#")[0].rstrip("/")
+        if full.rstrip("/") == base_url.rstrip("/") or full in seen:
+            continue
+        seen.add(full)
+        out.append(full)
+        if len(out) >= limit:
+            break
+    return out
+
+
+def fingerprint(name, blob, final_url):
+    """Every ATS test, against one page. Returns a row or None."""
+    m = BULLHORN.search(blob)
+    if m:
+        cls, token = m.group(1) or "", m.group(2)
+        return {"name": name, "ats": "bullhorn", "token": token, "tenant": cls,
+                "dc": "", "site": "", "locale": "",
+                "board_url": f"https://public-rest{cls}.bullhornstaffing.com/rest-services/{token}/search/JobOrder",
+                "found_on": final_url}
+
+    for ats, pat in RECRUITER.items():
+        m = re.search(pat, blob, re.I)
+        if m:
+            tok = m.group(1) if m.groups() else ""
+            return {"name": name, "ats": ats, "token": tok, "tenant": "", "dc": "",
+                    "site": "", "locale": "", "board_url": final_url,
+                    "found_on": final_url, "_manual": True}
+
+    m = ORACLE.search(blob)
+    if m:
+        host, site = m.group(1), m.group(2)
+        return {"name": name, "ats": "oracle", "token": f"{host}/{site}",
+                "tenant": host, "dc": "", "site": site, "locale": "",
+                "board_url": ORACLE_API.format(host=host, site=site),
+                "found_on": final_url}
+
+    m = WORKDAY.search(blob)
+    if m and (m.group(4) or "").lower() not in ("wday", "en-us"):
+        tenant, dc, locale, site = m.group(1), m.group(2), m.group(3) or "", m.group(4)
+        return {"name": name, "ats": "workday", "token": f"{tenant}/{site}",
+                "tenant": tenant, "dc": dc, "site": site, "locale": locale,
+                "board_url": f"https://{tenant}.{dc}.myworkdayjobs.com/wday/cxs/{tenant}/{site}/jobs",
+                "found_on": final_url}
+
+    for ats, patterns in SCRAPABLE.items():
+        for pat in patterns:
+            m = re.search(pat, blob, re.I)
+            if m:
+                tok = m.group(1)
+                if tok.lower() in ("www", "jobs", "careers", "api", "apply", "boards"):
+                    continue
+                return {"name": name, "ats": ats, "token": tok, "tenant": "", "dc": "",
+                        "site": "", "locale": "", "board_url": "", "found_on": final_url}
+
+    for ats, pat in MANUAL.items():
+        if re.search(pat, blob, re.I):
+            return {"name": name, "ats": ats, "token": "", "tenant": "", "dc": "",
+                    "site": "", "locale": "", "board_url": final_url,
+                    "found_on": final_url, "_manual": True}
+    return None
+
+
 def sniff_one(session, firm):
     name, domain = firm["name"], (firm.get("domain") or "").strip()
     # No domain, nothing to read. Companies House supplies thousands of firms
@@ -150,6 +242,7 @@ def sniff_one(session, firm):
     # block and spend the budget on the careers subdomain instead, which is
     # usually a different machine entirely.
     walled = set()
+    fallback = []          # (html, url) of pages read but not fingerprinted
     for url in candidate_urls(domain):
         host = url.split("/")[2]
         if host in walled:
@@ -163,55 +256,28 @@ def sniff_one(session, firm):
         html = http_client.text_of(r)
         blob = html + " " + r.url
 
-        m = BULLHORN.search(blob)
-        if m:
-            cls, token = m.group(1) or "", m.group(2)
-            return {"name": name, "ats": "bullhorn", "token": token, "tenant": cls,
-                    "dc": "", "site": "", "locale": "",
-                    "board_url": f"https://public-rest{cls}.bullhornstaffing.com/rest-services/{token}/search/JobOrder",
-                    "found_on": r.url}
+        hit = fingerprint(name, blob, r.url)
+        if hit:
+            return hit
+        # Nothing on this page, but the page itself may point at the real one.
+        if len(fallback) < 2:
+            fallback.append((html, r.url))
 
-        for ats, pat in RECRUITER.items():
-            m = re.search(pat, blob, re.I)
-            if m:
-                tok = m.group(1) if m.groups() else ""
-                return {"name": name, "ats": ats, "token": tok, "tenant": "", "dc": "",
-                        "site": "", "locale": "", "board_url": r.url, "found_on": r.url,
-                        "_manual": True}
-
-        m = ORACLE.search(blob)
-        if m:
-            host, site = m.group(1), m.group(2)
-            return {"name": name, "ats": "oracle", "token": f"{host}/{site}",
-                    "tenant": host, "dc": "", "site": site, "locale": "",
-                    "board_url": ORACLE_API.format(host=host, site=site),
-                    "found_on": r.url}
-
-        m = WORKDAY.search(blob)
-        if m:
-            tenant, dc, locale, site = m.group(1), m.group(2), m.group(3) or "", m.group(4)
-            if site.lower() in ("wday", "en-us"):
+    # Last resort: follow the link the site labels as careers. Guessing paths
+    # only works if the careers page is at a path we guessed; every firm that
+    # calls it /life-here or /who-we-are/opportunities was invisible.
+    tried = set()
+    for html, base in fallback:
+        for link in careers_links(html, base):
+            if link in tried:
                 continue
-            return {"name": name, "ats": "workday", "token": f"{tenant}/{site}",
-                    "tenant": tenant, "dc": dc, "site": site, "locale": locale,
-                    "board_url": f"https://{tenant}.{dc}.myworkdayjobs.com/wday/cxs/{tenant}/{site}/jobs",
-                    "found_on": r.url}
-
-        for ats, patterns in SCRAPABLE.items():
-            for pat in patterns:
-                m = re.search(pat, blob, re.I)
-                if m:
-                    tok = m.group(1)
-                    if tok.lower() in ("www", "jobs", "careers", "api", "apply", "boards"):
-                        continue
-                    return {"name": name, "ats": ats, "token": tok, "tenant": "", "dc": "",
-                            "site": "", "locale": "", "board_url": "", "found_on": r.url}
-
-        for ats, pat in MANUAL.items():
-            if re.search(pat, blob, re.I):
-                return {"name": name, "ats": ats, "token": "", "tenant": "", "dc": "",
-                        "site": "", "locale": "", "board_url": r.url, "found_on": r.url,
-                        "_manual": True}
+            tried.add(link)
+            r = http_client.get(link, sess=session)
+            if r is None or r.status_code >= 400:
+                continue
+            hit = fingerprint(name, http_client.text_of(r) + " " + r.url, r.url)
+            if hit:
+                return hit
     return None
 
 

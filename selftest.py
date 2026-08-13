@@ -153,6 +153,44 @@ def main():
                {401, 403, 429, 503} <= verify.BOT_BLOCK)
     check_true("404 is not — that one really is gone", 404 not in verify.BOT_BLOCK)
 
+    print("\nfollowing the careers link — paths we would never guess")
+    links = sniff.careers_links(
+        '<a href="/news">Newsroom</a><a href="https://linkedin.com/company/x/jobs">LinkedIn</a>'
+        '<a href="/about">About</a><a href="/en-gb/careers-and-benefits">Careers &amp; benefits</a>'
+        '<a href="/life-here">Life here</a>', "https://x.com/")
+    check("only careers-ish links, and only on this host",
+          links, ["https://x.com/en-gb/careers-and-benefits", "https://x.com/life-here"])
+    check_true("an off-site link is somebody else's site, or an ATS we already match",
+               not any("linkedin" in l for l in links))
+    check("a page with no careers link yields nothing",
+          sniff.careers_links('<a href="/about">About</a>', "https://x.com/"), [])
+    check_true("and it never loops back to the page it came from",
+               "https://x.com" not in sniff.careers_links(
+                   '<a href="/">Careers</a>', "https://x.com"))
+
+    # The end of the road for path guessing: a firm that calls its careers page
+    # something nobody would guess was simply invisible.
+    import http_client as _hc2
+    PAGES = {"https://acme.com":
+                 '<html><nav><a href="/life-here">Life here</a>'
+                 '<a href="/news">News</a></nav></html>',
+             "https://acme.com/life-here":
+                 '<html><a href="https://boards.greenhouse.io/acme">openings</a></html>'}
+    class _RR:
+        def __init__(s, u, t):
+            s.url, s.text, s.status_code, s.encoding, s.headers = u, t, 200, "utf-8", {}
+    saved_g, saved_t = _hc2.get, _hc2.text_of
+    try:
+        _hc2.get = lambda url, **kw: _RR(url, PAGES[url]) if url in PAGES else None
+        _hc2.text_of = lambda r: r.text
+        found = sniff.sniff_one(None, {"name": "Acme", "domain": "acme.com"})
+    finally:
+        _hc2.get, _hc2.text_of = saved_g, saved_t
+    check("an ATS found by following the site's own link",
+          (found or {}).get("ats"), "greenhouse")
+    check("and recorded against the page it was actually on",
+          (found or {}).get("found_on"), "https://acme.com/life-here")
+
     print("\nembedded state — the jobs are already in the HTML we fetched")
     import embedded, json as _json
     # Next.js and friends serialise the page data so the client can hydrate.
