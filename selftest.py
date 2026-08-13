@@ -118,10 +118,10 @@ def main():
         for f in ("sniff.py", "http_client.py"):
             shutil.copy(f, work)
         os.chdir(work)
-        with open("firms.csv", "w") as fh:
+        with open("firms.csv", "w", encoding="utf-8") as fh:
             fh.write("name,category,domain\nMercuria,trading_house,mercuria.com\n"
                      "Vitol,trading_house,vitol.com\n")
-        with open("sniffed.csv", "w") as fh:
+        with open("sniffed.csv", "w", encoding="utf-8") as fh:
             fh.write(",".join(sniff.COLS) + "\n")
             fh.write("Mercuria,greenhouse,mercuria,,,,,https://boards.greenhouse.io/mercuria,"
                      "rendered by render.py\n")
@@ -137,7 +137,7 @@ def main():
                 sniff.main()
         finally:
             sys.argv, _hc1.get = saved_argv, saved_get3
-        kept = list(csv.DictReader(open("sniffed.csv")))
+        kept = list(csv.DictReader(open("sniffed.csv", encoding="utf-8")))
         check("a browser-found ATS survives --recheck with every site down",
               [(r["name"], r["ats"]) for r in kept], [("Mercuria", "greenhouse")])
         check_true("and keeps the note saying where it came from",
@@ -240,11 +240,31 @@ def main():
     import store as _st, sniff as _sn, glob as _g
     emitted = set(_sn.SCRAPABLE) | {"workday", "oracle"}
     for _p in _g.glob("*.py"):
-        emitted |= set(re.findall(r'"source": *"([a-z_]+)"', open(_p).read()))
+        emitted |= set(re.findall(r'"source": *"([a-z_]+)"', open(_p, encoding="utf-8").read()))
     check("every source that can be emitted has a rank",
           sorted(emitted - set(_st.SOURCE_RANK)), [])
     check("and a provenance weight",
-          sorted(emitted - set(yaml.safe_load(open("scoring.yaml"))["source_weights"])), [])
+          sorted(emitted - set(yaml.safe_load(open("scoring.yaml", encoding="utf-8"))["source_weights"])), [])
+
+    # Windows opens text files as cp1252 unless told otherwise, so one Chinese
+    # firm name in firm_check.csv ended a stage 277 seconds into a real run.
+    # Linux defaults to UTF-8, which is why every test passed and the bug only
+    # existed on the machine this is meant to run on.
+    # Parsed, not grepped: a regex over the source also matches the word open(, encoding="utf-8")
+    # in a comment explaining this very check.
+    import ast as _ast
+    _bad = []
+    for _p in sorted(_g.glob("*.py")):
+        for _n in _ast.walk(_ast.parse(open(_p, encoding="utf-8").read())):
+            if not (isinstance(_n, _ast.Call) and getattr(_n.func, "id", "") == "open"):
+                continue
+            if any(k.arg == "encoding" for k in _n.keywords):
+                continue
+            _mode = _n.args[1].value if len(_n.args) > 1 and \
+                isinstance(_n.args[1], _ast.Constant) else ""
+            if "b" not in str(_mode):
+                _bad.append(f"{_p}:{_n.lineno}")
+    check("every text file is opened as utf-8, not the platform default", _bad, [])
     check("the firm's own site outranks the aggregators",
           min(_st.SOURCE_RANK[s] for s in ("jsonld", "embedded", "html")) >
           max(_st.SOURCE_RANK[s] for s in ("indeed", "glassdoor", "linkedin", "reed")), True)
@@ -261,7 +281,7 @@ def main():
                          "location": "London", "url": "https://indeed.com/x",
                          "source": "indeed", "posted": ""}])
     _found = _emb.jobs_from_links("Vitol", _bx._at_scale(), "https://vitol.com/careers")
-    _keep = scrape.build_filter(yaml.safe_load(open("config.yaml")))
+    _keep = scrape.build_filter(yaml.safe_load(open("config.yaml", encoding="utf-8")))
     _st.save_new(_con, [j for j in _found if _keep(j)])
     _rows = dict((r[0], r[1]) for r in _con.execute("SELECT title, url FROM jobs"))
     check("a job read off the page survives ingest, filter and dedupe",
@@ -466,7 +486,7 @@ def main():
     print("\nrun.py — the local one-command runner")
     import run as localrun
     envp = tempfile.mktemp(suffix=".env")
-    with open(envp, "w") as fh:
+    with open(envp, "w", encoding="utf-8") as fh:
         fh.write('# comment\nSMTP_USER=me@gmail.com\nSMTP_PASS="app pw"\nBLANK\n')
     for k in ("SMTP_USER", "SMTP_PASS"):
         os.environ.pop(k, None)
@@ -651,7 +671,7 @@ def main():
               (1, "London"))
         check(f"{ats}: discovery confirms a hit", discover.count_jobs(ats, _json.dumps(payload)), 1)
     check("junk rows are not invented", scrape.norm("pinpoint", "X", {"data": ["junk", 42, {}]}), [])
-    weights = yaml.safe_load(open("scoring.yaml"))["source_weights"]
+    weights = yaml.safe_load(open("scoring.yaml", encoding="utf-8"))["source_weights"]
     for src in ("rippling", "pinpoint", "comeet", "jobvite"):
         # a new source missing from either table is worse than not having it:
         # the direct apply link silently loses to Indeed
@@ -686,7 +706,7 @@ def main():
     check("JSON-LD extracted", ld["title"] if ld else None, "Gas Analyst")
 
     print("\nscore — rubric behaves")
-    cfg = yaml.safe_load(open("scoring.yaml"))
+    cfg = yaml.safe_load(open("scoring.yaml", encoding="utf-8"))
     now = datetime.now(timezone.utc)
 
     # Real job descriptions run to thousands of characters; scoring now ignores
@@ -1036,8 +1056,8 @@ def main():
                 os.environ[k] = v
 
     print("\nconfig — filter sanity")
-    inc = re.compile("|".join(yaml.safe_load(open("config.yaml"))["include"]), re.I)
-    exc = re.compile("|".join(yaml.safe_load(open("config.yaml"))["exclude"]), re.I)
+    inc = re.compile("|".join(yaml.safe_load(open("config.yaml", encoding="utf-8"))["include"]), re.I)
+    exc = re.compile("|".join(yaml.safe_load(open("config.yaml", encoding="utf-8"))["exclude"]), re.I)
     for title, want in [("Commodity Analyst", True), ("Junior Trader", True),
                         ("Data Scientist, Trading", True), ("Head of Trading", False),
                         ("Credit Risk Analyst", False), ("Trade Support Analyst", False),
@@ -1083,7 +1103,7 @@ def main():
         check_true(f"scored on its title: {title[:34]}", bool(tier), "no tier matched")
 
     print("\nFCA routes — the moves an in-post regulator analyst can actually make")
-    fca_keep = scrape.build_filter(yaml.safe_load(open("config.yaml")))
+    fca_keep = scrape.build_filter(yaml.safe_load(open("config.yaml", encoding="utf-8")))
     for title in ("Transaction Reporting Analyst", "Regulatory Reporting Analyst",
                   "MiFID Reporting Analyst", "EMIR Analyst", "Trade Surveillance Analyst",
                   "Market Abuse Analyst", "Financial Crime Analytics Analyst",
@@ -1105,7 +1125,7 @@ def main():
             check_true(f"pattern is ascii and live: {p[:32]}", all(ord(c) < 128 for c in p))
 
     print("\ncentral bank / financial authority — the FCA-adjacent routes")
-    boe_keep = scrape.build_filter(yaml.safe_load(open("config.yaml")))
+    boe_keep = scrape.build_filter(yaml.safe_load(open("config.yaml", encoding="utf-8")))
     for t in ("Data Scientist", "Data Analyst", "Statistician", "Economist",
               "Research Economist", "Analyst - Financial Stability", "Policy Analyst",
               "Prudential Supervisor", "Banking Supervisor", "Supervisory Analyst",
@@ -1122,7 +1142,7 @@ def main():
     # careers site. The registry entry is named after whoever owns the domain,
     # or discovery targets a name no posting uses — but the division names are
     # kept without a domain so their postings still resolve to the category.
-    reg = {r["name"]: r for r in csv.DictReader(open("firms.csv"))}
+    reg = {r["name"]: r for r in csv.DictReader(open("firms.csv", encoding="utf-8"))}
     check_true("Bank of England is in the registry", "Bank of England" in reg)
     check("and owns the careers domain",
           reg.get("Bank of England", {}).get("domain"), "bankofengland.co.uk")
@@ -1240,7 +1260,7 @@ def main():
         check_true(f"and it falls below the shortlist: {t}",
                    pts < cfg["report"]["shortlist_threshold"], f"got {pts}")
     check_true("but they are still collected, not thrown away",
-               all(scrape.build_filter(yaml.safe_load(open("config.yaml")))(
+               all(scrape.build_filter(yaml.safe_load(open("config.yaml", encoding="utf-8")))(
                    {"title": t, "location": "London"})
                    for t in ("Quantitative Developer", "Machine Learning Engineer",
                              "Python Developer")))
@@ -1296,7 +1316,7 @@ def main():
     print("\ninbox — roles collected on another machine")
     import inbox
     inb = tempfile.mktemp(suffix=".csv")
-    with open(inb, "w", newline="") as fh:
+    with open(inb, "w", newline="", encoding="utf-8") as fh:
         fh.write("company,title,location,url,source,posted\n")
         fh.write('Citadel,"Analyst, Global Markets",London,https://li/1,linkedin,\n')
         fh.write("Badco,Delivery Driver,London,https://li/2,linkedin,\n")
@@ -1305,7 +1325,7 @@ def main():
     check("every row read back", len(got), 3)
     # The file comes from another machine running another checkout of the
     # config, so the gate into the database has to re-apply the current rules.
-    keep2 = scrape.build_filter(yaml.safe_load(open("config.yaml")))
+    keep2 = scrape.build_filter(yaml.safe_load(open("config.yaml", encoding="utf-8")))
     check("inbox re-filters on ingest",
           [j["company"] for j in got if keep2(j)], ["Citadel"])
     check("a missing inbox is a no-op, not an error", inbox.read("does-not-exist.csv"), [])
@@ -1328,7 +1348,7 @@ def main():
                    not any(ch in loc for ch in ", &?#"))
 
     print("\nfilter precision — the widened patterns must not go permissive")
-    keep = scrape.build_filter(yaml.safe_load(open("config.yaml")))
+    keep = scrape.build_filter(yaml.safe_load(open("config.yaml", encoding="utf-8")))
     # Real titles that sit next to the words this filter was widened with.
     # Unscoped, "battery" collects technicians, "trainee" dental nurses,
     # "apprentice" chefs, "placement" nursing coordinators and "surveillance"
@@ -1427,7 +1447,7 @@ def main():
                  "Markets", "Energy", "Risk", "Investment", "Pricing"]:
         check_true(f"bare '{half}' alone is not enough",
                    not keep.matches(half) or half.lower() in
-                   " ".join(yaml.safe_load(open("config.yaml"))["include"]).lower())
+                   " ".join(yaml.safe_load(open("config.yaml", encoding="utf-8"))["include"]).lower())
 
     print()
     if FAILS:

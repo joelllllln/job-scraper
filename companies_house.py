@@ -140,7 +140,7 @@ def main():
 
     existing = set()
     try:
-        for r in csv.DictReader(open("firms.csv")):
+        for r in csv.DictReader(open("firms.csv", encoding="utf-8")):
             existing.add(STRIP.sub("", r["name"]).strip().lower())
     except FileNotFoundError:
         pass
@@ -179,7 +179,7 @@ def main():
     if len(rows) > 40:
         print(f"  ... and {len(rows) - 40} more")
 
-    with open("companies_house.csv", "w", newline="") as fh:
+    with open("companies_house.csv", "w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=["name", "category", "domain", "sic",
                                            "incorporated", "postcode"])
         w.writeheader()
@@ -187,7 +187,7 @@ def main():
     print("\nwrote companies_house.csv")
 
     if args.append:
-        with open("firms.csv", "a", newline="") as fh:
+        with open("firms.csv", "a", newline="", encoding="utf-8") as fh:
             w = csv.writer(fh)
             for r in rows:
                 w.writerow([r["name"], r["category"], r["domain"]])

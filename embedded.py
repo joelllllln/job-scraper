@@ -376,7 +376,7 @@ def main():
     ap.add_argument("--out", default=OUT)
     args = ap.parse_args()
 
-    firms = list(csv.DictReader(open("firms.csv")))
+    firms = list(csv.DictReader(open("firms.csv", encoding="utf-8")))
     if args.only:
         want = {n.strip().lower() for n in args.only.split(",") if n.strip()}
         todo = [f for f in firms if f["name"].lower() in want]
@@ -408,7 +408,7 @@ def main():
                 print(f"[{i}/{len(todo)}] {futs[fut]['name'][:32]:<34} {len(jobs)} jobs")
 
     new = not os.path.exists(args.out) or os.path.getsize(args.out) == 0
-    with open(args.out, "a", newline="") as fh:
+    with open(args.out, "a", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=FIELDS, extrasaction="ignore")
         if new:
             w.writeheader()

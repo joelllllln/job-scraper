@@ -56,7 +56,7 @@ def block(name, domain):
 
 
 def main():
-    rows = list(csv.DictReader(open(SRC)))
+    rows = list(csv.DictReader(open(SRC, encoding="utf-8")))
     by_cat = {}
     for r in rows:
         by_cat.setdefault(r.get("category", "other"), []).append(r)
@@ -84,7 +84,7 @@ def main():
         for r in sorted(by_cat[cat], key=lambda x: x["name"]):
             out.append(block(r["name"], r["domain"]))
 
-    open("links.md", "w").write("\n".join(out))
+    open("links.md", "w", encoding="utf-8").write("\n".join(out))
     print(f"wrote links.md — {len(rows)} firms across {len(by_cat)} categories")
 
 

@@ -81,7 +81,7 @@ def load_excludes(path="config.yaml"):
     change retroactive over everything already collected.
     """
     try:
-        cfg = yaml.safe_load(open(path)) or {}
+        cfg = yaml.safe_load(open(path, encoding="utf-8")) or {}
     except (FileNotFoundError, yaml.YAMLError):
         return None
     pats = cfg.get("exclude") or []
@@ -91,7 +91,7 @@ def load_excludes(path="config.yaml"):
 def load_categories(path="firms.csv"):
     cats = {}
     try:
-        for r in csv.DictReader(open(path)):
+        for r in csv.DictReader(open(path, encoding="utf-8")):
             cats[norm(r["name"])] = r["category"]
     except FileNotFoundError:
         pass
@@ -525,7 +525,7 @@ def main():
         args.new_only = False
         args.include_unverified = True
 
-    cfg = yaml.safe_load(open("scoring.yaml"))
+    cfg = yaml.safe_load(open("scoring.yaml", encoding="utf-8"))
     cats = load_categories()
 
     import store
@@ -661,10 +661,10 @@ def main():
         "filtered": len(cut_title) + len(cut_years),
     }
 
-    open("report.html", "w").write(render_html(shortlist, rest, stats))
-    open("report.md", "w").write(render_md(shortlist, rest, stats))
+    open("report.html", "w", encoding="utf-8").write(render_html(shortlist, rest, stats))
+    open("report.md", "w", encoding="utf-8").write(render_md(shortlist, rest, stats))
 
-    with open("scored.csv", "w", newline="") as fh:
+    with open("scored.csv", "w", newline="", encoding="utf-8") as fh:
         w = csv.writer(fh)
         w.writerow(["score", "company", "title", "location", "source", "years", "url", "why"])
         for r in keep:

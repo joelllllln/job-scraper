@@ -308,7 +308,7 @@ def write_all(hits, manual, unknown):
     for path, rows, fields in [("sniffed.csv", hits, COLS),
                                ("manual.csv", manual, COLS),
                                ("unknown.csv", unknown, ["name", "category", "domain"])]:
-        with open(path, "w", newline="") as fh:
+        with open(path, "w", newline="", encoding="utf-8") as fh:
             w = csv.DictWriter(fh, fieldnames=fields, extrasaction="ignore")
             w.writeheader()
             w.writerows(rows)
@@ -326,7 +326,7 @@ def answered(path="sniffed.csv", *extra):
     seen = set()
     for p in (path,) + extra:
         try:
-            seen |= {(r.get("name") or "").strip().lower() for r in csv.DictReader(open(p))}
+            seen |= {(r.get("name") or "").strip().lower() for r in csv.DictReader(open(p, encoding="utf-8"))}
         except OSError:
             pass
     return seen
@@ -335,7 +335,7 @@ def answered(path="sniffed.csv", *extra):
 def main():
     src = sys.argv[1] if len(sys.argv) > 1 else "firms.csv"
     recheck = "--recheck" in sys.argv
-    firms = list(csv.DictReader(open(src)))
+    firms = list(csv.DictReader(open(src, encoding="utf-8")))
     total = len(firms)
 
     # Always read what is already known, even on --recheck. Two reasons: a site
@@ -346,7 +346,7 @@ def main():
     previous = {}
     for path in ("sniffed.csv", "manual.csv"):
         try:
-            for row in csv.DictReader(open(path)):
+            for row in csv.DictReader(open(path, encoding="utf-8")):
                 previous[(row.get("name") or "").strip().lower()] = (path, row)
         except OSError:
             pass
@@ -355,11 +355,11 @@ def main():
     if not recheck:
         for path, bucket in (("sniffed.csv", hits), ("manual.csv", manual)):
             try:
-                bucket += list(csv.DictReader(open(path)))
+                bucket += list(csv.DictReader(open(path, encoding="utf-8")))
             except OSError:
                 pass
         try:
-            unknown += list(csv.DictReader(open("unknown.csv")))
+            unknown += list(csv.DictReader(open("unknown.csv", encoding="utf-8")))
         except OSError:
             pass
         known = answered("sniffed.csv", "manual.csv", "unknown.csv")

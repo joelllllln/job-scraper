@@ -34,7 +34,7 @@ FIELDS = ["company", "title", "location", "url", "source", "posted"]
 def read(path):
     if not os.path.exists(path):
         return []
-    with open(path, newline="") as fh:
+    with open(path, newline="", encoding="utf-8") as fh:
         rows = [r for r in csv.DictReader(fh) if (r.get("url") or "").strip()]
     return [{k: (r.get(k) or "").strip() for k in FIELDS} for r in rows]
 
@@ -56,7 +56,7 @@ def main():
     # role that passed when it was collected is not necessarily one you want by
     # the time it lands. Whatever wrote the file, this is the gate into the
     # database, so this is where the current rules have to be applied.
-    keep = build_filter(yaml.safe_load(open("config.yaml")))
+    keep = build_filter(yaml.safe_load(open("config.yaml", encoding="utf-8")))
     hits = [j for j in rows if keep(j)]
     if len(hits) != len(rows):
         print(f"{len(rows) - len(hits)} of {len(rows)} inbox rows no longer match the filter")
@@ -67,7 +67,7 @@ def main():
 
     if not args.keep:
         try:
-            with open(args.file, "w", newline="") as fh:
+            with open(args.file, "w", newline="", encoding="utf-8") as fh:
                 csv.DictWriter(fh, fieldnames=FIELDS).writeheader()
         except OSError as e:
             print(f"  ! could not clear {args.file}: {e}", file=sys.stderr)

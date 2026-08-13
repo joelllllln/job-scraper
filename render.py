@@ -182,7 +182,7 @@ def render_firm(page, firm):
 
 
 def load_targets(args):
-    firms = list(csv.DictReader(open("firms.csv")))
+    firms = list(csv.DictReader(open("firms.csv", encoding="utf-8")))
     if args.only:
         want = {n.strip().lower() for n in args.only.split(",") if n.strip()}
         return [f for f in firms if f["name"].lower() in want]
@@ -196,7 +196,7 @@ def load_targets(args):
 
     if args.blocked_only:
         try:
-            walled = {r["name"] for r in csv.DictReader(open("firm_check.csv"))
+            walled = {r["name"] for r in csv.DictReader(open("firm_check.csv", encoding="utf-8"))
                       if r.get("verdict") == "blocked"}
             todo = [f for f in todo if f["name"] in walled]
         except OSError:
@@ -208,7 +208,7 @@ def append(path, rows, fields):
     if not rows:
         return
     new = not os.path.exists(path) or os.path.getsize(path) == 0
-    with open(path, "a", newline="") as fh:
+    with open(path, "a", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=fields, extrasaction="ignore")
         if new:
             w.writeheader()

@@ -203,7 +203,7 @@ def ats_rows():
     for path, has_url in (("sniffed.csv", False), ("endpoints.csv", True)):
         if not os.path.exists(path):
             continue
-        for row in csv.DictReader(open(path)):
+        for row in csv.DictReader(open(path, encoding="utf-8")):
             ats, token = (row.get("ats") or "").strip(), (row.get("token") or "").strip()
             # Oracle and friends cannot be rebuilt from a token alone, so sniff.py
             # stores the finished API URL in board_url. Without this the row was
@@ -396,7 +396,7 @@ def write_rejects(raw, hits, keep, path="rejects.csv"):
         if t not in why:
             why[t] = "title: no pattern matched" if not keep.matches(t) else "location"
     try:
-        with open(path, "w", newline="") as fh:
+        with open(path, "w", newline="", encoding="utf-8") as fh:
             w = csv.writer(fh)
             w.writerow(["count", "title", "reason"])
             for t, n in sorted(counts.items(), key=lambda x: (-x[1], x[0])):
@@ -414,7 +414,7 @@ def main():
     ap.add_argument("--all", action="store_true")
     args = ap.parse_args()
 
-    cfg = yaml.safe_load(open("config.yaml"))
+    cfg = yaml.safe_load(open("config.yaml", encoding="utf-8"))
     keep = build_filter(cfg)
     con = db_init()
     session = http_client.session()
@@ -429,7 +429,7 @@ def main():
     else:
         store.report(new, len(raw), len(hits))
 
-    with open("latest.csv", "w", newline="") as fh:
+    with open("latest.csv", "w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=["company", "title", "location", "url", "source", "posted"])
         w.writeheader()
         w.writerows(hits)

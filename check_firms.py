@@ -186,7 +186,7 @@ def check_one(session, firm):
 
 def load_previous(path="firm_check.csv"):
     try:
-        return {r["name"]: r for r in csv.DictReader(open(path))}
+        return {r["name"]: r for r in csv.DictReader(open(path, encoding="utf-8"))}
     except OSError:
         return {}
 
@@ -202,7 +202,7 @@ def main():
                     help=f"drop firms unreachable {DEAD_AFTER} runs running, or gone (410)")
     args = ap.parse_args()
 
-    firms = list(csv.DictReader(open("firms.csv")))
+    firms = list(csv.DictReader(open("firms.csv", encoding="utf-8")))
     previous = load_previous()
     todo = firms
     if args.only_new:
@@ -308,14 +308,14 @@ def prune(firms, results):
 
 
 def save_firms(firms):
-    with open("firms.csv", "w", newline="") as fh:
+    with open("firms.csv", "w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=["name", "category", "domain"], extrasaction="ignore")
         w.writeheader()
         w.writerows(firms)
 
 
 def write(results):
-    with open("firm_check.csv", "w", newline="") as fh:
+    with open("firm_check.csv", "w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=FIELDS, extrasaction="ignore")
         w.writeheader()
         w.writerows(sorted(results.values(), key=lambda r: (r["verdict"], r["name"])))

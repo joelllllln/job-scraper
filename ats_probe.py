@@ -133,17 +133,17 @@ def main():
     ap.add_argument("--category", help="restrict to one firms.csv category")
     args = ap.parse_args()
 
-    firms = list(csv.DictReader(open("firms.csv")))
+    firms = list(csv.DictReader(open("firms.csv", encoding="utf-8")))
     reached = set()
     for path in ("endpoints.csv", "sniffed.csv", "manual.csv"):
         try:
-            reached |= {r["name"] for r in csv.DictReader(open(path))}
+            reached |= {r["name"] for r in csv.DictReader(open(path, encoding="utf-8"))}
         except OSError:
             pass
     # Only firms whose domain is believed good — probing a domain we already
     # know is dead measures nothing about ATS distribution.
     try:
-        ok = {r["name"] for r in csv.DictReader(open("firm_check.csv"))
+        ok = {r["name"] for r in csv.DictReader(open("firm_check.csv", encoding="utf-8"))
               if r.get("verdict") in ("ok", "thin", "blocked")}
     except OSError:
         ok = {f["name"] for f in firms}
@@ -173,7 +173,7 @@ def main():
             if res["found"] not in ("no fingerprint", "no domain", ""):
                 print(f"[{i}/{len(todo)}] {res['name'][:30]:<32} {res['found']}")
 
-    with open(args.out, "w", newline="") as fh:
+    with open(args.out, "w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=["name", "category", "domain", "found",
                                            "supported", "url"])
         w.writeheader()

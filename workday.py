@@ -74,12 +74,12 @@ def main():
     ap.add_argument("--src", default="sniffed.csv")
     args = ap.parse_args()
 
-    rows = [r for r in csv.DictReader(open(args.src)) if r["ats"] == "workday"]
+    rows = [r for r in csv.DictReader(open(args.src, encoding="utf-8")) if r["ats"] == "workday"]
     if not rows:
         print("no Workday tenants in sniffed.csv — run sniff.py first")
         return
 
-    cfg = yaml.safe_load(open("config.yaml"))
+    cfg = yaml.safe_load(open("config.yaml", encoding="utf-8"))
     keep = build_filter(cfg)
     con = db_init()
     session = http_client.session()

@@ -47,7 +47,7 @@ def check_config():
         err("config.yaml missing")
         return
     try:
-        cfg = yaml.safe_load(open("config.yaml"))
+        cfg = yaml.safe_load(open("config.yaml", encoding="utf-8"))
     except yaml.YAMLError as e:
         err(f"config.yaml is not valid YAML — {e}")
         return
@@ -85,7 +85,7 @@ def check_scoring():
         err("scoring.yaml missing")
         return
     try:
-        cfg = yaml.safe_load(open("scoring.yaml"))
+        cfg = yaml.safe_load(open("scoring.yaml", encoding="utf-8"))
     except yaml.YAMLError as e:
         err(f"scoring.yaml is not valid YAML — {e}")
         return
@@ -139,7 +139,7 @@ def check_firms():
         err("firms.csv missing")
         return
     import csv
-    rows = list(csv.DictReader(open("firms.csv")))
+    rows = list(csv.DictReader(open("firms.csv", encoding="utf-8")))
     if not rows:
         err("firms.csv is empty")
         return

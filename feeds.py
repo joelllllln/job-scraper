@@ -172,7 +172,7 @@ def from_bullhorn(src="sniffed.csv"):
     if not os.path.exists(src):
         print(f"{src} missing — run sniff.py first", file=sys.stderr)
         return []
-    rows = [r for r in csv.DictReader(open(src)) if r["ats"] == "bullhorn"]
+    rows = [r for r in csv.DictReader(open(src, encoding="utf-8")) if r["ats"] == "bullhorn"]
     if not rows:
         print("no Bullhorn portals found by sniff.py")
         return []
@@ -230,7 +230,7 @@ def main():
     if not (args.reed or args.bullhorn or args.jooble or args.careerjet or args.all):
         args.all = True
 
-    cfg = yaml.safe_load(open("config.yaml"))
+    cfg = yaml.safe_load(open("config.yaml", encoding="utf-8"))
     jobs = []
     if args.reed or args.all:
         jobs += from_reed()

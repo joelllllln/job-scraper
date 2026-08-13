@@ -138,14 +138,14 @@ FIELDS = ["name", "category", "ats", "token", "url", "n_jobs", "checked_at"]
 
 
 def write_endpoints(found):
-    with open("endpoints.csv", "w", newline="") as fh:
+    with open("endpoints.csv", "w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=FIELDS)
         w.writeheader()
         w.writerows(sorted(found, key=lambda r: (r["category"], r["name"])))
 
 
 def write_misses(misses):
-    with open("no_ats.csv", "w", newline="") as fh:
+    with open("no_ats.csv", "w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=["name", "category", "domain"],
                            extrasaction="ignore")
         w.writeheader()
@@ -155,7 +155,7 @@ def write_misses(misses):
 def names_in(path, keep=lambda r: True):
     try:
         return {(r.get("name") or "").strip().lower()
-                for r in csv.DictReader(open(path)) if keep(r)}
+                for r in csv.DictReader(open(path, encoding="utf-8")) if keep(r)}
     except OSError:
         return set()
 
@@ -180,10 +180,10 @@ def main():
                     help="probe every firm again, including ones already answered")
     args = ap.parse_args()
 
-    firms = list(csv.DictReader(open("firms.csv")))
+    firms = list(csv.DictReader(open("firms.csv", encoding="utf-8")))
     total = len(firms)
-    found = [r for r in csv.DictReader(open("endpoints.csv"))] if os.path.exists("endpoints.csv") else []
-    misses = [r for r in csv.DictReader(open("no_ats.csv"))] if os.path.exists("no_ats.csv") else []
+    found = [r for r in csv.DictReader(open("endpoints.csv", encoding="utf-8"))] if os.path.exists("endpoints.csv") else []
+    misses = [r for r in csv.DictReader(open("no_ats.csv", encoding="utf-8"))] if os.path.exists("no_ats.csv") else []
 
     if not args.recheck:
         known = settled()

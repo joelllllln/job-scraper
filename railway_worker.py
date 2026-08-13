@@ -57,7 +57,7 @@ def collect():
     from scrape import build_filter
     from jobspy import scrape_jobs
 
-    keep = build_filter(yaml.safe_load(open("config.yaml")))
+    keep = build_filter(yaml.safe_load(open("config.yaml", encoding="utf-8")))
     hours = int(os.getenv("HOURS") or 336)
 
     rows, seen = [], set()
@@ -113,7 +113,7 @@ def collect():
     # runs before that happens do not lose the first run's finds.
     existing, have = [], set()
     if os.path.exists(path):
-        with open(path, newline="") as fh:
+        with open(path, newline="", encoding="utf-8") as fh:
             for row in csv.DictReader(fh):
                 existing.append(row)
                 have.add(row.get("url", ""))
@@ -121,7 +121,7 @@ def collect():
     if not fresh:
         print("all of these are already in the inbox — nothing to push")
         return 0
-    with open(path, "w", newline="") as fh:
+    with open(path, "w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=FIELDS)
         w.writeheader()
         for row in existing + fresh:

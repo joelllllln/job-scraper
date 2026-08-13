@@ -174,7 +174,7 @@ def main():
               "for LinkedIn coverage)")
     print(f"sites: {', '.join(sites)}\n")
 
-    cfg = yaml.safe_load(open("config.yaml"))
+    cfg = yaml.safe_load(open("config.yaml", encoding="utf-8"))
     keep = build_filter(cfg)
     con = db_init()
 

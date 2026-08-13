@@ -215,6 +215,17 @@ def main():
                     help="skip LinkedIn (use if it starts rate limiting you)")
     args = ap.parse_args()
 
+    # Windows defaults text files and the console to cp1252, which cannot encode
+    # a Chinese firm name — one row for ICBC killed the whole stage mid-write.
+    # Every open(, encoding="utf-8") here now names its encoding, and these two make the console
+    # and any subprocess agree, so a stray character cannot end a run that has
+    # already done half an hour of work.
+    os.environ.setdefault("PYTHONUTF8", "1")
+    os.environ.setdefault("PYTHONIOENCODING", "utf-8")
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
     if args.setup or not os.path.exists(ENV_FILE):
         setup()
     load_env()

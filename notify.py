@@ -167,7 +167,7 @@ def digest_count(path="scored.csv"):
     number in the subject line that the body then contradicts.
     """
     try:
-        with open(path, newline="") as fh:
+        with open(path, newline="", encoding="utf-8") as fh:
             return max(0, sum(1 for _ in csv.reader(fh)) - 1)   # minus the header
     except OSError:
         return None
@@ -224,8 +224,8 @@ def main():
     counts, warnings = health(con)
 
     try:
-        html_body = open("report.html").read()
-        text_body = open("report.md").read()
+        html_body = open("report.html", encoding="utf-8").read()
+        text_body = open("report.md", encoding="utf-8").read()
     except FileNotFoundError:
         print("no report — run score.py first", file=sys.stderr)
         return

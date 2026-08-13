@@ -28,7 +28,7 @@ FIELDS = ["name", "category", "domain"]
 def load(path="firms.csv"):
     if not os.path.exists(path):
         return []
-    return list(csv.DictReader(open(path)))
+    return list(csv.DictReader(open(path, encoding="utf-8")))
 
 
 def add(candidates, existing):
@@ -62,7 +62,7 @@ def main():
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
-    rows = [r for r in csv.reader(open(args.source)) if r and r[0].strip()]
+    rows = [r for r in csv.reader(open(args.source, encoding="utf-8")) if r and r[0].strip()]
     if rows and rows[0][0].strip().lower() == "name":
         rows = rows[1:]
     candidates = [{"name": r[0], "category": r[1] if len(r) > 1 else "unknown",
@@ -79,7 +79,7 @@ def main():
 
     if args.dry_run or not accepted:
         return
-    with open("firms.csv", "a", newline="") as fh:
+    with open("firms.csv", "a", newline="", encoding="utf-8") as fh:
         csv.DictWriter(fh, fieldnames=FIELDS).writerows(accepted)
     print(f"\nfirms.csv: {len(existing)} -> {len(existing) + len(accepted)}")
     print("run check_firms.py to confirm the new domains really belong to them")
