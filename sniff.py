@@ -52,6 +52,10 @@ SCRAPABLE = {
     "pinpoint":        [r"([a-z0-9-]+)\.pinpointhq\.com"],
     "comeet":          [r"comeet\.co/jobs/([a-z0-9-]+)",
                         r"comeet\.co/careers-api/2\.0/company/([A-Za-z0-9.]+)"],
+    # scrape.py has been able to fetch Jobvite boards all along, but nothing
+    # here could recognise one, so the fetcher was unreachable code.
+    "jobvite":         [r"jobs\.jobvite\.com/(?:careers/)?([a-z0-9-]+)",
+                        r"([a-z0-9-]+)\.jobvite\.com"],
 }
 
 # Workday needs three parts, handled separately

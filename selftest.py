@@ -687,6 +687,46 @@ def main():
         for p in spec["patterns"]:
             check_true(f"pattern is ascii and live: {p[:32]}", all(ord(c) < 128 for c in p))
 
+    print("\nATS coverage — the gap the probe exists to measure")
+    import ats_probe, check_firms
+    check("every ATS scrape.py can fetch is one sniff.py can find",
+          sorted(set(scrape.ATS_ENDPOINT) - set(sniff.SCRAPABLE)), [])
+    check_true("the probe knows about every ATS we already support",
+               set(sniff.SCRAPABLE) <= set(ats_probe.KNOWN),
+               sorted(set(sniff.SCRAPABLE) - set(ats_probe.KNOWN)))
+    check_true("supported and unsupported lists never overlap",
+               not (set(ats_probe.KNOWN) & set(ats_probe.UNSUPPORTED)))
+    for name, sample in [("successfactors", "https://jobs.sap.com/go/x"),
+                         ("taleo", "https://acme.taleo.net/careersection"),
+                         ("icims", "https://acme.icims.com/jobs"),
+                         ("avature", "https://acme.avature.net/careers"),
+                         ("oleeo", "https://acme.oleeo.com/vacancy"),
+                         ("workday", "https://x.wd3.myworkdayjobs.com/Careers"),
+                         ("jobvite", "https://jobs.jobvite.com/acme")]:
+        check_true(f"probe fingerprints {name}",
+                   ats_probe.COMPILED[name].search(sample))
+
+    print("\npruning — a dead domain, not a bad afternoon")
+    pf = [{"name": n, "category": "fund", "domain": "x.com"} for n in
+          ("Blip", "Dead", "Gone", "Walled", "Thin", "Moved", "Fine")]
+    pr = {"Blip":   {"verdict": "unreachable", "detail": "no response", "misses": "1"},
+          "Dead":   {"verdict": "unreachable", "detail": "no response", "misses": "3"},
+          "Gone":   {"verdict": "unreachable", "detail": "http 410", "misses": "1"},
+          "Walled": {"verdict": "blocked", "detail": "http 403", "misses": "0"},
+          "Thin":   {"verdict": "thin", "detail": "page says little", "misses": "0"},
+          "Moved":  {"verdict": "moved", "detail": "redirects to man.com", "misses": "0"},
+          "Fine":   {"verdict": "ok", "detail": "", "misses": "0"}}
+    doomed = check_firms.prune(pf, pr)
+    check("only the persistently dead and the definitively gone are pruned",
+          sorted(doomed), ["Dead", "Gone"])
+    # 383 of 401 unreachable verdicts in one pass were "no response". A DNS
+    # hiccup, an expired cert and a firewall having a bad afternoon all look
+    # identical to that, so one observation must never remove a firm forever.
+    check_true("a single miss never prunes", "Blip" not in doomed)
+    check_true("a bot wall is not evidence of death", "Walled" not in doomed)
+    check_true("nor is a thin page or a redirect",
+               "Thin" not in doomed and "Moved" not in doomed)
+
     print("\nPhD gating — a doctorate is a harder bar than years of experience")
     F = " The successful applicant joins our London team and reports to the desk head. " * 8
     for label, d, want in [("required", "You must hold a PhD in a quantitative field." + F, "required"),
@@ -710,6 +750,23 @@ def main():
                phd_title < cfg["report"]["shortlist_threshold"], f"got {phd_title}")
     check_true("a PhD demanded in the description ranks well below an open role",
                phd_desc < good - 25, f"{phd_desc} vs {good}")
+
+    # Software engineering roles were removed from the tiers, not demoted: 30%
+    # of a 99-role digest wanted a CS or doctoral background against 14%
+    # explicitly junior. They are still collected, so they appear below the
+    # shortlist rather than vanishing.
+    for t in ("Quantitative Developer", "Machine Learning Engineer", "Python Developer",
+              "Analytics Engineer"):
+        pts, why = score.score_job(job(title=t, description="A numerate role." + F),
+                                   cfg, cats, set())
+        check(f"no title tier for: {t}", [l for l, _ in why if l.startswith("title:")], [])
+        check_true(f"and it falls below the shortlist: {t}",
+                   pts < cfg["report"]["shortlist_threshold"], f"got {pts}")
+    check_true("but they are still collected, not thrown away",
+               all(scrape.build_filter(yaml.safe_load(open("config.yaml")))(
+                   {"title": t, "location": "London"})
+                   for t in ("Quantitative Developer", "Machine Learning Engineer",
+                             "Python Developer")))
 
     print("\nfirm concentration — one careers page must not eat the digest")
     many = [dict(company="Point72", title=f"Quant Researcher {i}", score=100 - i) for i in range(7)]

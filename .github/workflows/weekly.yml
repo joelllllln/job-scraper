@@ -19,6 +19,10 @@ on:
         description: "Collect as usual, then email EVERY open role — no new-only filter, no minimum score, no cap"
         type: boolean
         default: false
+      probe_ats:
+        description: "Measure which ATS the unreachable firms use, then stop (~5 min, collects nothing)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -63,6 +67,7 @@ jobs:
           # against the text of weekly.sh, which would have stopped applying
           # the moment either file was edited, without saying so.
           NO_LINKEDIN: "1"
+          PROBE_ATS: ${{ inputs.probe_ats }}
           RESEND_ALL: ${{ inputs.resend_all }}
           EXPAND_FIRMS: ${{ inputs.expand_firms }}
           REPORT_EVERYTHING: ${{ inputs.report_everything }}
@@ -81,6 +86,13 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           chmod +x weekly.sh
+          # Reconnaissance, not collection: which ATS do the firms we cannot
+          # reach actually use? Answers that and stops, so a week is not spent
+          # building parsers for systems that turn out to be rare.
+          if [ "$PROBE_ATS" = "true" ]; then
+            python ats_probe.py --limit 300
+            exit $?
+          fi
           # Ticking "Email every open role" re-sends the digest from the restored
           # database without collecting anything. On the schedule this is empty.
           ARGS=""
@@ -150,6 +162,8 @@ jobs:
             report.html
             report.md
             scored.csv
+            ats_probe.csv
+            rejects.csv
             logs/
           retention-days: 90
 

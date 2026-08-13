@@ -49,7 +49,18 @@ BOT_BLOCK_STATUS = {401, 403, 405, 406, 409, 429, 503}
 INTERSTITIAL = re.compile(r"perfdrive|datadome|cloudflare|incapsula|imperva|akamai|"
                           r"just a moment|checking your browser|are you a robot|"
                           r"access denied|attention required", re.I)
-FIELDS = ["name", "domain", "verdict", "detail", "final_url"]
+FIELDS = ["name", "domain", "verdict", "detail", "final_url", "misses"]
+
+# How many consecutive unreachable checks before a domain is considered dead.
+# Never one: 383 of 401 unreachable verdicts in a single pass were "no response",
+# and a DNS hiccup, an expired TLS cert or a firewall having a bad afternoon all
+# look exactly like that. Only verdicts that mean "nothing is there" count —
+# blocked, thin and moved are evidence the host is alive, and reset the counter.
+DEAD_AFTER = 3
+COUNTS_AS_MISS = ("unreachable",)
+# http 410 Gone is the one definitive answer: the server is telling you the
+# resource is permanently removed, so it does not need three attempts.
+DEFINITELY_GONE = re.compile(r"http 410", re.I)
 
 # Words that carry no identity — the same set the dedupe key ignores, plus the
 # corporate furniture that appears on every second company in the City.
@@ -180,6 +191,8 @@ def main():
     ap.add_argument("--only-new", action="store_true",
                     help="skip firms already recorded ok in firm_check.csv")
     ap.add_argument("--limit", type=int, default=0)
+    ap.add_argument("--prune", action="store_true",
+                    help=f"drop firms unreachable {DEAD_AFTER} runs running, or gone (410)")
     args = ap.parse_args()
 
     firms = list(csv.DictReader(open("firms.csv")))
@@ -206,6 +219,11 @@ def main():
                 except Exception as e:
                     print(f"  ! {futs[fut]['name']}: {e}", file=sys.stderr)
                     continue
+                # Carry the miss counter across runs: consecutive failures are
+                # what distinguishes a dead domain from a bad afternoon.
+                was = previous.get(res["name"], {})
+                prior = int(was.get("misses") or 0)
+                res["misses"] = prior + 1 if res["verdict"] in COUNTS_AS_MISS else 0
                 results[res["name"]] = res
                 if res["verdict"] != "ok":
                     print(f"[{i}/{len(todo)}] {res['verdict'].upper():<12} "
@@ -222,9 +240,30 @@ def main():
         counts[r["verdict"]] = counts.get(r["verdict"], 0) + 1
     print("\n" + "  ".join(f"{v} {k}" for k, v in sorted(counts.items(), key=lambda x: -x[1])))
 
+    stale = prune(firms, results)
+    if stale:
+        print(f"\n{len(stale)} firms have been unreachable long enough to call dead:")
+        for n, why in sorted(stale.items())[:15]:
+            print(f"    {n[:38]:<40} {why}")
+        if len(stale) > 15:
+            print(f"    ... and {len(stale) - 15} more")
+        if args.prune:
+            firms[:] = [f for f in firms if f["name"] not in stale]
+            results = {n: r for n, r in results.items() if n not in stale}
+            print(f"pruned {len(stale)} firms from firms.csv")
+        else:
+            print("run again with --prune to remove them")
+    near = sum(1 for r in results.values()
+               if r.get("verdict") in COUNTS_AS_MISS and 0 < int(r.get("misses") or 0) < DEAD_AFTER)
+    if near:
+        print(f"{near} more are failing but not yet at {DEAD_AFTER} consecutive misses")
+
     bad = {n for n, r in results.items() if r["verdict"] == "mismatch"}
     if not bad:
         print("every domain checks out")
+        if args.prune and stale:
+            save_firms(firms)     # pruning alone still has to be written out
+            write(results)
         return
     print(f"\n{len(bad)} firms have a domain that belongs to somebody else")
     print("blocked / unreachable / moved are reported but NOT blanked: a bot wall\n    or a redirect is not evidence the domain is wrong, and blanking a correct\n    one silently removes the firm from every future run.")
@@ -235,11 +274,37 @@ def main():
     for f in firms:
         if f["name"] in bad:
             f["domain"] = ""
+    save_firms(firms)
+    write(results)
+    print(f"blanked {len(bad)} domains in firms.csv")
+
+
+def prune(firms, results):
+    """Remove firms whose domain has been dead for several runs running.
+
+    Deliberately conservative. A firm is only dropped when the host has failed
+    to answer DEAD_AFTER times in a row, or has returned 410 Gone once — the
+    single status that means "permanently removed" rather than "not today".
+    Bot walls, thin pages and redirects never count: all three prove something
+    is answering, and a firm removed here stops being scraped forever.
+    """
+    doomed = {}
+    for f in firms:
+        r = results.get(f["name"])
+        if not r or r.get("verdict") not in COUNTS_AS_MISS:
+            continue
+        if DEFINITELY_GONE.search(r.get("detail", "")):
+            doomed[f["name"]] = "410 gone"
+        elif int(r.get("misses") or 0) >= DEAD_AFTER:
+            doomed[f["name"]] = f"unreachable {r['misses']} runs running"
+    return doomed
+
+
+def save_firms(firms):
     with open("firms.csv", "w", newline="") as fh:
-        w = csv.DictWriter(fh, fieldnames=["name", "category", "domain"])
+        w = csv.DictWriter(fh, fieldnames=["name", "category", "domain"], extrasaction="ignore")
         w.writeheader()
         w.writerows(firms)
-    print(f"blanked {len(bad)} domains in firms.csv")
 
 
 def write(results):
