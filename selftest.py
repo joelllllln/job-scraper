@@ -265,6 +265,25 @@ def main():
             if "b" not in str(_mode):
                 _bad.append(f"{_p}:{_n.lineno}")
     check("every text file is opened as utf-8, not the platform default", _bad, [])
+
+    print("\nATS token guessing does not adopt a stranger's board")
+    import discover as _dsc
+    _amb = _dsc.ambiguous_firsts([{"name": "National Grid"}, {"name": "National Bank"},
+                                  {"name": "Vitol"}])
+    check("a first word shared by two firms is ambiguous", "national" in _amb, True)
+    check("a first word unique to one firm is not", "vitol" in _amb, False)
+    # The real case: probe() accepts any board answering with >=1 job, so a bare
+    # generic token silently files a stranger's vacancies under your firm.
+    check("no bare 'national' token for NEST",
+          "national" in _dsc.tokens_for("National Employment Savings Trust",
+                                        "nestpensions.org.uk", _amb), False)
+    check("the domain and full name are still tried",
+          _dsc.tokens_for("National Employment Savings Trust", "nestpensions.org.uk", _amb)[0],
+          "nestpensions")
+    check("a generic first word is dropped even when unique in the registry",
+          "global" in _dsc.tokens_for("Global Trading Ltd", "gtl.com"), False)
+    check("a one-word firm is unaffected",
+          _dsc.tokens_for("Vitol", "vitol.com", _amb), ["vitol"])
     check("the firm's own site outranks the aggregators",
           min(_st.SOURCE_RANK[s] for s in ("jsonld", "embedded", "html")) >
           max(_st.SOURCE_RANK[s] for s in ("indeed", "glassdoor", "linkedin", "reed")), True)

@@ -55,12 +55,37 @@ PROVIDERS = {
 LIST_KEYS = ("data", "jobs", "positions", "results", "items", "postings")
 
 
-def tokens_for(name: str, domain: str):
-    """Candidate company tokens, most likely first."""
+# First words that identify nobody. A probe accepts any board that answers with
+# at least one job, so a token like "national" quietly adopts a stranger's
+# Greenhouse board and files its vacancies under your firm — which is how the
+# National Employment Savings Trust acquired greenhouse/national. Anything here
+# is dropped as a bare token; the full name and the domain are still tried.
+GENERIC_FIRST = {
+    "global", "world", "united", "general", "standard", "premier", "prime",
+    "capital", "asset", "invest", "investment", "investments", "trading",
+    "trade", "markets", "market", "commodity", "commodities", "power",
+    "renewable", "renewables", "green", "clean", "smart", "advanced", "future",
+    "next", "new", "modern", "central", "metro", "city", "london", "british",
+    "american", "european", "asia", "pacific", "atlantic", "group", "holdings",
+    "partners", "associates", "advisors", "advisers", "management", "services",
+    "solutions", "systems", "technologies", "consulting", "the", "and",
+}
+
+
+def tokens_for(name: str, domain: str, ambiguous=frozenset()):
+    """Candidate company tokens, most likely first.
+
+    `ambiguous` is the set of first words shared by more than one firm in the
+    registry — computed from firms.csv rather than guessed, because 545 of 2321
+    firms share theirs, which is the plainest possible evidence that a bare
+    first word does not name a company.
+    """
     base = domain.split(".")[0]
     slug = re.sub(r"[^a-z0-9]+", "", name.lower())
     hyph = re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
     first = hyph.split("-")[0]
+    if first in ambiguous or first in GENERIC_FIRST:
+        first = ""
     out = [base, slug, hyph, first]
     seen, uniq = set(), []
     for t in out:
@@ -107,9 +132,19 @@ def count_jobs(provider: str, body: str):
     return None
 
 
-def probe(session, firm):
+def ambiguous_firsts(firms):
+    """First words shared by more than one firm — so, identifying none of them."""
+    seen = {}
+    for f in firms:
+        w = re.sub(r"[^a-z0-9]+", "-", (f.get("name") or "").lower()).strip("-").split("-")[0]
+        if w:
+            seen[w] = seen.get(w, 0) + 1
+    return frozenset(w for w, n in seen.items() if n > 1)
+
+
+def probe(session, firm, ambiguous=frozenset()):
     name, category, domain = firm["name"], firm["category"], firm["domain"]
-    for token in tokens_for(name, domain):
+    for token in tokens_for(name, domain, ambiguous):
         for provider, tmpl in PROVIDERS.items():
             url = tmpl.format(t=token)
             # retries=0 on purpose. Most of these probes are guesses at
@@ -197,10 +232,13 @@ def main():
         print("nothing new to probe — use --recheck to sweep everything again")
         return
 
+    # Computed over the whole registry, not just this run's slice, so a firm
+    # probed alone is judged against the same evidence as one probed in a sweep.
+    ambiguous = ambiguous_firsts(list(csv.DictReader(open("firms.csv", encoding="utf-8"))))
     session = http_client.session()
 
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
-        futs = {pool.submit(probe, session, f): f for f in firms}
+        futs = {pool.submit(probe, session, f, ambiguous): f for f in firms}
         for i, fut in enumerate(as_completed(futs), 1):
             firm = futs[fut]
             try:
