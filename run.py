@@ -122,9 +122,13 @@ def unlock_db():
 
     Only ever restores when jobs.db is missing, so a local database in use is
     never overwritten by an older committed copy.
+
+    Returns whether it is safe to re-encrypt at the end of the run — false only
+    when there is a jobs.db.gpg that could not be opened, because writing over
+    that file is how a typo turns a recoverable mistake into a lost history.
     """
     if os.path.exists("jobs.db") or not os.path.exists("jobs.db.gpg"):
-        return False
+        return True                      # nothing to lose: no archive, or a live one
     key = os.environ.get("DB_PASSPHRASE", "")
     if not key:
         print("!! jobs.db.gpg is here but DB_PASSPHRASE is not set, so your job\n"
@@ -135,16 +139,37 @@ def unlock_db():
             "-d", "jobs.db.gpg"]):
         print("history: restored from jobs.db.gpg")
         return True
+    # A failed decrypt can still leave a truncated file behind, and starting on
+    # half a database is worse than starting on none.
+    try:
+        os.remove("jobs.db")
+    except OSError:
+        pass
     print("!! could not decrypt jobs.db.gpg — wrong DB_PASSPHRASE, or gpg is not\n"
           "   installed (Windows: gnupg.org/download, or `winget install GnuPG.GnuPG`).\n"
-          "   Starting from an empty database rather than guessing.")
+          "   Starting from an empty database rather than guessing. Your history\n"
+          "   is left untouched, and will not be overwritten at the end.")
     return False
 
 
-def lock_db():
-    """Re-encrypt, so the history you just added survives the next clone."""
+def lock_db(safe=True):
+    """Re-encrypt, so the history you just added survives the next clone.
+
+    Refuses when the unlock failed. Otherwise a mistyped passphrase would end
+    the run by writing a database containing only this week over the top of
+    jobs.db.gpg — encrypted with the wrong passphrase, so the real history
+    becomes unopenable by the very key that would have opened it. Git still
+    holds the good copy, but only until that overwrite is committed.
+    """
     key = os.environ.get("DB_PASSPHRASE", "")
     if not key or not os.path.exists("jobs.db"):
+        return
+    if not safe:
+        print("!! not re-encrypting: this run started on an empty database "
+              "because jobs.db.gpg could not be opened.\n"
+              "   Your history is untouched in jobs.db.gpg. Fix the passphrase "
+              "with `python run.py --setup` and run again;\n"
+              "   this week's results are in report.html either way.")
         return
     if gpg(["--batch", "--yes", "--quiet", "--passphrase", key, "-c",
             "--cipher-algo", "AES256", "-o", "jobs.db.gpg", "jobs.db"]):
@@ -210,7 +235,7 @@ def main():
             return 1
     print("config + selftest: ok")
 
-    unlock_db()
+    can_relock = unlock_db()
     subprocess.call([PY, "-c", "import store; p = store.backup();"
                              " print(f'backup: {p}' if p else 'backup: no database yet')"])
 
@@ -266,7 +291,7 @@ def main():
         print("The rest still ran — the report below covers everything collected.")
     else:
         print("every stage ok")
-    lock_db()
+    lock_db(can_relock)
     print("report.html and report.md are in this folder; scored.csv has the full list.")
     return 1 if failures else 0
 
