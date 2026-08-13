@@ -109,6 +109,65 @@ def main():
           scrape.ATS_ENDPOINT["lever"].format(t="kpler"),
           "https://api.lever.co/v0/postings/kpler?mode=json")
 
+    print("\nrender — reading careers pages that only exist after JavaScript")
+    import render
+    # The prize is the ATS link: one render writes it to sniffed.csv and every
+    # future week reads that firm through its cheap API instead of a browser.
+    got = render.ats_from_html("Vitol", '<a href="https://boards.greenhouse.io/vitol">Jobs</a>',
+                               "https://vitol.com/careers")
+    check("ATS found in a rendered page", (got or {}).get("ats"), "greenhouse")
+    check("and its token", (got or {}).get("token"), "vitol")
+    wd = render.ats_from_html("BP", "x", "https://bp.wd3.myworkdayjobs.com/en-US/BPCareers")
+    check("workday reassembled from the final url", (wd or {}).get("board_url"),
+          "https://bp.wd3.myworkdayjobs.com/wday/cxs/bp/BPCareers/jobs")
+    check("a page with no ATS returns nothing",
+          render.ats_from_html("X", "<p>nothing here</p>", "https://x.com"), None)
+    # Fallback: schema.org JobPosting, which sites publish precisely so it can
+    # be machine-read — it is what puts them into Google for Jobs.
+    ld = ('<script type="application/ld+json">{"@type":"JobPosting",'
+          '"title":"Junior Gas Analyst","url":"https://v.com/1","datePosted":"2026-08-01T00:00:00Z",'
+          '"hiringOrganization":{"name":"Vitol"},'
+          '"jobLocation":{"address":{"addressLocality":"London","addressCountry":"GB"}}}</script>')
+    jobs = render.jobs_from_jsonld("Vitol", ld)
+    check("JobPosting read off the rendered page",
+          [(j["company"], j["title"], j["posted"]) for j in jobs],
+          [("Vitol", "Junior Gas Analyst", "2026-08-01")])
+    check_true("and its location survives", "London" in jobs[0]["location"])
+    check("a posting with no url is not usable",
+          render.jobs_from_jsonld("X", '<script type="application/ld+json">'
+                                       '{"@type":"JobPosting","title":"No link"}</script>'), [])
+    check("malformed json-ld does not raise",
+          render.jobs_from_jsonld("X", '<script type="application/ld+json">{oops</script>'), [])
+    check_true("rendered postings match the inbox schema, so inbox.py can ingest them",
+               set(jobs[0]) == set(render.INBOX_FIELDS))
+
+    print("\nrun.py — the local one-command runner")
+    import run as localrun
+    envp = tempfile.mktemp(suffix=".env")
+    with open(envp, "w") as fh:
+        fh.write('# comment\nSMTP_USER=me@gmail.com\nSMTP_PASS="app pw"\nBLANK\n')
+    for k in ("SMTP_USER", "SMTP_PASS"):
+        os.environ.pop(k, None)
+    check("env file is read", localrun.load_env(envp), True)
+    check("values load", os.environ.get("SMTP_USER"), "me@gmail.com")
+    check("quotes are stripped", os.environ.get("SMTP_PASS"), "app pw")
+    check("a missing env file is not an error", localrun.load_env("does-not-exist.env"), False)
+    # An env var already set by the shell must win over the file, or exporting
+    # something for one run would silently do nothing.
+    os.environ["SMTP_USER"] = "shell@wins.com"
+    localrun.load_env(envp)
+    check("the shell beats the file", os.environ.get("SMTP_USER"), "shell@wins.com")
+    for k in ("SMTP_USER", "SMTP_PASS"):
+        os.environ.pop(k, None)
+    os.unlink(envp)
+    # One dead source must never take the run with it.
+    fails = []
+    localrun.stage("ok", ["-c", "pass"], fails)
+    localrun.stage("dies", ["-c", "import sys; sys.exit(3)"], fails)
+    localrun.stage("hangs", ["-c", "import time; time.sleep(30)"], fails, timeout=2)
+    localrun.stage("after", ["-c", "pass"], fails)
+    check("failures are isolated and named", fails, ["dies", "hangs"])
+
     print("\ncareers subdomains — where blocked firms actually publish")
     cands = list(sniff.candidate_urls("bnpparibas.com"))
     check("apex paths come first", cands[:len(sniff.PATHS)],
