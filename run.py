@@ -41,6 +41,8 @@ TIMEOUTS = {"sniff": 3600, "discover": 3600, "render": 14400, "boards": 2700}
 DEFAULT_TIMEOUT = 1800
 
 SETTINGS = [
+    ("DB_PASSPHRASE", "Passphrase that unlocks your job history (jobs.db.gpg) — "
+                      "the same one set as a GitHub secret", True),
     ("SMTP_USER", "Your Gmail address", True),
     ("SMTP_PASS", "Gmail APP PASSWORD (16 characters, not your normal password)", True),
     ("DIGEST_TO", "Send the digest to (blank = same as your Gmail address)", False),
@@ -97,6 +99,56 @@ def setup():
         for k, v in values.items():
             fh.write(f"{k}={v}\n")
     print(f"\n  Saved to {ENV_FILE}. Run `python run.py` any time from now on.\n")
+
+
+def gpg(args):
+    """Run gpg, returning True on success. False if it is not installed."""
+    try:
+        return subprocess.call(["gpg"] + args, stdout=subprocess.DEVNULL,
+                               stderr=subprocess.DEVNULL) == 0
+    except (OSError, subprocess.SubprocessError):
+        return False
+
+
+def unlock_db():
+    """Restore jobs.db from the encrypted copy in the repo.
+
+    The database is the one thing here that cannot be regenerated: every role
+    ever seen, how often, and which ones you marked applied. It is gitignored
+    and committed only as jobs.db.gpg, so on a fresh clone the plain file is
+    absent — and until now run.py simply started with an empty database and
+    said nothing. A silent fresh start looks identical to a working run right
+    up until the digest re-offers you a job you applied for a month ago.
+
+    Only ever restores when jobs.db is missing, so a local database in use is
+    never overwritten by an older committed copy.
+    """
+    if os.path.exists("jobs.db") or not os.path.exists("jobs.db.gpg"):
+        return False
+    key = os.environ.get("DB_PASSPHRASE", "")
+    if not key:
+        print("!! jobs.db.gpg is here but DB_PASSPHRASE is not set, so your job\n"
+              "   history cannot be opened. This run will start from an empty\n"
+              "   database. Set DB_PASSPHRASE in .env (`python run.py --setup`).")
+        return False
+    if gpg(["--batch", "--yes", "--quiet", "--passphrase", key, "-o", "jobs.db",
+            "-d", "jobs.db.gpg"]):
+        print("history: restored from jobs.db.gpg")
+        return True
+    print("!! could not decrypt jobs.db.gpg — wrong DB_PASSPHRASE, or gpg is not\n"
+          "   installed (Windows: gnupg.org/download, or `winget install GnuPG.GnuPG`).\n"
+          "   Starting from an empty database rather than guessing.")
+    return False
+
+
+def lock_db():
+    """Re-encrypt, so the history you just added survives the next clone."""
+    key = os.environ.get("DB_PASSPHRASE", "")
+    if not key or not os.path.exists("jobs.db"):
+        return
+    if gpg(["--batch", "--yes", "--quiet", "--passphrase", key, "-c",
+            "--cipher-algo", "AES256", "-o", "jobs.db.gpg", "jobs.db"]):
+        print("history: jobs.db.gpg updated — commit it to keep this run's results")
 
 
 def stage(name, cmd, failures, timeout=None):
@@ -158,6 +210,7 @@ def main():
             return 1
     print("config + selftest: ok")
 
+    unlock_db()
     subprocess.call([PY, "-c", "import store; p = store.backup();"
                              " print(f'backup: {p}' if p else 'backup: no database yet')"])
 
@@ -213,6 +266,7 @@ def main():
         print("The rest still ran — the report below covers everything collected.")
     else:
         print("every stage ok")
+    lock_db()
     print("report.html and report.md are in this folder; scored.csv has the full list.")
     return 1 if failures else 0
 
