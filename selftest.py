@@ -11,6 +11,7 @@ ranks the wrong things.
     python selftest.py
 """
 
+import csv
 import os
 import re
 import sqlite3
@@ -686,6 +687,51 @@ def main():
     for spec in list(cfg["description_signals"].values()) + list(cfg["title_tiers"].values()):
         for p in spec["patterns"]:
             check_true(f"pattern is ascii and live: {p[:32]}", all(ord(c) < 128 for c in p))
+
+    print("\ncentral bank / financial authority — the FCA-adjacent routes")
+    boe_keep = scrape.build_filter(yaml.safe_load(open("config.yaml")))
+    for t in ("Data Scientist", "Data Analyst", "Statistician", "Economist",
+              "Research Economist", "Analyst - Financial Stability", "Policy Analyst",
+              "Prudential Supervisor", "Banking Supervisor", "Supervisory Analyst",
+              "Stress Testing Analyst", "Data Governance Analyst",
+              "Monetary Policy Analyst", "Macroprudential Analyst",
+              "Analyst, Prudential Policy", "Quantitative Analyst"):
+        check_true(f"collected: {t[:38]}", boe_keep({"title": t, "location": "London"}))
+    # "supervisor" unscoped is shift work, and it is a very common job title
+    for t in ("Retail Supervisor", "Warehouse Supervisor", "Shift Supervisor",
+              "Cleaning Supervisor", "Care Team Supervisor", "Night Supervisor"):
+        check_true(f"not collected: {t}", not boe_keep({"title": t, "location": "London"}))
+
+    # The Bank is the employer and the PRA is a division of it, sharing one
+    # careers site. The registry entry is named after whoever owns the domain,
+    # or discovery targets a name no posting uses — but the division names are
+    # kept without a domain so their postings still resolve to the category.
+    reg = {r["name"]: r for r in csv.DictReader(open("firms.csv"))}
+    check_true("Bank of England is in the registry", "Bank of England" in reg)
+    check("and owns the careers domain",
+          reg.get("Bank of England", {}).get("domain"), "bankofengland.co.uk")
+    check_true("the PRA still resolves to the regulator category",
+               reg.get("Prudential Regulation Authority", {}).get("category") == "regulator")
+    check("but has no domain, so it is not probed twice",
+          reg.get("Prudential Regulation Authority", {}).get("domain"), "")
+
+    # A data post is ordinary work at a fund and the best opening there is at a
+    # financial authority. Neither the title tier nor the firm category alone
+    # could say that, so both scored the same.
+    F2 = " You will join the team in London and work across the directorate. " * 9
+    cats2 = dict(cats, **{"bank of england": "regulator", "point72": "prop_mm"})
+    def at(co, t):
+        return score.score_job(job(company=co, title=t, description="A numerate role." + F2),
+                               cfg, cats2, set())[0]
+    for t in ("Data Scientist", "Data Analyst", "Statistician", "Economist"):
+        check_true(f"'{t}' ranks higher at a regulator than at a fund",
+                   at("Bank of England", t) > at("Point72", t) + 15,
+                   f"{at('Bank of England', t)} vs {at('Point72', t)}")
+    check_true("a regulator data role clears the shortlist on its own",
+               at("Bank of England", "Data Scientist") >= cfg["report"]["shortlist_threshold"],
+               f"got {at('Bank of England', 'Data Scientist')}")
+    check_true("the bonus needs the role type, not just the employer",
+               at("Bank of England", "Facilities Coordinator") < at("Bank of England", "Data Analyst"))
 
     print("\nATS coverage — the gap the probe exists to measure")
     import ats_probe, check_firms

@@ -335,6 +335,13 @@ def score_job(r, cfg, cats, ghosts):
     cat = cats.get(norm(r["company"]), "unknown")
     add(cfg["firm_categories"].get(cat, cfg["firm_categories"]["unknown"]), f"firm:{cat}")
 
+    # 3b. this kind of role at this kind of firm. Neither the title tier nor the
+    # firm category can express that a data post is ordinary at a fund and the
+    # best opening available at a financial authority.
+    bonus = (cfg.get("firm_role_bonus") or {}).get(cat)
+    if bonus and any(re.search(p, title, re.I) for p in bonus["patterns"]):
+        add(bonus["points"], f"{cat} + this role type")
+
     # 4. description signals
     # Only when there is a real description to read. verify.py stores whatever
     # it got, and what it got is often a cookie banner, a JS shell or a login

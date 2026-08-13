@@ -56,6 +56,13 @@ title_tiers:
       - "(transaction|regulatory|trade) reporting"
       - "\\b(emir|mifid|mifir|sftr)\\b"
       - "financial crime (analyst|analytics|data)"
+      # the central-bank routes: closest thing to a lateral move from the FCA
+      - "statistician"
+      - "(prudential|banking|insurance|market|conduct|financial) supervis\\w*"
+      - "supervis(ion|ory) (analyst|associate|specialist)"
+      - "stress test\\w*"
+      - "financial stability"
+      - "(monetary|macroprudential|micro.?prudential) (policy|analysis|analyst)"
   strong: # same floor, one step off the target
     points: 20
     patterns:
@@ -147,8 +154,12 @@ seniority:
 
 # --- 3. Firm type. Where you realistically convert fastest scores highest. ---
 firm_categories:
-  regulator: 11         # Ofgem, FCA, National Grid — where your REMIT and market
-                        # surveillance background is the qualification, not a bonus
+  regulator: 15         # Bank of England, PRA, Ofgem, ONS, FCA — where a
+                        # regulatory data background is the qualification rather
+                        # than a bonus, and the hiring bar is a numerate analyst
+                        # rather than a quant. Raised from 11: this is the single
+                        # most convertible category and it was ranking below
+                        # data vendors and flex optimisers.
   data_vendor: 12
   flex_optimiser: 12
   power_gas: 10
@@ -172,6 +183,24 @@ firm_categories:
   consultancy: 4
   recruiter: 3
   unknown: 2
+
+# --- 3b. Firm type x role type. ---
+# Title tiers score the job and firm_categories scores the employer, but neither
+# can say "this KIND of role at this KIND of firm". A data scientist post is
+# adjacent-tier work at a hedge fund and the single most convertible opening
+# there is at the Bank of England or the PRA, and both were scoring the same.
+firm_role_bonus:
+  regulator:
+    points: 22
+    patterns:
+      - "data (scientist|analyst|engineer|governance)"
+      - "statistician"
+      - "econom(ist|ics)"
+      - "\\banalyst\\b"
+      - "research"
+      - "quantitative"
+      - "supervis\\w*"
+      - "policy"
 
 # Below this many characters a stored description is treated as unreadable and
 # NONE of the signals below are scored. verify.py stores whatever came back, and

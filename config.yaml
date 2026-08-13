@@ -134,6 +134,19 @@ include:
   - "compliance (data|analytics|technology|systems) analyst"
   - "conduct (risk )?analyst"
   - "regulatory (affairs|change|policy) analyst"
+  # --- central bank / financial authority vocabulary ---
+  # How the Bank of England, the PRA, ONS and the FCA actually title roles.
+  # None of these existed, so a BoE data or supervision post was collected only
+  # if it happened to say "analyst" next to a markets word.
+  - "statistician"
+  - "(prudential|banking|insurance|firm|market|conduct|financial) supervis\\w*"
+  - "supervis(ion|ory) (analyst|associate|specialist|examiner)"
+  - "stress test\\w*"
+  - "data governance"
+  - "(market|credit|model|prudential|financial|liquidity|conduct|operational) risk specialist"
+  - "risk specialist.{0,22}(market|credit|model|prudential|financial|liquidity|conduct)"
+  - "financial stability"
+  - "(monetary|macroprudential|micro.?prudential) (policy|analysis|analyst)"
 
   # --- physical operations and scheduling ---
   # The classic way into a commodity desk without desk experience. Every pattern

@@ -1017,7 +1017,7 @@ Climate Change Committee,regulator,theccc.org.uk
 Crown Estate,regulator,thecrownestate.co.uk
 Crown Estate Scotland,regulator,crownestatescotland.com
 Offshore Petroleum Regulator,regulator,nstauthority.co.uk
-Prudential Regulation Authority,regulator,bankofengland.co.uk
+Bank of England,regulator,bankofengland.co.uk
 Payment Systems Regulator,regulator,psr.org.uk
 Pensions Regulator,regulator,thepensionsregulator.gov.uk
 UK Infrastructure Bank,regulator,ukib.org.uk
@@ -2302,3 +2302,21 @@ Cobalt Institute,regulator,cobaltinstitute.org
 Nickel Institute,regulator,nickelinstitute.org
 International Lead and Zinc Study Group,regulator,ilzsg.org
 International Copper Study Group,regulator,icsg.org
+Office for National Statistics,regulator,ons.gov.uk
+HM Treasury,regulator,hm-treasury.gov.uk
+UK Debt Management Office,regulator,dmo.gov.uk
+Financial Reporting Council,regulator,frc.org.uk
+Competition and Markets Authority,regulator,gov.uk/cma
+Financial Ombudsman Service,regulator,financial-ombudsman.org.uk
+Financial Services Compensation Scheme,regulator,fscs.org.uk
+Money and Pensions Service,regulator,maps.org.uk
+National Employment Savings Trust,regulator,nestpensions.org.uk
+Serious Fraud Office,regulator,sfo.gov.uk
+Government Actuarys Department,regulator,gad.gov.uk
+Office for Budget Responsibility,regulator,obr.uk
+UK Statistics Authority,regulator,statisticsauthority.gov.uk
+Bank for International Settlements,regulator,bis.org
+European Banking Authority,regulator,eba.europa.eu
+European Securities and Markets Authority,regulator,esma.europa.eu
+Prudential Regulation Authority,regulator,
+PRA,regulator,
