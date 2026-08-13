@@ -134,6 +134,12 @@ def years_required(text):
     return best
 
 
+# Statuses that mean "we were refused", not "the job is gone". A WAF answering
+# 403 to a checker is the single most common failure here and it is not evidence
+# of anything about the posting.
+BOT_BLOCK = {401, 403, 405, 406, 429, 503}
+
+
 def check(session, job):
     jid, company, title, url, source = job
     out = {"id": jid, "checked_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
@@ -149,10 +155,21 @@ def check(session, job):
     r = http_client.get(url, sess=session)
     if r is None:
         out["reason"] = "unreachable (retries exhausted or host circuit open)"
+        out["live"] = None          # unknown, not dead — see BOT_BLOCK below
         return out
 
     out["status"] = r.status_code
     out["final_url"] = r.url
+    if r.status_code in BOT_BLOCK:
+        # The site refused to talk to us. That says nothing whatever about
+        # whether the job exists, and treating it as "dead" deleted 23 of 23
+        # dead verdicts in one run — every single one a 403, not one real 404 —
+        # taking live roles at Societe Generale, JPMorgan, Macquarie, Amazon and
+        # Hayfin out of the digest. live=None means unknown, which score.py
+        # keeps and ranks slightly below a confirmed-live role.
+        out["live"] = None
+        out["reason"] = f"http {r.status_code} — site blocks automated checks, job not verified"
+        return out
     if r.status_code >= 400:
         out["reason"] = f"http {r.status_code}"
         return out
@@ -198,6 +215,12 @@ def check(session, job):
     if out["valid_through"]:
         try:
             vt = datetime.fromisoformat(out["valid_through"].replace("Z", "+00:00"))
+            # "2026-12-31" parses to a naive datetime and comparing that to an
+            # aware one raises, which was swallowed as a warning on every single
+            # date-only validThrough — so those postings never got their expiry
+            # checked at all.
+            if vt.tzinfo is None:
+                vt = vt.replace(tzinfo=timezone.utc)
             if vt < datetime.now(timezone.utc):
                 out["reason"] = "validThrough in the past"
                 return out
@@ -303,11 +326,14 @@ def main():
 
     flush(con, pending)
 
-    live = sum(r["live"] for r in results)
-    print(f"\n{live} live / {len(results)} checked")
+    live = sum(1 for r in results if r["live"] == 1)
+    blocked = sum(1 for r in results if r["live"] is None)
+    dead_n = sum(1 for r in results if r["live"] == 0)
+    print(f"\n{live} live / {dead_n} dead / {blocked} unverifiable (site blocked us) "
+          f"/ {len(results)} checked")
     dead = {}
     for r in results:
-        if not r["live"]:
+        if r["live"] == 0:
             dead[r["reason"].split(":")[0]] = dead.get(r["reason"].split(":")[0], 0) + 1
     for k, v in sorted(dead.items(), key=lambda x: -x[1]):
         print(f"  {v:>4}  {k}")

@@ -145,6 +145,14 @@ def main():
         os.chdir(here)
         shutil.rmtree(work, ignore_errors=True)
 
+    print("\nverify — a site refusing us is not a job that has died")
+    # Every one of 23 dead verdicts in one run was http 403, not one real 404,
+    # and they were live roles at Societe Generale, JPMorgan, Macquarie, Amazon
+    # and Hayfin. A WAF blocking a checker says nothing about the posting.
+    check_true("403 and friends are all treated as blocks",
+               {401, 403, 429, 503} <= verify.BOT_BLOCK)
+    check_true("404 is not — that one really is gone", 404 not in verify.BOT_BLOCK)
+
     print("\nrender — reading careers pages that only exist after JavaScript")
     import render
     # The prize is the ATS link: one render writes it to sniffed.csv and every
@@ -902,6 +910,21 @@ def main():
     check_true("a bot wall is not evidence of death", "Walled" not in doomed)
     check_true("nor is a thin page or a redirect",
                "Thin" not in doomed and "Moved" not in doomed)
+
+    # A site refusing the checker is not a job that died — see verify.BOT_BLOCK.
+    F3 = " You will join the London desk and report to the head of research. " * 9
+    def verdict(**kw):
+        return score.score_job(job(description="A numerate role." + F3, **kw),
+                               cfg, cats, set())
+    livep = verdict(checked_at=now.isoformat(), live=1, reason="ok")[0]
+    blockp, blockwhy = verdict(checked_at=now.isoformat(), live=None, reason="http 403")
+    nonep = verdict(checked_at=None, live=None, reason="")[0]
+    deadp = verdict(checked_at=now.isoformat(), live=0, reason="http 404")[0]
+    check("a blocked check scores as unverified, not dead", blockp, nonep)
+    check_true("and the reason says which it was",
+               any("blocked the check" in w for w, _ in blockwhy))
+    check_true("a real 404 still collapses", deadp < blockp - 500, f"{deadp} vs {blockp}")
+    check_true("verified live still beats a blocked check", livep > blockp)
 
     print("\nPhD gating — a doctorate is a harder bar than years of experience")
     F = " The successful applicant joins our London team and reports to the desk head. " * 8

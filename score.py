@@ -373,8 +373,14 @@ def score_job(r, cfg, cats, ghosts):
 
     # 7. verification
     v = cfg["verification"]
-    if r["checked_at"] is None:
-        add(v["unverified"], "not verified")
+    # live is NULL when the site refused the check — a 403 from a WAF says
+    # nothing about whether the job exists. That is "unverified", the same as
+    # never having looked, and emphatically not "dead": every one of 23 dead
+    # verdicts in one run was a 403, and they were real roles at Societe
+    # Generale, JPMorgan, Macquarie and Amazon.
+    if r["checked_at"] is None or r["live"] is None:
+        add(v["unverified"], "not verified" if r["checked_at"] is None
+            else "site blocked the check")
     elif not r["live"]:
         add(v["dead"], f"dead: {r['reason']}")
     else:
@@ -626,7 +632,9 @@ def main():
         # on some hosts — and treating "not yet checked" as "gone" was quietly
         # binning a fifth of the pool, which is indistinguishable from the filter
         # being too tight. Unknown is not dead.
-        scored = [r for r in scored if r["checked_at"] is None or r["live"]]
+        # live == 0 is the only proof of death. NULL means the site blocked the
+        # check, and None checked_at means we never got there.
+        scored = [r for r in scored if r["live"] != 0]
 
     rep = cfg["report"]
     top_n = args.top or rep["top_n"]
@@ -646,8 +654,9 @@ def main():
     stats = {
         "date": datetime.now(timezone.utc).strftime("%d %b %Y"),
         "scraped": len(pool),
-        "verified": sum(1 for r in pool if r["live"]),
-        "dead": sum(1 for r in pool if r["checked_at"] and not r["live"]),
+        "verified": sum(1 for r in pool if r["live"] == 1),
+        "dead": sum(1 for r in pool if r["live"] == 0),
+        "blocked": sum(1 for r in pool if r["checked_at"] and r["live"] is None),
         "ghosts": len(ghosts),
         "filtered": len(cut_title) + len(cut_years),
     }

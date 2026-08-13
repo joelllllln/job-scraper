@@ -85,11 +85,25 @@ def job_urls(session, sm_urls, limit):
         time.sleep(DELAY)
         if len(urls) >= limit:
             break
+    # eFC's job URLs used to be /jobs-<slug>. The last run pulled 3 sitemaps and
+    # then kept 0 of their URLs, which is what a changed URL format looks like
+    # from here — so match the shapes they actually use, and if the filter still
+    # rejects everything, SAY SO and show what was really in the sitemap rather
+    # than reporting a confident zero.
     seen, out = set(), []
     for u in urls:
-        if "/jobs-" in u and u not in seen:
+        if u in seen:
+            continue
+        if re.search(r"/jobs?[-/]|/job/|/vacanc|-\d{6,}(?:\.|/|$)", u, re.I):
             seen.add(u)
             out.append(u)
+    if urls and not out:
+        print(f"  ! none of {len(urls)} sitemap URLs looked like a job page. Samples:",
+              file=sys.stderr)
+        for u in urls[:3]:
+            print(f"      {u}", file=sys.stderr)
+        print("    (eFC changed its URL format — update the pattern in efc.py)",
+              file=sys.stderr)
     return out[:limit]
 
 
