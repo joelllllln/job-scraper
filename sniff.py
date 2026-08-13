@@ -228,6 +228,19 @@ def main():
     firms = list(csv.DictReader(open(src)))
     total = len(firms)
 
+    # Always read what is already known, even on --recheck. Two reasons: a site
+    # being down on the day must not delete a good answer, and render.py writes
+    # entries here that sniff.py CANNOT re-derive by definition — they were
+    # found by running JavaScript. Wiping those would silently throw away hours
+    # of browser work with no way to tell it had happened.
+    previous = {}
+    for path in ("sniffed.csv", "manual.csv"):
+        try:
+            for row in csv.DictReader(open(path)):
+                previous[(row.get("name") or "").strip().lower()] = (path, row)
+        except OSError:
+            pass
+
     hits, manual, unknown = [], [], []
     if not recheck:
         for path, bucket in (("sniffed.csv", hits), ("manual.csv", manual)):
@@ -264,8 +277,17 @@ def main():
                 extra = f" ({res['tenant']}/{res['site']})" if res["ats"] == "workday" else ""
                 print(f"[{i}/{len(firms)}] HIT  {res['name']:<34} {res['ats']}/{res['token']}{extra}")
             else:
-                unknown.append(firm)
-                print(f"[{i}/{len(firms)}] ---  {firm['name']}")
+                # Nothing found this time — but if we knew something before,
+                # keep it rather than demoting the firm to unknown.
+                was = previous.get((firm["name"] or "").strip().lower())
+                if was:
+                    path, row = was
+                    (manual if path == "manual.csv" else hits).append(row)
+                    print(f"[{i}/{len(firms)}] keep {firm['name']:<34} "
+                          f"{row.get('ats', '?')} (nothing found today)")
+                else:
+                    unknown.append(firm)
+                    print(f"[{i}/{len(firms)}] ---  {firm['name']}")
             # Checkpointed, because this stage runs under a timeout and being
             # killed at firm 1800 used to discard all 1800 answers.
             if i % 25 == 0:

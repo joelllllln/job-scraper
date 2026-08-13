@@ -109,6 +109,42 @@ def main():
           scrape.ATS_ENDPOINT["lever"].format(t="kpler"),
           "https://api.lever.co/v0/postings/kpler?mode=json")
 
+    print("\nsniff --recheck must not destroy what only a browser could find")
+    import shutil
+    work = tempfile.mkdtemp()
+    here = os.getcwd()
+    try:
+        for f in ("sniff.py", "http_client.py"):
+            shutil.copy(f, work)
+        os.chdir(work)
+        with open("firms.csv", "w") as fh:
+            fh.write("name,category,domain\nMercuria,trading_house,mercuria.com\n"
+                     "Vitol,trading_house,vitol.com\n")
+        with open("sniffed.csv", "w") as fh:
+            fh.write(",".join(sniff.COLS) + "\n")
+            fh.write("Mercuria,greenhouse,mercuria,,,,,https://boards.greenhouse.io/mercuria,"
+                     "rendered by render.py\n")
+        import http_client as _hc1     # local: this runs before check_firms' import
+        saved_argv, saved_get3 = sys.argv, _hc1.get
+        try:
+            # every site down: the worst case for --recheck, and the one where
+            # a rewrite-from-scratch silently deletes hours of browser work
+            _hc1.get = lambda *a, **k: None
+            sys.argv = ["sniff.py", "firms.csv", "--recheck"]
+            import io, contextlib
+            with contextlib.redirect_stdout(io.StringIO()):
+                sniff.main()
+        finally:
+            sys.argv, _hc1.get = saved_argv, saved_get3
+        kept = list(csv.DictReader(open("sniffed.csv")))
+        check("a browser-found ATS survives --recheck with every site down",
+              [(r["name"], r["ats"]) for r in kept], [("Mercuria", "greenhouse")])
+        check_true("and keeps the note saying where it came from",
+                   "render" in kept[0]["found_on"])
+    finally:
+        os.chdir(here)
+        shutil.rmtree(work, ignore_errors=True)
+
     print("\nrender — reading careers pages that only exist after JavaScript")
     import render
     # The prize is the ATS link: one render writes it to sniffed.csv and every

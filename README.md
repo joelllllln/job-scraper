@@ -1,6 +1,68 @@
 # Trading / market analyst job scraper
 
-2303 firms, London-focused. Front office and market-facing roles only.
+2319 firms, London-focused. Front office and market-facing roles only.
+
+## Running it on your own machine
+
+This is the way to run it. LinkedIn blocks datacentre IPs, so the hosted run on
+GitHub Actions has it switched off — from a home connection it works, and it is
+the biggest single source the hosted run cannot reach.
+
+```bash
+pip install -r requirements.txt
+python run.py
+```
+
+The first run asks for your Gmail address and an **app password** (not your
+normal password: myaccount.google.com -> Security -> 2-Step Verification ->
+App passwords). It saves them to `.env`, which is gitignored. After that,
+`python run.py` is the whole command. It takes 30-60 minutes and emails you
+when it is done.
+
+Works on Windows, macOS and Linux — it is Python, not bash. If one source is
+down the rest still run, nothing hangs forever, and partial results are kept.
+
+### The browser pass — worth doing once
+
+```bash
+pip install playwright && playwright install chromium
+python run.py --render
+```
+
+86% of firms with no discoverable ATS serve their careers page fine and simply
+have no ATS link in the HTML: the listings are drawn by JavaScript. `--render`
+opens a real browser and reads what a person would see.
+
+Do this **once**, not weekly. When it finds a firm's ATS it writes it to
+`sniffed.csv`, and from then on the normal run reads that firm through its API
+in milliseconds. The browser is how you discover a board, not how you read it.
+Expect a few hours for the full registry; `--render-limit 100` takes a bite.
+
+### The other flags
+
+```bash
+python run.py --report-all    # email every open role, not just new ones
+python run.py --full          # re-check every firm's ATS from scratch
+python run.py --no-email      # write report.html, send nothing
+python run.py --no-linkedin   # if LinkedIn starts rate limiting you
+python run.py --setup         # change the saved settings
+```
+
+### Worth 15 minutes: the free API keys
+
+Four aggregators index the firms whose own sites cannot be read — which is most
+of them. All free, all currently unset, and together they are worth more than
+any scraping work:
+
+| Key | Where |
+|---|---|
+| `REED_API_KEY` | reed.co.uk/developers |
+| `ADZUNA_APP_ID`, `ADZUNA_APP_KEY` | developer.adzuna.com |
+| `JOOBLE_API_KEY` | jooble.org/api/about |
+| `CAREERJET_AFFID` | careerjet.co.uk/partners |
+
+`python run.py --setup` prompts for Reed and Adzuna; the rest go in `.env` by
+hand, one `KEY=value` per line.
 
 ## Run order
 
