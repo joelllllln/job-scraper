@@ -34,6 +34,16 @@ PATHS = ["", "/careers", "/careers/", "/jobs", "/about/careers", "/company/caree
          "/en/careers", "/careers/vacancies", "/careers/opportunities", "/join-us",
          "/work-with-us", "/about-us/careers", "/careers/jobs"]
 
+# Careers SUBDOMAINS, tried when the apex domain gives nothing. Large firms put
+# the corporate site behind a WAF and host recruitment separately, very often on
+# the ATS vendor's own infrastructure — so careers.example.com answers happily
+# while example.com returns 403 to anything that looks automated. Thirteen of
+# fifteen unreachable prime targets (Citadel Securities, BNP Paribas, Cantor
+# Fitzgerald, Sucden, ScottishPower, Peel Hunt) are bot-blocked on the apex and
+# were never tried anywhere else. This is looking in the right place, not
+# working around the block: a host that answers is a host willing to serve us.
+SUBDOMAINS = ["careers", "jobs", "recruitment", "apply", "talent", "workfor"]
+
 # ATS with a public API we can scrape
 SCRAPABLE = {
     "greenhouse":      [r"(?:boards|job-boards)\.greenhouse\.io/(?:embed/job_board\?for=)?([a-z0-9_-]+)",
@@ -90,6 +100,26 @@ MANUAL = {
 }
 
 
+def candidate_urls(domain):
+    """Where a firm's careers page might actually live.
+
+    Apex paths first, because that is where most of them are and it is one
+    request. Subdomains after, because a corporate WAF frequently guards
+    example.com while careers.example.com is served by the ATS vendor with no
+    protection at all — and the second is the page we actually want to read.
+    """
+    apex = domain.split("/")[0]
+    base = apex[4:] if apex.startswith("www.") else apex
+    for path in PATHS:
+        yield f"https://{domain}{path}"
+    for sub in SUBDOMAINS:
+        # Skip if the registry domain already IS the careers host, or the two
+        # loops would fetch the same URL twice per firm across 2,300 firms.
+        if apex.startswith(f"{sub}."):
+            continue
+        yield f"https://{sub}.{base}"
+
+
 def sniff_one(session, firm):
     name, domain = firm["name"], (firm.get("domain") or "").strip()
     # No domain, nothing to read. Companies House supplies thousands of firms
@@ -97,9 +127,21 @@ def sniff_one(session, firm):
     # 13 of those per firm is hours of the run spent proving nothing.
     if not domain:
         return None
-    for path in PATHS:
-        url = f"https://{domain}{path}"
+    # A WAF that answers 403 to the homepage answers 403 to every path on that
+    # host, so walking the remaining twelve is twelve guaranteed failures per
+    # firm — and it is exactly the blocked firms that get re-probed every week,
+    # because they never record an answer. Give up on the host at the first bot
+    # block and spend the budget on the careers subdomain instead, which is
+    # usually a different machine entirely.
+    walled = set()
+    for url in candidate_urls(domain):
+        host = url.split("/")[2]
+        if host in walled:
+            continue
         r = http_client.get(url, sess=session)
+        if r is not None and r.status_code in (401, 403, 405, 406, 429, 503):
+            walled.add(host)
+            continue
         if r is None or r.status_code >= 400:
             continue
         html = http_client.text_of(r)

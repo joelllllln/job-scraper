@@ -109,6 +109,39 @@ def main():
           scrape.ATS_ENDPOINT["lever"].format(t="kpler"),
           "https://api.lever.co/v0/postings/kpler?mode=json")
 
+    print("\ncareers subdomains — where blocked firms actually publish")
+    cands = list(sniff.candidate_urls("bnpparibas.com"))
+    check("apex paths come first", cands[:len(sniff.PATHS)],
+          [f"https://bnpparibas.com{p}" for p in sniff.PATHS])
+    check_true("then the careers subdomains",
+               "https://careers.bnpparibas.com" in cands and "https://jobs.bnpparibas.com" in cands)
+    check("www is stripped before building a subdomain",
+          [c for c in sniff.candidate_urls("www.citadelsecurities.com")
+           if c.startswith("https://careers.")], ["https://careers.citadelsecurities.com"])
+    check_true("a domain that is already a careers host is not doubled up",
+               "https://careers.careers.example.com" not in
+               list(sniff.candidate_urls("careers.example.com")))
+
+    # 13 of 15 unreachable prime targets answer 403 on the apex. A WAF blocks
+    # every path on the host, so walking the other twelve is twelve guaranteed
+    # failures per firm, every week, for exactly the firms that never record an
+    # answer and so get re-probed forever.
+    seen = []
+    class _R:
+        def __init__(s, code):
+            s.status_code, s.url, s.text, s.encoding, s.headers = code, "", "", "utf-8", {}
+    saved_get2 = _hc.get
+    try:
+        _hc.get = lambda url, **kw: (seen.append(url),
+                                     _R(403) if "//bnpparibas.com" in url else _R(404))[1]
+        sniff.sniff_one(None, {"name": "BNP Paribas", "domain": "bnpparibas.com"})
+    finally:
+        _hc.get = saved_get2
+    check("a walled host costs one request, not thirteen",
+          len([c for c in seen if c.split("/")[2] == "bnpparibas.com"]), 1)
+    check("and the careers subdomains are still tried",
+          len([c for c in seen if c.split("/")[2] != "bnpparibas.com"]), len(sniff.SUBDOMAINS))
+
     print("\nscale — what breaks at thousands of firms")
     import links
     # Companies House supplies names with no website. Each blank domain used to
