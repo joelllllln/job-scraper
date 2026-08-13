@@ -71,7 +71,10 @@ UNSUPPORTED = {
     "cornerstone": r"csod\.com",
     "brassring": r"brassring\.com|kenexa\.com",
     "oleeo": r"oleeo\.com|\.wcn\.co\.uk",          # common in UK public sector
-    "talnet": r"tal\.net",                          # ditto — NHS, regulators
+    # \b-anchored: unanchored, "tal.net" matched andurandcapi-TAL.NET and
+    # digi-TAL.NET, and reported four hedge funds as running NHS recruitment
+    # software. Same substring bug as `uk` matching Ukraine.
+    "talnet": r"\btal\.net",                        # ditto — NHS, regulators
     "hireserve": r"hireserve\.com",
     "peoplehr": r"peoplehr\.net",
     "zoho_recruit": r"zohorecruit\.(?:com|eu)",
@@ -97,11 +100,18 @@ def probe_one(session, firm):
     # Same paths sniff.py walks, so the probe measures the pages sniff would
     # have read rather than a different set — otherwise "unsupported" could
     # just mean "we looked somewhere else".
+    # "read the page and found no ATS" and "never got a page at all" need
+    # completely different answers — the first needs a browser, the second means
+    # the careers page is somewhere we are not looking, or the host is blocking
+    # us. The first version reported both as "no fingerprint", which made 94% of
+    # the sample look like one problem when it is at least two.
+    fetched = False
     for path in sniff.PATHS:
         url = f"https://{domain}{path}"
         r = http_client.get(url, sess=session, retries=0, timeout=12)
         if r is None or r.status_code >= 400:
             continue
+        fetched = True
         html = r.text or ""
         hits = sorted({k for k, rx in COMPILED.items() if rx.search(html)})
         if hits:
@@ -110,7 +120,7 @@ def probe_one(session, firm):
             out["url"] = url
             return out
         out["url"] = url
-        out["found"] = "no fingerprint"
+    out["found"] = "no fingerprint" if fetched else "never fetched"
     return out
 
 
@@ -168,11 +178,14 @@ def main():
         w.writeheader()
         w.writerows(sorted(results, key=lambda r: (r["found"], r["name"])))
 
-    tally, none_found = {}, 0
+    tally, none_found, never = {}, 0, 0
     for r in results:
         systems = [s for s in r["found"].split(",") if s in ALL]
         if not systems:
-            none_found += 1
+            if r["found"] == "never fetched":
+                never += 1
+            else:
+                none_found += 1
         for s in systems:
             tally[s] = tally.get(s, 0) + 1
 
@@ -181,7 +194,9 @@ def main():
         mark = "supported" if s in KNOWN else "NOT SUPPORTED"
         print(f"  {n:>4}  ({100 * n / max(1, len(results)):>4.1f}%)  {s:<16} {mark}")
     print(f"  {none_found:>4}  ({100 * none_found / max(1, len(results)):>4.1f}%)  "
-          f"{'no fingerprint':<16} careers page is JS-rendered, bespoke, or absent")
+          f"{'no fingerprint':<16} page READ, no ATS link in it — needs a browser")
+    print(f"  {never:>4}  ({100 * never / max(1, len(results)):>4.1f}%)  "
+          f"{'never fetched':<16} no careers path answered — wrong path, or blocked")
 
     gain = sum(n for s, n in tally.items() if s in UNSUPPORTED)
     print(f"\nSupporting every unsupported system found would reach {gain} more of "
