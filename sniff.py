@@ -235,21 +235,21 @@ def fingerprint(name, blob, final_url):
     return None
 
 
-def sniff_one(session, firm):
-    name, domain = firm["name"], (firm.get("domain") or "").strip()
-    # No domain, nothing to read. Companies House supplies thousands of firms
-    # with no website, and "https:///careers" still costs a full DNS timeout —
-    # 13 of those per firm is hours of the run spent proving nothing.
-    if not domain:
-        return None
-    # A WAF that answers 403 to the homepage answers 403 to every path on that
-    # host, so walking the remaining twelve is twelve guaranteed failures per
-    # firm — and it is exactly the blocked firms that get re-probed every week,
-    # because they never record an answer. Give up on the host at the first bot
-    # block and spend the budget on the careers subdomain instead, which is
-    # usually a different machine entirely.
-    walled, tried_host = set(), set()
-    fallback = []          # (html, url) of pages read but not fingerprinted
+def pages(session, domain, follow=True):
+    """Yield (html, url) for every readable page that might list this firm's jobs.
+
+    The order and the short-circuits are the accumulated lessons: guessed paths
+    first, then www / the apex, then careers subdomains, and finally the links
+    the site itself labels as careers. A host that bot-blocks or fails to
+    resolve is abandoned after one request rather than thirteen.
+
+    Shared deliberately. sniff.py fingerprints these pages for an ATS and
+    embedded.py mines them for job listings, and when the walk lived inside
+    sniff.py only, every improvement to it — subdomains, www, followed links —
+    benefited ATS discovery and did nothing for the far larger number of firms
+    whose jobs are read straight off the page.
+    """
+    walled, tried_host, seen_pages = set(), set(), []
     for url in candidate_urls(domain):
         host = url.split("/")[2]
         if host in walled:
@@ -261,30 +261,23 @@ def sniff_one(session, firm):
             walled.add(host)
             continue
         if r is None:
-            # No answer at all on the FIRST request to this host means the host
-            # does not resolve, and /careers will not resolve either. Abandoning
-            # it here saves twelve DNS timeouts per firm and, more usefully, gets
-            # to the www variant while there is still time in the stage.
+            # No answer on the FIRST request to a host means it does not
+            # resolve, and /careers will not resolve either. Twelve further
+            # timeouts prove nothing and cost the rest of the stage.
             if first_touch:
                 walled.add(host)
             continue
         if r.status_code >= 400:
             continue
         html = http_client.text_of(r)
-        blob = html + " " + r.url
+        if len(seen_pages) < 2:
+            seen_pages.append((html, r.url))
+        yield html, r.url
 
-        hit = fingerprint(name, blob, r.url)
-        if hit:
-            return hit
-        # Nothing on this page, but the page itself may point at the real one.
-        if len(fallback) < 2:
-            fallback.append((html, r.url))
-
-    # Last resort: follow the link the site labels as careers. Guessing paths
-    # only works if the careers page is at a path we guessed; every firm that
-    # calls it /life-here or /who-we-are/opportunities was invisible.
+    if not follow:
+        return
     tried = set()
-    for html, base in fallback:
+    for html, base in seen_pages:
         for link in careers_links(html, base):
             if link in tried:
                 continue
@@ -292,9 +285,19 @@ def sniff_one(session, firm):
             r = http_client.get(link, sess=session)
             if r is None or r.status_code >= 400:
                 continue
-            hit = fingerprint(name, http_client.text_of(r) + " " + r.url, r.url)
-            if hit:
-                return hit
+            yield http_client.text_of(r), r.url
+
+
+def sniff_one(session, firm):
+    name, domain = firm["name"], (firm.get("domain") or "").strip()
+    # No domain, nothing to read. Companies House supplies thousands of firms
+    # with no website, and "https:///careers" still costs a full DNS timeout.
+    if not domain:
+        return None
+    for html, url in pages(None if session is False else session, domain):
+        hit = fingerprint(name, html + " " + url, url)
+        if hit:
+            return hit
     return None
 
 

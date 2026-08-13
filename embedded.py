@@ -251,33 +251,22 @@ def jobs_from_jsonld(company, html):
 
 
 def scan_firm(session, firm):
+    """Every job this firm serves in its page markup, from any page we can read.
+
+    Uses sniff.pages so it reaches exactly what ATS discovery reaches — the
+    careers subdomain, the www variant, and the link the site labels as
+    careers. Before this it walked its own shorter list and missed all three.
+    """
     domain = (firm.get("domain") or "").strip()
     if not domain:
         return []
-    walled, tried_host = set(), set()
-    for url in sniff.candidate_urls(domain):
-        host = url.split("/")[2]
-        if host in walled:
-            continue
-        first_touch = host not in tried_host
-        tried_host.add(host)
-        r = http_client.get(url, sess=session)
-        if r is not None and r.status_code in (401, 403, 405, 406, 429, 503):
-            walled.add(host)
-            continue
-        if r is None:
-            if first_touch:      # host does not resolve — see sniff.sniff_one
-                walled.add(host)
-            continue
-        if r.status_code >= 400:
-            continue
-        html = http_client.text_of(r)
-        # JSON-LD first: it is a published contract with a fixed shape, so it is
-        # more reliable than anything inferred from a framework's page state.
+    for html, url in sniff.pages(session, domain):
+        # JSON-LD first: a published contract with a fixed shape, so more
+        # reliable than anything inferred from a framework's page state.
         jobs = jobs_from_jsonld(firm["name"], html)
         if jobs:
             return jobs
-        jobs = jobs_from_html(firm["name"], html, r.url)
+        jobs = jobs_from_html(firm["name"], html, url)
         if jobs:
             return jobs
     return []

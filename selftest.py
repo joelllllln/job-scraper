@@ -219,6 +219,18 @@ def main():
     check("and recorded against the page it was actually on",
           (found or {}).get("found_on"), "https://acme.com/life-here")
 
+    print("\none page walker, so every source reaches the same pages")
+    import embedded
+    # sniff.py fingerprints these pages for an ATS; embedded.py mines them for
+    # listings. While the walk lived inside sniff.py, subdomains, www and
+    # followed links improved ATS discovery and did nothing for the far larger
+    # number of firms whose jobs are read straight off the page.
+    import inspect as _ins
+    check_true("sniff exposes the walk", callable(getattr(sniff, "pages", None)))
+    check_true("and embedded uses it rather than its own shorter list",
+               "sniff.pages(" in _ins.getsource(embedded.scan_firm))
+    check_true("sniff_one uses it too", "pages(" in _ins.getsource(sniff.sniff_one))
+
     print("\nembedded state — the jobs are already in the HTML we fetched")
     import embedded, json as _json
     # Next.js and friends serialise the page data so the client can hydrate.
