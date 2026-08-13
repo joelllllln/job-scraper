@@ -153,6 +153,61 @@ def main():
                {401, 403, 429, 503} <= verify.BOT_BLOCK)
     check_true("404 is not — that one really is gone", 404 not in verify.BOT_BLOCK)
 
+    print("\nembedded state — the jobs are already in the HTML we fetched")
+    import embedded, json as _json
+    # Next.js and friends serialise the page data so the client can hydrate.
+    # That means a large share of the "needs a browser" pile does not.
+    nextjs = ('<script id="__NEXT_DATA__" type="application/json">' + _json.dumps({
+        "props": {"pageProps": {
+            "jobs": [{"title": "Junior Gas Analyst", "location": "London, UK",
+                      "slug": "junior-gas-analyst", "datePosted": "2026-08-01T00:00:00Z"},
+                     {"title": "Power Trading Analyst", "location": {"name": "London"},
+                      "slug": "power-trading"}],
+            "navigation": [{"title": "About", "url": "/about"}]}}}) + '</script>')
+    got = embedded.jobs_from_html("Mercuria", nextjs, "https://mercuria.com/careers")
+    check("jobs read straight out of __NEXT_DATA__",
+          [(j["title"], j["location"]) for j in got],
+          [("Junior Gas Analyst", "London, UK"), ("Power Trading Analyst", "London")])
+    check("a slug is resolved against the careers page, not the domain root",
+          got[0]["url"], "https://mercuria.com/careers/junior-gas-analyst")
+    check("and the date is normalised", got[0]["posted"], "2026-08-01")
+    redux = ('<script>window.__INITIAL_STATE__ = ' + _json.dumps({
+        "careers": {"openPositions": [{"jobTitle": "Commodities Analyst", "city": "London",
+                                       "applyUrl": "https://x.com/apply/1"}]}}) + ';</script>')
+    check("and out of a Redux state assignment",
+          [j["title"] for j in embedded.jobs_from_html("H", redux, "https://h.com/careers")],
+          ["Commodities Analyst"])
+
+    # Precision is what makes this usable: page state is full of things with a
+    # "title" that are not jobs, and mining them would poison the digest.
+    junk = ('<script id="__NEXT_DATA__" type="application/json">' + _json.dumps({
+        "props": {"pageProps": {
+            "navigation": [{"title": "Careers", "url": "/careers"},
+                           {"title": "News", "url": "/news"}],
+            "articles": [{"title": "We opened a new London office", "url": "/news/1"}],
+            "offices": [{"name": "London", "city": "London"}]}}}) + '</script>')
+    check("navigation, blog posts and offices are not jobs",
+          embedded.jobs_from_html("X", junk, "https://x.com/careers"), [])
+    check("a page with no embedded state yields nothing",
+          embedded.jobs_from_html("X", "<html><p>hi</p></html>", "https://x.com"), [])
+    check("malformed embedded json does not raise",
+          embedded.jobs_from_html("X", '<script id="__NEXT_DATA__" type="application/json">'
+                                       '{oops</script>', "https://x.com"), [])
+    # A job-shaped object needs a job-shaped container too, or every "items"
+    # array in the page state becomes a vacancy.
+    loose = ('<script id="__NEXT_DATA__" type="application/json">' + _json.dumps({
+        "items": [{"title": "Some Panel Session", "url": "/x"}]}) + '</script>')
+    check("job-shaped objects outside a job-named container are ignored",
+          embedded.jobs_from_html("X", loose, "https://x.com"), [])
+    # A guessed link that 404s would now be read as proof the job is dead.
+    check("an unusable link falls back to the careers page rather than guessing",
+          embedded.absolute("Apply via our portal", "url", "https://x.com/careers"), "")
+    check("an absolute path resolves against the origin",
+          embedded.absolute("/jobs/123", "url", "https://x.com/careers"),
+          "https://x.com/jobs/123")
+    check_true("embedded rows match the inbox schema",
+               set(got[0]) == set(embedded.FIELDS))
+
     print("\nenterprise ATS — Oracle and Eightfold now have working readers")
     # These were filed under MANUAL, which meant that DISCOVERING one was worth
     # nothing: the firm was recorded and then never read. Oracle was the most

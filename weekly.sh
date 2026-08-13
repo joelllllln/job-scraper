@@ -133,6 +133,8 @@ if [ -z "$RESEND" ]; then
   # --- collection --------------------------------------------------------------
   # Order matters: direct ATS first, so when the same job also turns up on an
   # aggregator the stored link is already the direct one.
+  # jobs serialised into the page by Next.js / Nuxt / Redux — no browser needed
+  run "embedded jobs" $PYTHON embedded.py
   run "ats endpoints" $PYTHON scrape.py
   run "workday"       $PYTHON workday.py
   run "reed+bullhorn" $PYTHON feeds.py --all
@@ -141,6 +143,7 @@ if [ -z "$RESEND" ]; then
   # LinkedIn blocks datacentre IPs, so it is collected on Railway instead and
   # pushed here as a CSV. No-op when the file is absent or empty.
   run "linkedin inbox" $PYTHON inbox.py
+  run "embedded inbox" $PYTHON inbox.py --file embedded_inbox.csv
 
   # --- verification -------------------------------------------------------------
   run "verify" $PYTHON verify.py

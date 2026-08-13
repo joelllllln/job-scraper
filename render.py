@@ -39,6 +39,7 @@ import sys
 import urllib.parse
 import urllib.robotparser as robotparser
 
+import embedded
 import sniff
 
 OUT_INBOX = "rendered_inbox.csv"
@@ -204,6 +205,12 @@ def render_firm(page, firm):
         jobs = jobs_from_jsonld(name, html)
         if jobs:
             return None, jobs, f"{len(jobs)} JobPosting blocks at {page.url}"
+        # After hydration the framework state is still in the DOM, and often
+        # richer than the JSON-LD — which many sites emit only on the detail
+        # page, not the listing.
+        jobs = embedded.jobs_from_html(name, html, page.url)
+        if jobs:
+            return None, jobs, f"{len(jobs)} jobs in page state at {page.url}"
     return None, [], "robots disallowed" if blocked_by_robots else "nothing found"
 
 

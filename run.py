@@ -173,6 +173,11 @@ def main():
         # never needs the browser again.
         stage("render", ["render.py", "--limit", str(args.render_limit)], failures)
 
+    # Cheap, no browser: Next.js / Nuxt / Redux sites serialise their job list
+    # into the HTML we already fetch, so a large share of the "needs JavaScript"
+    # pile is readable without one.
+    stage("embedded jobs", ["embedded.py"], failures)
+
     stage("ats endpoints", ["scrape.py"], failures)
     stage("workday", ["workday.py"], failures)
     stage("reed+bullhorn", ["feeds.py", "--all"], failures)
@@ -183,7 +188,8 @@ def main():
     # Anything collected out of band — the Railway LinkedIn worker, or the
     # browser stage above. No-ops when the files are absent.
     for label, path in (("linkedin inbox", "linkedin_inbox.csv"),
-                        ("rendered inbox", "rendered_inbox.csv")):
+                        ("rendered inbox", "rendered_inbox.csv"),
+                        ("embedded inbox", "embedded_inbox.csv")):
         if os.path.exists(path):
             stage(label, ["inbox.py", "--file", path], failures)
 
