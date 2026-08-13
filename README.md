@@ -13,7 +13,7 @@ pip install -r requirements.txt
 python run.py
 ```
 
-The first run asks for your Gmail address and an **app password** (not your
+The first run asks for `DB_PASSPHRASE`, your Gmail address and an **app password** (not your
 normal password: myaccount.google.com -> Security -> 2-Step Verification ->
 App passwords). It saves them to `.env`, which is gitignored. After that,
 `python run.py` is the whole command. It takes 30-60 minutes and emails you
@@ -21,6 +21,19 @@ when it is done.
 
 Works on Windows, macOS and Linux — it is Python, not bash. If one source is
 down the rest still run, nothing hangs forever, and partial results are kept.
+
+### Your job history on a new machine
+
+`jobs.db` holds every role ever seen, how often, and what you marked applied.
+It is gitignored and travels as `jobs.db.gpg`, so a fresh clone has no plain
+copy. `run.py` decrypts it at the start using `DB_PASSPHRASE` — the same
+passphrase set as a GitHub secret — and re-encrypts it at the end.
+
+Needs `gpg` on PATH. macOS `brew install gnupg`, Debian/Ubuntu `apt install
+gnupg`, Windows `winget install GnuPG.GnuPG`. Without it the run still works,
+starting from an empty database and saying so; you lose dedupe history and
+your applied markings, not the week's results. To keep a run's history for
+next time, commit the refreshed `jobs.db.gpg`.
 
 ### The browser pass — worth doing once
 
