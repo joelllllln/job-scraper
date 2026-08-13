@@ -1,7 +1,7 @@
 name,domain,verdict,detail,final_url
 ABN AMRO,abnamro.com,blocked,"http 503 — bot protection, domain probably fine",
 Access Bank,accessbankplc.com,blocked,"http 403 — bot protection, domain probably fine",
-Acerinox,acerinox.com,blocked,bot challenge at validate.perfdrive.com,"https://validate.perfdrive.com/?ssa=adafff3b-967f-469a-87d0-5219ec56d29c&ssb=05798215314&ssc=https%3A%2F%2Facerinox.com%2F&ssi=e1801318-cs9v-45ef-a48f-b39330bf6a6d&ssk=botmanager_support@radware.com&ssm=16370586408839274101641187453342&ssn=df610dcd43d277e744ef13ae440c17643c1e12d5cb75-c704-4a2d-9ffedf&sso=4e30385c-aad5d26e2543a4c1e930c7eb64cd4e574bfd00fcfa6ede5a&ssp=93988248961786599193178652612192899&ssq=62948577253016532096872530091991059102098&ssr=MjAuMTcxLjEyNS4xMjk=&sst=Mozilla/5.0%20(Windows%20NT%2010.0;%20Win64;%20x64)%20AppleWebKit/537.36%20(KHTML,%20like%20Gecko)%20Chrome/124.0.0.0%20Safari/537.36&ssu=&ssv=&ssw=&ssx=eyJfX3V6bWYiOiI3ZjkwMDAxMmQ1Y2I3NS1jNzA0LTRhMmQtOTg1Yy1hYWQ1ZDI2ZTI1NDMxLTE3ODY1NzI1MzA4NTgwLTAwNDlkYThlZjI1ODk4NDgzMjIxMCIsInV6bXgiOiI3ZmMwMDAzZDE2YWI1My1iMTQ1LTRiODUtYTQxOC1lZTUzYzQ2ZjgxYmQxLTE3ODY1NzI1MzA4NTgwLTAwMDdhYzMzZWMxYWExNDUxOTgxMCIsInJkIjoiYWNlcmlub3guY29tIn0="
+Acerinox,acerinox.com,blocked,bot challenge at validate.perfdrive.com,"https://validate.perfdrive.com/?ssa=3729b5d4-84a2-4a4a-b26d-22e439667f6c&ssb=78974232415&ssc=https%3A%2F%2Facerinox.com%2F&ssi=cbcf13e9-cs9v-4511-9dde-0c7f0a6a42a9&ssk=botmanager_support@radware.com&ssm=34465890281406728103416590322207&ssn=19fdf747a6995de0f31dcf2fbacd8e1d9613c11db5c9-4a8f-4049-9178bb&sso=13881906-12ddac5e78277ea0fb7e1120cf3fb4c841c4c00a36594951&ssp=51235121651786679167178660890390985&ssq=08923061677495349692916774581984691574156&ssr=NjQuMjM2LjEzNS4yMQ==&sst=Mozilla/5.0%20(Windows%20NT%2010.0;%20Win64;%20x64)%20AppleWebKit/537.36%20(KHTML,%20like%20Gecko)%20Chrome/124.0.0.0%20Safari/537.36&ssu=&ssv=&ssw=&ssx=eyJ1em14IjoiN2ZjMDAwNDZjZDZmYjYtODBiYi00NTk0LThjNzItODNkNTIwOTFkMGQ4MS0xNzg2NjE2Nzc0NzMxMC0wMDBiZDA3NTE1ODMwN2MwYjM5MTAiLCJyZCI6ImFjZXJpbm94LmNvbSIsIl9fdXptZiI6IjdmOTAwMGMxMWRiNWM5LTRhOGYtNDA0OS05OTA2LTEyZGRhYzVlNzgyNzEtMTc4NjYxNjc3NDczMTAtMDA0ZDlmZjQ2M2I4ZDZhNzdjMzEwIn0="
 Afreximbank,afreximbank.com,blocked,"http 403 — bot protection, domain probably fine",
 Alcazar Energy,alcazarenergy.com,blocked,"http 403 — bot protection, domain probably fine",
 Algebris Investments,algebris.com,blocked,"http 403 — bot protection, domain probably fine",
@@ -44,6 +44,7 @@ Clarivate,clarivate.com,blocked,"http 403 — bot protection, domain probably fi
 DNO,dno.no,blocked,"http 403 — bot protection, domain probably fine",
 DNV,dnv.com,blocked,"http 403 — bot protection, domain probably fine",
 Dow,dow.com,blocked,"http 403 — bot protection, domain probably fine",
+Dowgate Capital,dowgate.co.uk,blocked,"http 403 — bot protection, domain probably fine",
 Droit Financial,droit.tech,blocked,"http 403 — bot protection, domain probably fine",
 Dubai Gold and Commodities Exchange,dgcx.ae,blocked,"http 403 — bot protection, domain probably fine",
 E.ON Energy Markets,eon.com,blocked,"http 403 — bot protection, domain probably fine",
@@ -61,7 +62,6 @@ Energy Transitions Commission,energy-transitions.org,blocked,"http 403 — bot p
 Enoc,enoc.com,blocked,"http 403 — bot protection, domain probably fine",
 Euronav,euronav.com,blocked,"http 403 — bot protection, domain probably fine",
 Everland,everlandmarketing.com,blocked,"http 403 — bot protection, domain probably fine",
-FIS,fisglobal.com,blocked,"http 403 — bot protection, domain probably fine",
 GLG Insights,glginsights.com,blocked,"http 403 — bot protection, domain probably fine",
 Glocomms,glocomms.com,blocked,"http 429 — bot protection, domain probably fine",
 Guggenheim Investments,guggenheiminvestments.com,blocked,"http 403 — bot protection, domain probably fine",
@@ -161,7 +161,6 @@ Centamin,centamin.com,moved,redirects to anglogoldashanti.com,https://www.anglog
 Ceres Global Ag,ceresglobalagcorp.com,moved,redirects to bartlettco.com,https://bartlettco.com/
 Clausematch,clausematch.com,moved,redirects to corlytics.com,https://www.corlytics.com:443/
 Commonwealth LNG,commonwealthlng.com,moved,redirects to caturus.com,https://caturus.com/operations/#commonwealth
-Cooper Energy,cooperenergy.com.au,moved,redirects to amplitudeenergy.com.au,https://amplitudeenergy.com.au/
 DEMB Trading,jdecoffee.com,moved,redirects to jacobsdouweegberts.com,https://www.jacobsdouweegberts.com
 ED and F Man Capital Markets,edfmancapital.com,moved,redirects to marex.com,https://www.marex.com:443/about-us/regulatory/mcmi-regulatory-documents
 Edinburgh Partners,edinburghpartners.com,moved,redirects to franklintempleton.co.uk,https://www.franklintempleton.co.uk/edinburgh-partners-opportunities-fund-plc
@@ -339,6 +338,7 @@ Aspen Insurance,aspen.co,ok,page names insurance,https://www.sompo.com/en-us
 Aspex Management,aspexmanagement.com,ok,page names aspex,https://aspexmanagement.com/
 Astarta Holding,,ok,no domain claimed,
 Atalaya Mining,atalayamining.com,ok,page names atalaya/mining,https://atalayamining.com/
+Atrato Onsite Energy,atratoonsiteenergy.com,ok,page names onsite,https://finlight.com/en/
 Atrato Partners,atratopartners.com,ok,page names atrato,https://atratogroup.com/
 Atrium Underwriters,atrium-uw.com,ok,page names atrium,https://www.atrium-uw.com/
 Attestor Capital,attestorcapital.com,ok,page names attestor,https://www.attestor.com/
@@ -1930,7 +1930,6 @@ Ashmore Group,ashmoregroup.com,unreachable,no response,
 Association for Decentralised Energy,theade.co.uk,unreachable,no response,
 Astaris Capital Management,astariscapital.com,unreachable,no response,
 Astute Technical Recruitment,astutetechnical.co.uk,unreachable,no response,
-Atrato Onsite Energy,atratoonsiteenergy.com,unreachable,no response,
 Augusta Energy,augustaenergy.com,unreachable,no response,
 Aurubis UK,aurubis.co.uk,unreachable,no response,
 Avance Gas,avancegas.com,unreachable,no response,
@@ -1986,6 +1985,7 @@ Consolidated Marine Management,cmm.gr,unreachable,no response,
 Consolidated Trading,consolidatedtrading.com,unreachable,no response,
 Constantine Energy Storage,constantine-energy.com,unreachable,no response,
 Control Risks,controlrisks.com,unreachable,no response,
+Cooper Energy,cooperenergy.com.au,unreachable,no response,
 Coopman Search,coopmansearch.com,unreachable,no response,
 Coral Energy,coralenergy.ae,unreachable,no response,
 Coriolis Energy,coriolisenergy.com,unreachable,no response,
@@ -2002,7 +2002,6 @@ Dalian Commodity Exchange,dce.com.cn,unreachable,no response,
 Derichebourg,derichebourg.com,unreachable,no response,
 Diameter Capital Partners,diameterpartners.com,unreachable,no response,
 Discovery Capital Management,discoverycapital.com,unreachable,no response,
-Dowgate Capital,dowgate.co.uk,unreachable,http 404,
 Downing Renewables,downingrenewables.com,unreachable,no response,
 Downing Strategic,downingstrategic.com,unreachable,no response,
 Drewry Maritime,drewry.co.uk,unreachable,no response,
@@ -2030,6 +2029,7 @@ Epic Gas,epic-gas.com,unreachable,no response,
 Euromoney,euromoney.com,unreachable,no response,
 Evergreen Marine,evergreen-marine.com,unreachable,no response,
 Export Trading Group,etgworld.co.uk,unreachable,no response,
+FIS,fisglobal.com,unreachable,no response,
 Falck Renewables,falckrenewables.com,unreachable,http 410,
 Fir Tree Partners,firtreepartners.com,unreachable,no response,
 First Sentier Investors,firstsentierinvestors.com,unreachable,no response,
