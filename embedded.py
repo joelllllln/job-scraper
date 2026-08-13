@@ -209,6 +209,47 @@ def jobs_from_html(company, html, page_url):
     return out
 
 
+def jobs_from_jsonld(company, html):
+    """schema.org JobPosting blocks, which many bespoke sites still emit.
+
+    Published specifically to be machine-read — it is what puts these listings
+    into Google for Jobs — so reading it is using the page as intended.
+    """
+    out = []
+    for block in re.findall(r'<script[^>]+application/ld\+json[^>]*>(.*?)</script>',
+                            html, re.S | re.I):
+        try:
+            data = json.loads(block.strip())
+        except (ValueError, TypeError):
+            continue
+        for node in (data if isinstance(data, list) else [data]):
+            if not isinstance(node, dict):
+                continue
+            graph = node.get("@graph")
+            for item in (graph if isinstance(graph, list) else [node]):
+                if not isinstance(item, dict):
+                    continue
+                if "JobPosting" not in str(item.get("@type", "")):
+                    continue
+                loc = item.get("jobLocation") or {}
+                if isinstance(loc, list):
+                    loc = loc[0] if loc else {}
+                addr = (loc or {}).get("address") or {}
+                where = " ".join(str(addr.get(k, "")) for k in
+                                 ("addressLocality", "addressRegion", "addressCountry")).strip()
+                out.append({
+                    "company": (item.get("hiringOrganization") or {}).get("name") or company,
+                    "title": (item.get("title") or "").strip(),
+                    "location": where,
+                    "url": item.get("url") or "",
+                    # Named for where it was READ, not how: this same function
+                    # now serves the static pass and the browser pass.
+                    "source": "jsonld",
+                    "posted": (item.get("datePosted") or "")[:10],
+                })
+    return [j for j in out if j["title"] and j["url"]]
+
+
 def scan_firm(session, firm):
     domain = (firm.get("domain") or "").strip()
     if not domain:
@@ -224,7 +265,13 @@ def scan_firm(session, firm):
             continue
         if r is None or r.status_code >= 400:
             continue
-        jobs = jobs_from_html(firm["name"], http_client.text_of(r), r.url)
+        html = http_client.text_of(r)
+        # JSON-LD first: it is a published contract with a fixed shape, so it is
+        # more reliable than anything inferred from a framework's page state.
+        jobs = jobs_from_jsonld(firm["name"], html)
+        if jobs:
+            return jobs
+        jobs = jobs_from_html(firm["name"], html, r.url)
         if jobs:
             return jobs
     return []

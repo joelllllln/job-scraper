@@ -42,6 +42,9 @@ import urllib.robotparser as robotparser
 import embedded
 import sniff
 
+# One implementation, used by the static pass and the browser pass alike.
+jobs_from_jsonld = embedded.jobs_from_jsonld
+
 OUT_INBOX = "rendered_inbox.csv"
 INBOX_FIELDS = ["company", "title", "location", "url", "source", "posted"]
 
@@ -125,45 +128,6 @@ def ats_from_html(name, html, final_url):
                         "dc": "", "site": "", "locale": "", "board_url": final_url,
                         "found_on": final_url}
     return None
-
-
-def jobs_from_jsonld(company, html):
-    """schema.org JobPosting blocks, which many bespoke sites still emit.
-
-    Published specifically to be machine-read — it is what puts these listings
-    into Google for Jobs — so reading it is using the page as intended.
-    """
-    out = []
-    for block in re.findall(r'<script[^>]+application/ld\+json[^>]*>(.*?)</script>',
-                            html, re.S | re.I):
-        try:
-            data = json.loads(block.strip())
-        except (ValueError, TypeError):
-            continue
-        for node in (data if isinstance(data, list) else [data]):
-            if not isinstance(node, dict):
-                continue
-            graph = node.get("@graph")
-            for item in (graph if isinstance(graph, list) else [node]):
-                if not isinstance(item, dict):
-                    continue
-                if "JobPosting" not in str(item.get("@type", "")):
-                    continue
-                loc = item.get("jobLocation") or {}
-                if isinstance(loc, list):
-                    loc = loc[0] if loc else {}
-                addr = (loc or {}).get("address") or {}
-                where = " ".join(str(addr.get(k, "")) for k in
-                                 ("addressLocality", "addressRegion", "addressCountry")).strip()
-                out.append({
-                    "company": (item.get("hiringOrganization") or {}).get("name") or company,
-                    "title": (item.get("title") or "").strip(),
-                    "location": where,
-                    "url": item.get("url") or "",
-                    "source": "rendered",
-                    "posted": (item.get("datePosted") or "")[:10],
-                })
-    return [j for j in out if j["title"] and j["url"]]
 
 
 def render_firm(page, firm):

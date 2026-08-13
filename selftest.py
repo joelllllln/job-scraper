@@ -246,6 +246,24 @@ def main():
     check_true("embedded rows match the inbox schema",
                set(got[0]) == set(embedded.FIELDS))
 
+    # schema.org JobPosting is published so it can be machine-read, and plenty
+    # of sites emit it on a page whose listings are otherwise JavaScript. It
+    # used to be read only inside the browser, so the cheap static pass missed
+    # it entirely.
+    ld = ('<script type="application/ld+json">{"@type":"JobPosting",'
+          '"title":"Junior Power Analyst","url":"https://v.com/j/1",'
+          '"datePosted":"2026-08-10","hiringOrganization":{"name":"Vitol"},'
+          '"jobLocation":{"address":{"addressLocality":"London","addressCountry":"GB"}}}'
+          '</script>')
+    ldj = embedded.jobs_from_jsonld("Vitol", ld)
+    check("JSON-LD read without a browser",
+          [(j["company"], j["title"], j["posted"]) for j in ldj],
+          [("Vitol", "Junior Power Analyst", "2026-08-10")])
+    check_true("and tagged by how it was read", ldj[0]["source"] == "jsonld")
+    import render as _r2
+    check_true("the browser uses the same implementation, not a second copy",
+               _r2.jobs_from_jsonld is embedded.jobs_from_jsonld)
+
     print("\nenterprise ATS — Oracle and Eightfold now have working readers")
     # These were filed under MANUAL, which meant that DISCOVERING one was worth
     # nothing: the firm was recorded and then never read. Oracle was the most
