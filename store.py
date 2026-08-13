@@ -31,8 +31,19 @@ import http_client
 DB = "jobs.db"
 
 # Higher wins when the same job arrives from two places.
+#
+# The firm's own website ranks at the top, alongside its ATS, because that is
+# the primary source: it is the advert the employer actually published, and its
+# link is the one you apply through. The three page-reading sources were all
+# missing from this table, which meant they scored 0 and lost the same role to
+# an Indeed copy — so the digest linked to Indeed for a job read straight off
+# the company's careers page. They are ordered by how structured the data is:
+# jsonld is a published schema.org contract, embedded is framework state with
+# inferred field names, html is titles read out of markup.
 SOURCE_RANK = {
-    "greenhouse": 10, "lever": 10, "ashby": 10, "workday": 10,
+    "jsonld": 10, "embedded": 9, "html": 8,
+    "greenhouse": 10, "lever": 10, "ashby": 10, "workday": 10, "oracle": 10,
+    "eightfold": 9,
     "smartrecruiters": 9, "workable": 9, "recruitee": 9, "teamtailor": 9,
     "personio": 9, "breezy": 9, "bamboohr": 9,
     "rippling": 9, "pinpoint": 9, "comeet": 9, "jobvite": 9,

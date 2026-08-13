@@ -233,6 +233,41 @@ def main():
     check("and from the browser pass",
           [n for n in extractors if n + "(" not in _i2.getsource(_r3.render_firm)], [])
 
+    # Same class of bug one seam later. A source missing from SOURCE_RANK scores
+    # 0, so a role read off the firm's own careers page loses the dedupe to an
+    # Indeed copy of it and the digest links to Indeed. Every source anyone
+    # emits has to have a rank, including every ATS added in future.
+    import store as _st, sniff as _sn, glob as _g
+    emitted = set(_sn.SCRAPABLE) | {"workday", "oracle"}
+    for _p in _g.glob("*.py"):
+        emitted |= set(re.findall(r'"source": *"([a-z_]+)"', open(_p).read()))
+    check("every source that can be emitted has a rank",
+          sorted(emitted - set(_st.SOURCE_RANK)), [])
+    check("the firm's own site outranks the aggregators",
+          min(_st.SOURCE_RANK[s] for s in ("jsonld", "embedded", "html")) >
+          max(_st.SOURCE_RANK[s] for s in ("indeed", "glassdoor", "linkedin", "reed")), True)
+
+    # End to end, on a throwaway database. Every test above this line checks one
+    # function, and the SOURCE_RANK bug passed all of them: extraction was
+    # perfect and the job still reached the digest pointing at Indeed. This
+    # walks the path a real posting takes — page markup, ingest filter, dedupe
+    # against a copy that arrived first from an aggregator — and asserts on
+    # what actually lands in the database.
+    import bench_extract as _bx, tempfile as _tf, os as _os
+    _con = _st.connect(_os.path.join(_tf.mkdtemp(), "t.db"))
+    _st.save_new(_con, [{"company": "Vitol", "title": "Junior Gas Analyst",
+                         "location": "London", "url": "https://indeed.com/x",
+                         "source": "indeed", "posted": ""}])
+    _found = _emb.jobs_from_links("Vitol", _bx._at_scale(), "https://vitol.com/careers")
+    _keep = scrape.build_filter(yaml.safe_load(open("config.yaml")))
+    _st.save_new(_con, [j for j in _found if _keep(j)])
+    _rows = dict((r[0], r[1]) for r in _con.execute("SELECT title, url FROM jobs"))
+    check("a job read off the page survives ingest, filter and dedupe",
+          sorted(_rows), ["Junior Gas Analyst", "LNG Scheduler",
+                          "Market Risk Analyst", "Power Trading Analyst"])
+    check("and the digest links to the firm, not to the aggregator copy",
+          _rows.get("Junior Gas Analyst"), "https://vitol.com/jobs/junior-gas-analyst")
+
     listing = ('<ul><li><a href="/jobs/junior-gas-analyst">Junior Gas Analyst</a>'
                ' \u2014 London, UK</li>'
                '<li><a href="/careers/risk-analyst-2026">Market Risk Analyst</a>'
