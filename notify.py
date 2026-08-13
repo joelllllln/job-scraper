@@ -40,6 +40,11 @@ DB = "jobs.db"
 ALWAYS_CALLED = ("reed", "adzuna", "indeed", "glassdoor", "google", "linkedin",
                  "jooble", "careerjet", "efinancialcareers", "bullhorn")
 
+# Jobs read straight off an employer's own careers page, however that page
+# happens to publish them. Not in ALWAYS_CALLED because these are not job
+# boards being polled — they are the output of the embedded/render stages.
+DIRECT = {"jsonld", "embedded", "html"}
+
 
 # Sources that cannot work without a key you have not set. Not broken — unasked.
 # Reported once, compactly, with the variable to set, rather than as four
@@ -110,6 +115,19 @@ def health(con):
             broken.append(f"{src} — {KNOWN_BROKEN[src]}")
         else:
             unexplained.append(src)
+
+    # The page-reading pass, checked as a group rather than one source at a
+    # time. Individually a zero means nothing — a firm publishes schema.org or
+    # it publishes a plain list, not both — but all three at zero means the
+    # whole firm-direct channel is producing nothing, which is the failure that
+    # has now happened twice here: a parser written, tested, and wired to
+    # nothing. The trailing-average check below catches a channel that breaks
+    # after working; only this catches one that never worked at all.
+    if not (DIRECT & ever):
+        warnings.append(
+            "no jobs have ever come from reading a firm's own careers page "
+            f"({', '.join(sorted(DIRECT))}). Either the page-reading stages have "
+            f"not been run, or nothing they extract is reaching the database.")
 
     for src in unexplained:
         warnings.append(f"{src}: has never returned a single job, and nothing "
