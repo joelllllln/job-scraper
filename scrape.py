@@ -46,7 +46,15 @@ ATS_ENDPOINT = {
     "pinpoint": "https://{t}.pinpointhq.com/postings.json",
     "comeet": "https://www.comeet.co/careers-api/2.0/company/{t}/positions",
     "jobvite": "https://jobs.jobvite.com/api/v1/jobs?companyId={t}",
+    # Eightfold publishes a zero-auth JSON board. `domain` is optional — the
+    # server infers it from the tenant host — so the tenant alone is enough.
+    "eightfold": "https://{t}.eightfold.ai/api/apply/v2/jobs?start=0&num=100",
 }
+
+# ATS whose URL needs more than one part, so sniff.py builds the whole thing and
+# stores it in board_url rather than a token that could be templated here.
+# Oracle needs host + site number; both come off the careers page together.
+BOARD_URL_ATS = ("oracle",)
 
 # The newer boards all return "a list of job dicts", but disagree about what the
 # list is called and what the keys are. One tolerant reader beats five brittle ones.
@@ -80,7 +88,7 @@ def first_of(d, keys):
     return ""
 
 
-def norm(ats, company, payload):
+def norm(ats, company, payload, url=""):
     out = []
     def add(title, loc, url, posted=""):
         if title:
@@ -124,6 +132,26 @@ def norm(ats, company, payload):
     elif ats == "recruitee":
         for j in payload.get("offers", []):
             add(j.get("title"), j.get("location"), j.get("careers_url"), j.get("published_at", ""))
+    elif ats == "eightfold":
+        for j in payload.get("positions", []) or []:
+            loc = j.get("location") or ", ".join(j.get("locations") or [])
+            add(j.get("name"), loc,
+                j.get("canonicalPositionUrl") or j.get("job_url") or "",
+                str(j.get("t_create") or ""))
+    elif ats == "oracle":
+        # Oracle nests one level deeper than everything else: the response is
+        # {"items": [{"requisitionList": [ ...the actual jobs... ]}]}
+        base = re.sub(r"/hcmRestApi/.*$", "", url or "")
+        site = (re.search(r"siteNumber=([A-Za-z0-9_]+)", url or "") or [None, "CX_1"])[1] \
+            if re.search(r"siteNumber=([A-Za-z0-9_]+)", url or "") else "CX_1"
+        for group in payload.get("items", []) or []:
+            for j in (group.get("requisitionList") or []):
+                jid = j.get("Id") or j.get("id") or ""
+                add(j.get("Title") or j.get("title"),
+                    j.get("PrimaryLocation") or j.get("Location") or "",
+                    f"{base}/hcmUI/CandidateExperience/en/sites/{site}/job/{jid}"
+                    if jid and base else "",
+                    j.get("PostedDate") or j.get("PostingStartDate") or "")
     elif ats in GENERIC_ATS:
         items = payload if isinstance(payload, list) else next(
             (payload[k] for k in LIST_KEYS
@@ -177,14 +205,23 @@ def ats_rows():
             continue
         for row in csv.DictReader(open(path)):
             ats, token = (row.get("ats") or "").strip(), (row.get("token") or "").strip()
-            if ats not in ATS_ENDPOINT or not token:
+            # Oracle and friends cannot be rebuilt from a token alone, so sniff.py
+            # stores the finished API URL in board_url. Without this the row was
+            # skipped outright and the discovery was wasted.
+            board = (row.get("board_url") or "").strip()
+            if ats in BOARD_URL_ATS:
+                if not board:
+                    continue
+            elif ats not in ATS_ENDPOINT or not token:
                 continue
-            if (ats, token.lower()) in seen:
+            key = (ats, (token or board).lower())
+            if key in seen:
                 continue
-            seen.add((ats, token.lower()))
+            seen.add(key)
             url = row.get("url") if has_url else ""
             rows.append({"name": row["name"], "ats": ats, "token": token,
-                         "url": url or ATS_ENDPOINT[ats].format(t=token)})
+                         "url": url or (board if ats in BOARD_URL_ATS
+                                        else ATS_ENDPOINT[ats].format(t=token))})
     return rows
 
 
@@ -209,7 +246,7 @@ def from_ats(session):
                     print(f"[{i}/{len(rows)}] {row['name']:<34} non-JSON response "
                           f"(endpoint may have changed)")
                     continue
-                got = norm(row["ats"], row["name"], payload)
+                got = norm(row["ats"], row["name"], payload, row.get("url", ""))
             jobs += got
             print(f"[{i}/{len(rows)}] {row['name']:<34} {len(got):>4} raw")
         except Exception as e:

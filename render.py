@@ -100,6 +100,14 @@ def ats_from_html(name, html, final_url):
     """The same fingerprints sniff.py uses, against the RENDERED page."""
     blob = f"{html} {final_url}"
 
+    m = sniff.ORACLE.search(blob)
+    if m:
+        host, site = m.group(1), m.group(2)
+        return {"name": name, "ats": "oracle", "token": f"{host}/{site}",
+                "tenant": host, "dc": "", "site": site, "locale": "",
+                "board_url": sniff.ORACLE_API.format(host=host, site=site),
+                "found_on": final_url}
+
     m = sniff.WORKDAY.search(blob)
     if m and (m.group(4) or "").lower() not in ("wday", "en-us"):
         tenant, dc, locale, site = m.group(1), m.group(2), m.group(3) or "", m.group(4)

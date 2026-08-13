@@ -153,6 +153,48 @@ def main():
                {401, 403, 429, 503} <= verify.BOT_BLOCK)
     check_true("404 is not — that one really is gone", 404 not in verify.BOT_BLOCK)
 
+    print("\nenterprise ATS — Oracle and Eightfold now have working readers")
+    # These were filed under MANUAL, which meant that DISCOVERING one was worth
+    # nothing: the firm was recorded and then never read. Oracle was the most
+    # common unsupported ATS in the 300-firm probe.
+    orc = sniff.ORACLE.search("https://iawmqy.fa.ocs.oraclecloud.com/hcmUI/"
+                              "CandidateExperience/en/sites/CX_1001/requisitions")
+    check("oracle host and site read together", orc.groups() if orc else None,
+          ("iawmqy.fa.ocs.oraclecloud.com", "CX_1001"))
+    check_true("and assembled into the public API url",
+               "recruitingCEJobRequisitions" in
+               sniff.ORACLE_API.format(host=orc.group(1), site=orc.group(2)))
+    check_true("oracle is no longer filed as unreadable", "oracle" not in sniff.MANUAL)
+    check("eightfold tenant read from its host",
+          re.search(sniff.SCRAPABLE["eightfold"][0], "https://vale.eightfold.ai/careers").group(1),
+          "vale")
+    # Oracle nests one level deeper than every other board.
+    orc_jobs = scrape.norm("oracle", "Westpac",
+                           {"items": [{"requisitionList": [
+                               {"Id": "12345", "Title": "Junior Market Analyst",
+                                "PrimaryLocation": "London, GB", "PostedDate": "2026-08-01"}]}]},
+                           "https://iawmqy.fa.ocs.oraclecloud.com/hcmRestApi/resources/latest/"
+                           "recruitingCEJobRequisitions?finder=findReqs;siteNumber=CX_1001,limit=200")
+    check("oracle postings parsed", [(j["title"], j["location"]) for j in orc_jobs],
+          [("Junior Market Analyst", "London, GB")])
+    check("and given a real apply link", orc_jobs[0]["url"],
+          "https://iawmqy.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/12345")
+    ef = scrape.norm("eightfold", "Vale", {"positions": [
+        {"id": 99, "name": "Commodities Analyst", "location": "London, United Kingdom",
+         "canonicalPositionUrl": "https://vale.eightfold.ai/careers/job/99"}]})
+    check("eightfold postings parsed", [(j["title"], j["url"]) for j in ef],
+          [("Commodities Analyst", "https://vale.eightfold.ai/careers/job/99")])
+    # The browser must recognise them too, or a render that finds an Oracle
+    # board is a discovery thrown away.
+    import render as _r
+    check("the browser recognises oracle as well",
+          (_r.ats_from_html("Westpac", "x", "https://x.fa.ocs.oraclecloud.com/hcmUI/"
+                            "CandidateExperience/en/sites/CX_2/j") or {}).get("ats"), "oracle")
+    # A multi-part board cannot be rebuilt from a token, so the finished URL has
+    # to survive into scrape.py — without this the row was silently skipped.
+    check_true("oracle rows are carried by board_url, not a token template",
+               "oracle" in scrape.BOARD_URL_ATS and "oracle" not in scrape.ATS_ENDPOINT)
+
     print("\nrender — reading careers pages that only exist after JavaScript")
     import render
     # The prize is the ATS link: one render writes it to sniffed.csv and every

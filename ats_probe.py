@@ -54,6 +54,9 @@ KNOWN = {
     "jobvite": r"jobs\.jobvite\.com|[a-z0-9-]+\.jobvite\.com",
     "workday": r"\.myworkdayjobs\.com",
     "bullhorn": r"bullhornstaffing\.com",
+    # both now have working parsers — see scrape.py norm()
+    "oracle_cloud": r"oraclecloud\.com/hcmUI|/hcmUI/CandidateExperience|fa-[a-z]+\.oraclecloud\.com",
+    "eightfold": r"[a-z0-9-]+\.eightfold\.ai|app\.eightfold\.ai",
 }
 
 # The enterprise systems nothing here can read. This is the list the probe
@@ -62,10 +65,8 @@ KNOWN = {
 UNSUPPORTED = {
     "successfactors": r"successfactors\.(?:com|eu)|jobs\.sap\.com|/sfcareer/",
     "taleo": r"taleo\.net|tbe\.taleo\.net",
-    "oracle_cloud": r"oraclecloud\.com/hcmUI|/hcmUI/CandidateExperience|fa-[a-z]+\.oraclecloud\.com",
     "icims": r"[a-z0-9-]+\.icims\.com",
     "avature": r"[a-z0-9-]+\.avature\.net",
-    "eightfold": r"[a-z0-9-]+\.eightfold\.ai|app\.eightfold\.ai",
     "phenom": r"phenompeople\.com|\.phenom\.com",
     "radancy": r"radancy\.(?:com|net)|talentbrew",
     "cornerstone": r"csod\.com",

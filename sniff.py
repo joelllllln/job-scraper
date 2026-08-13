@@ -66,7 +66,22 @@ SCRAPABLE = {
     # here could recognise one, so the fetcher was unreachable code.
     "jobvite":         [r"jobs\.jobvite\.com/(?:careers/)?([a-z0-9-]+)",
                         r"([a-z0-9-]+)\.jobvite\.com"],
+    # Enterprise boards with a public zero-auth JSON API. These used to be
+    # filed under MANUAL as unreachable, which meant discovering one was worth
+    # nothing — and Oracle was the most common unsupported ATS in the probe.
+    "eightfold":       [r"([a-z0-9-]+)\.eightfold\.ai"],
 }
+
+# Oracle Recruiting Cloud needs the pod host AND the site number, which appear
+# together in the careers URL:
+#   https://<host>.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/...
+# so the whole API URL is assembled here rather than templated from a token.
+ORACLE = re.compile(
+    r"https?://([a-z0-9.-]*oraclecloud\.com)/hcmUI/CandidateExperience/[a-z-]+/sites/([A-Za-z0-9_]+)",
+    re.I)
+ORACLE_API = ("https://{host}/hcmRestApi/resources/latest/recruitingCEJobRequisitions"
+              "?onlyData=true&expand=requisitionList.secondaryLocations"
+              "&finder=findReqs;siteNumber={site},limit=200,sortBy=POSTING_DATES_DESC")
 
 # Workday needs three parts, handled separately
 WORKDAY = re.compile(
@@ -86,7 +101,8 @@ RECRUITER = {
 # ATS with no usable public API — flag for manual handling
 MANUAL = {
     "icims": r"[a-z0-9-]+\.icims\.com",
-    "taleo": r"[a-z0-9-]+\.taleo\.net",
+    "taleo": r"[a-z0-9-]+\.taleo\.net",   # has a public API but it is POST with a
+                                          # column-array response; not built yet
     "successfactors": r"(?:career\d*\.successfactors|jobs\.sap\.com)",
     "avature": r"[a-z0-9-]+\.avature\.net",
     "eploy": r"[a-z0-9-]+\.eploy\.net",
@@ -162,6 +178,14 @@ def sniff_one(session, firm):
                 return {"name": name, "ats": ats, "token": tok, "tenant": "", "dc": "",
                         "site": "", "locale": "", "board_url": r.url, "found_on": r.url,
                         "_manual": True}
+
+        m = ORACLE.search(blob)
+        if m:
+            host, site = m.group(1), m.group(2)
+            return {"name": name, "ats": "oracle", "token": f"{host}/{site}",
+                    "tenant": host, "dc": "", "site": site, "locale": "",
+                    "board_url": ORACLE_API.format(host=host, site=site),
+                    "found_on": r.url}
 
         m = WORKDAY.search(blob)
         if m:
