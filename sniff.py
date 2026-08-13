@@ -42,7 +42,11 @@ PATHS = ["", "/careers", "/careers/", "/jobs", "/about/careers", "/company/caree
 # Fitzgerald, Sucden, ScottishPower, Peel Hunt) are bot-blocked on the apex and
 # were never tried anywhere else. This is looking in the right place, not
 # working around the block: a host that answers is a host willing to serve us.
-SUBDOMAINS = ["careers", "jobs", "recruitment", "apply", "talent", "workfor"]
+# "www" is in here because plenty of apex domains have no DNS record at all —
+# only www does — and nothing anywhere tried it. That is the likeliest single
+# explanation for 401 firms recorded as "no response": a real company with a
+# working website that we asked for at an address that does not exist.
+SUBDOMAINS = ["www", "careers", "jobs", "recruitment", "apply", "talent", "workfor"]
 
 # Guessing thirteen paths finds the careers page only if it is at one of them.
 # Following the link the site itself provides finds it wherever it lives —
@@ -140,6 +144,9 @@ def candidate_urls(domain):
     base = apex[4:] if apex.startswith("www.") else apex
     for path in PATHS:
         yield f"https://{domain}{path}"
+    # The reverse case: the registry says www.x.com but only x.com answers.
+    if apex.startswith("www."):
+        yield f"https://{base}"
     for sub in SUBDOMAINS:
         # Skip if the registry domain already IS the careers host, or the two
         # loops would fetch the same URL twice per firm across 2,300 firms.
@@ -241,17 +248,27 @@ def sniff_one(session, firm):
     # because they never record an answer. Give up on the host at the first bot
     # block and spend the budget on the careers subdomain instead, which is
     # usually a different machine entirely.
-    walled = set()
+    walled, tried_host = set(), set()
     fallback = []          # (html, url) of pages read but not fingerprinted
     for url in candidate_urls(domain):
         host = url.split("/")[2]
         if host in walled:
             continue
+        first_touch = host not in tried_host
+        tried_host.add(host)
         r = http_client.get(url, sess=session)
         if r is not None and r.status_code in (401, 403, 405, 406, 429, 503):
             walled.add(host)
             continue
-        if r is None or r.status_code >= 400:
+        if r is None:
+            # No answer at all on the FIRST request to this host means the host
+            # does not resolve, and /careers will not resolve either. Abandoning
+            # it here saves twelve DNS timeouts per firm and, more usefully, gets
+            # to the www variant while there is still time in the stage.
+            if first_touch:
+                walled.add(host)
+            continue
+        if r.status_code >= 400:
             continue
         html = http_client.text_of(r)
         blob = html + " " + r.url

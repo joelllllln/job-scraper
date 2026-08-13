@@ -120,7 +120,14 @@ def check_one(session, firm):
         out["detail"] = "no domain claimed"
         return out
 
+    # Try www too. An apex with no DNS record and a working www is extremely
+    # common, and asking only for the apex recorded 401 live companies as
+    # unreachable — which then excluded them from every later stage.
     r = http_client.get(f"https://{domain}", sess=session, retries=1)
+    if r is None and not domain.startswith("www.") and "/" not in domain:
+        r = http_client.get(f"https://www.{domain}", sess=session, retries=1)
+    elif r is None and domain.startswith("www."):
+        r = http_client.get(f"https://{domain[4:]}", sess=session, retries=1)
     if r is None:
         out["verdict"] = "unreachable"
         out["detail"] = "no response"

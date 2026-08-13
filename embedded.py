@@ -254,16 +254,22 @@ def scan_firm(session, firm):
     domain = (firm.get("domain") or "").strip()
     if not domain:
         return []
-    walled = set()
+    walled, tried_host = set(), set()
     for url in sniff.candidate_urls(domain):
         host = url.split("/")[2]
         if host in walled:
             continue
+        first_touch = host not in tried_host
+        tried_host.add(host)
         r = http_client.get(url, sess=session)
         if r is not None and r.status_code in (401, 403, 405, 406, 429, 503):
             walled.add(host)
             continue
-        if r is None or r.status_code >= 400:
+        if r is None:
+            if first_touch:      # host does not resolve — see sniff.sniff_one
+                walled.add(host)
+            continue
+        if r.status_code >= 400:
             continue
         html = http_client.text_of(r)
         # JSON-LD first: it is a published contract with a fixed shape, so it is

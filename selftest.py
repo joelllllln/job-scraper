@@ -153,6 +153,34 @@ def main():
                {401, 403, 429, 503} <= verify.BOT_BLOCK)
     check_true("404 is not — that one really is gone", 404 not in verify.BOT_BLOCK)
 
+    print("\nwww, and not burning a stage on hosts that do not resolve")
+    cands = list(sniff.candidate_urls("abgsc.com"))
+    check_true("www is tried when the apex is the registry value",
+               "https://www.abgsc.com" in cands)
+    check_true("and the apex is tried when the registry value is www",
+               "https://vitol.com" in list(sniff.candidate_urls("www.vitol.com")))
+
+    # 401 firms were recorded as "no response" — real companies asked for at an
+    # address with no DNS record. Every one of them also cost twelve further
+    # timeouts on the same dead host before anything else was tried.
+    import http_client as _hc3
+    PAGES2 = {"https://www.abgsc.com": '<a href="https://jobs.lever.co/abgsc">Jobs</a>'}
+    calls2 = []
+    class _R3:
+        def __init__(s, u, t):
+            s.url, s.text, s.status_code, s.encoding, s.headers = u, t, 200, "utf-8", {}
+    sg, st = _hc3.get, _hc3.text_of
+    try:
+        _hc3.get = lambda url, **kw: (calls2.append(url),
+                                      _R3(url, PAGES2[url]) if url in PAGES2 else None)[1]
+        _hc3.text_of = lambda r: r.text
+        found2 = sniff.sniff_one(None, {"name": "ABG", "domain": "abgsc.com"})
+    finally:
+        _hc3.get, _hc3.text_of = sg, st
+    check("a firm reachable only at www is now found", (found2 or {}).get("ats"), "lever")
+    check("the unresolvable apex costs one request, not thirteen",
+          sum(1 for c in calls2 if c.startswith("https://abgsc.com")), 1)
+
     print("\nfollowing the careers link — paths we would never guess")
     links = sniff.careers_links(
         '<a href="/news">Newsroom</a><a href="https://linkedin.com/company/x/jobs">LinkedIn</a>'
