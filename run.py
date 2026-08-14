@@ -37,7 +37,12 @@ PY = sys.executable
 
 # Per-stage ceiling in seconds. Generous on a laptop — nothing here is charged
 # by the minute, and the slow stages are slow because they are being polite.
-TIMEOUTS = {"sniff": 3600, "discover": 3600, "render": 14400, "boards": 2700}
+# "embedded jobs" walks 1,500 sites politely and ran out of road at the 1800s
+# default with a third of the registry left. It checkpoints now, so a ceiling
+# only costs the remainder rather than the run — but the ceiling should be the
+# length of the job, not an accident of the default.
+TIMEOUTS = {"sniff": 3600, "discover": 3600, "render": 14400, "boards": 2700,
+            "embedded jobs": 7200, "check firms": 3600}
 DEFAULT_TIMEOUT = 1800
 
 SETTINGS = [

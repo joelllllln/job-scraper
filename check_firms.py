@@ -185,8 +185,24 @@ def check_one(session, firm):
 
 
 def load_previous(path="firm_check.csv"):
+    """Prior verdicts, including ones written before this file spoke utf-8.
+
+    A run on Windows wrote this file as cp1252 and then could not read it back,
+    failing the stage before it checked a single firm. The bytes it managed to
+    write are still perfectly good verdicts, so they are decoded leniently
+    rather than thrown away — the file is rewritten as utf-8 at the end of the
+    run either way, so the leniency applies exactly once.
+    """
     try:
-        return {r["name"]: r for r in csv.DictReader(open(path, encoding="utf-8"))}
+        with open(path, newline="", encoding="utf-8") as fh:
+            return {r["name"]: r for r in csv.DictReader(fh)}
+    except OSError:
+        return {}
+    except UnicodeDecodeError:
+        pass
+    try:
+        with open(path, newline="", encoding="utf-8", errors="replace") as fh:
+            return {r["name"]: r for r in csv.DictReader(fh)}
     except OSError:
         return {}
 

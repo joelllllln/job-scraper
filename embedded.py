@@ -77,7 +77,25 @@ LOC_KEYS = ("location", "city", "jobLocation", "primaryLocation", "locationName"
 DATE_KEYS = ("datePosted", "postedDate", "publishedAt", "published_at", "createdAt",
              "created_at", "date", "postingDate", "live_date")
 
-# Titles that are page furniture rather than vacancies.
+# Link text carries the call to action with it, and it ends up in the title:
+# 45 rows arrived reading "Quantitative Researcher READ MORE", and one read
+# "Application Support Analyst | Energy Trading Operations London, GB Full-Time
+# Technology Explore more Explore more". Stripped from the end, repeatedly,
+# because sites stack them.
+TITLE_TAIL = re.compile(
+    r"(?:\s*(?:read|explore|find out|learn|see|view|show)\s+more"
+    r"|\s*apply(?:\s+now)?"
+    r"|\s*(?:full|part)[- ]time"
+    r"|\s*explore\s+opportunities"
+    r"|\s*view\s+(?:details|role|job|vacancy))\s*$", re.I)
+
+# A vacancy is a page you apply on. These are documents and media, and a title
+# taken from one is never a job — Olam Agri arrived titled
+# "/content/dam/olam-agri/assets/webp/careers/careers-pdfs/", and EEX's actual
+# vacancy was a PDF that got filed under a different firm entirely.
+ASSET_HREF = re.compile(r"\.(pdf|docx?|xlsx?|pptx?|zip|jpe?g|png|gif|svg|mp[34]|webp)"
+                        r"(\?|#|$)", re.I)
+
 # Titles that are page furniture rather than vacancies. The call-to-action
 # phrases matter as much as the page names: "Apply now" sits under a perfectly
 # job-shaped /jobs/apply-now href on a lot of listings.
@@ -88,6 +106,28 @@ NOT_A_JOB = re.compile(
     r"(apply|register|sign up|join)( now| here| today)?|read more|learn more|"
     r"find out more|view (details|role|job|more)|see (all|more)|more info\w*|"
     r"our culture|why (join )?us|open positions?|current (vacancies|openings))$", re.I)
+
+# A title that is really a URL path. Sites sometimes render an asset link with
+# its own href as the anchor text.
+PATH_TITLE = re.compile(r"^/|^https?://|/content/|/assets?/", re.I)
+
+# The landing page for an early-careers scheme, which is marketing rather than a
+# vacancy: "Graduate Programme Podcast" scored 84 and reached the digest, as did
+# "Our graduate programmes" and six banks' "Graduate Programs".
+SCHEME_PAGE = re.compile(
+    r"\b(graduate|internship|intern|early care\w*|apprentice\w*|summer)\b.*"
+    r"\b(programme|program|scheme|opportunit\w*)s?\b|\bpodcast\b", re.I)
+
+# A role a person is actually hired as. Deliberately excludes graduate, intern,
+# trainee and apprentice — those are what SCHEME_PAGE is made of, so using
+# ROLE_NOUN here would let every scheme page back through. This is what keeps
+# "Global Trainee Broker Programme", a real vacancy, out of that bucket.
+CONCRETE_ROLE = re.compile(
+    r"\b(analyst|trader|broker|engineer|developer|scientist|economist|"
+    r"specialist|controller|scheduler|officer|adviser|advisor|consultant|"
+    r"accountant|auditor|actuary|actuarial|strategist|researcher|quant\w*|"
+    r"dealer|underwriter|technician|operator|architect|manager|associate|"
+    r"assistant|executive|coordinator|administrator|reporter|model\w*)\b", re.I)
 
 
 def blobs(html):
@@ -213,6 +253,27 @@ ANCHOR_TAG = re.compile(r'<a\b[^>]*href=["\']([^"\'#]+)["\'][^>]*>(.*?)</a>', re
 TRAILING = re.compile(r"^[\s\u2014\u2013,|·-]*([A-Za-z][\w .,'-]{2,40})")
 
 
+def clean_title(title):
+    """Strip the call-to-action the link text dragged in, however many times."""
+    prev = None
+    while title != prev:
+        prev = title
+        title = TITLE_TAIL.sub("", title).strip(" –—-|,·").strip()
+    return title
+
+
+def usable_title(title):
+    """One gate, so every extractor rejects the same furniture."""
+    if not title or not (3 <= len(title) <= 140):
+        return False
+    if NOT_A_JOB.match(title) or PATH_TITLE.match(title):
+        return False
+    # A scheme page is only a vacancy if it names the role being hired.
+    if SCHEME_PAGE.search(title) and not CONCRETE_ROLE.search(title):
+        return False
+    return True
+
+
 def jobs_from_links(company, html, page_url):
     """Vacancies from a plain HTML listing — no JSON anywhere on the page.
 
@@ -228,8 +289,8 @@ def jobs_from_links(company, html, page_url):
     out, seen = [], set()
     for href, inner in ANCHOR_TAG.findall(html or ""):
         title = re.sub(r"<[^>]+>", " ", inner)
-        title = re.sub(r"\s+", " ", title).strip()
-        if not title or not (3 <= len(title) <= 140) or NOT_A_JOB.match(title):
+        title = clean_title(re.sub(r"\s+", " ", title).strip())
+        if not usable_title(title) or ASSET_HREF.search(href):
             continue
         explicit = JOB_HREF.search(href)
         if not (explicit or CAREERS_SLUG.search(href)):
@@ -257,8 +318,9 @@ def looks_like_job(obj):
     """A title, plus something that locates or links it. Both, or it is furniture."""
     if not isinstance(obj, dict):
         return False
-    title = _first(obj, TITLE_KEYS)
-    if not title or not (3 <= len(title) <= 140) or NOT_A_JOB.match(title):
+    # The same gate the link reader uses. Page state carries the same furniture:
+    # "Graduate Programs" sits in a jobs array on plenty of bank career sites.
+    if not usable_title(clean_title(_first(obj, TITLE_KEYS))):
         return False
     return bool(_first(obj, URL_KEYS) or _first(obj, LOC_KEYS))
 

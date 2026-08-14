@@ -125,6 +125,48 @@ NEGATIVE = [
 ]
 
 
+# Taken verbatim from a real run's digest, which is the only reason they are
+# here: every fixture above this line is one I wrote, so the benchmark could
+# only ever test shapes I had already thought of. One evening against real
+# careers pages produced four bug classes it had scored 100% on.
+FROM_THE_WILD = [
+    # (title as it arrived, should it survive)
+    ("Quantitative Researcher READ MORE", True),          # link text dragged in
+    ("Application Support Analyst | Energy Trading Operations London, GB "
+     "Full-Time Technology Explore more Explore more", True),
+    ("Graduate Programme Podcast", False),                # scored 84 in the digest
+    ("Vestas Graduate Programme", False),
+    ("Our graduate programmes", False),
+    ("Graduate Programs", False),
+    ("Summer Intern Programs", False),
+    ("UniCredit Graduate Program", False),
+    ("Nordea Graduate Programme", False),
+    ("SLAM International Graduate Program", False),
+    ("/content/dam/olam-agri/assets/webp/careers/careers-pdfs/", False),
+    # Real vacancies from the same run. A rule that drops these is worse than
+    # the bug it fixes.
+    ("Global Trainee Broker Programme", True),
+    ("Trainee Broker Programme", True),
+    ("Capital Modelling Graduate Programme", True),
+    ("2027 Trading and Research Summer Internship", True),
+    ("Trading Analyst Intern", True),
+    ("Graduate Data Engineer", True),
+    ("Market Operations Analyst (f/m/d)", True),
+    ("Junior Commodities Fundamental Analyst", True),
+    ("Assistant Economist", True),
+]
+
+
+def _wild():
+    """Titles that actually arrived, scored against what should have happened."""
+    wrong = []
+    for title, want in FROM_THE_WILD:
+        got = embedded.usable_title(embedded.clean_title(title))
+        if got != want:
+            wrong.append((title, want, got))
+    return wrong
+
+
 def _at_scale():
     """A realistic page: full site chrome, blog teasers, people, legal, 5 jobs.
 
@@ -200,6 +242,15 @@ def main():
                 print(f"  ok    {name:<34} correctly yielded nothing")
     print(f"\n{clean}/{len(NEGATIVE)} non-vacancy pages correctly yield nothing "
           f"({100 * clean // len(NEGATIVE)}%)")
+
+    print()
+    wrong = _wild()
+    for title, want, _ in wrong:
+        print(f"  WRONG  should be {'kept' if want else 'rejected'}: {title[:58]!r}")
+    print(f"{len(FROM_THE_WILD) - len(wrong)}/{len(FROM_THE_WILD)} titles from a real "
+          f"run handled correctly")
+    if wrong:
+        dirty.append(f"{len(wrong)} real-world titles")
 
     print()
     page = _at_scale()
