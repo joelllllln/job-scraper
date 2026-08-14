@@ -154,6 +154,20 @@ FROM_THE_WILD = [
     ("Market Operations Analyst (f/m/d)", True),
     ("Junior Commodities Fundamental Analyst", True),
     ("Assistant Economist", True),
+    # Second real run, after the first round of fixes.
+    ("Associate – Infrastructure Debt Investment team Dartmouth Partners "
+     "London Full-Time Posted 4 weeks ago", True),
+    ("Economist (Australia) (Closed)", False),
+]
+
+# Titles that are only wrong because of where they came from: a person's
+# profile, a blog post, a PDF. Natural Power hosts staff stories under
+# /careers/, so "Aaron Dickinson Energy analyst" — an employee — scored 90.
+FROM_THE_WILD_PATHS = [
+    ("Aaron Dickinson Energy analyst", "/uk/careers/staff-stories/story/aaron-dickinson", False),
+    ("Market Operations Analyst (f/m/d)", "/fileadmin/EEX/Career/Job_Descriptions/EEX.pdf", False),
+    ("Junior Commodity Trader - Fertilizers", "/jobs/junior-commodity-trader", True),
+    ("Trainee Broker Programme", "/careers/trainee-broker-programme/", True),
 ]
 
 
@@ -161,9 +175,15 @@ def _wild():
     """Titles that actually arrived, scored against what should have happened."""
     wrong = []
     for title, want in FROM_THE_WILD:
-        got = embedded.usable_title(embedded.clean_title(title))
+        got = embedded.usable_title(embedded.clean_title(title, "Dartmouth Partners"))
         if got != want:
             wrong.append((title, want, got))
+    for title, href, want in FROM_THE_WILD_PATHS:
+        got = (embedded.usable_title(embedded.clean_title(title))
+               and not embedded.ASSET_HREF.search(href)
+               and not embedded.NOT_A_VACANCY_PATH.search(href))
+        if bool(got) != want:
+            wrong.append((f"{title} <- {href}", want, got))
     return wrong
 
 
@@ -247,7 +267,7 @@ def main():
     wrong = _wild()
     for title, want, _ in wrong:
         print(f"  WRONG  should be {'kept' if want else 'rejected'}: {title[:58]!r}")
-    print(f"{len(FROM_THE_WILD) - len(wrong)}/{len(FROM_THE_WILD)} titles from a real "
+    print(f"{len(FROM_THE_WILD) + len(FROM_THE_WILD_PATHS) - len(wrong)}/{len(FROM_THE_WILD) + len(FROM_THE_WILD_PATHS)} titles from a real "
           f"run handled correctly")
     if wrong:
         dirty.append(f"{len(wrong)} real-world titles")

@@ -87,7 +87,25 @@ TITLE_TAIL = re.compile(
     r"|\s*apply(?:\s+now)?"
     r"|\s*(?:full|part)[- ]time"
     r"|\s*explore\s+opportunities"
+    r"|\s*posted\s+\d+\s+\w+\s+ago"
+    r"|\s*posted\s+(?:today|yesterday)"
+    r"|\s*\d+\s+(?:day|week|month|hour)s?\s+ago"
+    r"|\s*permanent|\s*contract|\s*temporary|\s*fixed[- ]term"
     r"|\s*view\s+(?:details|role|job|vacancy))\s*$", re.I)
+
+# A card that repeats the firm's own name mid-title: Dartmouth Partners arrived
+# as "Associate – Infrastructure Debt Investment team Dartmouth Partners London
+# Full-Time Posted 4 weeks ago". Cutting at the company name recovers the role.
+def _cut_at_company(title, company):
+    if not company or len(company) < 4:
+        return title
+    m = re.search(r"\s+" + re.escape(company) + r"\b", title, re.I)
+    return title[:m.start()].strip() if m and m.start() >= 3 else title
+
+
+# A vacancy that says it is closed is not one.
+CLOSED_TITLE = re.compile(r"\(\s*closed\s*\)|\bclosed\b\s*$|\bno longer (available|open)\b",
+                          re.I)
 
 # A vacancy is a page you apply on. These are documents and media, and a title
 # taken from one is never a job — Olam Agri arrived titled
@@ -95,6 +113,14 @@ TITLE_TAIL = re.compile(
 # vacancy was a PDF that got filed under a different firm entirely.
 ASSET_HREF = re.compile(r"\.(pdf|docx?|xlsx?|pptx?|zip|jpe?g|png|gif|svg|mp[34]|webp)"
                         r"(\?|#|$)", re.I)
+
+# Pages about the people who already work there. Natural Power's careers section
+# hosts staff profiles under /careers/staff-stories/, so "Aaron Dickinson Energy
+# analyst" — a named employee — was extracted as a vacancy and scored 90.
+NOT_A_VACANCY_PATH = re.compile(
+    r"/(staff|employee|people|team|colleague|our-people|meet-the-team|"
+    r"stor(y|ies)|profiles?|testimonial|blog|news|insights?|press|"
+    r"case-stud\w*|events?|podcasts?|webinars?)/", re.I)
 
 # Titles that are page furniture rather than vacancies. The call-to-action
 # phrases matter as much as the page names: "Apply now" sits under a perfectly
@@ -253,8 +279,9 @@ ANCHOR_TAG = re.compile(r'<a\b[^>]*href=["\']([^"\'#]+)["\'][^>]*>(.*?)</a>', re
 TRAILING = re.compile(r"^[\s\u2014\u2013,|·-]*([A-Za-z][\w .,'-]{2,40})")
 
 
-def clean_title(title):
+def clean_title(title, company=""):
     """Strip the call-to-action the link text dragged in, however many times."""
+    title = _cut_at_company(title, company)
     prev = None
     while title != prev:
         prev = title
@@ -266,7 +293,7 @@ def usable_title(title):
     """One gate, so every extractor rejects the same furniture."""
     if not title or not (3 <= len(title) <= 140):
         return False
-    if NOT_A_JOB.match(title) or PATH_TITLE.match(title):
+    if NOT_A_JOB.match(title) or PATH_TITLE.match(title) or CLOSED_TITLE.search(title):
         return False
     # A scheme page is only a vacancy if it names the role being hired.
     if SCHEME_PAGE.search(title) and not CONCRETE_ROLE.search(title):
@@ -289,8 +316,9 @@ def jobs_from_links(company, html, page_url):
     out, seen = [], set()
     for href, inner in ANCHOR_TAG.findall(html or ""):
         title = re.sub(r"<[^>]+>", " ", inner)
-        title = clean_title(re.sub(r"\s+", " ", title).strip())
-        if not usable_title(title) or ASSET_HREF.search(href):
+        title = clean_title(re.sub(r"\s+", " ", title).strip(), company)
+        if not usable_title(title) or ASSET_HREF.search(href) \
+                or NOT_A_VACANCY_PATH.search(href):
             continue
         explicit = JOB_HREF.search(href)
         if not (explicit or CAREERS_SLUG.search(href)):
