@@ -266,6 +266,22 @@ def main():
                 _bad.append(f"{_p}:{_n.lineno}")
     check("every text file is opened as utf-8, not the platform default", _bad, [])
 
+    print("\na page in another script is not evidence the domain is wrong")
+    import check_firms as _cf
+    # Seven of thirteen domains blanked in one real run were correct: the name
+    # check is Latin-only, so a Chinese or Japanese page could never match.
+    for _txt, _who in (("中国工商银行中国网站 工商银行", "ICBC"),
+                       ("伊藤忠商事株式会社 伊藤忠商事", "Itochu"),
+                       ("トッフ | 川崎汽船株式会社", "Kawasaki Kisen"),
+                       ("บริษัท ปตท. จํากัด มหาชน", "PTT"),
+                       ("한화오션 한화오션주식회사", "Hanwha Ocean"),
+                       ("дєиип±гв±ггягвђ", "mojibake")):
+        check(f"{_who}: not judged on a Latin name match", _cf.mostly_latin(_txt), False)
+    for _txt, _who in (("99rk cerdas x slot gacor terpercaya", "hijacked domain"),
+                       ("things to do on your holiday in cornwall", "wrong company"),
+                       ("retirement plan solutions for advisers", "plain English page")):
+        check(f"{_who}: still judged", _cf.mostly_latin(_txt), True)
+
     print("\nboards that page are paged, and truncation is never silent")
     import scrape as _scr, workday as _wd, http_client as _hc4
     check("smartrecruiters is known to page", "smartrecruiters" in _scr.PAGED, True)

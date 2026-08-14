@@ -178,10 +178,35 @@ def check_one(session, firm):
     elif len(ident) < 40:
         out["verdict"] = "thin"
         out["detail"] = "reachable, page says little"
+    elif not mostly_latin(ident):
+        # A Latin firm name cannot be found in a page written in Chinese,
+        # Japanese, Korean or Thai, so "the page does not name the firm" is not
+        # a finding here — it is the only possible outcome. Seven of thirteen
+        # domains blanked in one run were correct: icbc.com.cn served
+        # 中国工商银行, itochu.co.jp served 伊藤忠商事株式会社, and both were
+        # deleted from the registry as belonging to somebody else. Reported as
+        # unjudged so the firm keeps its domain.
+        out["verdict"] = "thin"
+        out["detail"] = f"page is not in Latin script — cannot match the name: {ident[:40]}"
     else:
         out["verdict"] = "mismatch"
         out["detail"] = f"page does not name the firm: {ident[:60]}"
     return out
+
+
+def mostly_latin(text, floor=0.5):
+    """Can a Latin-alphabet company name possibly be found in this text?
+
+    Counts only letters, so punctuation, digits and whitespace do not sway it
+    either way. Mojibake counts as non-Latin too, which is the right answer for
+    the same reason: mitsubishi's page arrived as 'дєиип±гв±ггягвђ' and no name
+    match was ever going to succeed against it.
+    """
+    letters = [c for c in text if c.isalpha()]
+    if not letters:
+        return True                     # nothing to judge — leave it to the other rules
+    latin = sum(1 for c in letters if c.isascii())
+    return latin / len(letters) >= floor
 
 
 def load_previous(path="firm_check.csv"):
