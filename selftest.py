@@ -266,6 +266,23 @@ def main():
                 _bad.append(f"{_p}:{_n.lineno}")
     check("every text file is opened as utf-8, not the platform default", _bad, [])
 
+    print("\na thin digest is topped up rather than sent nearly empty")
+    import inspect as _i4
+    _rep = yaml.safe_load(open("scoring.yaml", encoding="utf-8"))["report"]
+    check_true("report.backfill_to is set", (_rep.get("backfill_to") or 0) > 0,
+               str(_rep.get("backfill_to")))
+    check_true("and the floor is below top_n, or it would fire every run",
+               _rep["backfill_to"] <= _rep["top_n"],
+               f"{_rep['backfill_to']} vs {_rep['top_n']}")
+    _body = _i4.getsource(score.main)
+    check("score.py reads it", "backfill_to" in _body, True)
+    # Marked in both renderers, or a topped-up digest is indistinguishable from
+    # a genuinely busy week — which is the whole point of showing them.
+    check("carried-over roles are labelled in the HTML digest",
+          "carried_over" in _i4.getsource(score.render_html), True)
+    check("and in the plain-text one",
+          "carried_over" in _i4.getsource(score.render_md), True)
+
     print("\nlanguage requirements and geography are scored, not just filtered")
     _sc = yaml.safe_load(open("scoring.yaml", encoding="utf-8"))
     _cats = score.load_categories()

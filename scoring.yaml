@@ -376,6 +376,12 @@ report:
   # shortlist slots while 55 others shared the rest. Overflow is not dropped —
   # it falls through to the section below the shortlist.
   max_per_firm: 3
+  # If fewer than this many roles arrived since the last run, top the digest up
+  # with the best still-open ones. A weekly run rarely needs it; running twice
+  # in a day otherwise produces an email covering five hours of hiring, which
+  # reads as a broken scraper rather than as yesterday's work already seen.
+  # Set to 0 for a strictly new-since-last-run digest.
+  backfill_to: 45
   top_n: 60
   min_score: 20
   shortlist_threshold: 60

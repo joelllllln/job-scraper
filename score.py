@@ -503,7 +503,7 @@ def render_html(shortlist, rest, stats):
         return f"""<div class="job{' top' if top else ''}">
 <div class="bar" style="width:{width}%"></div>
 <div class="row1"><div class="t">{html.escape(j['title'])}</div><div class="sc">{j['score']}</div></div>
-<div class="meta"><b>{html.escape(j['company'])}</b> · {html.escape(j['location'] or 'location n/a')} · {html.escape(j['source'])}{' · ' + str(j['years_required']) + 'y required' if j['years_required'] else ''}</div>
+<div class="meta"><b>{html.escape(j['company'])}</b> · {html.escape(j['location'] or 'location n/a')} · {html.escape(j['source'])}{' · ' + str(j['years_required']) + 'y required' if j['years_required'] else ''}{' · still open from an earlier run' if j.get('carried_over') else ''}</div>
 {f'<div class="desc">{html.escape(j["summary"])}</div>' if j.get("summary") else ''}
 {f'<div class="reqs"><span>Wants</span> {html.escape(j["requirements"])}</div>' if j.get("requirements") else ''}
 <div class="tags">{''.join(pos + neg)}</div>
@@ -540,7 +540,8 @@ def render_md(shortlist, rest, stats):
         out.append(f"**{j['score']} — {j['title']}**")
         loc = j["location"] or "location n/a"
         yrs = f" · {j['years_required']}y required" if j["years_required"] else ""
-        out.append(f"  {j['company']} · {loc}{yrs}")
+        old = " · still open from an earlier run" if j.get("carried_over") else ""
+        out.append(f"  {j['company']} · {loc}{yrs}{old}")
         if j.get("summary"):
             out.append(f"  {j['summary']}")
         if j.get("requirements"):
@@ -607,9 +608,31 @@ def main():
     ghosts = find_ghosts(rows)   # computed over ALL history, not just this week
 
     pool = rows
+    backfilled = set()
     if since:
-        pool = [r for r in rows if (r["first_seen"] or "") > since]
-        print(f"new since {since[:16]}: {len(pool)} of {len(rows)}")
+        fresh = [r for r in rows if (r["first_seen"] or "") > since]
+        print(f"new since {since[:16]}: {len(fresh)} of {len(rows)}")
+        # A digest of only what arrived since the last run is right on a weekly
+        # cadence and wrong on any other. Run twice in a day and the email
+        # covers five hours of hiring — one real run reported 38 roles with 715
+        # open in the database, which reads as "the scraper found nothing"
+        # rather than "you already saw the rest yesterday".
+        #
+        # So: when the new pool is thin, top it up with the best roles that are
+        # still open and not yet applied to. They are marked as such in the
+        # digest, so a genuinely busy week still reads as one.
+        floor = (cfg.get("report") or {}).get("backfill_to", 0)
+        if floor and len(fresh) < floor:
+            seen_ids = {r["id"] for r in fresh}
+            older = [r for r in rows
+                     if r["id"] not in seen_ids
+                     and (r.get("status") or "new") == "new"]
+            backfilled = {r["id"] for r in older}
+            print(f"  topping up from {len(older)} still-open roles — a digest of "
+                  f"{len(fresh)} would be an artefact of when this last ran, "
+                  f"not of what is out there")
+            fresh = fresh + older
+        pool = fresh
     pool = [r for r in pool if (r.get("status") or "new") == "new"]
 
     # Three hard filters, applied before scoring so nothing over the bar can
@@ -692,6 +715,8 @@ def main():
         # 0, not negative: a dead job scores -1000, so this still keeps them out
         # without needing a separate rule
         min_score = 0
+    for r in scored:
+        r["carried_over"] = r["id"] in backfilled
     keep = [r for r in scored if r["score"] >= min_score]
     shortlist = cap_per_firm([r for r in keep if r["score"] >= rep["shortlist_threshold"]],
                              rep.get("max_per_firm"))[:top_n]
