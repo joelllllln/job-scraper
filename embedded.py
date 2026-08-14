@@ -41,8 +41,11 @@ import http_client
 import sniff
 
 OUT = "embedded_inbox.csv"
+# Firms already walked, so a stopped sweep resumes instead of restarting.
+SEEN = "embedded_scanned.csv"
 FIELDS = ["company", "title", "location", "url", "source", "posted"]
 WORKERS = 16
+CHECKPOINT = 25      # firms between writes to disk
 
 # Where frameworks park their serialised state.
 NEXT_DATA = re.compile(
@@ -369,11 +372,32 @@ def scan_firm(session, firm):
     return []
 
 
+def append(path, rows, fields):
+    if not rows:
+        return
+    new = not os.path.exists(path) or os.path.getsize(path) == 0
+    with open(path, "a", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields, extrasaction="ignore")
+        if new:
+            w.writeheader()
+        w.writerows(rows)
+
+
+def scanned(path=SEEN):
+    """Firms already walked, so an interrupted sweep resumes where it stopped."""
+    if not os.path.exists(path):
+        return set()
+    with open(path, newline="", encoding="utf-8") as fh:
+        return {(r.get("name") or "").strip().lower() for r in csv.DictReader(fh)}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--only", help="comma-separated firm names")
     ap.add_argument("--out", default=OUT)
+    ap.add_argument("--rescan", action="store_true",
+                    help="walk every firm again, including ones already scanned")
     args = ap.parse_args()
 
     firms = list(csv.DictReader(open("firms.csv", encoding="utf-8")))
@@ -382,6 +406,8 @@ def main():
         todo = [f for f in firms if f["name"].lower() in want]
     else:
         done = sniff.answered("sniffed.csv", "manual.csv", "endpoints.csv")
+        if not args.rescan:
+            done |= scanned()
         todo = [f for f in firms
                 if f["name"].strip().lower() not in done
                 and (f.get("domain") or "").strip()]
@@ -394,27 +420,44 @@ def main():
     print(f"scanning {len(todo)} firms for jobs embedded in page state\n")
     session = http_client.session()
     rows, hit_firms = [], 0
-    with ThreadPoolExecutor(max_workers=WORKERS) as pool:
-        futs = {pool.submit(scan_firm, session, f): f for f in todo}
-        for i, fut in enumerate(as_completed(futs), 1):
-            try:
-                jobs = fut.result()
-            except Exception as e:
-                print(f"  ! {futs[fut]['name']}: {type(e).__name__}", file=sys.stderr)
-                continue
-            if jobs:
-                hit_firms += 1
-                rows += jobs
-                print(f"[{i}/{len(todo)}] {futs[fut]['name'][:32]:<34} {len(jobs)} jobs")
+    # Checkpointed every CHECKPOINT firms. This sweep walks 1,500 sites over the
+    # best part of an hour, and it used to hold every row in memory until the
+    # last one finished — so a laptop going to sleep threw away the whole stage.
+    # The cost of an interruption is now at most CHECKPOINT firms, and a rerun
+    # skips what is already recorded rather than starting again.
+    seen, total_jobs = [], 0
 
-    new = not os.path.exists(args.out) or os.path.getsize(args.out) == 0
-    with open(args.out, "a", newline="", encoding="utf-8") as fh:
-        w = csv.DictWriter(fh, fieldnames=FIELDS, extrasaction="ignore")
-        if new:
-            w.writeheader()
-        w.writerows(rows)
+    def flush():
+        nonlocal rows, seen
+        append(args.out, rows, FIELDS)
+        append(SEEN, seen, ["name", "jobs"])
+        rows, seen = [], []
+
+    try:
+        with ThreadPoolExecutor(max_workers=WORKERS) as pool:
+            futs = {pool.submit(scan_firm, session, f): f for f in todo}
+            for i, fut in enumerate(as_completed(futs), 1):
+                name = futs[fut]["name"]
+                try:
+                    jobs = fut.result()
+                except Exception as e:
+                    print(f"  ! {name}: {type(e).__name__}", file=sys.stderr)
+                    continue
+                seen.append({"name": name, "jobs": len(jobs)})
+                if jobs:
+                    hit_firms += 1
+                    total_jobs += len(jobs)
+                    rows += jobs
+                    print(f"[{i}/{len(todo)}] {name[:32]:<34} {len(jobs)} jobs")
+                if i % CHECKPOINT == 0:
+                    flush()
+    except KeyboardInterrupt:
+        print("\ninterrupted — keeping what completed", file=sys.stderr)
+    finally:
+        flush()
+
     print(f"\n{hit_firms} of {len(todo)} firms had jobs in their page state "
-          f"({len(rows)} postings) -> {args.out}")
+          f"({total_jobs} postings) -> {args.out}")
     print(f"ingest with: python inbox.py --file {args.out}")
     return 0
 

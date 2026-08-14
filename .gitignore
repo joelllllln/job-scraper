@@ -22,3 +22,8 @@ companies_house.csv
 .env
 __pycache__/
 *.pyc
+
+# Working files from the page-reading sweep
+embedded_inbox.csv
+embedded_scanned.csv
+rendered_inbox.csv
