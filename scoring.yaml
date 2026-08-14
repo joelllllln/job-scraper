@@ -48,6 +48,13 @@ title_tiers:
       # config.yaml collects these; without them here they arrived scoring zero
       # for their title, which is how a prime target ends up mid-table
       - "(battery|storage|flexibilit|electricity|renewables?).{0,14}analyst"
+      # Market-facing seats that are not spelled "analyst". Price reporting in
+      # particular is the classic route onto a commodities desk without prior
+      # desk experience, and it was scoring nothing for its title.
+      - "market (analysis|intelligence|research)"
+      - "price report\\w*|market report\\w*|price assess\\w*"
+      - "\\breporter\\b.*(gas|power|oil|lng|metals?|carbon|freight|commodit)"
+      - "(gas|power|oil|lng|metals?|carbon|freight|commodit\\w+).{0,14}reporter"
       - "(trade|market|transaction) surveillance"
       - "surveillance (analyst|analytics|quant)"
       - "market abuse"
@@ -78,6 +85,17 @@ title_tiers:
       - "origination analyst"
       - "market modell?(er|ing)"
       - "energy modell?(er|ing)"
+      # Front-office, market-facing, junior. Same floor as a research analyst:
+      # these sit on or beside the desk and hire people without desk history.
+      - "sales trader|trading sales|flow sales"
+      - "front office (analyst|support|associate|developer)"
+      - "market risk analyst"
+      - "product control(ler)?"
+      - "trade (floor|capture|surveillance|control) (analyst|associate)"
+      - "(commodity|commodities|energy|power|gas|oil|freight|metals?) sales"
+      - "origination (analyst|associate|graduate)"
+      - "(physical|paper) (trading|oil|gas|power)"
+      - "market (data|structure) analyst"
       - "asset optimi(s|z)ation"
       - "portfolio analyst"
       - "dispatch analyst"
@@ -210,6 +228,23 @@ min_jd_chars: 400
 
 # --- 4. Description signals. Each fires once. ---
 description_signals:
+  # A role that requires a language you do not have is not a role you can take,
+  # however well it matches otherwise. "German Speaking Junior Power Analyst"
+  # was the single highest-scoring job in a digest at 158, and "Mandarin
+  # speaking Junior Treasury Dealer" and "Bilingual Japanese/English Required"
+  # were both in the top twenty. Penalised rather than excluded, because some
+  # of these say "German a plus" and are genuinely open — they now rank below
+  # every role that does not ask, which is where they belong.
+  foreign_language_required:
+    points: -55
+    patterns:
+      - "(german|french|spanish|italian|dutch|portuguese|polish|russian|mandarin|cantonese|japanese|korean|arabic|hebrew|turkish|greek|swedish|norwegian|danish|finnish|czech|hungarian|romanian)[ -](speaking|speaker|language|native|fluent|fluency|bilingual)"
+      - "(fluen(t|cy)|native|bilingual|proficien(t|cy)) (in |level )?(german|french|spanish|italian|dutch|portuguese|polish|russian|mandarin|cantonese|japanese|korean|arabic|hebrew|turkish|greek)"
+      - "must (be able to )?(speak|be fluent)"
+      - "(bilingual|trilingual) [a-z]+ ?/ ?(english|eng)\\b"
+      - "\\b(english|eng) ?/ ?(german|french|spanish|mandarin|japanese|korean|arabic)\\b"
+      - "\\b(german|french|spanish|mandarin|japanese|korean|arabic) ?(and|&|/) ?english (fluency|required)"
+
   python_sql:
     points: 8
     patterns: ["python", "\\bsql\\b", "pandas", "numpy"]
@@ -284,6 +319,27 @@ source_weights:
   glassdoor: 0
   google: 1
   efinancialcareers: 2
+
+# --- 5b. Geography, scored rather than only filtered. ---
+# The location filter cannot fire on a row with no location, and page-read rows
+# very often have none — the digest shows "location n/a". That is how Centrica's
+# Aalborg scheduler scored 90, Volcafe's Dar es Salaam trading assistant 93, and
+# Enovos' Luxembourg internship 69, all in one digest.
+#
+# The city is almost always still there, in the title or in the URL:
+#   .../Centrica/job/Aalborg/Trading-Operations-Power-Scheduler
+#   .../job/New-York-Credit-Portfolio-Risk-Analyst-NY-10172
+#   Trading Assistant | Volcafe | Dar es Salaam, Tanzania
+# so all three fields are read, using the same patterns config.yaml filters on.
+#
+# Scored, not dropped: a stated London role earns, an evidently foreign one is
+# pushed below everything real, and one with nothing to go on takes a small
+# knock for the uncertainty rather than being thrown away — plenty of genuine
+# London roles simply do not state a location.
+geography:
+  uk_confirmed: 10
+  outside_uk: -50
+  not_stated: -8
 
 # --- 6. Freshness, in days since posted ---
 freshness:

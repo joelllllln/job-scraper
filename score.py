@@ -88,6 +88,27 @@ def load_excludes(path="config.yaml"):
     return re.compile("|".join(pats), re.I) if pats else None
 
 
+def _geo_patterns(path="config.yaml"):
+    """The same geography patterns config.yaml filters on, for scoring.
+
+    One source of truth: adding a city to config.yaml should change the ranking
+    as well as the filter, and keeping a second list here would guarantee the
+    two drifted apart.
+    """
+    try:
+        cfg = yaml.safe_load(open(path, encoding="utf-8")) or {}
+    except (FileNotFoundError, yaml.YAMLError):
+        return [], []
+    uk = [re.compile(p, re.I) for p in (cfg.get("uk_markers") or [])]
+    away = [re.compile(p, re.I) for p in
+            (cfg.get("location_exclude_cities") or []) +
+            (cfg.get("location_exclude_regions") or [])]
+    return uk, away
+
+
+UK_MARKERS, NOT_UK = _geo_patterns()
+
+
 def load_categories(path="firms.csv"):
     cats = {}
     try:
@@ -351,13 +372,40 @@ def score_job(r, cfg, cats, ghosts):
     # unparsed page onto the shortlist on no evidence at all. Absence of a
     # description is not evidence about the job; it is a gap in our data.
     min_jd = cfg.get("min_jd_chars", 400)
+    # Negative signals are read from the title as well, and are not gated on
+    # description length. A requirement stated in the title — "German Speaking
+    # Junior Power Analyst" — is the most reliable statement of it there is,
+    # and waiting for a 400-character description meant the roles most likely
+    # to arrive title-only were exactly the ones that escaped the penalty.
+    title_and_desc = f"{r['title'] or ''}\n{desc}"
+    for name, spec in cfg["description_signals"].items():
+        if spec["points"] < 0 and any(re.search(p, title_and_desc, re.I)
+                                      for p in spec["patterns"]):
+            add(spec["points"], f"jd:{name}")
+
     if len(desc) < min_jd:
         if desc:
             add(0, f"jd too short to read ({len(desc)}c)")
     else:
         for name, spec in cfg["description_signals"].items():
+            if spec["points"] < 0:
+                continue                      # already applied, above
             if any(re.search(p, desc) for p in spec["patterns"]):
                 add(spec["points"], f"jd:{name}")
+
+    # 4b. geography — see the note in scoring.yaml. Read from title and URL as
+    # well as the location field, because the rows that most need this are the
+    # ones with no location field at all.
+    geo = cfg.get("geography")
+    if geo:
+        where = f"{r.get('location') or ''} {r['title'] or ''} {r.get('url') or ''}"
+        where = where.replace("-", " ").replace("_", " ").replace("/", " ")
+        if any(p.search(where) for p in UK_MARKERS):
+            add(geo["uk_confirmed"], "UK confirmed")
+        elif any(p.search(where) for p in NOT_UK):
+            add(geo["outside_uk"], "outside the UK")
+        elif not (r.get("location") or "").strip():
+            add(geo["not_stated"], "location not stated")
 
     # 5. provenance
     add(cfg["source_weights"].get(r["source"], 0), f"via {r['source']}")

@@ -266,6 +266,61 @@ def main():
                 _bad.append(f"{_p}:{_n.lineno}")
     check("every text file is opened as utf-8, not the platform default", _bad, [])
 
+    print("\nlanguage requirements and geography are scored, not just filtered")
+    _sc = yaml.safe_load(open("scoring.yaml", encoding="utf-8"))
+    _cats = score.load_categories()
+
+    def _score(title, loc="", url="", src="linkedin"):
+        row = {"id": "x", "company": "X", "title": title, "location": loc, "url": url,
+               "source": src, "posted": "", "ld_posted": "", "valid_through": "",
+               "first_seen": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+               "years_required": None, "description": "", "salary_min": None,
+               "salary_max": None, "currency": "", "seen_count": 1, "employer": "X",
+               "status": "new", "checked_at": None, "live": None}
+        return score.score_job(row, _sc, _cats, set())
+
+    # "German Speaking Junior Power Analyst" was the top-scoring role in a digest
+    # at 158. The requirement is stated in the TITLE, so a description-gated
+    # penalty would never have fired on it.
+    _pts_de, _why_de = _score("German Speaking Junior Power Analyst", "London")
+    _pts_en, _why_en = _score("Junior Power Analyst", "London")
+    check("a language requirement in the title is penalised",
+          any("language" in w[0] for w in _why_de), True)
+    check("and the same role without one is not",
+          any("language" in w[0] for w in _why_en), False)
+    check_true("a language-gated role ranks below the same role without it",
+               _pts_de < _pts_en, f"{_pts_de} vs {_pts_en}")
+
+    # Geography read from the URL, because the rows that need it hardest are the
+    # page-read ones with no location field at all.
+    check("a foreign city in the URL is caught",
+          any(w[0] == "outside the UK" for w in _score(
+              "Trading Operations Power Scheduler", "",
+              "https://x.wd3.myworkdayjobs.com/C/job/Aalborg/Trading-Ops_R1")[1]), True)
+    check("a foreign country in the title is caught",
+          any(w[0] == "outside the UK" for w in _score(
+              "Trading Assistant | Volcafe | Dar es Salaam, Tanzania")[1]), True)
+    check("a stated London role is credited",
+          any(w[0] == "UK confirmed" for w in _score(
+              "Junior Gas Analyst", "London, United Kingdom")[1]), True)
+    # Deliberately a penalty, not a drop: plenty of genuine London roles state
+    # no location, and Braemar's trainee scheme is one of them.
+    check("no location at all is a knock, not a rejection",
+          [w[0] for w in _score("Trainee Broker Programme", "",
+                                "https://braemar.com/careers/trainee-broker-programme/")[1]
+           if w[0] in ("outside the UK", "location not stated")], ["location not stated"])
+
+    print("\nfront-office and market-facing titles are collected")
+    _keep = scrape.build_filter(yaml.safe_load(open("config.yaml", encoding="utf-8")))
+    for _t in ("Market Reporter - European Natural Gas", "Price Reporting Analyst",
+               "Sales Trader, Commodities", "Origination Analyst - Power",
+               "Front Office Analyst", "Market Risk Analyst",
+               "Market Intelligence Analyst - Energy", "Junior Broker - Dry Cargo"):
+        check(f"collects {_t[:38]!r}", _keep({"title": _t, "location": "London"}), True)
+    for _t in ("Retail Sales Assistant", "Sales Manager - SaaS", "Trade Support Analyst",
+               "Quality Controller - Food Production"):
+        check(f"still rejects {_t[:34]!r}", _keep({"title": _t, "location": "London"}), False)
+
     print("\nATS token guessing does not adopt a stranger's board")
     import discover as _dsc
     _amb = _dsc.ambiguous_firsts([{"name": "National Grid"}, {"name": "National Bank"},

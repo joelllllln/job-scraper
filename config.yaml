@@ -52,6 +52,17 @@ location_exclude_cities:
   - "\\b(berlin|frankfurt|munich|hamburg|dusseldorf|d\u00fcsseldorf)\\b"
   - "\\b(paris|lyon|marseille|madrid|barcelona|valencia)\\b"
   - "\\b(amsterdam|rotterdam|the hague|utrecht|brussels|antwerp)\\b"
+  # Cities that actually leaked into a digest, ranking above real London roles
+  # because the row carried no location field and nothing else named the place.
+  - "\\b(aalborg|aarhus|copenhagen|odense|malm(o|ö)|gothenburg|stockholm)\\b"
+  - "\\b(oslo|bergen|stavanger|helsinki|espoo|tallinn|riga|vilnius|reykjavik)\\b"
+  - "\\b(esch.sur.alzette|luxembourg|geneva|gen(e|è)ve|zurich|z(u|ü)rich|zug|basel|lausanne)\\b"
+  - "\\b(milan|milano|rome|roma|turin|athens|lisbon|porto|vienna|wien|graz)\\b"
+  - "\\b(prague|praha|warsaw|warszawa|krakow|budapest|bucharest|sofia|bratislava)\\b"
+  - "\\b(dar es salaam|nairobi|lagos|abuja|accra|cairo|casablanca|johannesburg|cape town)\\b"
+  - "\\b(bremen|cologne|k(o|ö)ln|stuttgart|essen|leipzig|hannover|nuremberg)\\b"
+  - "\\b(kuala lumpur|jakarta|manila|bangkok|ho chi minh|hanoi|dhaka|karachi|colombo)\\b"
+  - "\\b(tel aviv|istanbul|ankara|nicosia|valletta|monaco|gibraltar)\\b"
   - "\\b(zurich|z\u00fcrich|geneva|gen\u00e8ve|\\bzug\\b|basel|lausanne)\\b"
   - "\\b(warsaw|krakow|krak\u00f3w|wroclaw|bucharest|budapest|prague|bratislava|sofia)\\b"
   - "\\b(dublin|cork|milan|milano|rome|roma|turin|lisbon|porto)\\b"
@@ -69,7 +80,9 @@ location_exclude_regions:
   - "\\b(germany|france|spain|netherlands|belgium|switzerland|austria)\\b"
   - "\\b(poland|romania|hungary|czech republic|czechia|slovakia|bulgaria)\\b"
   - "\\b(ireland|italy|portugal|sweden|denmark|norway|finland|iceland|greece|turkey|cyprus)\\b"
-  - "\\b(south africa|nigeria|kenya|egypt)\\b"
+  - "\\b(south africa|nigeria|kenya|egypt|ghana|morocco|tanzania|uganda)\\b"
+  - "\\b(luxembourg|malta|monaco|estonia|latvia|lithuania|croatia|slovenia|serbia)\\b"
+  - "\\b(malaysia|indonesia|philippines|vietnam|thailand|bangladesh|pakistan|sri lanka)\\b"
   # US grid operators — they turn up where a city would be
   - "\\b(nyiso|ercot|caiso|miso|pjm|spp|isone|iso-ne|aeso|wecc)\\b"
 
@@ -372,6 +385,21 @@ role_words:
   - "dealer"
   - "scheduler"
   - "\\bdesk\\b"
+  # Front-office, market-facing roles that are not called "analyst". These are
+  # the desk-adjacent junior seats — the ones you actually get hired into from
+  # a regulator — and none of them were being collected.
+  - "\\breporter\\b"            # price reporting: Argus, Platts, ICIS
+  - "\\bjournalist\\b"          # same desks advertise it this way
+  - "origination"
+  - "structur(er|ing)"
+  - "\\bsales\\b"               # exclude list already drops sales-manager titles
+  - "coverage"
+  - "execution"
+  - "\\borigin\\w*"
+  - "modell?er"
+  - "\\bspecialist\\b"
+  - "\\bcontroller\\b"          # product control sits next to the desk
+  - "\\bactuar\\w+"
   # safe here only because the exclude list still drops "manager" titles
   # unless a junior marker is present — this exists so "Junior Portfolio
   # Manager" can be collected, not to let management roles in
@@ -415,6 +443,23 @@ domain_words:
   - "prime broker\\w*"
   - "electronic trading"
   - "\\btreasury\\b"
+  # market analysis and the front office, named as firms actually name them
+  - "market (analysis|analytics|intelligence|research|data|risk|structure)"
+  - "front office"
+  - "sales (and|&) trading"
+  - "market making"
+  - "flow (sales|trading|credit|rates)"
+  - "price (report\\w*|assessment|discovery|formation)"
+  - "supply (and|&) demand"
+  - "fundamental(s)? (analysis|research)"
+  - "product control"
+  # not "trade support": the exclude list drops that deliberately as back
+  # office, and this is a request for front-office seats
+  - "trade (floor|capture|surveillance|control)"
+  - "physical (trading|oil|gas|power|commodit\\w+)"
+  - "\\bdesk\\b"
+  - "cross.?commodity"
+  - "\\bbenchmark\\w*"
   # energy and physical
   - "\\benergy\\b"
   - "\\bpower\\b"

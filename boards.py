@@ -63,6 +63,25 @@ QUERIES = [
     "trade surveillance analyst",
     "commodity risk analyst",
     "price reporter commodities",
+    # Front-office and market-facing seats that are not called "analyst".
+    # Price reporting in particular is a standard route onto a commodities desk
+    # without prior desk experience, and nothing was searching for it.
+    "price reporting analyst",
+    "market reporter energy",
+    "junior broker commodities",
+    "graduate broker",
+    "sales trader",
+    "commodity sales",
+    "origination analyst energy",
+    "structuring analyst commodities",
+    "front office analyst",
+    "market risk analyst commodities",
+    "product control commodities",
+    "trade support analyst",
+    "physical trading operations",
+    "market intelligence analyst energy",
+    "shipping broker trainee",
+    "gas scheduling analyst",
 ]
 
 SITES_DEFAULT = ["linkedin", "indeed", "google", "glassdoor"]
