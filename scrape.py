@@ -16,6 +16,7 @@ import csv
 import hashlib
 import json
 import os
+import urllib.parse
 import re
 import sqlite3
 import sys
@@ -225,6 +226,21 @@ def ats_rows():
     return rows
 
 
+# Boards that page, and the parameter they page on. Everything else here
+# returns its whole board in one response. SmartRecruiters and Eightfold do not:
+# both are asked for 100 and both stop there, so a firm with more than 100 open
+# roles was silently reported as having exactly 100. Wise did, in a real run.
+PAGED = {"smartrecruiters": ("offset", 100), "eightfold": ("start", 100)}
+MAX_PAGES = 12          # 1,200 roles from one employer is already implausible
+
+
+def _with_offset(url, param, value):
+    parts = urllib.parse.urlsplit(url)
+    q = dict(urllib.parse.parse_qsl(parts.query))
+    q[param] = str(value)
+    return urllib.parse.urlunsplit(parts._replace(query=urllib.parse.urlencode(q)))
+
+
 def from_ats(session):
     rows = ats_rows()
     if not rows:
@@ -247,6 +263,23 @@ def from_ats(session):
                           f"(endpoint may have changed)")
                     continue
                 got = norm(row["ats"], row["name"], payload, row.get("url", ""))
+                # Walk the rest of the board when there is more of it.
+                if row["ats"] in PAGED and len(got) >= PAGED[row["ats"]][1]:
+                    param, size = PAGED[row["ats"]]
+                    for page in range(1, MAX_PAGES):
+                        nxt = http_client.get(_with_offset(row["url"], param, page * size),
+                                              sess=session)
+                        if nxt is None or nxt.status_code != 200:
+                            break
+                        more = http_client.json_of(nxt)
+                        if more is None:
+                            break
+                        batch = norm(row["ats"], row["name"], more, row.get("url", ""))
+                        if not batch:
+                            break
+                        got += batch
+                        if len(batch) < size:
+                            break
             jobs += got
             print(f"[{i}/{len(rows)}] {row['name']:<34} {len(got):>4} raw")
         except Exception as e:

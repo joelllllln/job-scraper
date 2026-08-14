@@ -315,7 +315,12 @@ def main():
             results.append(res)
             pending.append(res)
             row = futs[fut]
-            flag = "LIVE" if res["live"] else "DEAD"
+            # Three states, printed as three. live is None means the site
+            # refused the check, not that the job is gone — and printing that
+            # as DEAD contradicted both the reason on the same line ("job not
+            # verified") and the summary at the end ("unverifiable"). A row
+            # that says DEAD is a row you stop looking at.
+            flag = "LIVE" if res["live"] == 1 else ("DEAD" if res["live"] == 0 else "BLOCKED")
             print(f"[{i}/{len(rows)}] {flag}  {row[1][:24]:<26} {row[2][:44]:<46} {res['reason']}")
             if len(pending) >= 20:
                 flush(con, pending)

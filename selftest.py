@@ -266,6 +266,41 @@ def main():
                 _bad.append(f"{_p}:{_n.lineno}")
     check("every text file is opened as utf-8, not the platform default", _bad, [])
 
+    print("\nboards that page are paged, and truncation is never silent")
+    import scrape as _scr, workday as _wd, http_client as _hc4
+    check("smartrecruiters is known to page", "smartrecruiters" in _scr.PAGED, True)
+    check("eightfold is known to page", "eightfold" in _scr.PAGED, True)
+    check("an offset is added without losing the existing query",
+          _scr._with_offset("https://api.smartrecruiters.com/v1/companies/w/postings?limit=100",
+                            "offset", 100),
+          "https://api.smartrecruiters.com/v1/companies/w/postings?limit=100&offset=100")
+    check("and replaced rather than repeated on the next page",
+          _scr._with_offset("https://x/y?limit=100&offset=100", "offset", 200),
+          "https://x/y?limit=100&offset=200")
+
+    # Workday reported "40 raw" for BP, Shell and Citi in one run — two pages,
+    # then a refused third that looked exactly like having read everything.
+    class _R:
+        def __init__(self, code, payload=None):
+            self.status_code, self._p = code, payload
+    _n = {"i": 0}
+
+    def _two_then_403(url, body, sess=None, **kw):
+        _n["i"] += 1
+        if _n["i"] > 2:
+            return _R(403)
+        return _R(200, {"jobPostings": [{"title": "Analyst", "externalPath": "/j"}] * 20,
+                        "total": 5000})
+    _real_post, _real_json = _hc4.post_json, _hc4.json_of
+    _hc4.post_json, _hc4.json_of = _two_then_403, lambda r: r._p
+    try:
+        _jobs, _why = _wd.fetch_tenant(
+            None, {"name": "T", "tenant": "t", "dc": "wd3", "site": "S", "locale": ""})
+    finally:
+        _hc4.post_json, _hc4.json_of = _real_post, _real_json
+    check("a Workday tenant that stops early says why", bool(_why), True)
+    check("and reports the page it stopped on", "page 3" in _why, True)
+
     print("\na thin digest is topped up rather than sent nearly empty")
     import inspect as _i4
     _rep = yaml.safe_load(open("scoring.yaml", encoding="utf-8"))["report"]

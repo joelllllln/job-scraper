@@ -131,6 +131,7 @@ def run(sites, hours, per_query, pause):
     Neither showed up as a failure. Per-site totals are the whole point here.
     """
     frames, per_site = [], {s: 0 for s in sites}
+    capped = {s: 0 for s in sites}
     for site in sites:
         for i, q in enumerate(QUERIES, 1):
             print(f"[{site} {i}/{len(QUERIES)}] {q}")
@@ -151,14 +152,24 @@ def run(sites, hours, per_query, pause):
                 if df is not None and len(df):
                     frames.append(df)
                     per_site[site] += len(df)
-                    print(f"      {len(df)} rows")
+                    # A query returning exactly the cap almost never means the
+                    # board had exactly that many: it means we stopped asking.
+                    # Every one of 29 LinkedIn queries returned exactly 40 in
+                    # one run — the whole site was being truncated and nothing
+                    # said so.
+                    hit_cap = len(df) >= per_query
+                    if hit_cap:
+                        capped[site] += 1
+                    print(f"      {len(df)} rows{'  (capped — there were more)' if hit_cap else ''}")
             except Exception as e:
                 print(f"      ! {site}: {e}", file=sys.stderr)
             time.sleep(pause)
 
     print("\nper-site raw rows:")
     for s in sites:
-        print(f"  {s:<12} {per_site[s]}")
+        note = (f"  ({capped[s]}/{len(QUERIES)} queries truncated at --per-query "
+                f"{per_query})" if capped[s] else "")
+        print(f"  {s:<12} {per_site[s]}{note}")
     # An empty site is not a quiet result, it is a broken one: these are all
     # general job boards and every one of them has London finance roles today.
     dead = [s for s in sites if per_site[s] == 0]
@@ -174,7 +185,11 @@ def run(sites, hours, per_query, pause):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--hours", type=int, default=168, help="how far back (default 7 days)")
-    ap.add_argument("--per-query", type=int, default=40)
+    # 40 truncated every single LinkedIn query in a real run. LinkedIn pages in
+    # 25s, so 90 is four pages rather than two — more requests per query, but
+    # the pause between queries is what actually keeps you under the rate limit,
+    # and that is unchanged. Drop it back if you start seeing 429s.
+    ap.add_argument("--per-query", type=int, default=90)
     ap.add_argument("--pause", type=float, default=6.0, help="seconds between queries")
     ap.add_argument("--linkedin-only", action="store_true")
     ap.add_argument("--no-linkedin", action="store_true", help="use if you've been rate limited")

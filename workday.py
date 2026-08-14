@@ -31,21 +31,30 @@ UA = {"User-Agent": "Mozilla/5.0 (compatible; job-registry/1.0)",
       "Content-Type": "application/json", "Accept": "application/json"}
 
 
-def fetch_tenant(session, row, search_text="", max_pages=25):
+def fetch_tenant(session, row, search_text="", max_pages=40):
     """Page through one Workday board. Returns normalised job dicts."""
     tenant, dc, site = row["tenant"], row["dc"], row["site"]
     locale = row.get("locale") or ""
     api = f"https://{tenant}.{dc}.myworkdayjobs.com/wday/cxs/{tenant}/{site}/jobs"
     prefix = f"https://{tenant}.{dc}.myworkdayjobs.com" + (f"/{locale}" if locale else "") + f"/{site}"
 
-    jobs, offset = [], 0
-    for _ in range(max_pages):
+    # Why the walk stopped matters as much as what it collected. Dozens of
+    # tenants returned exactly 40 — two pages — in one run, including BP, Shell
+    # and Citi, which do not have forty openings between them. Stopping on a
+    # refused third page looked identical to having read everything.
+    jobs, offset, stopped = [], 0, ""
+    for page in range(max_pages):
         body = {"appliedFacets": {}, "limit": PAGE, "offset": offset, "searchText": search_text}
         r = http_client.post_json(api, body, sess=session)
-        if r is None or r.status_code != 200:
+        if r is None:
+            stopped = f"no response at page {page + 1}"
+            break
+        if r.status_code != 200:
+            stopped = f"http {r.status_code} at page {page + 1}"
             break
         data = http_client.json_of(r)
         if data is None:
+            stopped = f"unparseable response at page {page + 1}"
             break
 
         postings = data.get("jobPostings") or []
@@ -64,8 +73,10 @@ def fetch_tenant(session, row, search_text="", max_pages=25):
         offset += PAGE
         if not postings or offset >= total:
             break
+        if page == max_pages - 1:
+            stopped = f"hit the {max_pages}-page ceiling with {total} advertised"
         time.sleep(0.4)
-    return jobs
+    return jobs, stopped
 
 
 def main():
@@ -84,11 +95,22 @@ def main():
     con = db_init()
     session = http_client.session()
 
-    raw = []
+    raw, truncated = [], []
     for i, row in enumerate(rows, 1):
-        got = fetch_tenant(session, row, args.search)
+        got, stopped = fetch_tenant(session, row, args.search)
         raw += got
-        print(f"[{i}/{len(rows)}] {row['name']:<34} {len(got):>4} raw")
+        if stopped:
+            truncated.append(f"{row['name']} ({len(got)} rows, {stopped})")
+        print(f"[{i}/{len(rows)}] {row['name']:<34} {len(got):>4} raw"
+              f"{'  ! ' + stopped if stopped else ''}")
+
+    if truncated:
+        print(f"\n{len(truncated)} of {len(rows)} tenants stopped early — these are "
+              f"under-reported, not empty:")
+        for t in truncated[:15]:
+            print(f"    {t}")
+        if len(truncated) > 15:
+            print(f"    ... and {len(truncated) - 15} more")
 
     hits = [j for j in raw if keep(j)]
     new = store.save_new(con, hits)

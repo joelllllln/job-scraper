@@ -42,7 +42,7 @@ PY = sys.executable
 # only costs the remainder rather than the run — but the ceiling should be the
 # length of the job, not an accident of the default.
 TIMEOUTS = {"sniff": 3600, "discover": 3600, "render": 14400, "boards": 2700,
-            "embedded jobs": 7200, "check firms": 3600}
+            "embedded jobs": 7200, "check firms": 3600, "efinancial": 2700}
 DEFAULT_TIMEOUT = 1800
 
 SETTINGS = [
@@ -277,7 +277,8 @@ def main():
     stage("reed+bullhorn", ["feeds.py", "--all"], failures)
     boards = ["boards.py", "--hours", "192"] + (["--no-linkedin"] if args.no_linkedin else [])
     stage("boards", boards, failures)
-    stage("efinancial", ["efc.py", "--limit", "200"], failures)
+    # 200 was reading a fifth of what the sitemaps offer, at about 2.8s a page.
+    stage("efinancial", ["efc.py", "--limit", "500"], failures)
 
     # Anything collected out of band — the Railway LinkedIn worker, or the
     # browser stage above. No-ops when the files are absent.
