@@ -622,6 +622,11 @@ def main():
         # still open and not yet applied to. They are marked as such in the
         # digest, so a genuinely busy week still reads as one.
         floor = (cfg.get("report") or {}).get("backfill_to", 0)
+        if not floor:
+            print("  backfill disabled (report.backfill_to is 0)")
+        elif len(fresh) >= floor:
+            print(f"  no top-up needed — {len(fresh)} new clears the "
+                  f"backfill_to floor of {floor}")
         if floor and len(fresh) < floor:
             seen_ids = {r["id"] for r in fresh}
             older = [r for r in rows

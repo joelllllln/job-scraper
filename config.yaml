@@ -334,6 +334,17 @@ exclude:
   # Programme", which is one of the front-office routes actually open to you
   - "sales (executive|manager|rep|representative|consultant|assistant|advisor|adviser)"
   - "account manager"
+  # The accounting and credit function. Named explicitly because these are
+  # respectable jobs that are simply not this search: nine of them reached one
+  # digest, three inside the top ten.
+  - "(financial|finance|credit|group|fund|syndicate|accounting|assistant) controller"
+  - "financial control\\b"
+  - "credit control\\b"
+  - "\\bbookkeep\\w*"
+  - "accounts (payable|receivable|assistant)"
+  - "sales development"
+  - "business developer"
+  - "network engineer"
   - "account executive"
   - "business development"
   - "recruit"
@@ -392,14 +403,17 @@ role_words:
   - "\\bjournalist\\b"          # same desks advertise it this way
   - "origination"
   - "structur(er|ing)"
-  - "\\bsales\\b"               # exclude list already drops sales-manager titles
-  - "coverage"
   - "execution"
-  - "\\borigin\\w*"
+  - "origination"
   - "modell?er"
-  - "\\bspecialist\\b"
-  - "\\bcontroller\\b"          # product control sits next to the desk
-  - "\\bactuar\\w+"
+  # Deliberately NOT here, having been tried and reverted: bare "sales",
+  # "specialist", "controller", "coverage" and "actuar". They put nine
+  # financial and credit controllers, a door-to-door energy sales role and a
+  # senior network engineer into one digest. The desk-adjacent versions are
+  # collected by their domain words instead — "product control" and
+  # "commodity sales" are in domain_words, and "Sales Trader" matches on
+  # trader + commodities — so the seats are still reachable without the
+  # accounting department coming with them.
   # safe here only because the exclude list still drops "manager" titles
   # unless a junior marker is present — this exists so "Junior Portfolio
   # Manager" can be collected, not to let management roles in

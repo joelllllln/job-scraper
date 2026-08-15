@@ -381,7 +381,7 @@ report:
   # in a day otherwise produces an email covering five hours of hiring, which
   # reads as a broken scraper rather than as yesterday's work already seen.
   # Set to 0 for a strictly new-since-last-run digest.
-  backfill_to: 45
+  backfill_to: 60
   top_n: 60
   min_score: 20
   shortlist_threshold: 60
