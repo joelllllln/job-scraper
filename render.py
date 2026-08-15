@@ -38,6 +38,7 @@ import re
 import sys
 import threading
 import urllib.parse
+import urllib.request
 import urllib.robotparser as robotparser
 
 import embedded
@@ -87,20 +88,30 @@ def browser_path():
 
 
 _ROBOTS = {}
+ROBOTS_TIMEOUT = 8
 
 
 def may_fetch(url):
-    """robots.txt, cached per host. Unreachable robots means allowed."""
+    """robots.txt, cached per host. Unreachable robots means allowed.
+
+    Fetched by hand rather than with RobotFileParser.read(), which calls
+    urlopen with NO timeout: a host that accepts the connection and then never
+    answers blocks the worker forever. One did — a real run sat on a single
+    firm for forty minutes with no page load in flight and nothing to kill it,
+    because the hang was in the politeness check rather than in the browser.
+    """
     host = urllib.parse.urlsplit(url)
     root = f"{host.scheme}://{host.netloc}"
     rp = _ROBOTS.get(root)
     if rp is None:
         rp = robotparser.RobotFileParser()
-        rp.set_url(f"{root}/robots.txt")
         try:
-            rp.read()
+            req = urllib.request.Request(f"{root}/robots.txt",
+                                         headers={"User-Agent": UA})
+            with urllib.request.urlopen(req, timeout=ROBOTS_TIMEOUT) as fh:
+                rp.parse(fh.read(65536).decode("utf-8", "replace").splitlines())
         except Exception:
-            rp = False          # no robots.txt readable — nothing forbids us
+            rp = False          # unreachable, slow or absent — nothing forbids us
         _ROBOTS[root] = rp
     if rp is False:
         return True
@@ -271,6 +282,10 @@ def main():
             ctx.route("**/*.{png,jpg,jpeg,gif,webp,svg,woff,woff2,ttf,mp4}",
                       lambda route: route.abort())
             page = ctx.new_page()
+            # Covers page.content(), which takes no timeout argument of its own
+            # and will happily wait out a page whose scripts never settle.
+            page.set_default_timeout(PAGE_TIMEOUT_MS)
+            page.set_default_navigation_timeout(PAGE_TIMEOUT_MS)
             try:
                 for firm in chunk:
                     try:
