@@ -36,6 +36,7 @@ import json
 import os
 import re
 import sys
+import threading
 import urllib.parse
 import urllib.robotparser as robotparser
 
@@ -50,9 +51,18 @@ INBOX_FIELDS = ["company", "title", "location", "url", "source", "posted"]
 
 # A browser is heavy: each page is a process, not a socket. Four at a time is
 # comfortable on a laptop and still gets through 1,500 firms in an evening.
+#
+# This constant, and the "4 at a time" it printed, were both fiction until now:
+# the loop below opened a single page and walked the list one firm at a time,
+# managing three firms a minute. At 1,523 firms that is eight hours against a
+# four-hour stage ceiling, so a third of the registry was never going to be
+# reached. Playwright's sync API is bound to the thread that created it, so
+# each worker builds its own browser rather than sharing one.
 WORKERS = 4
-PAGE_TIMEOUT_MS = 20000
-SETTLE_MS = 2500          # after load, give the listing widget time to draw
+PAGE_TIMEOUT_MS = 12000   # a careers page that has not answered in 12s will not
+SETTLE_MS = 1200          # after load, give the listing widget time to draw
+MAX_URLS_PER_FIRM = 5     # candidate_urls can offer a dozen; the later ones
+                          # almost never hit and each costs a full timeout
 
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
@@ -138,7 +148,7 @@ def render_firm(page, firm):
         return None, [], "no domain"
 
     walled, blocked_by_robots = set(), False
-    for url in sniff.candidate_urls(domain):
+    for url in list(sniff.candidate_urls(domain))[:MAX_URLS_PER_FIRM]:
         host = url.split("/")[2]
         if host in walled:
             continue
@@ -222,6 +232,8 @@ def main():
     ap.add_argument("--blocked-only", action="store_true",
                     help="only firms whose own site refuses plain requests")
     ap.add_argument("--headed", action="store_true", help="watch it work")
+    ap.add_argument("--workers", type=int, default=WORKERS,
+                    help=f"browsers in parallel (default {WORKERS})")
     args = ap.parse_args()
 
     try:
@@ -236,46 +248,69 @@ def main():
     if not todo:
         print("nothing to render — every firm already has an answer")
         return 0
-    print(f"rendering {len(todo)} firms (a browser each, {WORKERS} at a time)\n")
+    workers = max(1, args.workers)
+    print(f"rendering {len(todo)} firms, {workers} browsers at a time\n")
 
-    found_ats, found_jobs, notes = [], [], []
+    lock = threading.Lock()
+    counter = {"i": 0}
+    buf = {"ats": [], "jobs": [], "notes": []}
     exe = browser_path()
-    with sync_playwright() as pw:
-        browser = pw.chromium.launch(headless=not args.headed,
-                                     **({"executable_path": exe} if exe else {}))
-        ctx = browser.new_context(user_agent=UA, viewport={"width": 1280, "height": 900})
-        # Images and fonts are pure cost here: nothing is read from them, and
-        # blocking them roughly halves the time per page.
-        ctx.route("**/*.{png,jpg,jpeg,gif,webp,svg,woff,woff2,ttf,mp4}",
-                  lambda route: route.abort())
-        page = ctx.new_page()
-        try:
-            for i, firm in enumerate(todo, 1):
-                try:
-                    ats, jobs, note = render_firm(page, firm)
-                except Exception as e:
-                    ats, jobs, note = None, [], f"error: {type(e).__name__}"
-                if ats:
-                    found_ats.append(ats)
-                found_jobs += jobs
-                notes.append({"name": firm["name"], "domain": firm.get("domain", ""),
-                              "result": note})
-                flag = "ATS" if ats else (f"{len(jobs)} jobs" if jobs else "   ")
-                print(f"[{i}/{len(todo)}] {flag:<9} {firm['name'][:32]:<34} {note[:52]}")
-                # Checkpoint: a browser run is long and interrupting it must not
-                # throw away the firms already done.
-                if i % 10 == 0 or i == len(todo):
-                    append("sniffed.csv", found_ats, sniff.COLS)
-                    append(OUT_INBOX, found_jobs, INBOX_FIELDS)
-                    append("rendered.csv", notes, ["name", "domain", "result"])
-                    found_ats, found_jobs, notes = [], [], []
-        except KeyboardInterrupt:
-            print("\ninterrupted — keeping what completed", file=sys.stderr)
-        finally:
-            append("sniffed.csv", found_ats, sniff.COLS)
-            append(OUT_INBOX, found_jobs, INBOX_FIELDS)
-            append("rendered.csv", notes, ["name", "domain", "result"])
-            browser.close()
+
+    def flush_locked():
+        append("sniffed.csv", buf["ats"], sniff.COLS)
+        append(OUT_INBOX, buf["jobs"], INBOX_FIELDS)
+        append("rendered.csv", buf["notes"], ["name", "domain", "result"])
+        buf["ats"], buf["jobs"], buf["notes"] = [], [], []
+
+    def worker(chunk):
+        with sync_playwright() as pw:
+            browser = pw.chromium.launch(headless=not args.headed,
+                                         **({"executable_path": exe} if exe else {}))
+            ctx = browser.new_context(user_agent=UA,
+                                      viewport={"width": 1280, "height": 900})
+            ctx.route("**/*.{png,jpg,jpeg,gif,webp,svg,woff,woff2,ttf,mp4}",
+                      lambda route: route.abort())
+            page = ctx.new_page()
+            try:
+                for firm in chunk:
+                    try:
+                        ats, jobs, note = render_firm(page, firm)
+                    except Exception as e:
+                        ats, jobs, note = None, [], f"error: {type(e).__name__}"
+                    with lock:
+                        counter["i"] += 1
+                        i = counter["i"]
+                        if ats:
+                            buf["ats"].append(ats)
+                        buf["jobs"] += jobs
+                        buf["notes"].append({"name": firm["name"],
+                                             "domain": firm.get("domain", ""),
+                                             "result": note})
+                        flag = "ATS" if ats else (f"{len(jobs)} jobs" if jobs else "   ")
+                        print(f"[{i}/{len(todo)}] {flag:<9} "
+                              f"{firm['name'][:32]:<34} {note[:52]}", flush=True)
+                        # Checkpointed: a browser run is long, and interrupting
+                        # it must never throw away the firms already done.
+                        if i % 10 == 0:
+                            flush_locked()
+            finally:
+                browser.close()
+
+    # Interleaved, not sliced: a contiguous block would put every slow foreign
+    # domain in one worker while another finishes early and idles.
+    chunks = [todo[n::workers] for n in range(workers)]
+    threads = [threading.Thread(target=worker, args=(c,), daemon=True)
+               for c in chunks if c]
+    try:
+        for t in threads:
+            t.start()
+        for t in threads:
+            t.join()
+    except KeyboardInterrupt:
+        print("\ninterrupted — keeping what completed", file=sys.stderr)
+    finally:
+        with lock:
+            flush_locked()
 
     print(f"\nwrote any ATS found to sniffed.csv — next run reads those firms "
           f"through their API, no browser needed")
