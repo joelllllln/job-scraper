@@ -202,10 +202,6 @@ include:
 
   # --- insurance front office ---
   # 54 insurance firms in the registry were producing nothing at all.
-  - "underwrit(er|ing) (analyst|assistant|technician|graduate)"
-  - "catastrophe model"
-  - "exposure management"
-  - "actuarial analyst"
 
   # --- banking front office ---
   - "investment banking"
@@ -237,12 +233,6 @@ include:
   # Each of these must name the discipline as well as the stage. Unscoped,
   # "trainee" collects dental nurses and driving instructors, "apprentice"
   # collects chefs and plumbers, and "placement" collects nursing coordinators.
-  - "graduate (scheme|programme|program|analyst|trader|developer|engineer)"
-  - "analyst (programme|program|scheme)"
-  - "(trading|commodit|energy|market|quant|research|finance|investment) intern"
-  - "intern(ship)?.{0,24}(trading|commodit|energy|market|quant|research)"
-  - "(industrial|commercial|finance|trading|analyst) placement|placement year"
-  - "apprentice.{0,20}(trader|analyst|broker|dealer|trading)"
   - "trainee.{0,20}(trader|analyst|broker|dealer|quant)"
   - "(trading|commodit|energy|market|shipping|chartering).{0,20}trainee"
   # Scoped, all three. Bare, "entry level" collected Entry Level Chef, Nurse and
@@ -257,11 +247,7 @@ include:
   - "school leaver.{0,24}(analyst|trader|trading|broker|quant|research|market|data|risk|financ|invest|energy|commodit|econom|portfolio|deriv|equit|credit|bank)"
   # unambiguous as an exact phrase — always an early-careers intake, never a
   # trade apprenticeship, unlike a bare "school leaver" followed by a job
-  - "school leaver (programme|program|scheme)"
-  - "off.?cycle"
-  - "(summer|spring|winter|campus) (analyst|intern|programme|program)"
   - "new grad\\w*.{0,24}(analyst|trader|trading|broker|quant|research|market|data|risk|financ|invest|energy|commodit|econom|portfolio|deriv|equit|credit|bank)"
-  - "rotational (programme|program|scheme)"
 
   # --- desk / front office ---
   - "trading analyst"
@@ -272,7 +258,6 @@ include:
   - "trainee trader"
   - "assistant trader"
   - "trader"
-  - "trading (graduate|intern|programme|program|rotation)"
   - "front office"
   - "structur(er|ing) (analyst|associate|desk)|structured (products|commodit|finance)"
   - "origination (analyst|associate|desk)|(power|gas|energy|commodit).{0,20}origination"
@@ -290,7 +275,6 @@ include:
   - "quant(itative)? analyst"
   - "quant(itative)? research"
   - "quant(itative)? strateg"
-  - "quant(itative)? develop"
   - "systematic (trading|research)"
   - "signals research"
   - "alpha research"
@@ -299,12 +283,7 @@ include:
   # --- data ---
   - "data scientist"
   - "data analyst"
-  - "analytics engineer"
-  - "machine learning (engineer|scientist)"
-  - "data engineer"
   - "market data"
-  - "python developer"
-  - "trading systems"
   # inverted and bare forms the phrase list never spelled — measured misses
   - "trad(e|ing) floor"
   - "trading (assistant|associate|support analyst)"
@@ -345,6 +324,42 @@ exclude:
   - "sales development"
   - "business developer"
   - "network engineer"
+  # --- software engineering. Asked for explicitly: these are engineering jobs
+  # that happen to sit near a desk, not market-facing ones. ---
+  - "\\bengineer(ing|s)?\\b"
+  - "\\bdeveloper\\b"
+  # Narrow: "Corporate Development Analyst" is a strategy role, not a software
+  # one, and a bare "development" block was taking it with the rest.
+  - "software development|development (engineer|manager|lead|team)"
+  - "software"
+  - "programmer"
+  - "\\bsre\\b|site reliability"
+  - "\\bdevops\\b"
+  - "full.?stack|back.?end|front.?end"
+  - "\\bc\\+\\+|\\bjava\\b|\\bgolang\\b|\\bkdb\\b"
+  # --- insurance, in all its forms ---
+  - "insurance|insurer"
+  - "underwrit\\w*"
+  - "reinsur\\w*"
+  - "actuar\\w*"
+  - "catastrophe|\\bcat model"
+  - "\\bclaims?\\b"
+  - "\\bsyndicate\\b"
+  - "\\blloyd.?s\\b"
+  - "solvency"
+  - "\\bperils?\\b"
+  # --- graduate schemes, internships and placements. Not "Graduate Analyst",
+  # which is an ordinary permanent hire — the schemes themselves, which want a
+  # current undergraduate. ---
+  - "(graduate|analyst|trading|rotational|leadership|development|early care\\w*|summer|spring|winter|campus|insight|discovery) (programme|program|scheme)"
+  - "\\bintern\\b|\\binterns\\b|internship"
+  - "\\bplacement\\b|placement year|year in industry|sandwich (year|course)"
+  - "apprentice\\w*"
+  - "off.?cycle"
+  - "school leaver"
+  - "penultimate"
+  - "(summer|spring|winter|campus) (analyst|associate)"
+  - "work experience|insight (day|week|programme)"
   - "account executive"
   - "business development"
   - "recruit"
@@ -438,7 +453,6 @@ domain_words:
   - "\\bfutures\\b"
   - "\\btrading\\b"
   - "\\bdebt\\b"
-  - "insurance"
   - "investor relations"
   - "options (trading|market|desk)"
   # the buy side
@@ -509,5 +523,4 @@ domain_words:
   - "structur\\w+"
   - "origination"
   - "pricing"
-  - "underwrit\\w+"
 

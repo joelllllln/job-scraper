@@ -924,9 +924,10 @@ def main():
                score.score_job(job(description=jd("no prior experience")), cfg, cats,
                                set())[0] > junk[0] + 15)
 
-    for title in ("Graduate Commodity Analyst", "Summer Analyst Programme",
-                  "Trading Internship", "Sales and Trading Graduate Programme",
-                  "Commercial Placement Year", "Off-Cycle Analyst"):
+    # Schemes, internships and placements are excluded outright now (asked for
+    # directly), so only a bare "Graduate <role>" still reaches this tier — an
+    # ordinary permanent hire rather than a scheme.
+    for title in ("Graduate Commodity Analyst", "Graduate Trader"):
         pts, why = score.score_job(job(title=title), cfg, cats, set())
         tier = [(l, n) for l, n in why if l.startswith("title:")]
         check(f"student intake earns nothing for its title: {title[:34]}",
@@ -1214,13 +1215,21 @@ def main():
                         # and the widened exclusions still bite on the same words
                         ("Senior Battery Storage Analyst", False),
                         ("Head of Flexibility", False), ("Electricity Trader II", False),
-                        # early career, collected on the programme alone
-                        ("Graduate Scheme, Commodities", True), ("Trading Internship", True),
-                        ("Summer Analyst Programme", True), ("Commercial Placement Year", True),
-                        ("Apprentice Trader", True), ("Off-Cycle Analyst", True),
-                        ("School Leaver Programme", True),
-                        # a blanket "sales" exclusion used to throw this one out
-                        ("Sales and Trading Graduate Programme", True),
+                        # schemes, internships and placements: excluded outright
+                        # at the user's request — they want permanent roles
+                        ("Graduate Scheme, Commodities", False), ("Trading Internship", False),
+                        ("Summer Analyst Programme", False), ("Commercial Placement Year", False),
+                        ("Apprentice Trader", False), ("Off-Cycle Analyst", False),
+                        ("School Leaver Programme", False),
+                        ("Sales and Trading Graduate Programme", False),
+                        # but a graduate-titled permanent role is still wanted
+                        ("Graduate Risk Analyst", True), ("Graduate Trader", True),
+                        # engineering and insurance, also excluded outright
+                        ("Data Engineer", False), ("Python Developer", False),
+                        ("Machine Learning Engineer", False), ("Software Engineer", False),
+                        ("Underwriting Analyst", False), ("Actuarial Analyst", False),
+                        ("Reinsurance Analyst", False), ("Catastrophe Modeller", False),
+                        ("Claims Analyst", False),
                         ("Sales Executive", False), ("Account Manager", False)]:
         check(f"filter: {title}", bool(inc.search(title)) and not exc.search(title), want)
 
@@ -1236,8 +1245,7 @@ def main():
                   "Gas Scheduler", "Cargo Operator", "Trade Operations Analyst",
                   "Market Risk Analyst", "Commodity Risk Analyst", "Product Control Analyst",
                   "Energy Economist", "ESG Analyst", "Climate Risk Analyst",
-                  "Commercial Analyst", "PPA Analyst", "Catastrophe Modelling Analyst",
-                  "Underwriting Assistant", "Investment Banking Analyst",
+                  "Commercial Analyst", "PPA Analyst", "Investment Banking Analyst",
                   "Sale and Purchase Broker", "Investment Analyst",
                   "Transaction Reporting Analyst", "Demurrage Analyst"):
         tier = [l for l, _ in score.score_job(job(title=title), cfg, cats, set())[1]
@@ -1401,11 +1409,13 @@ def main():
         check(f"no title tier for: {t}", [l for l, _ in why if l.startswith("title:")], [])
         check_true(f"and it falls below the shortlist: {t}",
                    pts < cfg["report"]["shortlist_threshold"], f"got {pts}")
-    check_true("but they are still collected, not thrown away",
-               all(scrape.build_filter(yaml.safe_load(open("config.yaml", encoding="utf-8")))(
-                   {"title": t, "location": "London"})
-                   for t in ("Quantitative Developer", "Machine Learning Engineer",
-                             "Python Developer")))
+    # These used to be collected and merely ranked low. They are now excluded
+    # outright, asked for directly: they are engineering roles, not market ones.
+    _f = scrape.build_filter(yaml.safe_load(open("config.yaml", encoding="utf-8")))
+    check("and engineering roles are not collected at all",
+          [t for t in ("Quantitative Developer", "Machine Learning Engineer",
+                       "Python Developer", "Data Engineer", "Software Engineer")
+           if _f({"title": t, "location": "London"})], [])
 
     print("\nfirm concentration — one careers page must not eat the digest")
     many = [dict(company="Point72", title=f"Quant Researcher {i}", score=100 - i) for i in range(7)]
@@ -1529,16 +1539,14 @@ def main():
               "Commodity Analyst", "Power Trading Analyst", "LNG Analyst",
               "Quantitative Researcher", "Structuring Analyst",
               "Origination Analyst - Power", "Dry Cargo Chartering Trainee",
-              "Assistant Trader", "Commodities Trading Internship",
-              # the functions added after measuring 9/62 coverage
+              "Assistant Trader", # the functions added after measuring 9/62 coverage
               "Gas Scheduler", "Power Scheduler", "Cargo Operator",
               "Trade Operations Analyst", "Deal Capture Analyst", "Demurrage Analyst",
               "Market Risk Analyst", "Commodity Risk Analyst", "Model Validation Analyst",
               "Product Control Analyst", "Valuations Analyst", "Energy Economist",
               "ESG Analyst", "Sustainability Analyst", "Climate Risk Analyst",
               "Commercial Analyst", "PPA Analyst", "Corporate Development Analyst",
-              "Catastrophe Modelling Analyst", "Exposure Management Analyst",
-              "Underwriting Assistant", "Investment Banking Analyst", "M&A Analyst",
+              "Investment Banking Analyst", "M&A Analyst",
               "Leveraged Finance Analyst", "Sale and Purchase Broker", "Dry Cargo Broker",
               "Shipbroking Trainee", "Transaction Reporting Analyst", "Investment Analyst",
               # The inverted house style. Every include phrase spells
@@ -1552,8 +1560,7 @@ def main():
               "Analyst, Risk", "Financial Analyst", "Analyst, Investment Management",
               "Investment Operations Analyst", "Analyst - Energy Transition",
               "Analyst, Private Credit", "Analyst, Prime Brokerage",
-              "Analyst, Electronic Trading", "Analyst, Insurance",
-              "Analyst, Model Risk", "Analyst, Asset Management",
+              "Analyst, Electronic Trading", "Analyst, Model Risk", "Analyst, Asset Management",
               "Real Assets Analyst", "Analyst, Real Estate Investment",
               "Analyst - Hedge Fund", "Hedge Fund Analyst", "Analyst, Macro Research",
               "Macro Analyst", "Rates Analyst", "FX Analyst",

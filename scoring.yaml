@@ -9,7 +9,10 @@ title_tiers:
                 # well they match otherwise. Listed first, so a "Graduate
                 # Commodity Analyst" takes this tier and earns nothing for its
                 # title rather than scoring as core.
-                # Set this to -1000 to drop them from the digest entirely.
+                # Now largely moot: schemes, internships and placements are excluded
+    # outright in config.yaml at your request. This tier still catches a
+    # bare "Graduate Analyst", which is an ordinary permanent hire rather
+    # than a scheme — set to -1000 to drop those too.
     points: 0
     patterns:
       - "\\bgrad(uate)?s?\\b"
@@ -88,7 +91,7 @@ title_tiers:
       # Front-office, market-facing, junior. Same floor as a research analyst:
       # these sit on or beside the desk and hire people without desk history.
       - "sales trader|trading sales|flow sales"
-      - "front office (analyst|support|associate|developer)"
+      - "front office (analyst|support|associate)"
       - "market risk analyst"
       - "product control(ler)?"
       - "trade (floor|capture|surveillance|control) (analyst|associate)"
@@ -136,8 +139,6 @@ title_tiers:
       - "esg (analyst|analytics|data|research)"
       - "sustainability (analyst|reporting|data)"
       - "climate (risk )?analyst"
-      - "underwrit(er|ing) (analyst|assistant|technician|graduate)"
-      - "catastrophe model|exposure management|actuarial analyst"
       - "investment banking|m(and|&)a analyst|leveraged finance"
       - "(debt|equity) capital markets|corporate finance analyst"
       - "risk analyst"
@@ -197,7 +198,9 @@ firm_categories:
   shipbroker: 5
   shipping: 5           # owners and operators, not brokers
   bank: 5
-  insurance: 4          # marine and energy underwriting is the relevant corner
+  insurance: 0          # asked to be dropped: insurance roles are excluded
+                        # outright in config.yaml, and an insurer hiring a
+                        # markets analyst should rank on the role, not the firm
   consultancy: 4
   recruiter: 3
   unknown: 2
