@@ -33,6 +33,10 @@ from email.message import EmailMessage
 
 DB = "jobs.db"
 
+# Where Gmail starts hiding the rest of the message behind "[Message clipped]".
+# Slightly under the real threshold so a digest near the line still arrives whole.
+CLIP_BYTES = 98_000
+
 
 # Sources the pipeline calls on every run regardless of which firms are in the
 # registry. An ATS being absent just means no firm uses it; one of these being
@@ -186,6 +190,18 @@ def send_email(subject, html_body, text_body):
     msg["To"] = to
     msg.set_content(text_body)
     msg.add_alternative(html_body, subtype="html")
+
+    # Gmail clips a message body over roughly 102 KB and hides the rest behind
+    # a "[Message clipped]" link. A full report — every open role rather than
+    # the week's new ones — runs to several hundred KB, so most of the digest
+    # would simply not be there. Attaching the same report means the body can
+    # be clipped without anything being lost: open the attachment and it is all
+    # there, formatted, offline, and greppable.
+    if len(html_body.encode("utf-8")) > CLIP_BYTES:
+        msg.add_attachment(html_body.encode("utf-8"), maintype="text",
+                           subtype="html", filename="report.html")
+        print(f"  digest is {len(html_body) // 1024} KB — Gmail clips above "
+              f"{CLIP_BYTES // 1024} KB, so report.html is attached in full")
     # `or 587`, not a getenv default: an unset GitHub secret arrives as an empty
     # string, and int("") would raise into the catch below — silently no email.
     port = int(os.getenv("SMTP_PORT") or 587)
