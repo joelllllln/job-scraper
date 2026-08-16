@@ -32,6 +32,7 @@ import argparse
 import csv
 import json
 import os
+import env
 import re
 import sys
 import urllib.parse
@@ -482,6 +483,7 @@ def scanned(path=SEEN):
 
 
 def main():
+    env.load()
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--only", help="comma-separated firm names")

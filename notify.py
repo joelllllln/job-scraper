@@ -25,6 +25,7 @@ Telegram (easier on mobile):
 
 import csv
 import os
+import env
 import smtplib
 import sqlite3
 import sys
@@ -232,6 +233,7 @@ def send_telegram(text):
 
 
 def main():
+    env.load()
     if not os.path.exists(DB):
         print("no database yet — nothing to notify about", file=sys.stderr)
         return

@@ -16,6 +16,8 @@ Feeds the same jobs.db as scrape.py and boards.py.
 import argparse
 import csv
 import sys
+
+import env
 import time
 from datetime import datetime, timezone
 
@@ -80,6 +82,7 @@ def fetch_tenant(session, row, search_text="", max_pages=40):
 
 
 def main():
+    env.load()
     ap = argparse.ArgumentParser()
     ap.add_argument("--search", default="", help="server-side keyword filter, e.g. analyst")
     ap.add_argument("--src", default="sniffed.csv")

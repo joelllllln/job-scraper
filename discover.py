@@ -16,6 +16,7 @@ import argparse
 import csv
 import json
 import os
+import env
 import re
 import sys
 import time
@@ -210,6 +211,7 @@ def settled():
 
 
 def main():
+    env.load()
     ap = argparse.ArgumentParser()
     ap.add_argument("--recheck", action="store_true",
                     help="probe every firm again, including ones already answered")

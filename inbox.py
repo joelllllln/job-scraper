@@ -21,6 +21,7 @@ which is a real signal and should not be inflated by re-reading the same file.
 import argparse
 import csv
 import os
+import env
 import sys
 
 import yaml
@@ -40,6 +41,7 @@ def read(path):
 
 
 def main():
+    env.load()
     ap = argparse.ArgumentParser()
     ap.add_argument("--file", default="linkedin_inbox.csv")
     ap.add_argument("--keep", action="store_true",

@@ -24,6 +24,7 @@ from collections import defaultdict
 from datetime import datetime, timezone
 
 import os
+import env
 
 import yaml
 
@@ -250,6 +251,31 @@ def collapse_duplicates(rows, min_chars=400):
     subset relationship, and stay separate. Roles with no readable description
     are never merged, because an empty description matches every other empty one.
     """
+    # Same URL, twice. Two rows pointing at one posting are one posting, whatever
+    # the company column says — and the company column is exactly what differs:
+    # Braemar and "Braemar Securities" both reached a digest at 133 with the same
+    # braemar.com link, as did Bloomberg and "Bloomberg LP London", and Marex and
+    # "ED and F Man Capital Markets". canonical_key hashes company and title, so
+    # a firm listed twice under two names can never dedupe against itself.
+    by_url, url_dropped = {}, []
+    for r in sorted(rows, key=lambda x: -(x.get("score") or 0)):
+        u = (r.get("url") or "").strip().rstrip("/").lower()
+        if not u:
+            continue
+        if u in by_url:
+            url_dropped.append((r, by_url[u]))
+        else:
+            by_url[u] = r
+    if url_dropped:
+        gone = {id(r) for r, _ in url_dropped}
+        rows = [r for r in rows if id(r) not in gone]
+        print(f"collapsed {len(url_dropped)} duplicate postings sharing a URL:")
+        for r, kept in url_dropped[:8]:
+            print(f"    {(r['company'] or '')[:24]:<26} = {(kept['company'] or '')[:24]:<26} "
+                  f"{(r['title'] or '')[:36]}")
+        if len(url_dropped) > 8:
+            print(f"    ... and {len(url_dropped) - 8} more")
+
     buckets = defaultdict(list)
     for r in rows:
         fp = jd_fingerprint(r.get("description"), min_chars)
@@ -266,7 +292,7 @@ def collapse_duplicates(rows, min_chars=400):
             if keep_words <= words or words <= keep_words:
                 dropped.append((other, items[0]))
     drop_ids = {id(o) for o, _ in dropped}
-    return [r for r in rows if id(r) not in drop_ids], dropped
+    return [r for r in rows if id(r) not in drop_ids], url_dropped + dropped
 
 
 def cap_per_firm(rows, cap):
@@ -560,6 +586,7 @@ def render_md(shortlist, rest, stats):
 # ---------- main ----------
 
 def main():
+    env.load()
     ap = argparse.ArgumentParser()
     ap.add_argument("--include-unverified", action="store_true")
     ap.add_argument("--top", type=int, default=0)

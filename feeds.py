@@ -27,6 +27,7 @@ feeds.py — two more sources, both official and both free.
 import argparse
 import csv
 import os
+import env
 import sys
 import time
 from datetime import datetime, timezone
@@ -220,6 +221,7 @@ def save(jobs, cfg):
 
 
 def main():
+    env.load()
     ap = argparse.ArgumentParser()
     ap.add_argument("--reed", action="store_true")
     ap.add_argument("--bullhorn", action="store_true")

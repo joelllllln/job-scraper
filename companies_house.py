@@ -27,6 +27,7 @@ SIC codes used:
 import argparse
 import csv
 import os
+import env
 import re
 import sys
 import time
@@ -122,6 +123,7 @@ def domain_guess(name):
 
 
 def main():
+    env.load()
     ap = argparse.ArgumentParser()
     ap.add_argument("--preview", action="store_true")
     ap.add_argument("--append", action="store_true")

@@ -34,6 +34,7 @@ Verdicts, and what --fix does with each:
 import argparse
 import csv
 import os
+import env
 import re
 import sys
 import unicodedata
@@ -233,6 +234,7 @@ def load_previous(path="firm_check.csv"):
 
 
 def main():
+    env.load()
     ap = argparse.ArgumentParser()
     ap.add_argument("--fix", action="store_true",
                     help="blank the domains that failed — the safe state")

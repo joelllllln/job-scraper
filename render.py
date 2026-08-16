@@ -34,6 +34,7 @@ import argparse
 import csv
 import json
 import os
+import env
 import re
 import sys
 import threading
@@ -237,6 +238,7 @@ def append(path, rows, fields):
 
 
 def main():
+    env.load()
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--only", help="comma-separated firm names")

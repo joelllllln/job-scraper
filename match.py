@@ -18,6 +18,7 @@ Pure local TF-IDF-ish scoring, no API needed. If ANTHROPIC_API_KEY is set,
 import argparse
 import math
 import os
+import env
 import re
 import sqlite3
 from collections import Counter
@@ -107,6 +108,7 @@ def draft_line(cv_text, job, gaps):
 
 
 def main():
+    env.load()
     ap = argparse.ArgumentParser()
     ap.add_argument("--job", help="filter to one company or title")
     ap.add_argument("--top", type=int, default=15)

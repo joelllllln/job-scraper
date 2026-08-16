@@ -20,6 +20,8 @@ Writes:
 import csv
 import re
 import sys
+
+import env
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import http_client
@@ -333,6 +335,7 @@ def answered(path="sniffed.csv", *extra):
 
 
 def main():
+    env.load()
     src = sys.argv[1] if len(sys.argv) > 1 else "firms.csv"
     recheck = "--recheck" in sys.argv
     firms = list(csv.DictReader(open(src, encoding="utf-8")))

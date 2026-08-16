@@ -18,6 +18,7 @@ and lean on Indeed + Google, which are far more tolerant.
 
 import argparse
 import os
+import env
 import sqlite3
 import sys
 import time
@@ -183,6 +184,7 @@ def run(sites, hours, per_query, pause):
 
 
 def main():
+    env.load()
     ap = argparse.ArgumentParser()
     ap.add_argument("--hours", type=int, default=168, help="how far back (default 7 days)")
     # 40 truncated every single LinkedIn query in a real run. LinkedIn pages in

@@ -16,6 +16,7 @@ import csv
 import hashlib
 import json
 import os
+import env
 import urllib.parse
 import re
 import sqlite3
@@ -443,6 +444,7 @@ def write_rejects(raw, hits, keep, path="rejects.csv"):
 # ---------- main ----------
 
 def main():
+    env.load()
     ap = argparse.ArgumentParser()
     ap.add_argument("--all", action="store_true")
     args = ap.parse_args()

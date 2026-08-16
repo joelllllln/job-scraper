@@ -24,6 +24,8 @@ import argparse
 import json
 import re
 import sys
+
+import env
 import time
 import urllib.robotparser
 from datetime import datetime, timezone
@@ -135,6 +137,7 @@ def parse_jsonld(html, url):
 
 
 def main():
+    env.load()
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=150)
     ap.add_argument("--check", action="store_true", help="report robots rules and exit")

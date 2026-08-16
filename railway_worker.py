@@ -30,6 +30,7 @@ Environment:
 
 import csv
 import os
+import env
 import subprocess
 import sys
 import tempfile
@@ -148,6 +149,7 @@ def collect():
 
 
 def main():
+    env.load()
     mode = (os.getenv("RUN_MODE") or "probe").lower()
     print(f"railway_worker: mode={mode}\n", flush=True)
     if mode == "collect":

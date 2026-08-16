@@ -30,6 +30,8 @@ import json
 import re
 import sqlite3
 import sys
+
+import env
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
@@ -276,6 +278,7 @@ def reparse(con):
 
 
 def main():
+    env.load()
     ap = argparse.ArgumentParser()
     ap.add_argument("--recheck", action="store_true")
     ap.add_argument("--reparse", action="store_true",
