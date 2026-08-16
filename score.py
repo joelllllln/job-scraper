@@ -550,7 +550,8 @@ def render_html(shortlist, rest, stats):
 <div><b>{stats['scraped']}</b><span>scraped</span></div>
 <div><b>{stats['verified']}</b><span>verified live</span></div>
 <div><b>{stats['dead']}</b><span>failed check</span></div>
-<div><b>{stats.get('filtered', 0)}</b><span>too senior</span></div>
+<div><b>{stats.get('cut_rules', 0)}</b><span>not your search</span></div>
+<div><b>{stats.get('cut_years', 0)}</b><span>too senior</span></div>
 <div><b>{len(shortlist)}</b><span>shortlist</span></div>
 </div>
 <h2>Shortlist</h2>{body}
@@ -561,7 +562,8 @@ def render_html(shortlist, rest, stats):
 def render_md(shortlist, rest, stats):
     out = [f"# Job run — {stats['date']}", "",
            f"{stats['scraped']} scraped · {stats['verified']} verified live · "
-           f"{stats['dead']} failed · {stats.get('filtered', 0)} too senior · "
+           f"{stats['dead']} failed · {stats.get('cut_rules', 0)} not your search · "
+           f"{stats.get('cut_years', 0)} too senior · "
            f"{len(shortlist)} shortlisted", "",
            "## Shortlist", ""]
     for j in shortlist:
@@ -785,7 +787,14 @@ def main():
         "dead": sum(1 for r in pool if r["live"] == 0),
         "blocked": sum(1 for r in pool if r["checked_at"] and r["live"] is None),
         "ghosts": len(ghosts),
+        # Reported apart, because they are different things and one label over
+        # both of them said "249 too senior" when 193 were roles excluded by
+        # title — graduate schemes, engineering, insurance — and only 56 wanted
+        # more experience than you have. A number you cannot act on is worse
+        # than no number.
         "filtered": len(cut_title) + len(cut_years),
+        "cut_rules": len(cut_title) + len(cut_stale_rules),
+        "cut_years": len(cut_years),
     }
 
     open("report.html", "w", encoding="utf-8").write(render_html(shortlist, rest, stats))
@@ -800,7 +809,8 @@ def main():
                         "; ".join(f"{l}{n:+d}" for l, n in r["why"])])
 
     print(f"{stats['scraped']} scraped · {stats['verified']} live · {stats['dead']} failed "
-          f"· {stats['filtered']} too senior · {stats['ghosts']} ghosts "
+          f"· {stats['cut_rules']} not your search · {stats['cut_years']} too senior "
+          f"· {stats['ghosts']} ghosts "
           f"· {len(shortlist)} shortlisted\n")
     for r in shortlist:
         print(f"  {r['score']:>4}  {r['company'][:26]:<28} {r['title'][:50]}")
