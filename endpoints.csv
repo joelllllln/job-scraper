@@ -1,5 +1,6 @@
 name,category,ats,token,url,n_jobs,checked_at
 Access Bank,bank,ashby,access,https://api.ashbyhq.com/posting-api/job-board/access,17,2026-08-10T16:24:50+00:00
+Aldermore,bank,pinpoint,aldermore,https://aldermore.pinpointhq.com/postings.json,5,2026-08-16T06:51:38+00:00
 BTG Pactual,bank,greenhouse,btgpactual,https://boards-api.greenhouse.io/v1/boards/btgpactual/jobs?content=false,294,2026-08-10T16:08:02+00:00
 CICC,bank,bamboohr,cicc,https://cicc.bamboohr.com/careers/list,1,2026-08-10T16:08:20+00:00
 Close Brothers,bank,ashby,close,https://api.ashbyhq.com/posting-api/job-board/close,7,2026-08-10T16:08:03+00:00
@@ -7,14 +8,18 @@ Commercial Bank of Dubai,bank,bamboohr,commercial,https://commercial.bamboohr.co
 Credit Agricole CIB,bank,greenhouse,creditagricolecib,https://boards-api.greenhouse.io/v1/boards/creditagricolecib/jobs?content=false,1,2026-08-10T16:24:28+00:00
 DBS Bank,bank,personio,dbs,https://dbs.jobs.personio.com/xml,9,2026-08-10T16:08:02+00:00
 DNB,bank,lever,dnb,https://api.lever.co/v0/postings/dnb?mode=json,132,2026-08-10T16:08:10+00:00
+Julius Baer,bank,ashby,julius,https://api.ashbyhq.com/posting-api/job-board/julius,4,2026-08-16T06:51:37+00:00
 KBC Group,bank,personio,kbc,https://kbc.jobs.personio.com/xml,6,2026-08-10T16:08:10+00:00
 National Bank of Fujairah,bank,greenhouse,national,https://boards-api.greenhouse.io/v1/boards/national/jobs?content=false,7,2026-08-10T16:25:06+00:00
+Paragon Banking Group,bank,ashby,paragon,https://api.ashbyhq.com/posting-api/job-board/paragon,2,2026-08-16T06:51:48+00:00
 Rand Merchant Bank,bank,pinpoint,rand,https://rand.pinpointhq.com/postings.json,5,2026-08-10T16:24:47+00:00
 Rothschild and Co,bank,pinpoint,rothschildandco,https://rothschildandco.pinpointhq.com/postings.json,3,2026-08-10T16:07:57+00:00
+Shawbrook Bank,bank,smartrecruiters,shawbrook,https://api.smartrecruiters.com/v1/companies/shawbrook/postings?limit=100,40,2026-08-16T06:51:26+00:00
 Standard Bank,bank,recruitee,standard,https://standard.recruitee.com/api/offers/,2,2026-08-10T16:08:16+00:00
 Standard Chartered,bank,recruitee,standard,https://standard.recruitee.com/api/offers/,2,2026-08-10T16:06:51+00:00
 Stifel,bank,smartrecruiters,stifel,https://api.smartrecruiters.com/v1/companies/stifel/postings?limit=100,1,2026-08-10T16:07:57+00:00
 United Bank for Africa,bank,teamtailor,united,https://united.teamtailor.com/jobs.rss,15,2026-08-10T16:24:57+00:00
+Virgin Money,bank,pinpoint,virgin,https://virgin.pinpointhq.com/postings.json,2,2026-08-16T06:51:50+00:00
 CMC Markets,broker,personio,cmc,https://cmc.jobs.personio.com/xml,5,2026-08-10T16:12:42+00:00
 Carnegie Investment Bank,broker,bamboohr,carnegie,https://carnegie.bamboohr.com/careers/list,1,2026-08-10T16:20:47+00:00
 Evolution Markets,broker,smartrecruiters,evolution,https://api.smartrecruiters.com/v1/companies/evolution/postings?limit=100,295,2026-08-10T16:08:05+00:00
@@ -73,6 +78,7 @@ E3G,consultancy,bamboohr,e3g,https://e3g.bamboohr.com/careers/list,1,2026-08-10T
 Element Energy,consultancy,bamboohr,element,https://element.bamboohr.com/careers/list,4,2026-08-10T16:20:56+00:00
 Energy Systems Catapult,consultancy,greenhouse,energysystemscatapult,https://boards-api.greenhouse.io/v1/boards/energysystemscatapult/jobs?content=false,1,2026-08-10T16:06:44+00:00
 FTI Consulting,consultancy,bamboohr,fti,https://fti.bamboohr.com/careers/list,1,2026-08-10T16:13:32+00:00
+Forvis Mazars,consultancy,greenhouse,forvismazars,https://boards-api.greenhouse.io/v1/boards/forvismazars/jobs?content=false,195,2026-08-16T06:51:46+00:00
 Grant Thornton,consultancy,recruitee,grantthornton,https://grantthornton.recruitee.com/api/offers/,83,2026-08-10T16:12:52+00:00
 Green Alliance,consultancy,teamtailor,greenalliance,https://greenalliance.teamtailor.com/jobs.rss,3,2026-08-10T16:20:52+00:00
 KPMG,consultancy,pinpoint,kpmg,https://kpmg.pinpointhq.com/postings.json,5,2026-08-10T16:12:53+00:00
@@ -80,6 +86,7 @@ Kroll,consultancy,bamboohr,kroll,https://kroll.bamboohr.com/careers/list,9,2026-
 Mott MacDonald,consultancy,smartrecruiters,mottmacdonald,https://api.smartrecruiters.com/v1/companies/mottmacdonald/postings?limit=100,1,2026-08-10T16:07:54+00:00
 Oliver Wyman,consultancy,lever,oliverwyman,https://api.lever.co/v0/postings/oliverwyman?mode=json,2,2026-08-10T16:12:43+00:00
 Petrofac,consultancy,pinpoint,petrofac,https://petrofac.pinpointhq.com/postings.json,3,2026-08-10T16:13:11+00:00
+RSM UK,consultancy,pinpoint,rsmuk,https://rsmuk.pinpointhq.com/postings.json,5,2026-08-16T06:51:47+00:00
 Roland Berger,consultancy,smartrecruiters,rolandberger,https://api.smartrecruiters.com/v1/companies/rolandberger/postings?limit=100,197,2026-08-10T16:12:48+00:00
 S-RM,consultancy,greenhouse,srm,https://boards-api.greenhouse.io/v1/boards/srm/jobs?content=false,23,2026-08-10T16:32:52+00:00
 Sia Partners,consultancy,smartrecruiters,sia,https://api.smartrecruiters.com/v1/companies/sia/postings?limit=100,583,2026-08-10T16:20:48+00:00
@@ -257,6 +264,7 @@ BlackRock,fund,bamboohr,blackrock,https://blackrock.bamboohr.com/careers/list,3,
 Blue Owl Capital,fund,lever,blue,https://api.lever.co/v0/postings/blue?mode=json,10,2026-08-10T16:10:20+00:00
 Blue Whale Capital,fund,lever,blue,https://api.lever.co/v0/postings/blue?mode=json,10,2026-08-10T16:18:28+00:00
 BlueCrest Capital,fund,smartrecruiters,bluecrest,https://api.smartrecruiters.com/v1/companies/bluecrest/postings?limit=100,1,2026-08-10T16:05:43+00:00
+Border to Coast Pensions,fund,pinpoint,bordertocoast,https://bordertocoast.pinpointhq.com/postings.json,3,2026-08-16T06:51:39+00:00
 Bridgepoint,fund,pinpoint,bridgepoint,https://bridgepoint.pinpointhq.com/postings.json,5,2026-08-10T16:09:53+00:00
 Brooks Macdonald,fund,bamboohr,brooks,https://brooks.bamboohr.com/careers/list,5,2026-08-10T16:09:33+00:00
 C Hoare and Co,fund,pinpoint,hoaresbank,https://hoaresbank.pinpointhq.com/postings.json,3,2026-08-10T16:18:59+00:00
@@ -329,7 +337,10 @@ Vitruvian Partners,fund,bamboohr,vitruvianpartners,https://vitruvianpartners.bam
 Voya Investment Management,fund,personio,voya,https://voya.jobs.personio.com/xml,2,2026-08-10T16:22:40+00:00
 Winton,fund,greenhouse,winton,https://boards-api.greenhouse.io/v1/boards/winton/jobs?content=false,10,2026-08-10T16:05:11+00:00
 Zebedee Capital Partners,fund,pinpoint,zebedee,https://zebedee.pinpointhq.com/postings.json,1,2026-08-10T16:20:10+00:00
+AXIS Capital,insurance,teamtailor,axis,https://axis.teamtailor.com/jobs.rss,2,2026-08-16T06:51:35+00:00
+Admiral Group,insurance,pinpoint,admiralgroup,https://admiralgroup.pinpointhq.com/postings.json,5,2026-08-16T06:51:16+00:00
 Aegis London,insurance,rippling,aegis,https://api.rippling.com/platform/api/ats/v1/board/aegis/jobs,34,2026-08-10T16:23:33+00:00
+Ageas UK,insurance,personio,ageas,https://ageas.jobs.personio.com/xml,3,2026-08-16T06:51:30+00:00
 Apollo Underwriting,insurance,pinpoint,apollo,https://apollo.pinpointhq.com/postings.json,9,2026-08-10T16:23:40+00:00
 Arch Insurance,insurance,ashby,arch,https://api.ashbyhq.com/posting-api/job-board/arch,6,2026-08-10T16:23:21+00:00
 Argo Group,insurance,personio,argo,https://argo.jobs.personio.com/xml,10,2026-08-10T16:23:21+00:00
@@ -343,6 +354,7 @@ Everest Insurance,insurance,recruitee,everest,https://everest.recruitee.com/api/
 Gallagher,insurance,bamboohr,gallagher,https://gallagher.bamboohr.com/careers/list,15,2026-08-10T16:10:32+00:00
 Hamilton Insurance,insurance,pinpoint,hamiltongroup,https://hamiltongroup.pinpointhq.com/postings.json,4,2026-08-10T16:23:10+00:00
 Howden Group,insurance,recruitee,howden,https://howden.recruitee.com/api/offers/,37,2026-08-10T16:10:35+00:00
+Just Group,insurance,pinpoint,justgroup,https://justgroup.pinpointhq.com/postings.json,5,2026-08-16T06:51:19+00:00
 Liberty Specialty Markets,insurance,bamboohr,liberty,https://liberty.bamboohr.com/careers/list,4,2026-08-10T16:23:18+00:00
 Lockton,insurance,smartrecruiters,lockton,https://api.smartrecruiters.com/v1/companies/lockton/postings?limit=100,1,2026-08-10T16:10:22+00:00
 MS Amlin,insurance,pinpoint,msamlin,https://msamlin.pinpointhq.com/postings.json,4,2026-08-10T16:10:15+00:00
@@ -494,6 +506,7 @@ Petroineos,refining,pinpoint,petroineos,https://petroineos.pinpointhq.com/postin
 Watson Fuels,refining,breezy,watson,https://watson.breezy.hr/json,1,2026-08-10T16:26:14+00:00
 World Kinect,refining,bamboohr,world,https://world.bamboohr.com/careers/list,5,2026-08-10T16:04:32+00:00
 AFME,regulator,pinpoint,afme,https://afme.pinpointhq.com/postings.json,1,2026-08-10T16:33:28+00:00
+Bank for International Settlements,regulator,lever,bis,https://api.lever.co/v0/postings/bis?mode=json,8,2026-08-16T06:51:06+00:00
 British Private Equity and Venture Capital Association,regulator,bamboohr,bvca,https://bvca.bamboohr.com/careers/list,5,2026-08-10T16:33:45+00:00
 Climate Change Committee,regulator,personio,climate,https://climate.jobs.personio.com/xml,4,2026-08-10T16:15:57+00:00
 Grain and Feed Trade Association,regulator,teamtailor,grain,https://grain.teamtailor.com/jobs.rss,13,2026-08-10T16:33:59+00:00
@@ -511,6 +524,8 @@ London Bullion Market Association,regulator,greenhouse,london,https://boards-api
 London Platinum and Palladium Market,regulator,greenhouse,london,https://boards-api.greenhouse.io/v1/boards/london/jobs?content=false,4,2026-08-10T16:33:58+00:00
 Low Carbon Contracts Company,regulator,pinpoint,lowcarboncontracts,https://lowcarboncontracts.pinpointhq.com/postings.json,8,2026-08-10T16:33:22+00:00
 National Grid,regulator,greenhouse,national,https://boards-api.greenhouse.io/v1/boards/national/jobs?content=false,7,2026-08-10T16:07:07+00:00
+Office for Budget Responsibility,regulator,rippling,obr,https://api.rippling.com/platform/api/ats/v1/board/obr/jobs,120,2026-08-16T06:51:18+00:00
+Serious Fraud Office,regulator,bamboohr,sfo,https://sfo.bamboohr.com/careers/list,5,2026-08-16T06:51:08+00:00
 World Steel Association,regulator,bamboohr,world,https://world.bamboohr.com/careers/list,5,2026-08-10T16:34:06+00:00
 Zero Emissions Traders Alliance,regulator,ashby,zero,https://api.ashbyhq.com/posting-api/job-board/zero,7,2026-08-10T16:33:47+00:00
 Advanced Shipping and Trading,shipbroker,recruitee,advanced,https://advanced.recruitee.com/api/offers/,2,2026-08-10T16:33:13+00:00
