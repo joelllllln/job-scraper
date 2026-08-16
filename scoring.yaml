@@ -239,7 +239,12 @@ description_signals:
   # of these say "German a plus" and are genuinely open — they now rank below
   # every role that does not ask, which is where they belong.
   foreign_language_required:
-    points: -55
+    # -55 was not enough. "German Speaking Junior Power Analyst" still ranked
+    # 22nd of 431: the penalty fired, and the description signals underneath it
+    # — no experience needed, regulatory edge, domain — put it back over the
+    # shortlist threshold anyway. A role you cannot take should not be able to
+    # out-argue that, so this is now larger than anything that can lift it.
+    points: -110
     patterns:
       - "(german|french|spanish|italian|dutch|portuguese|polish|russian|mandarin|cantonese|japanese|korean|arabic|hebrew|turkish|greek|swedish|norwegian|danish|finnish|czech|hungarian|romanian)[ -](speaking|speaker|language|native|fluent|fluency|bilingual)"
       - "(fluen(t|cy)|native|bilingual|proficien(t|cy)) (in |level )?(german|french|spanish|italian|dutch|portuguese|polish|russian|mandarin|cantonese|japanese|korean|arabic|hebrew|turkish|greek)"

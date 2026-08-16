@@ -27,6 +27,8 @@ import os
 
 import yaml
 
+from scrape import build_filter as scrape_build_filter
+
 DB = "jobs.db"
 
 
@@ -643,12 +645,30 @@ def main():
     # Three hard filters, applied before scoring so nothing over the bar can
     # rank its way back in on the strength of the firm or the freshness.
     excl = load_excludes()
+    # The whole collection filter, not just the exclusions. Rows are stored
+    # under whatever the rules were the day they were found, and re-applying
+    # only the exclude list meant anything collected under looser INCLUDE rules
+    # stayed forever: "Operator I: Entry Level Operator" — a plant operator in
+    # Enfield — ranked second in a 431-role digest weeks after the rule that
+    # collected it was gone. A row that would not be collected today should not
+    # be offered today.
+    try:
+        _still_wanted = scrape_build_filter(
+            yaml.safe_load(open("config.yaml", encoding="utf-8")))
+    except Exception:
+        _still_wanted = None
+    cut_stale_rules = []
     max_years = cfg["seniority"].get("exclude_over_years")
     max_open = cfg["verification"].get("exclude_days_open")
     cut_title, cut_years, cut_stale, kept = [], [], [], []
     for r in pool:
         if excl and excl.search(r["title"] or ""):
             cut_title.append(r)
+            continue
+        if _still_wanted and not _still_wanted({"title": r["title"] or "",
+                                                "location": r["location"] or "",
+                                                "company": r["company"] or ""}):
+            cut_stale_rules.append(r)
             continue
         yrs = r["years_required"]
         if max_years is not None and yrs is not None and yrs > max_years:
@@ -671,7 +691,9 @@ def main():
 
     # Named, not just counted — a hard filter that drops things silently is how
     # you lose a role you wanted and never find out.
-    for label, rows in (("title", cut_title), (f">{max_years}y experience", cut_years),
+    for label, rows in (("title", cut_title),
+                        ("no longer matches the current rules", cut_stale_rules),
+                        (f">{max_years}y experience", cut_years),
                         (f"open >{max_open}d with no close date", cut_stale)):
         if rows:
             print(f"filtered out {len(rows)} on {label}:")
