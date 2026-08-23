@@ -56,14 +56,19 @@ location_exclude_cities:
   # because the row carried no location field and nothing else named the place.
   - "\\b(aalborg|aarhus|copenhagen|odense|malm(o|ö)|gothenburg|stockholm)\\b"
   - "\\b(oslo|bergen|stavanger|helsinki|espoo|tallinn|riga|vilnius|reykjavik)\\b"
-  - "\\b(esch.sur.alzette|luxembourg|geneva|gen(e|è)ve|zurich|z(u|ü)rich|zug|basel|lausanne)\\b"
+  # "basel" carries a lookahead because it is a Swiss city AND the name of the
+  # capital regime: "Basel III Reporting Analyst" is a London prudential job
+  # and was being thrown out as a Switzerland posting. A role actually in Basel
+  # says "Basel," or "Basel, Switzerland", neither of which the lookahead spares.
+  - "\\b(esch.sur.alzette|luxembourg|geneva|gen(e|è)ve|zurich|z(u|ü)rich|zug|lausanne)\\b"
+  - "\\bbasel\\b(?!\\s+(i{1,3}v?|[0-9]|report|analy|capital|framework|committee|pillar|regulat))"
   - "\\b(milan|milano|rome|roma|turin|athens|lisbon|porto|vienna|wien|graz)\\b"
   - "\\b(prague|praha|warsaw|warszawa|krakow|budapest|bucharest|sofia|bratislava)\\b"
   - "\\b(dar es salaam|nairobi|lagos|abuja|accra|cairo|casablanca|johannesburg|cape town)\\b"
   - "\\b(bremen|cologne|k(o|ö)ln|stuttgart|essen|leipzig|hannover|nuremberg)\\b"
   - "\\b(kuala lumpur|jakarta|manila|bangkok|ho chi minh|hanoi|dhaka|karachi|colombo)\\b"
   - "\\b(tel aviv|istanbul|ankara|nicosia|valletta|monaco|gibraltar)\\b"
-  - "\\b(zurich|z\u00fcrich|geneva|gen\u00e8ve|\\bzug\\b|basel|lausanne)\\b"
+  - "\\b(zurich|z\u00fcrich|geneva|gen\u00e8ve|\\bzug\\b|lausanne)\\b"
   - "\\b(warsaw|krakow|krak\u00f3w|wroclaw|bucharest|budapest|prague|bratislava|sofia)\\b"
   - "\\b(dublin|cork|milan|milano|rome|roma|turin|lisbon|porto)\\b"
   - "\\b(stockholm|copenhagen|oslo|helsinki|vienna|athens|istanbul|ankara|nicosia)\\b"
@@ -227,6 +232,35 @@ include:
   - "infrastructure (investment )?analyst"
   - "portfolio (analyst|associate)"
 
+  # --- the everyday finance seats -----------------------------------------
+  # Asked for directly. Everything above is a markets or energy title; these
+  # are the roles that exist in volume at every bank, asset manager, exchange
+  # and clearing member in the registry, hire juniors constantly, and were
+  # collected only by accident when a domain word happened to be in the title.
+  # Each phrase names finance on its own, so none needs a domain word beside
+  # it — "Reference Data Analyst" is never a supermarket job.
+  - "reference data"
+  - "(instrument|security|securities|pricing|index|indices) (master|reference) data"
+  - "corporate actions?"
+  - "collateral (analyst|analytics|management|operations)"
+  - "margin (analyst|analytics|methodolog|operations)"
+  - "(investment|fund|portfolio|securities|treasury) operations"
+  - "securities lending|stock loan"
+  - "(index|indices|benchmark) (analyst|associate|research|governance|operations)"
+  - "performance (attribution|measurement|analytics)"
+  - "client (reporting|analytics) (analyst|associate|specialist)"
+  - "(fund|manager|investment) research"
+  - "ratings? analyst|credit ratings?"
+  - "\\bkyc\\b|\\baml\\b|anti.?money.?laundering"
+  - "client (onboarding|due diligence)"
+  - "(wealth|private banking|private client) (analyst|associate|research)"
+  - "\\bfp(and|&)a\\b|financial planning (and|&) analysis"
+  - "\\bldi\\b|liability.?driven"
+  - "asset (and|&) liability"
+  - "(regulatory|prudential) capital"
+  - "\\b(basel|icaap|ilaap|frtb|cass|sa.?ccr)\\b"
+  - "liquidity (analyst|reporting|risk)"
+
   # --- early career, whatever the discipline ---
   # The point of the whole exercise. These are collected on the strength of the
   # programme alone, because a graduate scheme rarely names the desk in its title.
@@ -306,9 +340,13 @@ exclude:
   - "\\bexpert\\b"
   - "lead\\b"
   - "team lead"
-  - "manager"
-  # level suffixes — "Data Scientist II" is a step above where you're aiming
-  - "\\b(ii|iii|iv)\\b"
+  # "Manager Research Analyst" is fund selection — a junior buy-side seat where
+  # "manager" names what is being researched, not the rank being hired.
+  - "manager(?! research)"
+  # level suffixes — "Data Scientist II" is a step above where you're aiming.
+  # Not after "Basel": "Basel III Reporting Analyst" is a prudential regime,
+  # not a grade, and it is one of the closest matches to an FCA background here.
+  - "(?<!basel )\\b(ii|iii|iv)\\b"
   # not a blanket "sales" — that also threw out "Sales and Trading Graduate
   # Programme", which is one of the front-office routes actually open to you
   - "sales (executive|manager|rep|representative|consultant|assistant|advisor|adviser)"
@@ -421,6 +459,28 @@ role_words:
   - "execution"
   - "origination"
   - "modell?er"
+  # Data job titles that are not "data analyst" or "data scientist". These sit
+  # here rather than in `include` on purpose. "Business Intelligence Analyst"
+  # and "Data Quality Analyst" are titles a supermarket, a hospital and a
+  # university use exactly as readily as an exchange does — the last digest
+  # already carried about fifteen bare Data Scientist rows from Tesco,
+  # Deliveroo and the University of East London. Putting them here means each
+  # one has to name a market, an asset class, an energy or a regulator beside
+  # it before it counts, which is the same bargain the word "analyst" itself
+  # already makes.
+  - "business intelligence"
+  - "\\bbi\\b"
+  - "data quality"
+  - "data stewards?"
+  - "master data"
+  - "reference data"
+  - "data (management|operations|governance|acquisition)"
+  - "management information"
+  - "\\bmi\\b"
+  - "analytics"
+  - "insights?"
+  - "decision scien\\w*"
+  - "data visuali(s|z)ation"
   # Deliberately NOT here, having been tried and reverted: bare "sales",
   # "specialist", "controller", "coverage" and "actuar". They put nine
   # financial and credit controllers, a door-to-door energy sales role and a
@@ -471,6 +531,26 @@ domain_words:
   - "prime broker\\w*"
   - "electronic trading"
   - "\\btreasury\\b"
+  # the plumbing of the same markets — what a data or reporting title has to
+  # name before it counts as one of these jobs rather than one of everyone's
+  - "reference data"
+  - "corporate actions?"
+  - "\\bcollateral\\b"
+  - "securities lending|stock loan"
+  - "wealth management|private client"
+  - "\\bpensions?\\b"
+  - "\\bindices\\b"
+  - "\\b(kyc|aml)\\b"
+  - "performance (attribution|measurement)"
+  - "buy.?side|sell.?side"
+  - "\\bliquidity\\b"
+  - "\\bvolatility\\b"
+  - "\\bswaps?\\b"
+  - "\\brepo\\b"
+  - "credit default|\\bcds\\b"
+  - "hedging"
+  - "regulatory capital"
+  - "\\b(basel|icaap|ilaap|frtb|cass)\\b"
   # market analysis and the front office, named as firms actually name them
   - "market (analysis|analytics|intelligence|research|data|risk|structure)"
   - "front office"

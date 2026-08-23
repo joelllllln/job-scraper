@@ -651,6 +651,14 @@ def main():
     localrun.stage("hangs", ["-c", "import time; time.sleep(30)"], fails, timeout=2)
     localrun.stage("after", ["-c", "pass"], fails)
     check("failures are isolated and named", fails, ["dies", "hangs"])
+    # boards.py runs every query against every site, at roughly a minute each.
+    # The timeout was a fixed 2700 while the query list grew from 18 to 62, and
+    # a stage that runs out of time is a stage that silently stops collecting.
+    import boards as localboards
+    need = 60 * len(localboards.QUERIES)
+    check_true(f"boards timeout covers {len(localboards.QUERIES)} queries "
+               f"(needs {need}s, has {localrun.TIMEOUTS['boards']}s)",
+               localrun.TIMEOUTS["boards"] >= need)
 
     print("\ncareers subdomains — where blocked firms actually publish")
     cands = list(sniff.candidate_urls("bnpparibas.com"))
@@ -1531,7 +1539,23 @@ def main():
              "Oil Rig Roustabout", "Shipping Clerk", "Cargo Handler",
              "Policy Advisor - Housing", "Sports Performance Analyst",
              "Debt Collector", "Debt Advisor", "Portfolio Manager", "Head of Risk",
-             "Risk Manager", "Trading Standards Officer", "Estate Agent"]
+             "Risk Manager", "Trading Standards Officer", "Estate Agent",
+             # neighbours of the everyday-finance and data vocabulary. Every
+             # one of these is a data or reporting title with no market, asset
+             # class or regulator anywhere in it, which is the whole reason
+             # those words live in role_words instead of include.
+             "Business Intelligence Analyst", "BI Analyst", "Data Quality Analyst",
+             "Data Steward", "Insights Analyst", "Analytics Analyst",
+             "Customer Insight Analyst", "Retail Insights Analyst",
+             "People Analytics Analyst", "Marketing Analytics Manager", "MI Analyst",
+             "Decision Science Analyst", "Data Visualisation Designer",
+             "Head of Reference Data", "Senior Collateral Analyst",
+             "Corporate Actions Manager", "Accounts Payable Analyst",
+             # "Basel" earns a lookahead in the city list; a real Swiss posting
+             # must still be dropped by it
+             "Analyst, Basel", "Collateral Analyst, Basel, Switzerland",
+             # and the level suffixes still bite everywhere except after Basel
+             "Data Scientist II", "Analyst III", "Trader IV"]
     signal = ["Junior Market Analyst", "Trainee Commodity Broker",
               "Entry Level Trading Analyst", "Battery Storage Optimisation Analyst",
               "Electricity Market Analyst", "Trade Surveillance Analyst",
@@ -1573,7 +1597,35 @@ def main():
               "Business Analyst - Trading", "Broker", "Junior Broker", "Energy Broker",
               "Analyst, Investor Relations", "Analyst, Trading Strategy",
               # a junior marker outranks a rank word in the exclude list
-              "Junior Portfolio Manager"]
+              "Junior Portfolio Manager",
+              # The everyday finance seats, asked for by name. These exist in
+              # volume at every bank, asset manager and exchange in the
+              # registry and were collected only when a domain word happened
+              # to land in the title.
+              "Market Data Analyst", "Reference Data Analyst",
+              "Instrument Reference Data Analyst", "Corporate Actions Analyst",
+              "Collateral Analyst", "Margin Analyst", "Investment Operations Analyst",
+              "Fund Operations Analyst", "Treasury Operations Analyst",
+              "Securities Lending Analyst", "Stock Loan Analyst", "Index Analyst",
+              "Benchmark Research Associate", "Performance Attribution Analyst",
+              "Performance Measurement Analyst", "Client Reporting Analyst",
+              "Manager Research Analyst", "Fund Manager Research Analyst",
+              "Ratings Analyst", "Credit Ratings Analyst", "KYC Analyst", "AML Analyst",
+              "Client Onboarding Analyst", "Client Due Diligence Analyst",
+              "Wealth Analyst", "Private Client Research Associate", "FP&A Analyst",
+              "Financial Planning and Analysis Analyst", "LDI Analyst",
+              "Asset and Liability Analyst", "Regulatory Capital Analyst",
+              "Basel III Reporting Analyst", "ICAAP Analyst", "FRTB Analyst",
+              "CASS Analyst", "Liquidity Risk Analyst", "Market Data Specialist",
+              # and the generic data titles, once something in them names a
+              # market, an asset class, an energy or a regulator
+              "Business Intelligence Analyst - Markets", "BI Analyst, Trading",
+              "Data Quality Analyst - Reference Data", "Data Steward, Market Data",
+              "Master Data Analyst - Commodities", "Data Governance Analyst, Risk",
+              "Data Operations Analyst - Energy Trading", "MI Analyst, Markets",
+              "Management Information Analyst - Investment",
+              "Analytics Analyst, Commodities", "Market Insights Analyst",
+              "Decision Science Analyst - Credit", "Data Visualisation Analyst, Risk"]
     caught = [t for t in noise if keep({"title": t, "location": "London"})]
     missed = [t for t in signal if not keep({"title": t, "location": "London"})]
     check(f"none of {len(noise)} unrelated titles collected", caught, [])

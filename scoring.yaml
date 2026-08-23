@@ -120,6 +120,16 @@ title_tiers:
       - "econom(ist|ics analyst)"
       - "(sale and purchase|s(and|&)p) broker|shipbroking"
       - "(dry cargo|tanker|container|gas) broker"
+      # market and reference data proper — the same floor as a research
+      # analyst, because a data seat inside a market is what you already do
+      - "reference data (analyst|associate|specialist)"
+      - "(instrument|security|securities|pricing|index|indices) (master|reference) data"
+      - "(index|indices|benchmark) (analyst|associate|research|governance)"
+      - "performance (attribution|measurement)"
+      - "(regulatory|prudential) capital"
+      - "\\b(basel|icaap|ilaap|frtb|cass|sa.?ccr)\\b"
+      - "liquidity (analyst|reporting|risk)"
+      - "asset (and|&) liability|\\bldi\\b"
   adjacent: # worth a look, not the target
     # "quantitative developer", "machine learning", "analytics engineer" and
     # "python developer" were removed rather than demoted. They are software
@@ -143,6 +153,30 @@ title_tiers:
       - "(debt|equity) capital markets|corporate finance analyst"
       - "risk analyst"
       - "corporate development analyst|strategy analyst"
+      # the everyday finance seats. Real openings, hiring juniors, and not the
+      # target — so they rank below the desk and above nothing, which is what
+      # "adjacent" is for.
+      - "corporate actions?"
+      - "collateral (analyst|analytics|management|operations)"
+      - "margin (analyst|analytics|methodolog)"
+      - "(investment|fund|portfolio|securities|treasury) operations"
+      - "securities lending|stock loan"
+      - "client (reporting|analytics)"
+      - "(fund|manager) research"
+      - "ratings? analyst|credit ratings?"
+      - "\\b(kyc|aml)\\b|anti.?money.?laundering"
+      - "client (onboarding|due diligence)"
+      - "(wealth|private banking|private client) (analyst|associate|research)"
+      - "\\bfp(and|&)a\\b|financial planning (and|&) analysis"
+      # generic data titles, once a domain word has earned them a place
+      - "business intelligence|\\bbi analyst\\b"
+      - "data (quality|steward\\w*|management|operations|acquisition)"
+      - "master data"
+      - "management information|\\bmi analyst\\b"
+      - "analytics (analyst|associate|specialist)"
+      - "insights? (analyst|associate)"
+      - "decision scien\\w*"
+      - "data visuali(s|z)ation"
 
 # --- 2. Seniority. Years are read out of the description by verify.py. ---
 seniority:

@@ -57,7 +57,6 @@ QUERIES = [
     "electricity market analyst",
     "power market modelling",
     "renewable energy analyst",
-    "energy trading graduate scheme",
     # the regulatory side, where the REMIT background is the qualification
     "market surveillance analyst",
     "energy regulation analyst",
@@ -83,6 +82,29 @@ QUERIES = [
     "market intelligence analyst energy",
     "shipping broker trainee",
     "gas scheduling analyst",
+    # The everyday finance and data seats. Everything above searches for a
+    # markets or energy title; these are the roles that exist in volume across
+    # the whole registry, and no query was asking for any of them. Each names
+    # its sector where the title alone would be ambiguous — "data quality
+    # analyst" unqualified returns supermarkets.
+    "reference data analyst",
+    "corporate actions analyst",
+    "collateral analyst",
+    "investment operations analyst",
+    "performance analyst investment",
+    "index analyst asset management",
+    "client reporting analyst",
+    "KYC analyst financial services",
+    "regulatory reporting analyst",
+    "liquidity risk analyst",
+    "prudential risk analyst",
+    "investment analyst",
+    "fixed income analyst",
+    "equity research analyst",
+    "business intelligence analyst trading",
+    "data quality analyst financial services",
+    "data governance analyst banking",
+    "MI analyst financial services",
 ]
 
 SITES_DEFAULT = ["linkedin", "indeed", "google", "glassdoor"]

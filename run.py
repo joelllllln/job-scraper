@@ -41,7 +41,10 @@ PY = sys.executable
 # default with a third of the registry left. It checkpoints now, so a ceiling
 # only costs the remainder rather than the run — but the ceiling should be the
 # length of the job, not an accident of the default.
-TIMEOUTS = {"sniff": 3600, "discover": 3600, "render": 14400, "boards": 2700,
+# boards is per-query work — roughly a minute each across four sites — so its
+# limit tracks the length of boards.QUERIES rather than sitting at a number that
+# quietly starts truncating the list the next time a query is added.
+TIMEOUTS = {"sniff": 3600, "discover": 3600, "render": 14400, "boards": 3900,
             "embedded jobs": 7200, "check firms": 3600, "efinancial": 2700}
 DEFAULT_TIMEOUT = 1800
 
