@@ -1,7 +1,7 @@
 name,domain,verdict,detail,final_url,misses
 ABN AMRO,abnamro.com,blocked,"http 503 — bot protection, domain probably fine",,0
 Access Bank,accessbankplc.com,blocked,"http 403 — bot protection, domain probably fine",,0
-Acerinox,acerinox.com,blocked,bot challenge at validate.perfdrive.com,"https://validate.perfdrive.com/?ssa=0f4ac0fc-ab08-4ff7-91d8-b5cf5a0e5e3b&ssb=88354253242&ssc=https%3A%2F%2Facerinox.com%2F&ssi=a517e497-cs9v-4945-aa47-c7947aea71df&ssk=botmanager_support@radware.com&ssm=92263160698341382107226357652258&ssn=6b868efcf9bd6eda5b4178081d9d418f59a1dd3e35c0-2fd2-495c-bc1b39&sso=c046d207-d09c271ec5e5d85016878f995e539037174a0708ac973bc8&ssp=94573393411788646396178867211274745&ssq=76373609020485536395690204096774625841788&ssr=MTcyLjIwOC4xMjcuODI=&sst=Mozilla/5.0%20(Windows%20NT%2010.0;%20Win64;%20x64)%20AppleWebKit/537.36%20(KHTML,%20like%20Gecko)%20Chrome/124.0.0.0%20Safari/537.36&ssu=&ssv=&ssw=&ssx=eyJfX3V6bWYiOiI3ZjkwMDBkZDNlMzVjMC0yZmQyLTQ5NWMtYjIwNy1kMDljMjcxZWM1ZTUxLTE3ODg2OTAyMDQzNzMwLTAwNDg0M2YyNTQwMzQ2MmQwYTAxMCIsInV6bXgiOiI3ZmMwMDA0ZGE5NzRkNy0wNzVlLTQ2ZGQtYTZjOC1hZTNhZmZlYjcxYmUxLTE3ODg2OTAyMDQzNzMwLTAwM2Y5NmZjZDQ5ZWMxMzRjMTYxMCIsInJkIjoiYWNlcmlub3guY29tIn0=",0
+Acerinox,acerinox.com,blocked,bot challenge at validate.perfdrive.com,"https://validate.perfdrive.com/?ssa=8801630f-fe99-4256-bdd7-d82f145434cf&ssb=80684222897&ssc=https%3A%2F%2Facerinox.com%2F&ssi=f5eeae12-cs9v-4743-948d-c6c3658e8ecb&ssk=botmanager_support@radware.com&ssm=50887615165528215102949240998323&ssn=90e0856e19b2fb33839dfa95054a50931be3426303cb-27a0-4277-b2fccb&sso=2e95bcdc-ec9fd00c5b15fe764cd887be149f70965e8c2a71f63f43d5&ssp=80939307841789297902178921463662563&ssq=78726109796699633118597966836472572835372&ssr=NjguMjIwLjU5LjQ5&sst=Mozilla/5.0%20(Windows%20NT%2010.0;%20Win64;%20x64)%20AppleWebKit/537.36%20(KHTML,%20like%20Gecko)%20Chrome/124.0.0.0%20Safari/537.36&ssu=&ssv=&ssw=&ssx=eyJfX3V6bWYiOiI3ZjkwMDA0MjYzMDNjYi0yN2EwLTQyNzctYmNkYy1lYzlmZDAwYzViMTUxLTE3ODkyOTc5NjYzMjQwLTAwNGI4OWVhOWMzY2Q5ODM3ZmMxMCIsInV6bXgiOiI3ZmMwMDBmOTZlOTNiNC1lM2FkLTRhZTAtOGEzNi1kMWZmYWI0ZDFjZTkxLTE3ODkyOTc5NjYzMjQwLTAwNGU0ZWYxZTkwYjBiMDRiZTQxMCIsInJkIjoiYWNlcmlub3guY29tIn0=",0
 Afreximbank,afreximbank.com,blocked,"http 403 — bot protection, domain probably fine",,0
 Alcazar Energy,alcazarenergy.com,blocked,"http 403 — bot protection, domain probably fine",,0
 Algebris Investments,algebris.com,blocked,"http 403 — bot protection, domain probably fine",,0
@@ -61,8 +61,8 @@ Energy Institute,energyinst.org,blocked,"http 403 — bot protection, domain pro
 Energy Networks Association,energynetworks.org,blocked,"http 403 — bot protection, domain probably fine",,0
 Energy Transitions Commission,energy-transitions.org,blocked,"http 403 — bot protection, domain probably fine",,0
 Enoc,enoc.com,blocked,"http 403 — bot protection, domain probably fine",,0
-Euronav,euronav.com,blocked,"http 403 — bot protection, domain probably fine",,0
 Everland,everlandmarketing.com,blocked,"http 403 — bot protection, domain probably fine",,0
+FIS,fisglobal.com,blocked,"http 403 — bot protection, domain probably fine",,0
 GLG Insights,glginsights.com,blocked,"http 403 — bot protection, domain probably fine",,0
 Glocomms,glocomms.com,blocked,"http 429 — bot protection, domain probably fine",,0
 Guggenheim Investments,guggenheiminvestments.com,blocked,"http 403 — bot protection, domain probably fine",,0
@@ -139,7 +139,7 @@ Thunder Said Energy,thundersaidenergy.com,blocked,"http 403 — bot protection, 
 Tulchan Communications,tulchangroup.com,blocked,"http 401 — bot protection, domain probably fine",,0
 UBS,ubs.com,blocked,"http 403 — bot protection, domain probably fine",,0
 UK Chamber of Shipping,ukchamberofshipping.com,blocked,"http 403 — bot protection, domain probably fine",,0
-UK Debt Management Office,dmo.gov.uk,blocked,bot challenge at validate.perfdrive.com,"https://validate.perfdrive.com/5e975472fcf167bd1130d74f0fb9a2f7/?ssa=d9c0223a-4f77-4792-bd8d-6cd399c19715&ssb=49613231934&ssc=https%3A%2F%2Fdmo.gov.uk%2F&ssi=16a840be-bhbz-4c15-a5a3-732061b66fa2&ssk=support@shieldsquare.com&ssm=60881832298303404100770632572025&ssn=482e827192e8bed541183ce897e330c0b4080c8034db-d09e-48a6-890295&sso=3c2868ee-ca655fb2dcf5622d6d83fe5876b3400a7636653c897d062e&ssp=94591891501788675978178861373131496&ssq=52137519021914846630090219795558033174592&ssr=MTcyLjIwOC4xMjcuODI=&sst=Mozilla/5.0%20(Windows%20NT%2010.0;%20Win64;%20x64)%20AppleWebKit/537.36%20(KHTML,%20like%20Gecko)%20Chrome/124.0.0.0%20Safari/537.36&ssu=&ssv=&ssw=&ssx=eyJ1em14IjoiN2ZjMDAwM2FiZTJjNGQtYWM1ZC00MmRlLTlhNzEtMTBiMmQ0NzZiYzI0MS0xNzg4NjkwMjE5NjE4MC0wMDNkNGNmYjg2MDMxZTMzMDUwMTAiLCJyZCI6ImRtby5nb3YudWsiLCJfX3V6bWYiOiI3ZjkwMDAwYzgwMzRkYi1kMDllLTQ4YTYtODhlZS1jYTY1NWZiMmRjZjUxLTE3ODg2OTAyMTk2MTgwLTAwNDM1NjBlMDljMWVhZDMxZTkxMCJ9",0
+UK Debt Management Office,dmo.gov.uk,blocked,bot challenge at validate.perfdrive.com,"https://validate.perfdrive.com/5e975472fcf167bd1130d74f0fb9a2f7/?ssa=7ce3709c-bbf0-40e4-9712-bdcb8d597760&ssb=06568221344&ssc=https%3A%2F%2Fdmo.gov.uk%2F&ssi=657b00c1-bhbz-44b6-bfb9-2f0f6a4c51ed&ssk=support@shieldsquare.com&ssm=07644283448099542103120576950857&ssn=a49e74ecc32a2d4254c889e4faef18cacc49327b6456-5dbc-4c8d-b06388&sso=36ad5da2-bc299cae6348655d2e86fbaffcc74984c4cff73db0e77dbc&ssp=28708983811789219659178926094623426&ssq=92597699798157290099897981349223145821002&ssr=NjguMjIwLjU5LjQ5&sst=Mozilla/5.0%20(Windows%20NT%2010.0;%20Win64;%20x64)%20AppleWebKit/537.36%20(KHTML,%20like%20Gecko)%20Chrome/124.0.0.0%20Safari/537.36&ssu=&ssv=&ssw=&ssx=eyJyZCI6ImRtby5nb3YudWsiLCJ1em14IjoiN2ZjMDAwMTYyNzg5ZWItZGEzNS00OTUyLTg0OTctMDM5NTI5YjFjZDY0MS0xNzg5Mjk3OTgxMjAzMC0wMDRlNTg2NmJiODIzNjE1MzA3MTAiLCJfX3V6bWYiOiI3ZjkwMDAzMjdiNjQ1Ni01ZGJjLTRjOGQtYmRhMi1iYzI5OWNhZTYzNDgxLTE3ODkyOTc5ODEyMDMwLTAwNDViMDMxMzBmMmJhZWY1ZDQxMCJ9",0
 UK Finance,ukfinance.org.uk,blocked,"http 403 — bot protection, domain probably fine",,0
 UK Power Networks,ukpowernetworks.co.uk,blocked,"http 403 — bot protection, domain probably fine",,0
 Uniper,uniper.energy,blocked,"http 403 — bot protection, domain probably fine",,0
@@ -177,6 +177,7 @@ Element Energy,element-energy.co.uk,moved,redirects to erm.com,https://www.erm.c
 Emso Asset Management,emso.com,moved,redirects to kirkoswald.com,https://kirkoswald.com/,0
 Enfusion,enfusion.com,moved,redirects to cwan.com,https://cwan.com/,0
 Eurometaux,eurometaux.eu,moved,redirects to european-metals.eu,https://european-metals.eu/,0
+Euronav,euronav.com,moved,redirects to cmb.tech,https://cmb.tech/,0
 GRTgaz,grtgaz.com,moved,redirects to natrangroupe.com,https://www.natrangroupe.com/,0
 Gaffney Cline,gaffneycline.com,moved,redirects to bakerhughes.com,https://www.bakerhughes.com/node/163306,0
 Greenhill and Co,greenhill.com,moved,redirects to mizuhogroup.com,https://www.mizuhogroup.com/americas/banking,0
@@ -195,6 +196,7 @@ Nordic Marine Oil,nordicmarineoil.dk,moved,redirects to malikenergy.com,https://
 Nordic Shipping and Trading,nordicshipping.no,moved,redirects to it-firma.no,https://it-firma.no/,0
 OilX,oilx.co,moved,redirects to energyaspects.com,https://www.energyaspects.com/energy-markets/oil-market-analysis/oilx-nowcasting,0
 Pachama,pachama.com,moved,redirects to carbon-direct.com,https://www.carbon-direct.com/,0
+Pension Insurance Corporation,pensioncorp.com,moved,redirects to xml-v4.pushub.net,http://xml-v4.pushub.net/click?i=axtBcK7gOCA_0,0
 Phoenix Group,thephoenixgroup.com,moved,redirects to standardlifeplc.com,https://www.standardlifeplc.com/,0
 PineBridge Investments,pinebridge.com,moved,redirects to metlife.com,https://www.metlife.com/investments/global/,0
 Polygon Global Partners,polygoninv.com,moved,redirects to westbourneriverpartners.com,https://www.westbourneriverpartners.com/,0
@@ -670,6 +672,7 @@ DHT Holdings,dhtankers.com,ok,page names dht,https://www.dhtankers.com/,
 DNB,dnb.no,ok,page names dnb,https://www.dnb.no/,
 DRW,drw.com,ok,page names drw,https://www.drw.com/,
 DTCC,dtcc.com,ok,page names dtcc,https://www.dtcc.com/,0
+DTCC Report Hub,dtcc.com/repository-otc-data,ok,page names dtcc,https://www.dtcc.com/market-index-data,0
 DWS,dws.com,ok,page names dws,https://www.dws.com/en-us/,
 Dale Underwriting Partners,daleuw.com,ok,page names dale/underwriting,https://www.daleuw.com/,
 Dan-Bunkering,dan-bunkering.com,ok,page names dan/bunkering,https://dan-bunkering.com/,
@@ -2028,7 +2031,7 @@ Brandywine Global,brandywineglobal.com,thin,"reachable, page says little",https:
 Cornhill Capital,cornhillcapital.com,thin,"reachable, page says little",https://cornhillcapital.com/,0
 Daewoo Shipbuilding,hanwhaocean.com,thin,page is not in Latin script — cannot match the name: 한화오션 한화오션 한화오션은 무하,https://www.hanwhaocean.com/,0
 Derichebourg,derichebourg.com,thin,"reachable, page says little",https://www.derichebourg.com/fr/accueil,0
-Discovery Capital Management,discoverycapital.com,thin,"reachable, page says little",https://discoverycapital.com/,0
+Discovery Capital Management,discoverycapital.com,thin,"reachable, page says little",https://www.discoverycapital.com/,0
 Downing Renewables,downingrenewables.com,thin,"reachable, page says little",https://www.downingrenewables.com/,0
 Emerald Energy,emeraldenergy.com,thin,"reachable, page says little",https://emeraldenergy.com/,0
 Engineers Gate,engineersgate.com,thin,"reachable, page says little",https://engineersgate.com/,0
@@ -2039,6 +2042,7 @@ GP Global,gp-global.com,thin,"reachable, page says little",https://gp-global.com
 Genchart,genchart.com,thin,"reachable, page says little",https://genchart.com/,0
 Geneva Trading,gtrading.com,thin,"reachable, page says little",https://gtrading.com/,0
 Gerald Group,geraldgroup.com,thin,"reachable, page says little",https://geraldgroup.com/,0
+HMM,hmm21.com,thin,"reachable, page says little",https://www.hmm21.com//,0
 Himalaya Shipping,himalayashipping.com,thin,"reachable, page says little",https://himalayashipping.com/,0
 Hyundai Engineering,hec.co.kr,thin,page is not in Latin script — cannot match the name: 현대엔지니어링 현대엔지니어링 현ᄃ,https://www.hec.co.kr/,0
 ICBC,icbc.com.cn,thin,"page is not in Latin script — cannot match the name: 中国工商银行中国网站 工商银行金融服务全面介绍,投资理财信息丰富全面,在线交易方",https://www.icbc.com.cn/,0
@@ -2055,9 +2059,7 @@ Mitsui and Co Europe,mitsui.eu,thin,"reachable, page says little",https://mitsui
 Neas Energy,neas.com,thin,"reachable, page says little",https://neas.com/,0
 Nexus Underwriting,nexusunderwriting.com,thin,"reachable, page says little",https://www.nexusunderwriting.com/,0
 PTT,pttplc.com,thin,page is not in Latin script — cannot match the name: บริษัท ปตท. จํากัด (มหาชน) บริษัท ปตท. จ,https://www.pttplc.com/th,0
-Pension Insurance Corporation,pensioncorp.com,thin,"reachable, page says little",http://ww1.pensioncorp.com,0
 Petraco Oil,petraco.com,thin,"reachable, page says little",https://petraco.com/,0
-Posco International,poscointl.com,thin,"reachable, page says little",https://www.poscointl.com/,0
 Qatar National Bank,qnb.com,thin,"reachable, page says little",https://qnb.com/,0
 RBC Capital Markets,rbccm.com,thin,"reachable, page says little",https://www.rbccm.com/,0
 Red Deer,reddeer.io,thin,"reachable, page says little",https://reddeer.io/,0
@@ -2074,302 +2076,300 @@ Tomato Energy,tomato.energy,thin,"reachable, page says little",https://www.tomat
 Vantage RE,vantagere.com,thin,"reachable, page says little",https://vantagere.com/,0
 Wacker Chemie,wacker.com,thin,"reachable, page says little",https://www.wacker.com/,0
 Wilmar International,wilmar-international.com,thin,"reachable, page says little",https://www.wilmar-international.com/,0
-AOT Trading,aot.trading,unreachable,no response,,4
-Adelphi Capital,adelphicapital.com,unreachable,no response,,4
-Advanced Shipping and Trading,advancedshipping.gr,unreachable,no response,,4
-Aegean Bunkering,aegeanbunkering.com,unreachable,no response,,1
-Afry Sweden,afry.se,unreachable,no response,,4
-Agritrade International,agritrade.com.sg,unreachable,no response,,4
-Al Ghurair Resources,alghurairresources.com,unreachable,no response,,4
-Alight,alightenergy.com,unreachable,no response,,4
-Alken Asset Management,alkenam.com,unreachable,no response,,4
-Allston Trading,allstontrading.com,unreachable,no response,,4
-Alpha Marine Fuels,alphamarinefuels.com,unreachable,no response,,4
-Alpiq Trading,alpiq.co.uk,unreachable,no response,,4
-Amber Infrastructure Group,amberinfra.com,unreachable,no response,,1
-Ancoa,ancoa.com,unreachable,no response,,4
-Apatura,apatura.com,unreachable,no response,,4
-Apollo Underwriting,apolloakg.com,unreachable,no response,,4
-Argor-Heraeus,argor.com,unreachable,no response,,4
-Arrow Shipbroking,arrowshipbroking.com,unreachable,no response,,4
-Astaris Capital Management,astariscapital.com,unreachable,no response,,4
-Astute Technical Recruitment,astutetechnical.co.uk,unreachable,no response,,4
-Augusta Energy,augustaenergy.com,unreachable,no response,,4
-Aurubis UK,aurubis.co.uk,unreachable,no response,,4
-Avance Gas,avancegas.com,unreachable,no response,,4
-Awilco LNG,awilcolng.com,unreachable,no response,,4
-Axpo UK,axpo.co.uk,unreachable,no response,,4
-BRS Shipbrokers,brsbrokers.com,unreachable,no response,,4
-Baird and Co,goldline.co.uk,unreachable,no response,,4
-Banchero Costa,bancosta.com,unreachable,no response,,4
-Bapco Trading,bapcotrading.com,unreachable,no response,,1
-Baringa Australia,baringa.com.au,unreachable,no response,,4
-Baronsmead,gresham.house,unreachable,no response,,4
-Bartlett and Company,bartlettandcompany.com,unreachable,no response,,4
-Beach Point Capital,beachpointcapital.com,unreachable,no response,,4
-Beat Capital Partners,beatcapitalpartners.com,unreachable,no response,,4
-Bitfinex Securities,bitfinexsecurities.com,unreachable,no response,,4
-Bitstamp Europe,bitstamp.co.uk,unreachable,no response,,4
-Blenheim Underwriting,blenheimunderwriting.com,unreachable,no response,,1
-Blue Ocean Bunkering,blueoceanbunkering.com,unreachable,no response,,4
-Bluefin Trading,bluefintrading.com,unreachable,no response,,4
-Bluewater Energy,bluewater-partners.com,unreachable,no response,,4
-Bodenholm Capital,bodenholm.com,unreachable,no response,,4
-Bomin,bomin.com,unreachable,no response,,4
-Boussard and Gavaudan,bgam-fr.com,unreachable,no response,,4
-Braemar Technical Services,braemartechnical.com,unreachable,no response,,4
-Bridgewater Europe,bridgewater-europe.com,unreachable,no response,,4
-Bulb Energy,bulb.co.uk,unreachable,no response,,1
-Bybrook Capital,bybrookcapital.com,unreachable,no response,,4
-CEZ Trading,cez.com,unreachable,no response,,4
-CF Partners,cfpartners.co.uk,unreachable,no response,,4
-CICC,cicc.com,unreachable,http 521,,4
-CNOOC Trading,cnoocinternational.com,unreachable,no response,,4
-Capital Gas,capitalgascorp.com,unreachable,no response,,4
-Carbon Growth Partners,carbongrowthpartners.com,unreachable,no response,,1
-Carbon Limiting Technologies,ctlimited.co.uk,unreachable,no response,,4
-Carrhae Capital,carrhaecapital.com,unreachable,no response,,4
-Castleton Commodities Trading,cci.co.uk,unreachable,no response,,4
-Cboe Clear Europe,cboeclear.com,unreachable,no response,,1
-Chelverton Equity Partners,chelvertonequity.com,unreachable,no response,,4
-Chemoil Adani,chemoiladani.com,unreachable,http 404,,4
-Chilton Investment Company,chiltoninvestment.com,unreachable,no response,,1
-Chimbusco,chimbusco.com.cn,unreachable,no response,,4
-China Construction Bank,ccb.com,unreachable,no response,,4
-Chinaoil Hong Kong,chinaoilhk.com,unreachable,no response,,4
-Clariant Sunliquid,clariant.co.uk,unreachable,no response,,4
-Coast Capital,coastcapital.com,unreachable,no response,,4
-Cockett Group Asia,cockettgroup.sg,unreachable,no response,,4
-Cockett Marine Oil,cockettgroup.com,unreachable,no response,,4
-Cofco Agri,cofcoagri.com,unreachable,no response,,4
-Coinbase Institutional,coinbase.co.uk,unreachable,no response,,4
-Coltrane Asset Management,coltraneam.com,unreachable,no response,,4
-Commodity Appointments,commodityappointments.com,unreachable,no response,,4
-Concord Energy,concord-energy.com,unreachable,no response,,4
-Consolidated Marine Management,cmm.gr,unreachable,no response,,4
-Consolidated Trading,consolidatedtrading.com,unreachable,no response,,4
-Constantine Energy Storage,constantine-energy.com,unreachable,no response,,4
-Coopman Search,coopmansearch.com,unreachable,no response,,4
-Coral Energy,coralenergy.ae,unreachable,no response,,4
-Coriolis Energy,coriolisenergy.com,unreachable,no response,,4
-Corvex Management,corvexcap.com,unreachable,no response,,4
-Creos,creos-net.lu,unreachable,http 404,,4
-DTCC Report Hub,dtcc.com/repository-otc-data,unreachable,no response,,4
-Da Vinci Derivatives,davinciderivatives.com,unreachable,no response,,4
-Daiwa Capital Markets,daiwacm.com,unreachable,no response,,4
-Dalian Commodity Exchange,dce.com.cn,unreachable,no response,,4
-Diameter Capital Partners,diameterpartners.com,unreachable,no response,,4
-Downing Strategic,downingstrategic.com,unreachable,no response,,4
-Dynagas,dynagaspartners.com,unreachable,no response,,4
-EG Group,eg-group.com,unreachable,no response,,1
-Eagle Point Credit,eaglepointcreditmanagement.com,unreachable,no response,,4
-Eastport Maritime,eastportmaritime.com,unreachable,no response,,4
-Ecomar Energy Solutions,ecomarenergy.com,unreachable,no response,,4
-Econergy,econergy.com,unreachable,no response,,4
-Ecora Resources,ecoraresources.com,unreachable,no response,,4
-Egg Energy,eggenergy.co.uk,unreachable,no response,,4
-Eisler Capital,eislercapital.com,unreachable,no response,,4
-Electricity Settlements Company,lowcarboncontracts.uk/esc,unreachable,http 404,,4
-Elgin Energy,elgin.energy,unreachable,no response,,4
-Enel Romania,enel.ro,unreachable,no response,,4
-Energy Aspects Research,energyaspects.co.uk,unreachable,no response,,4
-Energy Charter Secretariat,energycharter.org,unreachable,no response,,4
-EnergyQuote JHA,energyquotejha.com,unreachable,no response,,4
-Engelhart Commodities,engelhartct.com,unreachable,no response,,4
-Entrix,entrix.com,unreachable,no response,,4
-Epic Gas,epic-gas.com,unreachable,no response,,4
-Export Trading Group,etgworld.co.uk,unreachable,no response,,4
-FIS,fisglobal.com,unreachable,no response,,2
-Falck Renewables,falckrenewables.com,unreachable,http 410,,4
-Fir Tree Partners,firtreepartners.com,unreachable,no response,,4
-Foresight Solar Fund,foresightsolarfund.com,unreachable,no response,,4
-Fortum,fortum.com,unreachable,no response,,4
-Fortum Trading,fortum.fi,unreachable,no response,,4
-Fram Search,framsearch.co.uk,unreachable,no response,,4
-Freepoint Eco-Systems,freepointeco.com,unreachable,no response,,1
-Frontier Road,frontierroad.com,unreachable,no response,,4
-Futex,futex.co.uk,unreachable,no response,,4
-GQR,gqrgm.com,unreachable,no response,,4
-Garda Capital Partners,gardacap.com,unreachable,no response,,4
-Gaspoint Nordic,gaspointnordic.com,unreachable,no response,,4
-Gate Terminal,gate.nl,unreachable,no response,,4
-Gazprom Marketing and Trading,gazprom-mt.com,unreachable,no response,,4
-Gemserv,gemserv.com,unreachable,no response,,4
-Gerald Metals,geraldmetals.com,unreachable,no response,,4
-Ginga Petroleum,gingapetroleum.com,unreachable,no response,,4
-Glander International Bunkering,glander-international.com,unreachable,no response,,4
-Gleadell,gleadell.co.uk,unreachable,no response,,4
-Glen Point Capital,glenpointcapital.com,unreachable,no response,,4
-Glencore Energy UK,glencore.co.jp,unreachable,no response,,4
-Gold Fields,goldfields.com,unreachable,no response,,4
-Golden Destiny,goldendestiny.gr,unreachable,no response,,4
-Golden Ocean,goldenocean.bm,unreachable,no response,,4
-Government Actuarys Department,gad.gov.uk,unreachable,no response,,4
-Graticule Asset Management,graticuleam.com,unreachable,no response,,4
-Greencoat Capital,greencoat-capital.com,unreachable,no response,,4
-Greenergy Fuels,greenergy.co.uk,unreachable,no response,,4
-Gresham House Energy Storage,greshamhouse.com/energy-storage,unreachable,http 404,,4
-Guan Chong,guanchongcocoa.com,unreachable,no response,,4
-HM Treasury,hm-treasury.gov.uk,unreachable,no response,,4
-HMM,hmm21.com,unreachable,no response,,1
-Hanwa Europe,hanwa.eu,unreachable,no response,,4
-Hard Eight Trading,hardeight.com,unreachable,no response,,4
-Harmony Energy Income Trust,harmonyenergyincometrust.com,unreachable,no response,,4
-Hartree Partners Europe,hartree.com,unreachable,no response,,4
-Hartshead Resources,hartshead.com.au,unreachable,no response,,4
-Harvest Energy,harvestenergy.co.uk,unreachable,no response,,2
-Hidden Road Partners,hiddenroad.co.uk,unreachable,no response,,4
-Hidroelectrica,hidroelectrica.ro,unreachable,no response,,4
-Hoegh LNG,hoeghlng.com,unreachable,no response,,4
-Horseman Capital Management,horsemancapital.com,unreachable,http 522,,4
-Hyundai Heavy Industries,hd.hhi.co.kr,unreachable,no response,,4
-IFA Interconnexion,ifa-interconnector.com,unreachable,no response,,4
-IGas Energy,igasplc.com,unreachable,no response,,4
-IXM,ixm.com,unreachable,no response,,4
-Idemitsu Trading,idemitsu.co.uk,unreachable,no response,,4
-Imperial Petroleum,imperialpetroleums.com,unreachable,no response,,4
-In Commodities Denmark,incommodities.dk,unreachable,no response,,4
-Indus Capital Partners,induscapital.com,unreachable,no response,,4
-Innova Renewables,innovarenewables.co.uk,unreachable,no response,,4
-Integr8 Fuels Asia,integr8fuels.sg,unreachable,no response,,4
-Inter Terminals,interterminals.com,unreachable,no response,,4
-Irenic Capital,ireniccapital.com,unreachable,no response,,1
-Island Green Power,islandgreenpower.com,unreachable,no response,,4
-KPI OceanConnect Denmark,kpioceanconnect.dk,unreachable,no response,,4
-Kuvari Partners,kuvaripartners.com,unreachable,no response,,4
-LCP Enact,enact.lcp.com,unreachable,http 404,,4
-LQM Petroleum Services,lqm.com,unreachable,no response,,4
-Lansing Trade Group,lansingtrade.com,unreachable,no response,,4
-Levin,levin.co.uk,unreachable,no response,,4
-Liquid Capital,liquidcapital.com,unreachable,no response,,4
-Makuria Investment Management,makuria.com,unreachable,no response,,4
-McKinsey and Company,mckinsey.com,unreachable,no response,,4
-Melchior Asset Management,melchiorasset.com,unreachable,no response,,4
-Mercuria,mercuria.com,unreachable,no response,,4
-Millennium Energy,millenniumenergy.com,unreachable,no response,,1
-Minerva Bunkering Europe,minervabunkering.eu,unreachable,no response,,4
-Mirabella Financial Services,mirabellafinancial.com,unreachable,no response,,4
-Molecular Energies,molecularenergies.com,unreachable,no response,,4
-Monjasa UK,monjasa.co.uk,unreachable,no response,,4
-Multi Marine Services,multimarine.gr,unreachable,no response,,4
-Muntajat,muntajat.com,unreachable,no response,,4
-NSI Bunkers,nsibunkers.com,unreachable,no response,,4
-Nedcoffee,nedcoffee.com,unreachable,no response,,4
-Neptune Energy,neptuneenergy.com,unreachable,no response,,4
-Nico Trading,nicotrading.com,unreachable,no response,,1
-Nokomis Capital,nokomiscapital.com,unreachable,no response,,4
-Northlander Commodity Advisors,northlandercommodity.com,unreachable,no response,,4
-Novum Securities,novumsecurities.com,unreachable,no response,,4
-Numeric Investors,numeric.com,unreachable,no response,,4
-ONGC,ongcindia.com,unreachable,no response,,4
-OSTC,ostc.com,unreachable,no response,,4
-Oceanic Fuels,oceanicfuels.com,unreachable,no response,,4
-Ofgem E-Serve,ofgem.gov.uk/e-serve,unreachable,http 404,,4
-Olam Food Ingredients,ofi.com.sg,unreachable,no response,,4
-Optima Shipping,optimashipping.gr,unreachable,no response,,4
-Orlen Energia,orlen.com,unreachable,no response,,4
-Ospraie Management,ospraiemgmt.com,unreachable,no response,,4
-PDVSA,pdvsa.com,unreachable,no response,,4
-PEGAS,powernext.com,unreachable,no response,,4
-PGE Polska Grupa,gkpge.pl,unreachable,no response,,4
-PVM Oil Associates,pvmoil.com,unreachable,no response,,4
-Pacific Green,pacificgreen.tv,unreachable,no response,,4
-Peninsula Middle East,peninsulapetroleum.ae,unreachable,no response,,4
-Penso Power,pensopower.com,unreachable,no response,,4
-Perenia Group,perenia.com,unreachable,no response,,4
-Performance Shipping,performanceshipping.com,unreachable,no response,,1
-Petro Matad,petromatad.com,unreachable,no response,,4
-PetroChina,petrochina.com.cn,unreachable,http 412,,4
-PetroChina International London,petrochinaintl.com,unreachable,no response,,4
-Petrofac Engineering,petrofac.com/engineering,unreachable,http 404,,4
-Petrogress,petrogres.com,unreachable,no response,,4
-Petronas LNG,petronaslng.com,unreachable,no response,,4
-Pharo Management,pharomanagement.com,unreachable,no response,,4
-Pinnacle Renewable Energy,pinnaclepellet.com,unreachable,no response,,4
-Portsea Asset Management,portseaam.com,unreachable,no response,,4
-Powerscourt,powerscourt-group.com,unreachable,no response,,4
-Prana Capital,pranacapital.com,unreachable,no response,,4
-Premier Miton Global Renewables,pmgr.co.uk,unreachable,no response,,4
-Prime Oil and Gas,primeoil.gr,unreachable,no response,,4
-Private Equity Recruitment,per-london.com,unreachable,no response,,4
-Proco Commodities,procogroup.com,unreachable,no response,,4
-Prosperity Capital Management,prosperitycapital.com,unreachable,no response,,4
-Puma Energy UK,pumaenergy.co.uk,unreachable,no response,,4
-Pöyry Energy,poyry.com,unreachable,http 404,,4
-Reabold Resources,reaboldresources.co.uk,unreachable,no response,,4
-Rebel Energy,rebelenergy.com,unreachable,no response,,4
-Rebellion Energy,rebellion.energy,unreachable,no response,,4
-Red Kite Capital,redkitecm.com,unreachable,no response,,4
-Reliance Global Energy,ril.co.uk,unreachable,no response,,4
-Return Energy,returnenergy.co.uk,unreachable,no response,,4
-Ricardo Energy and Environment,ricardo.com/ee,unreachable,no response,,4
-Risk.net,risk.net,unreachable,http 404,,4
-River Global,riverglobal.co.uk,unreachable,no response,,4
-Riverlake,riverlake.com,unreachable,no response,,4
-Rockwood Strategic,rockwoodstrategic.com,unreachable,no response,,4
-Ronin Capital,ronincapitalllc.com,unreachable,no response,,4
-SDCL Energy Efficiency,sdclee.com,unreachable,no response,,4
-SWIFT,swift.com,unreachable,no response,,4
-Sagil Capital,sagilcapital.com,unreachable,no response,,4
-Sahara Group,sahara-group.com,unreachable,no response,,4
-Sandaire,sandaire.com,unreachable,no response,,4
-Sanlam Investments,sanlam.co.uk,unreachable,http 404,,4
-Saras Trading,sarasenergia.com,unreachable,no response,,4
-Sarasin Alpha,sarasinalpha.com,unreachable,no response,,4
-Schneider Trading,schneidertrading.com,unreachable,no response,,4
-Sea Oil,seaoil.com,unreachable,no response,,4
-Sea Trade Holdings,seatradeholdings.com,unreachable,no response,,4
-Sea-Change Green Link,seachange.energy,unreachable,no response,,1
-Sembcorp Marine,seatriumltd.com,unreachable,no response,,4
-Sentieo,sentieo.com,unreachable,no response,,4
-Serious Fraud Office,sfo.gov.uk,unreachable,no response,,4
-Sinopec Fuel Oil,sinopecfuel.com,unreachable,no response,,4
-Sinopec Trading,sinopec.com,unreachable,no response,,4
-Sojitz Europe,sojitz-europe.com,unreachable,no response,,4
-Solaris Commodities,solaris-commodities.com,unreachable,http 404,,4
-Solventis,solventis.co.uk,unreachable,no response,,4
-Sona Asset Management,sonaam.com,unreachable,no response,,1
-Spot Trading,spottradingllc.com,unreachable,no response,,4
-Star Asia Shipbroking,starasiashipbroking.com,unreachable,no response,,4
-Star Energy,starenergy.co.uk,unreachable,no response,,4
-Star Refinery,socarturkey.com.tr,unreachable,no response,,4
-Steadview Capital,steadviewcapital.com,unreachable,no response,,4
-Stratton Street Capital,strattonstreet.com,unreachable,no response,,4
-Sucden Coffee,sucden.co.uk,unreachable,no response,,4
-Sumitomo Corporation Europe,sumitomocorp.eu,unreachable,no response,,4
-Sybenetix,sybenetix.com,unreachable,no response,,4
-TIAA,tiaa.org,unreachable,no response,,4
-Thyssenkrupp Materials,thyssenkrupp-materials.com,unreachable,no response,,4
-Timera Energy Advisory,timera-energy.co.uk,unreachable,no response,,4
-Toyota Tsusho Europe,toyotatsusho.eu,unreachable,no response,,4
-Trading Technologies International,tradingtechnologies.co.uk,unreachable,no response,,4
-Trading Technologies Surveillance,tradingtechnologies.com/surveillance,unreachable,http 404,,4
-Trafigura Metals,trafigura.co.uk,unreachable,http 404,,4
-Trailstone,trailstonegroup.com,unreachable,no response,,4
-Traxys Europe,traxys.eu,unreachable,no response,,4
-Tresidor Investment Management,tresidorim.com,unreachable,no response,,4
-Trident Alliance,tridentalliance.org,unreachable,no response,,4
-Trina Storage,trinasolar.com,unreachable,http 404,,4
-Trinity Exploration,trinityexploration.com,unreachable,no response,,4
-Trium Capital,triumcapital.com,unreachable,no response,,4
-UK Infrastructure Bank,ukib.org.uk,unreachable,no response,,4
-UnaVista,unavista.londonstockexchange.com,unreachable,http 522,,4
-Uni Marine and Energy,unimarine.gr,unreachable,no response,,4
-Unipec,sinopecgroup.com,unreachable,no response,,4
-Unipec Asia,unipec.com,unreachable,no response,,4
-Uniper Energy Trading,uniper.de,unreachable,no response,,4
-VH Global Energy Infrastructure,vhgei.com,unreachable,no response,,4
-Valcambi,valcambi.com,unreachable,no response,,4
-Vantage Capital Markets,vantagecm.com,unreachable,no response,,4
-Vermont Bunkering,vermontuk.com,unreachable,no response,,4
-Verrazzano Capital,verrazzanocapital.com,unreachable,no response,,4
-Victory Fuels,victoryfuels.com,unreachable,no response,,4
-Viswa Group,viswalab.com,unreachable,no response,,4
-Vitol Group Services,vitol.co.uk,unreachable,no response,,4
-Vortexa Analytics,vortexa.co.uk,unreachable,no response,,4
-Waverton Wealth,wavertonwealth.com,unreachable,no response,,4
-Wentworth Resources,wentworthresources.com,unreachable,no response,,4
-Zen-Noh Grain,zengrain.com,unreachable,no response,,1
-Zestec,zestec.co.uk,unreachable,no response,,4
-Zhengzhou Commodity Exchange,czce.com.cn,unreachable,http 412,,4
-Zhenhua Oil,zhenhuaoil.com,unreachable,no response,,4
+AOT Trading,aot.trading,unreachable,no response,,5
+Adelphi Capital,adelphicapital.com,unreachable,no response,,5
+Advanced Shipping and Trading,advancedshipping.gr,unreachable,no response,,5
+Aegean Bunkering,aegeanbunkering.com,unreachable,no response,,2
+Afry Sweden,afry.se,unreachable,no response,,5
+Agritrade International,agritrade.com.sg,unreachable,no response,,5
+Al Ghurair Resources,alghurairresources.com,unreachable,no response,,5
+Alight,alightenergy.com,unreachable,no response,,5
+Alken Asset Management,alkenam.com,unreachable,no response,,5
+Allston Trading,allstontrading.com,unreachable,no response,,5
+Alpha Marine Fuels,alphamarinefuels.com,unreachable,no response,,5
+Alpiq Trading,alpiq.co.uk,unreachable,no response,,5
+Amber Infrastructure Group,amberinfra.com,unreachable,no response,,2
+Ancoa,ancoa.com,unreachable,no response,,5
+Apatura,apatura.com,unreachable,no response,,5
+Apollo Underwriting,apolloakg.com,unreachable,no response,,5
+Argor-Heraeus,argor.com,unreachable,no response,,5
+Arrow Shipbroking,arrowshipbroking.com,unreachable,no response,,5
+Astaris Capital Management,astariscapital.com,unreachable,no response,,5
+Astute Technical Recruitment,astutetechnical.co.uk,unreachable,no response,,5
+Augusta Energy,augustaenergy.com,unreachable,no response,,5
+Aurubis UK,aurubis.co.uk,unreachable,no response,,5
+Avance Gas,avancegas.com,unreachable,no response,,5
+Awilco LNG,awilcolng.com,unreachable,no response,,5
+Axpo UK,axpo.co.uk,unreachable,no response,,5
+BRS Shipbrokers,brsbrokers.com,unreachable,no response,,5
+Baird and Co,goldline.co.uk,unreachable,no response,,5
+Banchero Costa,bancosta.com,unreachable,no response,,5
+Bapco Trading,bapcotrading.com,unreachable,no response,,2
+Baringa Australia,baringa.com.au,unreachable,no response,,5
+Baronsmead,gresham.house,unreachable,no response,,5
+Bartlett and Company,bartlettandcompany.com,unreachable,no response,,5
+Beach Point Capital,beachpointcapital.com,unreachable,no response,,5
+Beat Capital Partners,beatcapitalpartners.com,unreachable,no response,,5
+Bitfinex Securities,bitfinexsecurities.com,unreachable,no response,,5
+Bitstamp Europe,bitstamp.co.uk,unreachable,no response,,5
+Blenheim Underwriting,blenheimunderwriting.com,unreachable,no response,,2
+Blue Ocean Bunkering,blueoceanbunkering.com,unreachable,no response,,5
+Bluefin Trading,bluefintrading.com,unreachable,no response,,5
+Bluewater Energy,bluewater-partners.com,unreachable,no response,,5
+Bodenholm Capital,bodenholm.com,unreachable,no response,,5
+Bomin,bomin.com,unreachable,no response,,5
+Boussard and Gavaudan,bgam-fr.com,unreachable,no response,,5
+Braemar Technical Services,braemartechnical.com,unreachable,no response,,5
+Bridgewater Europe,bridgewater-europe.com,unreachable,no response,,5
+Bulb Energy,bulb.co.uk,unreachable,no response,,2
+Bybrook Capital,bybrookcapital.com,unreachable,no response,,5
+CEZ Trading,cez.com,unreachable,no response,,5
+CF Partners,cfpartners.co.uk,unreachable,no response,,5
+CICC,cicc.com,unreachable,http 521,,5
+CNOOC Trading,cnoocinternational.com,unreachable,no response,,5
+Capital Gas,capitalgascorp.com,unreachable,no response,,5
+Carbon Growth Partners,carbongrowthpartners.com,unreachable,no response,,2
+Carbon Limiting Technologies,ctlimited.co.uk,unreachable,no response,,5
+Carrhae Capital,carrhaecapital.com,unreachable,no response,,5
+Castleton Commodities Trading,cci.co.uk,unreachable,no response,,5
+Cboe Clear Europe,cboeclear.com,unreachable,no response,,2
+Chelverton Equity Partners,chelvertonequity.com,unreachable,no response,,5
+Chemoil Adani,chemoiladani.com,unreachable,http 404,,5
+Chilton Investment Company,chiltoninvestment.com,unreachable,no response,,2
+Chimbusco,chimbusco.com.cn,unreachable,no response,,5
+China Construction Bank,ccb.com,unreachable,no response,,5
+Chinaoil Hong Kong,chinaoilhk.com,unreachable,no response,,5
+Clariant Sunliquid,clariant.co.uk,unreachable,no response,,5
+Coast Capital,coastcapital.com,unreachable,no response,,5
+Cockett Group Asia,cockettgroup.sg,unreachable,no response,,5
+Cockett Marine Oil,cockettgroup.com,unreachable,no response,,5
+Cofco Agri,cofcoagri.com,unreachable,no response,,5
+Coinbase Institutional,coinbase.co.uk,unreachable,no response,,5
+Coltrane Asset Management,coltraneam.com,unreachable,no response,,5
+Commodity Appointments,commodityappointments.com,unreachable,no response,,5
+Concord Energy,concord-energy.com,unreachable,no response,,5
+Consolidated Marine Management,cmm.gr,unreachable,no response,,5
+Consolidated Trading,consolidatedtrading.com,unreachable,no response,,5
+Constantine Energy Storage,constantine-energy.com,unreachable,no response,,5
+Coopman Search,coopmansearch.com,unreachable,no response,,5
+Coral Energy,coralenergy.ae,unreachable,no response,,5
+Coriolis Energy,coriolisenergy.com,unreachable,no response,,5
+Corvex Management,corvexcap.com,unreachable,no response,,5
+Creos,creos-net.lu,unreachable,http 404,,5
+Da Vinci Derivatives,davinciderivatives.com,unreachable,no response,,5
+Daiwa Capital Markets,daiwacm.com,unreachable,no response,,5
+Dalian Commodity Exchange,dce.com.cn,unreachable,no response,,5
+Diameter Capital Partners,diameterpartners.com,unreachable,no response,,5
+Downing Strategic,downingstrategic.com,unreachable,no response,,5
+Dynagas,dynagaspartners.com,unreachable,no response,,5
+EG Group,eg-group.com,unreachable,no response,,2
+Eagle Point Credit,eaglepointcreditmanagement.com,unreachable,no response,,5
+Eastport Maritime,eastportmaritime.com,unreachable,no response,,5
+Ecomar Energy Solutions,ecomarenergy.com,unreachable,no response,,5
+Econergy,econergy.com,unreachable,no response,,5
+Ecora Resources,ecoraresources.com,unreachable,no response,,5
+Egg Energy,eggenergy.co.uk,unreachable,no response,,5
+Eisler Capital,eislercapital.com,unreachable,no response,,5
+Electricity Settlements Company,lowcarboncontracts.uk/esc,unreachable,http 404,,5
+Elgin Energy,elgin.energy,unreachable,no response,,5
+Enel Romania,enel.ro,unreachable,no response,,5
+Energy Aspects Research,energyaspects.co.uk,unreachable,no response,,5
+Energy Charter Secretariat,energycharter.org,unreachable,no response,,5
+EnergyQuote JHA,energyquotejha.com,unreachable,no response,,5
+Engelhart Commodities,engelhartct.com,unreachable,no response,,5
+Entrix,entrix.com,unreachable,no response,,5
+Epic Gas,epic-gas.com,unreachable,no response,,5
+Export Trading Group,etgworld.co.uk,unreachable,no response,,5
+Falck Renewables,falckrenewables.com,unreachable,http 410,,5
+Fir Tree Partners,firtreepartners.com,unreachable,no response,,5
+Foresight Solar Fund,foresightsolarfund.com,unreachable,no response,,5
+Fortum,fortum.com,unreachable,no response,,5
+Fortum Trading,fortum.fi,unreachable,no response,,5
+Fram Search,framsearch.co.uk,unreachable,no response,,5
+Freepoint Eco-Systems,freepointeco.com,unreachable,no response,,2
+Frontier Road,frontierroad.com,unreachable,no response,,5
+Futex,futex.co.uk,unreachable,no response,,5
+GQR,gqrgm.com,unreachable,no response,,5
+Garda Capital Partners,gardacap.com,unreachable,no response,,5
+Gaspoint Nordic,gaspointnordic.com,unreachable,no response,,5
+Gate Terminal,gate.nl,unreachable,no response,,5
+Gazprom Marketing and Trading,gazprom-mt.com,unreachable,no response,,5
+Gemserv,gemserv.com,unreachable,no response,,5
+Gerald Metals,geraldmetals.com,unreachable,no response,,5
+Ginga Petroleum,gingapetroleum.com,unreachable,no response,,5
+Glander International Bunkering,glander-international.com,unreachable,no response,,5
+Gleadell,gleadell.co.uk,unreachable,no response,,5
+Glen Point Capital,glenpointcapital.com,unreachable,no response,,5
+Glencore Energy UK,glencore.co.jp,unreachable,no response,,5
+Gold Fields,goldfields.com,unreachable,no response,,5
+Golden Destiny,goldendestiny.gr,unreachable,no response,,5
+Golden Ocean,goldenocean.bm,unreachable,no response,,5
+Government Actuarys Department,gad.gov.uk,unreachable,no response,,5
+Graticule Asset Management,graticuleam.com,unreachable,no response,,5
+Greencoat Capital,greencoat-capital.com,unreachable,no response,,5
+Greenergy Fuels,greenergy.co.uk,unreachable,no response,,5
+Gresham House Energy Storage,greshamhouse.com/energy-storage,unreachable,http 404,,5
+Guan Chong,guanchongcocoa.com,unreachable,no response,,5
+HM Treasury,hm-treasury.gov.uk,unreachable,no response,,5
+Hanwa Europe,hanwa.eu,unreachable,no response,,5
+Hard Eight Trading,hardeight.com,unreachable,no response,,5
+Harmony Energy Income Trust,harmonyenergyincometrust.com,unreachable,no response,,5
+Hartree Partners Europe,hartree.com,unreachable,no response,,5
+Hartshead Resources,hartshead.com.au,unreachable,no response,,5
+Harvest Energy,harvestenergy.co.uk,unreachable,no response,,3
+Hidden Road Partners,hiddenroad.co.uk,unreachable,no response,,5
+Hidroelectrica,hidroelectrica.ro,unreachable,no response,,5
+Hoegh LNG,hoeghlng.com,unreachable,no response,,5
+Horseman Capital Management,horsemancapital.com,unreachable,http 522,,5
+Hyundai Heavy Industries,hd.hhi.co.kr,unreachable,no response,,5
+IFA Interconnexion,ifa-interconnector.com,unreachable,no response,,5
+IGas Energy,igasplc.com,unreachable,no response,,5
+IXM,ixm.com,unreachable,no response,,5
+Idemitsu Trading,idemitsu.co.uk,unreachable,no response,,5
+Imperial Petroleum,imperialpetroleums.com,unreachable,no response,,5
+In Commodities Denmark,incommodities.dk,unreachable,no response,,5
+Indus Capital Partners,induscapital.com,unreachable,no response,,5
+Innova Renewables,innovarenewables.co.uk,unreachable,no response,,5
+Integr8 Fuels Asia,integr8fuels.sg,unreachable,no response,,5
+Inter Terminals,interterminals.com,unreachable,no response,,5
+Irenic Capital,ireniccapital.com,unreachable,no response,,2
+Island Green Power,islandgreenpower.com,unreachable,no response,,5
+KPI OceanConnect Denmark,kpioceanconnect.dk,unreachable,no response,,5
+Kuvari Partners,kuvaripartners.com,unreachable,no response,,5
+LCP Enact,enact.lcp.com,unreachable,http 404,,5
+LQM Petroleum Services,lqm.com,unreachable,no response,,5
+Lansing Trade Group,lansingtrade.com,unreachable,no response,,5
+Levin,levin.co.uk,unreachable,no response,,5
+Liquid Capital,liquidcapital.com,unreachable,no response,,5
+Makuria Investment Management,makuria.com,unreachable,no response,,5
+McKinsey and Company,mckinsey.com,unreachable,no response,,5
+Melchior Asset Management,melchiorasset.com,unreachable,no response,,5
+Mercuria,mercuria.com,unreachable,no response,,5
+Millennium Energy,millenniumenergy.com,unreachable,no response,,2
+Minerva Bunkering Europe,minervabunkering.eu,unreachable,no response,,5
+Mirabella Financial Services,mirabellafinancial.com,unreachable,no response,,5
+Molecular Energies,molecularenergies.com,unreachable,no response,,5
+Monjasa UK,monjasa.co.uk,unreachable,no response,,5
+Multi Marine Services,multimarine.gr,unreachable,no response,,5
+Muntajat,muntajat.com,unreachable,no response,,5
+NSI Bunkers,nsibunkers.com,unreachable,no response,,5
+Nedcoffee,nedcoffee.com,unreachable,no response,,5
+Neptune Energy,neptuneenergy.com,unreachable,no response,,5
+Nico Trading,nicotrading.com,unreachable,no response,,2
+Nokomis Capital,nokomiscapital.com,unreachable,no response,,5
+Northlander Commodity Advisors,northlandercommodity.com,unreachable,no response,,5
+Novum Securities,novumsecurities.com,unreachable,no response,,5
+Numeric Investors,numeric.com,unreachable,no response,,5
+ONGC,ongcindia.com,unreachable,no response,,5
+OSTC,ostc.com,unreachable,no response,,5
+Oceanic Fuels,oceanicfuels.com,unreachable,no response,,5
+Ofgem E-Serve,ofgem.gov.uk/e-serve,unreachable,http 404,,5
+Olam Food Ingredients,ofi.com.sg,unreachable,no response,,5
+Optima Shipping,optimashipping.gr,unreachable,no response,,5
+Orlen Energia,orlen.com,unreachable,no response,,5
+Ospraie Management,ospraiemgmt.com,unreachable,no response,,5
+PDVSA,pdvsa.com,unreachable,no response,,5
+PEGAS,powernext.com,unreachable,no response,,5
+PGE Polska Grupa,gkpge.pl,unreachable,no response,,5
+PVM Oil Associates,pvmoil.com,unreachable,no response,,5
+Pacific Green,pacificgreen.tv,unreachable,no response,,5
+Peninsula Middle East,peninsulapetroleum.ae,unreachable,no response,,5
+Penso Power,pensopower.com,unreachable,no response,,5
+Perenia Group,perenia.com,unreachable,no response,,5
+Performance Shipping,performanceshipping.com,unreachable,no response,,2
+Petro Matad,petromatad.com,unreachable,no response,,5
+PetroChina,petrochina.com.cn,unreachable,http 412,,5
+PetroChina International London,petrochinaintl.com,unreachable,no response,,5
+Petrofac Engineering,petrofac.com/engineering,unreachable,http 404,,5
+Petrogress,petrogres.com,unreachable,no response,,5
+Petronas LNG,petronaslng.com,unreachable,no response,,5
+Pharo Management,pharomanagement.com,unreachable,no response,,5
+Pinnacle Renewable Energy,pinnaclepellet.com,unreachable,no response,,5
+Portsea Asset Management,portseaam.com,unreachable,no response,,5
+Posco International,poscointl.com,unreachable,no response,,1
+Powerscourt,powerscourt-group.com,unreachable,no response,,5
+Prana Capital,pranacapital.com,unreachable,no response,,5
+Premier Miton Global Renewables,pmgr.co.uk,unreachable,no response,,5
+Prime Oil and Gas,primeoil.gr,unreachable,no response,,5
+Private Equity Recruitment,per-london.com,unreachable,no response,,5
+Proco Commodities,procogroup.com,unreachable,no response,,5
+Prosperity Capital Management,prosperitycapital.com,unreachable,no response,,5
+Puma Energy UK,pumaenergy.co.uk,unreachable,no response,,5
+Pöyry Energy,poyry.com,unreachable,http 404,,5
+Reabold Resources,reaboldresources.co.uk,unreachable,no response,,5
+Rebel Energy,rebelenergy.com,unreachable,no response,,5
+Rebellion Energy,rebellion.energy,unreachable,no response,,5
+Red Kite Capital,redkitecm.com,unreachable,no response,,5
+Reliance Global Energy,ril.co.uk,unreachable,no response,,5
+Return Energy,returnenergy.co.uk,unreachable,no response,,5
+Ricardo Energy and Environment,ricardo.com/ee,unreachable,no response,,5
+Risk.net,risk.net,unreachable,http 404,,5
+River Global,riverglobal.co.uk,unreachable,no response,,5
+Riverlake,riverlake.com,unreachable,no response,,5
+Rockwood Strategic,rockwoodstrategic.com,unreachable,no response,,5
+Ronin Capital,ronincapitalllc.com,unreachable,no response,,5
+SDCL Energy Efficiency,sdclee.com,unreachable,no response,,5
+SWIFT,swift.com,unreachable,no response,,5
+Sagil Capital,sagilcapital.com,unreachable,no response,,5
+Sahara Group,sahara-group.com,unreachable,no response,,5
+Sandaire,sandaire.com,unreachable,no response,,5
+Sanlam Investments,sanlam.co.uk,unreachable,http 404,,5
+Saras Trading,sarasenergia.com,unreachable,no response,,5
+Sarasin Alpha,sarasinalpha.com,unreachable,no response,,5
+Schneider Trading,schneidertrading.com,unreachable,no response,,5
+Sea Oil,seaoil.com,unreachable,no response,,5
+Sea Trade Holdings,seatradeholdings.com,unreachable,no response,,5
+Sea-Change Green Link,seachange.energy,unreachable,no response,,2
+Sembcorp Marine,seatriumltd.com,unreachable,no response,,5
+Sentieo,sentieo.com,unreachable,no response,,5
+Serious Fraud Office,sfo.gov.uk,unreachable,no response,,5
+Sinopec Fuel Oil,sinopecfuel.com,unreachable,no response,,5
+Sinopec Trading,sinopec.com,unreachable,no response,,5
+Sojitz Europe,sojitz-europe.com,unreachable,no response,,5
+Solaris Commodities,solaris-commodities.com,unreachable,http 404,,5
+Solventis,solventis.co.uk,unreachable,no response,,5
+Sona Asset Management,sonaam.com,unreachable,no response,,2
+Spot Trading,spottradingllc.com,unreachable,no response,,5
+Star Asia Shipbroking,starasiashipbroking.com,unreachable,no response,,5
+Star Energy,starenergy.co.uk,unreachable,no response,,5
+Star Refinery,socarturkey.com.tr,unreachable,no response,,5
+Steadview Capital,steadviewcapital.com,unreachable,no response,,5
+Stratton Street Capital,strattonstreet.com,unreachable,no response,,5
+Sucden Coffee,sucden.co.uk,unreachable,no response,,5
+Sumitomo Corporation Europe,sumitomocorp.eu,unreachable,no response,,5
+Sybenetix,sybenetix.com,unreachable,no response,,5
+TIAA,tiaa.org,unreachable,no response,,5
+Thyssenkrupp Materials,thyssenkrupp-materials.com,unreachable,no response,,5
+Timera Energy Advisory,timera-energy.co.uk,unreachable,no response,,5
+Toyota Tsusho Europe,toyotatsusho.eu,unreachable,no response,,5
+Trading Technologies International,tradingtechnologies.co.uk,unreachable,no response,,5
+Trading Technologies Surveillance,tradingtechnologies.com/surveillance,unreachable,http 404,,5
+Trafigura Metals,trafigura.co.uk,unreachable,http 404,,5
+Trailstone,trailstonegroup.com,unreachable,no response,,5
+Traxys Europe,traxys.eu,unreachable,no response,,5
+Tresidor Investment Management,tresidorim.com,unreachable,no response,,5
+Trident Alliance,tridentalliance.org,unreachable,no response,,5
+Trina Storage,trinasolar.com,unreachable,http 404,,5
+Trinity Exploration,trinityexploration.com,unreachable,no response,,5
+Trium Capital,triumcapital.com,unreachable,no response,,5
+UK Infrastructure Bank,ukib.org.uk,unreachable,no response,,5
+UnaVista,unavista.londonstockexchange.com,unreachable,http 523,,5
+Uni Marine and Energy,unimarine.gr,unreachable,no response,,5
+Unipec,sinopecgroup.com,unreachable,no response,,5
+Unipec Asia,unipec.com,unreachable,no response,,5
+Uniper Energy Trading,uniper.de,unreachable,no response,,5
+VH Global Energy Infrastructure,vhgei.com,unreachable,no response,,5
+Valcambi,valcambi.com,unreachable,no response,,5
+Vantage Capital Markets,vantagecm.com,unreachable,no response,,5
+Vermont Bunkering,vermontuk.com,unreachable,no response,,5
+Verrazzano Capital,verrazzanocapital.com,unreachable,no response,,5
+Victory Fuels,victoryfuels.com,unreachable,no response,,5
+Viswa Group,viswalab.com,unreachable,no response,,5
+Vitol Group Services,vitol.co.uk,unreachable,no response,,5
+Vortexa Analytics,vortexa.co.uk,unreachable,no response,,5
+Waverton Wealth,wavertonwealth.com,unreachable,no response,,5
+Wentworth Resources,wentworthresources.com,unreachable,no response,,5
+Zen-Noh Grain,zengrain.com,unreachable,no response,,2
+Zestec,zestec.co.uk,unreachable,no response,,5
+Zhengzhou Commodity Exchange,czce.com.cn,unreachable,http 412,,5
+Zhenhua Oil,zhenhuaoil.com,unreachable,no response,,5
